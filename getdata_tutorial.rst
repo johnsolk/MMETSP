@@ -2,13 +2,13 @@ Tutorial for downloading and working with MMETSP data:
 ======================================================
 1. Launch AWS instance
 2. Install stuff: sudo apt-get sratoolkit, dos2unix, fastqc, default-jre
-3. manually install sra-toolkig, tar -xvzf
+3. manually install sra-toolkit, tar -xvzf from http://www.ncbi.nlm.nih.gov/Traces/sra/sra.cgi?view=software
 4. rsync .csv file from SRA (screenshot for how to do this)
 
 rsync -e "ssh -i [key].pem" -avz [source directory] [user]@[instance ip]:[destination directory on instance]
 
 5. dos2unix -c Mac mac_file
-6. do stuff
+6. run getdata.py
 7. literate resting, eel-pond: https://github.com/dib-lab/literate-resting/blob/master/kp/eel-pond.rst
 
 
