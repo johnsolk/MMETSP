@@ -3,7 +3,7 @@ Tutorial for downloading and working with MMETSP data:
 1. Launch AWS instance
 2. Install stuff: sudo apt-get sratoolkit, dos2unix, fastqc, default-jre
 3. manually install sra-toolkit, tar -xvzf from http://www.ncbi.nlm.nih.gov/Traces/sra/sra.cgi?view=software
-4. rsync .csv file from SRA (screenshot for how to do this)
+4. rsync .csv file from SRA (screenshot for how to do this) http://www.ncbi.nlm.nih.gov/sra?linkname=bioproject_sra_all&from_uid=231566
 
 rsync -e "ssh -i [key].pem" -avz [source directory] [user]@[instance ip]:[destination directory on instance]
 
