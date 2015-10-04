@@ -15,16 +15,18 @@ def get_data(thefile):
     count=0
     url_data={}
     with open(thefile,"rU") as inputfile:
-        headerline=next(inputfile).split('\t')
-        position_name=headerline.index("Organism Common Name")
-        position_reads=headerline.index("Data Type")
-        position_ftp=headerline.index("Download")
+        headerline=next(inputfile).split(',')
+	print headerline        
+        position_name=headerline.index("ScientificName")
+        position_reads=headerline.index("Run")
+        position_ftp=headerline.index("download_path")
         for line in inputfile:
-            line_data=line.split('\t')
-            name=line_data[position_name]
+            line_data=line.split(',')
+            name="_".join(line_data[position_name].split())
             read_type=line_data[position_reads]
             ftp=line_data[position_ftp]
             name_read_tuple=(name,read_type)
+            print name_read_tuple
             #check to see if organism and seq_type exist
             if name_read_tuple in url_data.keys():
                 #check to see if ftp exists
@@ -78,6 +80,7 @@ def execute(basedir,url_data):
         url_list=url_data[item]
         for url in url_list:
             filename=basename(urlparse(url).path)
+            print filename
             newdir=org_seq_dir+filename+"/"
             #Makes a new directory for the new filename
             #Checks to see if it already exists
@@ -86,48 +89,52 @@ def execute(basedir,url_data):
             else:
                 os.mkdir(newdir)
                 print "Directory made: ",newdir
-            log_filename=newdir+filename+".log"
-            with open(log_filename,"w") as outputfile:
                 fastq_file_list=[]
                 #check to see if filename exists in newdir
                 if filename in os.listdir(newdir):
                     print "sra exists:",filename
                 else:                    
-                    download(url,newdir,filename)
-                    outputfile.write(url+" downloaded.\n")
-                listoffiles=os.listdir(newdir)
-		fastqcount=0
-		fastq=0
-		sra=0
-   		for i in listoffiles:
-			if i.endswith(".fastq"):
-				fastq+=1
-				fastq_file_list.append(i)
-			elif i.endswith("_fastqc"):
-				fastqcount+=1
-			elif i.endswith(".sra"):
-				sra+=1
-		if sra:
-			if fastq >=1:
-				if fastqcount>=1:
-					break
-				else:
-			                fastqc_report(fastq_file_list)
-					outputfile.write("fastqc reports generated for: "+str(fastq_file_list)+"\n")
-                	else:
-				sra_extract(newdir,filename,seqtype)
-                        	outputfile.write(filename+" extracted.\n")
-				listofnewfiles=os.listdir(newdir)
-				for t in listofnewfiles:
-					if i.endswith(".fastq"):
-						fastq_file_list.append(t)
-				fastqc_report(fastq_file_list)
-                                outputfile.write("fastqc reports generated for: "+str(fastq_file_list)+"\n")
-            outputfile.close()
-            print log_filename,"written."
+                    print "file will be downloaded:",filename
+		    #download(url,newdir,filename)
+                    #outputfile.write(url+" downloaded.\n")
+                #listoffiles=os.listdir(newdir)
+		#fastqcount=0
+		#fastq=0
+		#sra=0
+   		#for i in listoffiles:
+			#if i.endswith(".fastq"):
+				#fastq+=1
+				#fastq_file_list.append(i)
+			#elif i.endswith("_fastqc"):
+				#fastqcount+=1
+			#elif i.endswith(".sra"):
+				#sra+=1
+		#if sra:
+			#if fastq >=1:
+				#if fastqcount>=1:
+					#break
+				#else:
+			          #      fastqc_report(fastq_file_list)
+				#	outputfile.write("fastqc reports generated for: "+str(fastq_file_list)+"\n")
+                	#else:
+			#	sra_extract(newdir,filename,seqtype)
+                        #	outputfile.write(filename+" extracted.\n")
+			#	listofnewfiles=os.listdir(newdir)
+			#	for t in listofnewfiles:
+			#		if i.endswith(".fastq"):
+			#			fastq_file_list.append(t)
+			#	fastqc_report(fastq_file_list)
+                         #       outputfile.write("fastqc reports generated for: "+str(fastq_file_list)+"\n")
+            #outputfile.close()
+            #print log_filename,"written."
 
-datafile="MMETSP_SRA_Run_Info_subset.csv
-basedir="/home/data/"
+datafile="MMETSP_SRA_Run_Info_subset.csv"
+basedir="/home/ubuntu/"
 url_data=get_data(datafile)
-execute(basedir,url_data)
+print url_data
+#execute(basedir,url_data)
 
+
+## future:
+# parse only once
+# get rid of fastq-dump step
