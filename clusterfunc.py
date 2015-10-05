@@ -1,6 +1,6 @@
 # Lisa Cohen
 # commonly-used functions
-# to use, "import cluster"
+# to use, "import clusterfunc"
 
 import os
 import subprocess
