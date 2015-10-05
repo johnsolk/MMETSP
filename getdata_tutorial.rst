@@ -1,5 +1,8 @@
 Tutorial for downloading and working with MMETSP data:
 ======================================================
+
+This tutorial will (eventually) describe steps to get from blank AWS instance, download MMETSP data, quality check and automate eel pond mRNAseq differential expression protocol: https://khmer-protocols.readthedocs.org/en/v0.8.4/mrnaseq/
+
 1. Launch AWS instance
 2. Install stuff: sudo apt-get sratoolkit, dos2unix, fastqc, default-jre
 3. manually install sra-toolkit, tar -xvzf from http://www.ncbi.nlm.nih.gov/Traces/sra/sra.cgi?view=software
