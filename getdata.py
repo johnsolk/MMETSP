@@ -14,7 +14,6 @@ import clusterfunc
 #1. Get data from spreadsheet
 
 def get_data(thefile):
-    count=0
     url_data={}
     with open(thefile,"rU") as inputfile:
         headerline=next(inputfile).split(',')
