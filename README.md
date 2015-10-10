@@ -3,7 +3,16 @@ This is a progressively-growing, work-in-progress repository with info and scrip
 
 Keeling et al. 2014: http://journals.plos.org/plosbiology/article?id=10.1371/journal.pbio.1001889
 
+Supporting information with methods description: 
+
+http://journals.plos.org/plosbiology/article?id=10.1371/journal.pbio.1001889#s6
+
+Preliminary assembly protocol run by NCGR:
+https://github.com/ncgr/rbpa
+
+
 NCBI Bioproject accession: PRJNA231566
+
 http://www.ncbi.nlm.nih.gov/bioproject/PRJNA231566/
 
 MMETSP website: http://marinemicroeukaryotes.org/
