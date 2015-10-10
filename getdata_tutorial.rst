@@ -88,9 +88,9 @@ Then rsync from local to AWS instance:
 - (During testing of this pipeline, don't use the whole data set! It's too big. (~1TB). Instead, use subset of 12 samples and create new data files with only 400,000 reads each.)
 - creates a link to data into a working directory
 
-8. Find the right Illumina adapters
+8. The Supplementary Materials and methods section of the Keeling et al. 2014 paper indicates all sequencing was paired-end Illumina with TruSq RNA Sample Preparation Kit with fragment sizes ranging from 240 to 350 pb. Some was PE-50 and some were PE-100. While we don't know specifically which Illumina adapters were used nor which chemistry v1,2,3,4 was used, we will use v2 and v3 files from Trimmomatic to see.
 
-...
+
 
 
 
