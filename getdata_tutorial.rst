@@ -71,7 +71,9 @@ Install libgtextutils and fastx:
 
 4. Make .csv spreadsheet file from SRA (screenshot for how to do this): http://www.ncbi.nlm.nih.gov/sra?linkname=bioproject_sra_all&from_uid=231566
 
-Then rsync from local to AWS instance:
+Click on "Send to:" -> Choose Destination: File -> "Download 719 items." Format: (pull down) Accession -> Click on "Create File"
+
+This will download to your local computer. Then rsync or upload from local to AWS instance:
 
 .. code::
   rsync -e "ssh -i [key].pem" -avz [source directory] [user]@[instance ip]:[destination directory on instance]
