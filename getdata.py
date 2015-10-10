@@ -14,6 +14,7 @@ import clusterfunc
 #1. Get data from spreadsheet
 
 def get_data(thefile):
+    count=0
     url_data={}
     with open(thefile,"rU") as inputfile:
         headerline=next(inputfile).split(',')
@@ -28,7 +29,7 @@ def get_data(thefile):
             ftp=line_data[position_ftp]
             name_read_tuple=(name,read_type)
             print name_read_tuple
-            #check to see if organism and seq_type exist
+            #check to see if Scientific Name and run exist
             if name_read_tuple in url_data.keys():
                 #check to see if ftp exists
                 if ftp in url_data[name_read_tuple]:
@@ -48,8 +49,8 @@ def download(url,newdir,newfile):
     #Note: only for Python 3
     #urllib.request.urlretrieve(url,filestring)
     #Use this for Python 2
-    s=subprocess.Popen(urlstring,shell=True)
-    s.wait()
+    #s=subprocess.Popen(urlstring,shell=True)
+    #s.wait()
 
 #3. Extract with fastq-dump (sratools)
     
@@ -76,8 +77,35 @@ def fastqc_report(fastq_file_list,basedir):
     fastqc_string="fastqc -o "+basedir+" "+file_string
     print fastqc_string
     print "fastqc reports generated for: "+str(fastq_file_list)
-    s=subprocess.Popen(fastqc_string,shell=True,stdout=PIPE)
-    s.wait()
+    #s=subprocess.Popen(fastqc_string,shell=True,stdout=PIPE)
+    #s.wait()
+
+#5. For pipeline testing only:
+#   create subset of 400,000 reads for each file
+
+def subset_reads(filename):
+    newfilename=filename[:-6]+".subset40k.fastq"
+    if os.path.isfile(newfilename):
+	print "File has already been subsetted:",filename
+    else:	
+    	subset_string="head -400000 "+filename+" > "+newfilename
+    	print subset_string
+    	#s=subprocess.Popen(subset_string,shell=True,stdout=PIPE)
+    	#s.wait()
+   
+#6. Create symbolic link from data files to working directory
+
+def sym_link(newdir):
+    listoffiles=os.listdir(newdir)
+    for i in listoffiles:
+    	if i.endswith(".subset40k.fastq"):
+    		symlink_string="ln -fs "+newdir+i+" /home/ubuntu/data/"+i
+		print symlink_string
+    		s=subprocess.Popen(symlink_string,shell=True,stdout=PIPE)
+    		s.wait()
+	    
+
+# this is the main function to execute
 
 def execute(basedir,url_data):
     for item in url_data.keys():
@@ -102,7 +130,7 @@ def execute(basedir,url_data):
 	    #check to see if .fastq exists in newdir
             #sra_extract(newdir,filename)
             #check to see if fastqc has been done
-	    fastqc(newdir)
+            fastqc(newdir)
 
 def fastqc(newdir):
 	listoffiles=os.listdir(newdir)
@@ -116,7 +144,18 @@ def fastqc(newdir):
 			print "fastqc has already been run:",j
 		else:
 			fastqc_report(fastq_file_list,newdir)
+                         
+                subset_reads(j)
+                sym_link(newdir)
+		#delete_files(newdir)
 
+
+def delete_files(newdir):
+	listoffiles=os.listdir(newdir)
+	for i in listoffiles:
+		if i.endswith(".subset40k.fastq"):
+			os.remove(newdir+i)
+			print "File removed:",newdir+i
 
 datafile="MMETSP_SRA_Run_Info_subset.csv"
 basedir="/home/ubuntu/"
