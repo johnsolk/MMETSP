@@ -101,42 +101,39 @@ This will download to your local computer. Then rsync or upload from local to AW
 
 
 
-8. The Supplementary Materials and methods section of the Keeling et al. 2014 paper indicates all sequencing was paired-end Illumina with TruSq RNA Sample Preparation Kit with fragment sizes ranging from 240 to 350 pb. Some was PE-50 and some were PE-100. While we don't know specifically which Illumina adapters were used nor which chemistry v1,2,3,4 was used, we will use v2 and v3 files from Trimmomatic to see.
+8. The Supplementary Materials and methods section of the Keeling et al. 2014 paper indicates all sequencing was paired-end Illumina with TruSq RNA Sample Preparation Kit with fragment sizes ranging from 240 to 350 pb. Some was PE-50 and some were PE-100. While we don't know specifically which Illumina adapters were used nor which chemistry v1,2,3,4 was used, we will use v2 and v3 files from current version of Trimmomatic Phred=30 to see.
 
 .. code:
 
   mkdir trim
   cd trim
 
-Run trimming levels Phred=30 with current version of Trimmomatic:
-
-http://angus.readthedocs.org/en/2015/MacManesTrimming.html
+Run
 
 .. code:
 
-  java -Xmx10g -jar /home/ubuntu/bin/Trimmomatic-0.33/trimmomatic-0.33.jar PE \
-  -threads 8 -baseout "+filename+".TruSeq3.Phred30.fq \
-  /mnt/reads/root_S13.R1.fq \
-  /mnt/reads/root_S13.R2.fq \
-  ILLUMINACLIP:/home/ubuntu/bin/Trimmomatic-0.33/adapters/TruSeq3-PE.fa:2:30:10 \
-  SLIDINGWINDOW:4:30 \
-  LEADING:30 \
-  TRAILING:30 \
-  MINLEN:25
+  python trim_qc.py
 
-Then try other TruSeq adapters:
+This will create .sh files for each SRA accession, TruSeq2 and TruSeq3:
+
+To run Trimmomatic with all bash scripts:
 
 .. code:
 
-  java -Xmx10g -jar /home/ubuntu/bin/Trimmomatic-0.33/trimmomatic-0.33.jar PE \
-  -threads 8 -baseout "+filename+".TruSeq2.Phred30.fq \
-  /mnt/reads/root_S13.R1.fq \
-  /mnt/reads/root_S13.R2.fq \
-  ILLUMINACLIP:/home/ubuntu/bin/Trimmomatic-0.33/adapters/TruSeq2-PE.fa:2:30:10 \
-  SLIDINGWINDOW:4:30 \
-  LEADING:30 \
-  TRAILING:30 \
-  MINLEN:25
+  apt-get install parallel
+  parallel -j0 bash :::: <(ls *.sh)
+
+This will create paired (P) and unpaired (U) files for each read 1 and 2 = 4 files for each SRA. Only choose the P files for the next step to interleave reads. (Note: All Trimmomatic results for this step were >90% reads kept.)
+
+(I know this is a bad idea, but in the interest of getting this to work...) Comment out Trimmomatic function and run this again to interleave reads, then again to run jellyfish:
+
+.. code:
+  python trim_qc.py
+  
+This will give you .histo files for each SRA.
+This will interleave
+
+
 
 References:
 
