@@ -128,12 +128,12 @@ This will create paired (P) and unpaired (U) files for each read 1 and 2 = 4 fil
 (I know this is a bad idea, but in the interest of getting this to work...) Comment out Trimmomatic function and run this again to interleave reads, then again to run jellyfish:
 
 .. code:
+  
   python trim_qc.py
   
 This will give you .histo files for each SRA.
-This will interleave
 
-
+Next step: Run all of this in a Python notebook file and actually look at histo. Are there differences between TruSeq2 and TruSeq3? Which set of adapters was used? Are there overrepresented sequences in the raw reads leading us to believe that adapter contamination will be a problem? Is Trimmomatic really necessary??
 
 References:
 
