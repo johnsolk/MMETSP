@@ -101,10 +101,7 @@ This will download to your local computer. Then rsync or upload from local to AW
 - creates directory for that sample according to Scientific name
 - downloads sra file into that directory
 - extracts the file from sra to .fastq
-
-During testing of this pipeline, don't use the whole data set! It's too big. (~1TB). Instead, use subset of 12 samples and create new data files with only 400,000 reads each. ***Need to update later: how to subset reads into 40k each, create symbolic link into working directory. Missed this in version of code somewhere.
-
-- Makes subset of reads to test, 40k each
+- Makes subset of reads to test, 40k each (only use this during testing of the pipeline)
 - creates a link to data into a working directory
 
 8. The Supplementary Materials and methods section of the Keeling et al. 2014 paper indicates all sequencing was paired-end Illumina with TruSq RNA Sample Preparation Kit with fragment sizes ranging from 240 to 350 pb. Some was PE-50 and some were PE-100. While we don't know specifically which Illumina adapters were used nor which chemistry v1,2,3,4 was used, we will use v2 and v3 files from current version of Trimmomatic Phred=30 to see.
