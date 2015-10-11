@@ -12,6 +12,7 @@ ssh -i mmetsp.pem ubuntu@ec2-52-91-248-80.compute-1.amazonaws.com
 2. Install stuff: 
 
 .. code::
+
   sudo bash
   apt-get install dos2unix fastqc default-jre
 
@@ -28,6 +29,7 @@ Install screed:
 Install khmer:
 
 .. code::
+
   cd /usr/local/share
   git clone https://github.com/dib-lab/khmer.git
   cd khmer
@@ -38,7 +40,7 @@ Install khmer:
 
 Install Trimmomatic:
 
-.. code:
+.. code::
   
   cd ~/bin
   wget http://www.usadellab.org/cms/uploads/supplementary/Trimmomatic/Trimmomatic-0.33.zip
@@ -48,7 +50,8 @@ Install Trimmomatic:
 
 Install libgtextutils and fastx:
 
-.. code:
+.. code::
+
   cd /root
   curl -O http://hannonlab.cshl.edu/fastx_toolkit/libgtextutils-0.6.1.tar.bz2
   tar xjf libgtextutils-0.6.1.tar.bz2
@@ -63,7 +66,8 @@ Install libgtextutils and fastx:
 
 Mount hard drive
 
-.. code:
+.. code::
+
   df -h
   mkfs -t ext4 /dev/xvdb
   mount /dev/xvdb /mnt
@@ -85,6 +89,7 @@ Click on "Send to:" -> Choose Destination: File -> "Download 719 items." Format:
 This will download to your local computer. Then rsync or upload from local to AWS instance:
 
 .. code::
+
   rsync -e "ssh -i [key].pem" -avz [source directory] [user]@[instance ip]:[destination directory on instance]
 
 
@@ -103,14 +108,14 @@ This will download to your local computer. Then rsync or upload from local to AW
 
 8. The Supplementary Materials and methods section of the Keeling et al. 2014 paper indicates all sequencing was paired-end Illumina with TruSq RNA Sample Preparation Kit with fragment sizes ranging from 240 to 350 pb. Some was PE-50 and some were PE-100. While we don't know specifically which Illumina adapters were used nor which chemistry v1,2,3,4 was used, we will use v2 and v3 files from current version of Trimmomatic Phred=30 to see.
 
-.. code:
+.. code::
 
   mkdir trim
   cd trim
 
 Run
 
-.. code:
+.. code::
 
   python trim_qc.py
 
@@ -118,7 +123,7 @@ This will create .sh files for each SRA accession, TruSeq2 and TruSeq3:
 
 To run Trimmomatic with all bash scripts:
 
-.. code:
+.. code::
 
   apt-get install parallel
   parallel -j0 bash :::: <(ls *.sh)
@@ -127,7 +132,7 @@ This will create paired (P) and unpaired (U) files for each read 1 and 2 = 4 fil
 
 (I know this is a bad idea, but in the interest of getting this to work...) Comment out Trimmomatic function and run this again to interleave reads, then again to run jellyfish:
 
-.. code:
+.. code::
   
   python trim_qc.py
   
