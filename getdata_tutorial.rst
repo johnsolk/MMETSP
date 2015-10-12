@@ -5,6 +5,11 @@ This tutorial describes steps to get from blank AWS instance, download MMETSP da
 
 https://khmer-protocols.readthedocs.org/en/v0.8.4/mrnaseq/
 
+Have used Matt McManes' angus tutorial for some of this:
+
+http://angus.readthedocs.org/en/2015/MacManesTrimming.html
+
+
 1. Launch AWS instance:
 
 ssh -i mmetsp.pem ubuntu@ec2-52-91-248-80.compute-1.amazonaws.com
