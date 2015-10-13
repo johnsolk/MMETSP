@@ -17,4 +17,4 @@ http://www.ncbi.nlm.nih.gov/bioproject/PRJNA231566/
 
 MMETSP website: http://marinemicroeukaryotes.org/
 
-
+iMicrobe project with data and combined assembly downloads: http://data.imicrobe.us/project/view/104
