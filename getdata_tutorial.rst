@@ -19,7 +19,9 @@ ssh -i mmetsp.pem ubuntu@ec2-52-91-248-80.compute-1.amazonaws.com
 .. code::
 
   sudo bash
-  apt-get install dos2unix fastqc default-jre
+  apt-get update
+  apt-get upgrade
+  apt-get install dos2unix fastqc default-jre git
 
 Install screed:
 
