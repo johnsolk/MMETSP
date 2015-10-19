@@ -86,6 +86,7 @@ Mount hard drive
 
 .. code::
   
+  cd
   curl -O http://ftp-trace.ncbi.nlm.nih.gov/sra/sdk/2.5.4-1/sratoolkit.2.5.4-1-ubuntu64.tar.gz
   tar -xvzf sratoolkit.2.5.4-1-ubuntu64.tar.gz
 
@@ -110,6 +111,7 @@ This will download to your local computer. Then rsync or upload from local to AW
   git init
   git pull https://github.com/ljcohen/MMETSP.git
   dos2unix MMETSP_SRA_Run_Info_subset.csv
+  chmod 666 *.*
 
 
 7. run: 
