@@ -21,7 +21,7 @@ ssh -i mmetsp.pem ubuntu@ec2-52-91-248-80.compute-1.amazonaws.com
   sudo bash
   apt-get update
   apt-get upgrade
-  apt-get install dos2unix fastqc default-jre git make python-pip gcc 
+  apt-get -y install dos2unix fastqc default-jre git make python-pip gcc g++ python-dev unzip build-essential libcurl4-openssl-dev zlib1g-dev
 
 Install screed:
 
