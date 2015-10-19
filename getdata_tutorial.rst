@@ -101,8 +101,23 @@ This will download to your local computer. Then rsync or upload from local to AW
 
 
 5. login to AWS
-6. dos2unix -c Mac mac_file
-7. run getdata.py:
+6. 
+
+.. code::
+  
+  mkdir ~/mmetsp
+  cd ~/mmetsp
+  git init
+  git pull https://github.com/ljcohen/MMETSP.git
+  dos2unix MMETSP_SRA_Run_Info_subset.csv
+
+
+7. run: 
+
+.. code::
+
+  python getdata.py:
+
 
 - gets url for each sample from spreadsheet
 - creates directory for that sample according to Scientific name
