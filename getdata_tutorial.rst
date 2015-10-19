@@ -31,7 +31,7 @@ Install screed:
   git clone https://github.com/ged-lab/screed.git
   cd screed
   git checkout protocols-v0.8.3
-  python setup.py install`
+  python setup.py install
 
 Install khmer:
 
