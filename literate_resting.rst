@@ -31,7 +31,7 @@ Next, ::
    cd /home/ubuntu
    rm -fr literate-resting khmer-protocols
    git clone https://github.com/dib-lab/literate-resting.git
-   git clone https://github.com/dib-lab/khmer-protocols.git -b ctb
+   git clone https://github.com/dib-lab/khmer-protocols.git -b ljcohen
    
    cd khmer-protocols/mrnaseq
    
@@ -42,7 +42,7 @@ Next, ::
       /home/ubuntu/literate-resting/scan.py $i || break
    done
    
-   ### START MONITORING (in another SSH session)
+   ### START MONITORING FOR RESOURCE ALLOCATION (in another SSH session, use "screen") (if this is something you're interested in)
    
    for i in [1-3]-*.rst.sh
    do
