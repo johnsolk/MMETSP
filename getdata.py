@@ -49,8 +49,8 @@ def download(url,newdir,newfile):
     #Note: only for Python 3
     #urllib.request.urlretrieve(url,filestring)
     #Use this for Python 2
-    #s=subprocess.Popen(urlstring,shell=True)
-    #s.wait()
+    s=subprocess.Popen(urlstring,shell=True)
+    s.wait()
 
 #3. Extract with fastq-dump (sratools)
     
@@ -59,10 +59,19 @@ def sra_extract(newdir,filename):
     #    sra_string="fastq-dump -v "+newdir+file
     #    print sra_string
     #elif seqtype=="paired":
-    sra_string="/home/ubuntu/bin/sratoolkit.2.5.4-1-ubuntu64/bin/fastq-dump -v -O "+newdir+" --split-3 "+newdir+filename
-    #print sra_string
-    #s=subprocess.Popen(sra_string,shell=True,stdout=PIPE)
-    #s.wait()
+    listoffiles=os.listdir(newdir)
+    print listoffiles
+    for filename in listoffiles:
+    	# assumes that first file in list will be .fastq
+	if filename.endswith(".fastq"):
+    		print "SRA has already been extracted", filename
+		break
+    	else:
+    		sra_string="/home/ubuntu/sratoolkit.2.5.4-1-ubuntu64/bin/fastq-dump -v -O "+newdir+" --split-3 "+newdir+filename
+    		#print sra_string
+	    	print "extracting SRA..."
+    		#s=subprocess.Popen(sra_string,shell=True,stdout=PIPE)
+    		#s.wait()
 
 #4. Generate fastqc from all fastq in directory
 
@@ -77,28 +86,29 @@ def fastqc_report(fastq_file_list,basedir):
     fastqc_string="fastqc -o "+basedir+" "+file_string
     print fastqc_string
     print "fastqc reports generated for: "+str(fastq_file_list)
-    #s=subprocess.Popen(fastqc_string,shell=True,stdout=PIPE)
+    #s=subprocess.Popen(fastqc_string,shell=True)
     #s.wait()
 
 #5. For pipeline testing only:
 #   create subset of 400,000 reads for each file
 
 def subset_reads(filename):
-    newfilename=filename[:-6]+".subset40k.fastq"
+    newfilename=filename[:-6]+".subset100k.fastq"
+    print newfilename
     if os.path.isfile(newfilename):
 	print "File has already been subsetted:",filename
     else:	
     	subset_string="head -400000 "+filename+" > "+newfilename
     	print subset_string
-    	#s=subprocess.Popen(subset_string,shell=True,stdout=PIPE)
-    	#s.wait()
+    	s=subprocess.Popen(subset_string,shell=True,stdout=PIPE)
+    	s.wait()
    
 #6. Create symbolic link from data files to working directory
 
 def sym_link(newdir):
     listoffiles=os.listdir(newdir)
     for i in listoffiles:
-    	if i.endswith(".subset40k.fastq"):
+    	if i.endswith(".subset100k.fastq"):
     		symlink_string="ln -fs "+newdir+i+" /home/ubuntu/data/"+i
 		print symlink_string
     		s=subprocess.Popen(symlink_string,shell=True,stdout=PIPE)
@@ -114,7 +124,7 @@ def execute(basedir,url_data):
         organism=item[0]
         seqtype=item[1]
         org_seq_dir=basedir+organism+"/"
-        clusterfunc.check_dir(org_seq_dir)
+	clusterfunc.check_dir(org_seq_dir)
         url_list=url_data[item]
         for url in url_list:
             filename=basename(urlparse(url).path)
@@ -124,13 +134,16 @@ def execute(basedir,url_data):
             #check to see if filename exists in newdir
             if filename in os.listdir(newdir):
                print "sra exists:",filename
-            else:                    
+            else:        
+               print "skipping:",filename            
                print "file will be downloaded:",filename
 	       download(url,newdir,filename)
 	    #check to see if .fastq exists in newdir
             #sra_extract(newdir,filename)
             #check to see if fastqc has been done
-            fastqc(newdir)
+	    # there's something silly wrong with fastqc(newdir), it creates new files.subset100k.fastq over and over
+	    fastqc(newdir)
+            #delete_files(newdir)
 
 def fastqc(newdir):
 	listoffiles=os.listdir(newdir)
@@ -143,22 +156,21 @@ def fastqc(newdir):
 		if glob.glob(j[:-6]+"_fastqc.zip"):
 			print "fastqc has already been run:",j
 		else:
-			fastqc_report(fastq_file_list,newdir)
-                         
+			fastqc_report(fastq_file_list,newdir)         
                 subset_reads(j)
                 sym_link(newdir)
-		#delete_files(newdir)
 
 
 def delete_files(newdir):
 	listoffiles=os.listdir(newdir)
+        print listoffiles
 	for i in listoffiles:
-		if i.endswith(".subset40k.fastq"):
+		if i.endswith(".subset100k.fastq"):
 			os.remove(newdir+i)
 			print "File removed:",newdir+i
 
-datafile="MMETSP_SRA_Run_Info_subset.csv"
-basedir="/home/ubuntu/"
+datafile="MMETSP_SRA_Run_Info_subset2.csv"
+basedir="/mnt/mmetsp/"
 url_data=get_data(datafile)
 print url_data
 execute(basedir,url_data)
