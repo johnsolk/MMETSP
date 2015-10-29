@@ -67,7 +67,7 @@ def sra_extract(newdir,filename):
     		print "SRA has already been extracted", filename
 		break
     	else:
-    		sra_string="/home/ubuntu/sratoolkit.2.5.4-1-ubuntu64/bin/fastq-dump -v -O "+newdir+" --split-3 "+newdir+filename
+    		sra_string="fastq-dump -v -O "+newdir+" --split-3 "+newdir+filename
     		#print sra_string
 	    	print "extracting SRA..."
     		#s=subprocess.Popen(sra_string,shell=True,stdout=PIPE)
@@ -100,8 +100,8 @@ def subset_reads(filename):
     else:	
     	subset_string="head -400000 "+filename+" > "+newfilename
     	print subset_string
-    	s=subprocess.Popen(subset_string,shell=True,stdout=PIPE)
-    	s.wait()
+    	#s=subprocess.Popen(subset_string,shell=True,stdout=PIPE)
+    	#s.wait()
    
 #6. Create symbolic link from data files to working directory
 
@@ -109,7 +109,7 @@ def sym_link(newdir):
     listoffiles=os.listdir(newdir)
     for i in listoffiles:
     	if i.endswith(".subset100k.fastq"):
-    		symlink_string="ln -fs "+newdir+i+" /home/ubuntu/data/"+i
+    		symlink_string="ln -fs "+newdir+i+" /mnt/mmetsp/"+i
 		print symlink_string
     		s=subprocess.Popen(symlink_string,shell=True,stdout=PIPE)
     		s.wait()
@@ -139,7 +139,7 @@ def execute(basedir,url_data):
                print "file will be downloaded:",filename
 	       download(url,newdir,filename)
 	    #check to see if .fastq exists in newdir
-            #sra_extract(newdir,filename)
+            sra_extract(newdir,filename)
             #check to see if fastqc has been done
 	    # there's something silly wrong with fastqc(newdir), it creates new files.subset100k.fastq over and over
 	    fastqc(newdir)
@@ -157,10 +157,10 @@ def fastqc(newdir):
 			print "fastqc has already been run:",j
 		else:
 			fastqc_report(fastq_file_list,newdir)         
-                subset_reads(j)
+                #subset_reads(j)
                 sym_link(newdir)
 
-
+# use this in case you make a mistake and need to delete a bunch of files:
 def delete_files(newdir):
 	listoffiles=os.listdir(newdir)
         print listoffiles
