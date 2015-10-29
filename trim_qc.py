@@ -29,7 +29,7 @@ def get_sra(thefile):
             sra_list.append(sra)
             if name in sra_name.keys():
                 if sra in sra_name[name]:
-                    print "SRA already exists",sra
+                    print "SRA exists",sra
                 else:
                     sra_name[name].append(sra)
             else:
@@ -39,15 +39,15 @@ def get_sra(thefile):
     
 # run trimmomatic
 
-def run_trimmomatic_TruSeq3(newdir,file1,file2,sra):
-    bash_filename=newdir+sra+".trim.TruSeq3.sh"
+def run_trimmomatic_TruSeq(trimdir,file1,file2,sra):
+    bash_filename=trimdir+sra+".trim.TruSeq.sh"
     with open(bash_filename,"w") as bash_file:
         bash_file.write("#!/bin/bash\n")
-	bash_file.write("java -Xmx10g -jar /home/ubuntu/bin/Trimmomatic-0.33/trimmomatic-0.33.jar PE \\"+"\n")
-        bash_file.write("-threads 8 -baseout "+sra+".Phred30.TruSeq3.fq \\"+"\n")
+	bash_file.write("java -Xmx10g -jar /bin/Trimmomatic-0.33/trimmomatic-0.33.jar PE \\"+"\n")
+        bash_file.write("-threads 8 -baseout "+sra+".Phred30.TruSeq.fq \\"+"\n")
         bash_file.write(file1+" \\"+"\n")
         bash_file.write(file2+" \\"+"\n")
-        bash_file.write("ILLUMINACLIP:/home/ubuntu/bin/Trimmomatic-0.33/adapters/TruSeq3-PE.fa:2:30:10 \\"+"\n")
+        bash_file.write("ILLUMINACLIP:/bin/Trimmomatic-0.33/adapters/combined.fa:2:30:10 \\"+"\n")
         bash_file.write("SLIDINGWINDOW:4:30 \\"+"\n")
         bash_file.write("LEADING:30 \\"+"\n")
         bash_file.write("TRAILING:30 \\"+"\n")
@@ -55,21 +55,42 @@ def run_trimmomatic_TruSeq3(newdir,file1,file2,sra):
     bash_file.close()
     print "file written:",bash_filename
 
-def run_trimmomatic_TruSeq2(newdir,file1,file2,sra):
-    bash_filename=newdir+sra+".trim.TruSeq2.sh"
+def run_trimmomatic_TruSeq2(trimdir,file1,file2,sra):
+    bash_filename=trimdir+sra+".trim.TruSeq2.sh"
     with open(bash_filename,"w") as bash_file:
 	bash_file.write("#!/bin/bash\n")
-        bash_file.write("java -Xmx10g -jar /home/ubuntu/bin/Trimmomatic-0.33/trimmomatic-0.33.jar PE \\"+"\n")
+        bash_file.write("java -Xmx10g -jar /bin/Trimmomatic-0.33/trimmomatic-0.33.jar PE \\"+"\n")
         bash_file.write("-threads 8 -baseout "+sra+".Phred30.TruSeq2.fq \\"+"\n")
         bash_file.write(file1+" \\"+"\n")
         bash_file.write(file2+" \\"+"\n")
-        bash_file.write("ILLUMINACLIP:/home/ubuntu/bin/Trimmomatic-0.33/adapters/TruSeq2-PE.fa:2:30:10 \\"+"\n")
+        bash_file.write("ILLUMINACLIP:/bin/Trimmomatic-0.33/adapters/TruSeq2-PE.fa:2:30:10 \\"+"\n")
         bash_file.write("SLIDINGWINDOW:4:30 \\"+"\n")
         bash_file.write("LEADING:30 \\"+"\n")
         bash_file.write("TRAILING:30 \\"+"\n")
         bash_file.write("MINLEN:25")
     bash_file.close()
     print "file written:",bash_filename
+
+def fastqc_report(trimdir):
+    # imports list of files in each directory
+    listoffiles=os.listdir(trimdir)
+    fastq_file_list=[]
+    for filename in listoffiles:
+	if filename.endswith(".TruSeq_1U.fq"):
+		fastq_file_list.append(trimdir+filename)
+	elif filename.endswith(".TruSeq_2U.fq"):
+		fastq_file_list.append(trimdir+filename)
+    print fastq_file_list
+    # creates command to generate fastqc reports from all files in list 
+    file_string=str(fastq_file_list)
+    #print fastq_file_list
+    file_string=" ".join(fastq_file_list)
+    #print file_string
+    fastqc_string="fastqc -o "+basedir+" "+file_string
+    print fastqc_string
+    print "fastqc reports generated for: "+str(fastq_file_list)
+    s=subprocess.Popen(fastqc_string,shell=True)
+    s.wait()
 
 def interleave_reads(trimdir,sra):
     interleave_string_TS2="python /usr/local/share/khmer/scripts/interleave-reads.py "+trimdir+sra+".Phred30.TruSeq2_1P.fq "+trimdir+sra+".Phred30.TruSeq2_2P.fq > "+trimdir+sra+".TS2.interleaved.fq"
@@ -98,26 +119,28 @@ def run_jellyfish(trimdir,sra):
 
 def execute(datadir,trimdir,sra_list):
     for sra in sra_list:
-	file1=datadir+sra+"_1.subset40k.fastq"
-	file2=datadir+sra+"_2.subset40k.fastq"	
+	file1=datadir+sra+"_1.subset100k.fastq"
+	file2=datadir+sra+"_2.subset100k.fastq"	
 	if os.path.isfile(file1) and os.path.isfile(file2):
-		#run_trimmomatic_TruSeq2(trimdir,file1,file2,sra)
+		print file1
+		print file2
+		#run_trimmomatic_TruSeq(trimdir,file1,file2,sra)
 		#run_trimmomatic_TruSeq3(trimdir,file1,file2,sra)
 		#interleave_reads(trimdir,sra)
-                run_jellyfish(trimdir,sra)
+                #run_jellyfish(trimdir,sra)
 	else:
 		print "Files do not exist:",file1,file2 	
 	
 
 
-datafile="MMETSP_SRA_Run_Info_subset.csv"
-trimdir="/home/ubuntu/data/trim/"
-datadir="/home/ubuntu/data/"
-basedir="/home/ubuntu/"
+datafile="MMETSP_SRA_Run_Info_subset2.csv"
+trimdir="/mnt/mmetsp/trim/"
+basedir="/mnt/mmetsp/"
+datadir=basedir
 sra_list,sra_name=get_sra(datafile)
 print sra_list
-execute(datadir,trimdir,sra_list)
-
+#execute(datadir,trimdir,sra_list)
+fastqc_report(trimdir)
 
 
 
