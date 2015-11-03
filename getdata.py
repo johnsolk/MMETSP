@@ -177,5 +177,4 @@ execute(basedir,url_data)
 
 
 ## future:
-# parse only once
-# get rid of fastq-dump step
+# make sure you parse only once
