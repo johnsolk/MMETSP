@@ -130,14 +130,7 @@ This will download to your local computer. Then rsync or upload from local to AW
 - Makes subset of reads to test, 40k each (only use this during testing of the pipeline)
 - creates a link to data into a working directory
 
-8. The Supplementary Materials and methods section of the Keeling et al. 2014 paper indicates all sequencing was paired-end Illumina with TruSq RNA Sample Preparation Kit with fragment sizes ranging from 240 to 350 pb. Some was PE-50 and some were PE-100. While we don't know specifically which Illumina adapters were used nor which chemistry v1,2,3,4 was used, we will use v2 and v3 files from current version of Trimmomatic Phred=30 to see.
-
-.. code::
-
-  mkdir trim
-  cd trim
-
-Run
+8. The Supplementary Materials and methods section of the Keeling et al. 2014 paper indicates all sequencing was paired-end Illumina with TruSq RNA Sample Preparation Kit with fragment sizes ranging from 240 to 350 pb. Some was PE-50 and some were PE-100. While we don't know specifically which Illumina adapters were used , we will use a combined file of all TruSeq2 and TruSeq3 adapters with to see. From the trimresults.log file located in this repository, it doesn't seem to matter which adapters to use. So, we will use all of them. 
 
 .. code::
 
@@ -151,18 +144,20 @@ To run Trimmomatic with all bash scripts:
 
   apt-get install parallel
   parallel -j0 bash :::: <(ls *.sh)
+  
+Then run
 
-This will create paired (P) and unpaired (U) files for each read 1 and 2 = 4 files for each SRA. Only choose the P files for the next step to interleave reads. (Note: All Trimmomatic results for this step were >90% reads kept.)
+.. code::
+
+  python trimparse.py > trimresults.log
+
+Trimmomatic creates paired (P) and unpaired (U) files for each read 1 and 2 = 4 files for each SRA. Only choose the P files for the next step to interleave reads. (Note: All Trimmomatic results for this step were >90% reads kept.)
 
 (I know this is a bad idea, but in the interest of getting this to work...) Comment out Trimmomatic function and run this again to interleave reads, then again to run jellyfish:
 
 .. code::
   
   python trim_qc.py
-  
-This will give you .histo files for each SRA.
-
-Next step: Run all of this in a Python notebook file and actually look at histo. Are there differences between TruSeq2 and TruSeq3? Which set of adapters was used? Are there overrepresented sequences in the raw reads leading us to believe that adapter contamination will be a problem? Is Trimmomatic really necessary??
 
 References:
 
