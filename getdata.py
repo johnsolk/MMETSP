@@ -18,7 +18,7 @@ def get_data(thefile):
     url_data={}
     with open(thefile,"rU") as inputfile:
         headerline=next(inputfile).split(',')
-	print headerline        
+	#print headerline        
         position_name=headerline.index("ScientificName")
         position_reads=headerline.index("Run")
         position_ftp=headerline.index("download_path")
@@ -59,49 +59,52 @@ def sra_extract(newdir,filename):
     #    sra_string="fastq-dump -v "+newdir+file
     #    print sra_string
     #elif seqtype=="paired":
-    listoffiles=os.listdir(newdir)
-    print listoffiles
-    for filename in listoffiles:
-    	# assumes that first file in list will be .fastq
-	if filename.endswith(".fastq"):
-    		print "SRA has already been extracted", filename
-		break
-    	else:
-    		sra_string="fastq-dump -v -O "+newdir+" --split-3 "+newdir+filename
-    		#print sra_string
-	    	print "extracting SRA..."
-    		#s=subprocess.Popen(sra_string,shell=True,stdout=PIPE)
-    		#s.wait()
+	# check whether .fastq exists in directory
+    if glob.glob(newdir+"*.fastq"):
+    	print "SRA has already been extracted", filename
+    else:
+    	sra_string="fastq-dump -v -O "+newdir+" --split-3 "+newdir+filename
+    	#print sra_string
+	print "extracting SRA..."
+    	s=subprocess.Popen(sra_string,shell=True,stdout=PIPE)
+    	s.wait()
 
 #4. Generate fastqc from all fastq in directory
 
-def fastqc_report(fastq_file_list,basedir):
+def fastqc_report(fastq_file_list,newdir,fastqcdir,filename):
     # imports list of files in each directory
     print fastq_file_list
-    # creates command to generate fastqc reports from all files in list 
-    file_string=str(fastq_file_list)
-    #print fastq_file_list
-    file_string=" ".join(fastq_file_list)
-    #print file_string
-    fastqc_string="fastqc -o "+basedir+" "+file_string
-    print fastqc_string
-    print "fastqc reports generated for: "+str(fastq_file_list)
-    #s=subprocess.Popen(fastqc_string,shell=True)
-    #s.wait()
+    print fastqcdir+filename
+    if glob.glob(fastqcdir+filename+"_*_fastqc.zip"):
+	print "fastqc already complete:",filename
+    else:		
+    	# creates command to generate fastqc reports from all files in list 
+    	file_string=str(fastq_file_list)
+    	#print fastq_file_list
+    	file_string=" ".join(fastq_file_list)
+    	#print file_string
+    	fastqc_string="fastqc -o "+fastqcdir+" "+file_string
+    	print fastqc_string
+    	print "fastqc reports generated for: "+str(fastq_file_list)
+    	s=subprocess.Popen(fastqc_string,shell=True)
+    	s.wait()
 
 #5. For pipeline testing only:
-#   create subset of 400,000 reads for each file
+#   create subset of 100,000 reads for each file
 
-def subset_reads(filename):
-    newfilename=filename[:-6]+".subset100k.fastq"
-    print newfilename
-    if os.path.isfile(newfilename):
-	print "File has already been subsetted:",filename
-    else:	
-    	subset_string="head -400000 "+filename+" > "+newfilename
-    	print subset_string
-    	#s=subprocess.Popen(subset_string,shell=True,stdout=PIPE)
-    	#s.wait()
+def subset_reads(newdir,subsetdir):
+    listoffiles=os.listdir(newdir)
+    for i in listoffiles:
+	if i.endswith(".fastq"):
+		newfilename=subsetdir+i[:-6]+".subset100k.fastq"
+    		print newfilename
+    		if os.path.isfile(newfilename):
+			print "File has already been subsetted:",newfilename
+    		else:	
+    			subset_string="head -400000 "+newdir+i+" > "+newfilename
+    			print subset_string
+    			s=subprocess.Popen(subset_string,shell=True,stdout=PIPE)
+    			s.wait()
    
 #6. Create symbolic link from data files to working directory
 
@@ -111,13 +114,11 @@ def sym_link(newdir):
     	if i.endswith(".subset100k.fastq"):
     		symlink_string="ln -fs "+newdir+i+" /mnt/mmetsp/"+i
 		print symlink_string
-    		s=subprocess.Popen(symlink_string,shell=True,stdout=PIPE)
-    		s.wait()
 	    
 
 # this is the main function to execute
 
-def execute(basedir,url_data):
+def execute(basedir,url_data,fastqcdir,subsetdir,subsetfastqcdir):
     for item in url_data.keys():
         #Creates directory for each file to be downloaded
         #Directory will be located according to organism and read type (single or paired)
@@ -140,25 +141,18 @@ def execute(basedir,url_data):
 	       download(url,newdir,filename)
 	    #check to see if .fastq exists in newdir
             sra_extract(newdir,filename)
-            #check to see if fastqc has been done
-	    # there's something silly wrong with fastqc(newdir), it creates new files.subset100k.fastq over and over
-	    fastqc(newdir)
-            #delete_files(newdir)
+            fastqc(newdir,fastqcdir,filename)
+            subset_reads(newdir,subsetdir)
+ 	    fastqc(subsetdir,subsetfastqcdir,filename)
 
-def fastqc(newdir):
+def fastqc(newdir,fastqcdir,filename):
 	listoffiles=os.listdir(newdir)
         print listoffiles
         fastq_file_list=[]
    	for i in listoffiles:
 		if i.endswith(".fastq"):
 			fastq_file_list.append(newdir+i)
-	for j in fastq_file_list:
-		if glob.glob(j[:-6]+"_fastqc.zip"):
-			print "fastqc has already been run:",j
-		else:
-			fastqc_report(fastq_file_list,newdir)         
-                #subset_reads(j)
-                sym_link(newdir)
+	fastqc_report(fastq_file_list,newdir,fastqcdir,filename)         
 
 # use this in case you make a mistake and need to delete a bunch of files:
 def delete_files(newdir):
@@ -171,10 +165,15 @@ def delete_files(newdir):
 
 datafile="MMETSP_SRA_Run_Info_subset2.csv"
 basedir="/mnt/mmetsp/"
+fastqcdir="/mnt/mmetsp/fastqc/"
+subsetdir="/mnt/mmetsp/subset/"
+subsetfastqcdir="/mnt/mmetsp/subset/fastqc/"
 url_data=get_data(datafile)
 print url_data
-execute(basedir,url_data)
+execute(basedir,url_data,fastqcdir,subsetdir,subsetfastqcdir)
 
 
 ## future:
 # make sure you parse only once
+#import os
+#import os.path
