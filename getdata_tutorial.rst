@@ -89,6 +89,8 @@ Mount hard drive
   cd
   curl -O http://ftp-trace.ncbi.nlm.nih.gov/sra/sdk/2.5.4-1/sratoolkit.2.5.4-1-ubuntu64.tar.gz
   tar -xvzf sratoolkit.2.5.4-1-ubuntu64.tar.gz
+  echo 'export PATH=$PATH:/home/ubuntu/sratoolkit.2.5.4-1-ubuntu64/bin' >> ~/.bashrc
+  source ~/.bashrc
 
 4. Make .csv spreadsheet file from SRA (screenshot for how to do this): http://www.ncbi.nlm.nih.gov/sra?linkname=bioproject_sra_all&from_uid=231566
 
