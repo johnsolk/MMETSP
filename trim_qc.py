@@ -51,44 +51,32 @@ def run_trimmomatic_TruSeq(trimdir,file1,file2,sra):
         bash_file.write("SLIDINGWINDOW:4:30 \\"+"\n")
         bash_file.write("LEADING:30 \\"+"\n")
         bash_file.write("TRAILING:30 \\"+"\n")
-        bash_file.write("MINLEN:25")
+	bash_file.write("MINLEN:25 &> trim."+sra+".log"+"\n")
     bash_file.close()
     print "file written:",bash_filename
 
-def run_trimmomatic_TruSeq2(trimdir,file1,file2,sra):
-    bash_filename=trimdir+sra+".trim.TruSeq2.sh"
-    with open(bash_filename,"w") as bash_file:
-	bash_file.write("#!/bin/bash\n")
-        bash_file.write("java -Xmx10g -jar /bin/Trimmomatic-0.33/trimmomatic-0.33.jar PE \\"+"\n")
-        bash_file.write("-threads 8 -baseout "+sra+".Phred30.TruSeq2.fq \\"+"\n")
-        bash_file.write(file1+" \\"+"\n")
-        bash_file.write(file2+" \\"+"\n")
-        bash_file.write("ILLUMINACLIP:/bin/Trimmomatic-0.33/adapters/TruSeq2-PE.fa:2:30:10 \\"+"\n")
-        bash_file.write("SLIDINGWINDOW:4:30 \\"+"\n")
-        bash_file.write("LEADING:30 \\"+"\n")
-        bash_file.write("TRAILING:30 \\"+"\n")
-        bash_file.write("MINLEN:25")
-    bash_file.close()
-    print "file written:",bash_filename
-
-def fastqc_report(trimdir):
+def fastqc_report(trimdir,fastqcdir):
     # imports list of files in each directory
     listoffiles=os.listdir(trimdir)
+    #print listoffiles
     fastq_file_list=[]
-    for filename in listoffiles:
-	if filename.endswith(".TruSeq_1U.fq"):
-		fastq_file_list.append(trimdir+filename)
-	elif filename.endswith(".TruSeq_2U.fq"):
-		fastq_file_list.append(trimdir+filename)
-    print fastq_file_list
+    #for filename in listoffiles:
+#	if filename.endswith(".TruSeq_1U.fq"):
+#		fastq_file_list.append(fastqcdir+filename)
+#	elif filename.endswith(".TruSeq_2U.fq"):
+#		fastq_file_list.append(fastqcdir+filename)
+    for o  in listoffiles:
+	if o.endswith(".fq"):
+		fastq_file_list.append(trimdir+o)
+    #print fastq_file_list
     # creates command to generate fastqc reports from all files in list 
     file_string=str(fastq_file_list)
     #print fastq_file_list
     file_string=" ".join(fastq_file_list)
     #print file_string
-    fastqc_string="fastqc -o "+basedir+" "+file_string
+    fastqc_string="fastqc -o "+fastqcdir+" "+file_string
     print fastqc_string
-    print "fastqc reports generated for: "+str(fastq_file_list)
+    #print "fastqc reports generated for: "+str(fastq_file_list)
     s=subprocess.Popen(fastqc_string,shell=True)
     s.wait()
 
@@ -117,30 +105,35 @@ def run_jellyfish(trimdir,sra):
     s4.wait()
     
 
-def execute(datadir,trimdir,sra_list):
+def execute(datadir,trimdir,fastqcdir,sra_list):
     for sra in sra_list:
 	file1=datadir+sra+"_1.subset100k.fastq"
 	file2=datadir+sra+"_2.subset100k.fastq"	
 	if os.path.isfile(file1) and os.path.isfile(file2):
 		print file1
 		print file2
-		#run_trimmomatic_TruSeq(trimdir,file1,file2,sra)
-		#run_trimmomatic_TruSeq3(trimdir,file1,file2,sra)
+		#fastqc_report(datadir,fastqcdir)
+		run_trimmomatic_TruSeq(trimdir,file1,file2,sra)
+		#print "run Trimmomatic on all bash files with this:"
+		print "cd "+trimdir
+		print "parallel -j0 bash :::: <(ls *.sh)"
 		#interleave_reads(trimdir,sra)
                 #run_jellyfish(trimdir,sra)
 	else:
 		print "Files do not exist:",file1,file2 	
-	
+    #run fastqc on all files
+    #fastqc_report(trimdir,fastqcdir)	
 
 
-datafile="MMETSP_SRA_Run_Info_subset2.csv"
-trimdir="/mnt/mmetsp/trim/"
-basedir="/mnt/mmetsp/"
+datafile="/home/ubuntu/MMETSP/MMETSP_SRA_Run_Info_subset2.csv"
+trimdir="/mnt/mmetsp/subset/trim_combined/"
+basedir="/mnt/mmetsp/subset/"
 datadir=basedir
+fastqcdir="/mnt/mmetsp/subset/trim_combined/fastqc/"
 sra_list,sra_name=get_sra(datafile)
 print sra_list
-#execute(datadir,trimdir,sra_list)
-fastqc_report(trimdir)
+execute(datadir,trimdir,fastqcdir,sra_list)
+#fastqc_report(fastqcdir)
 
 
 
