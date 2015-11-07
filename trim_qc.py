@@ -81,14 +81,11 @@ def fastqc_report(trimdir,fastqcdir):
     s.wait()
 
 def interleave_reads(trimdir,sra):
-    interleave_string_TS2="python /usr/local/share/khmer/scripts/interleave-reads.py "+trimdir+sra+".Phred30.TruSeq2_1P.fq "+trimdir+sra+".Phred30.TruSeq2_2P.fq > "+trimdir+sra+".TS2.interleaved.fq"
-    interleave_string_TS3="python /usr/local/share/khmer/scripts/interleave-reads.py "+trimdir+sra+".Phred30.TruSeq3_1P.fq "+trimdir+sra+".Phred30.TruSeq3_2P.fq > "+trimdir+sra+".TS3.interleaved.fq"
-    #print interleave_string_TS2
-    #print interleave_string_TS3
-    #s1=subprocess.Popen(interleave_string_TS2,shell=True)    
-    #s1.wait()
-    #s2=subprocess.Popen(interleave_string_TS3,shell=True)
-    #s2.wait()
+    interleavedir="/mnt/mmetsp/subset/trim_combined/interleave/"
+    interleave_string="python /usr/local/share/khmer/scripts/interleave-reads.py "+trimdir+sra+".Phred30.TruSeq_1P.fq "+trimdir+sra+".Phred30.TruSeq_2P.fq > "+interleavedir+sra+".trimmed.interleaved.fq"
+    print interleave_string
+    s=subprocess.Popen(interleave_string,shell=True)    
+    s.wait()
 
 def run_jellyfish(trimdir,sra):
     jellyfish_string1_TS2="jellyfish count -m 25 -s 200M -t 8 -C -o "+trimdir+sra+".TS2.jf "+trimdir+sra+".TS2.interleaved.fq"
@@ -110,14 +107,14 @@ def execute(datadir,trimdir,fastqcdir,sra_list):
 	file1=datadir+sra+"_1.subset100k.fastq"
 	file2=datadir+sra+"_2.subset100k.fastq"	
 	if os.path.isfile(file1) and os.path.isfile(file2):
-		print file1
-		print file2
+		#print file1
+		#print file2
 		#fastqc_report(datadir,fastqcdir)
-		run_trimmomatic_TruSeq(trimdir,file1,file2,sra)
+		#run_trimmomatic_TruSeq(trimdir,file1,file2,sra)
 		#print "run Trimmomatic on all bash files with this:"
-		print "cd "+trimdir
-		print "parallel -j0 bash :::: <(ls *.sh)"
-		#interleave_reads(trimdir,sra)
+		#print "cd "+trimdir
+		#print "parallel -j0 bash :::: <(ls *.sh)"
+		interleave_reads(trimdir,sra)
                 #run_jellyfish(trimdir,sra)
 	else:
 		print "Files do not exist:",file1,file2 	
@@ -127,6 +124,7 @@ def execute(datadir,trimdir,fastqcdir,sra_list):
 
 datafile="/home/ubuntu/MMETSP/MMETSP_SRA_Run_Info_subset2.csv"
 trimdir="/mnt/mmetsp/subset/trim_combined/"
+interleave="/mnt/mmetsp/subset/trim_combined/interleave/"
 basedir="/mnt/mmetsp/subset/"
 datadir=basedir
 fastqcdir="/mnt/mmetsp/subset/trim_combined/fastqc/"
