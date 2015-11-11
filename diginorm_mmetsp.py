@@ -19,7 +19,7 @@ def run_diginorm(diginormdir,interleavedir):
 	with open("diginorm.sh","w") as diginormfile:
 		diginormfile.write("sudo python normalize-by-median.py -p -k 20 -C 20 -M 4e9 \\"+"\n")
 		diginormfile.write("--savegraph "+diginormdir+"norm.C20k20.ct -u \\"+"\n")
-		diginormfile.write(diginormdir+"orphans.fq.gz \\"+"\n")
+		diginormfile.write("/mnt/mmetsp/subset/trim_combined/orphans.fq.gz \\"+"\n")
 		diginormfile.write(interleavedir+"*.fq"+"\n")
 	s=subprocess.Popen("sudo bash diginorm.sh",shell=True)
 	s.wait()
