@@ -55,6 +55,20 @@ def run_trimmomatic_TruSeq(trimdir,file1,file2,sra):
     bash_file.close()
     print "file written:",bash_filename
 
+def make_orphans(trimdir):
+    listoffiles=os.listdir(trimdir)
+    orphanreads=[]
+    for i in listoffiles:
+	if i.endswith("_1P.fq"):
+		orphanreads.append(trimdir+i)
+	elif i.endswith("_2P.fq"):
+		orphanreads.append(trimdir+i)
+    orphanlist=" ".join(orphanreads)
+    orphan_string="gzip -9c "+orphanlist+" > "+trimdir+"orphans.fq.gz"
+    print orphan_string
+    s=subprocess.Popen(orphan_string,shell=True)
+    s.wait()
+
 def fastqc_report(trimdir,fastqcdir):
     # imports list of files in each directory
     listoffiles=os.listdir(trimdir)
@@ -107,17 +121,18 @@ def execute(datadir,trimdir,fastqcdir,sra_list):
 	file1=datadir+sra+"_1.subset100k.fastq"
 	file2=datadir+sra+"_2.subset100k.fastq"	
 	if os.path.isfile(file1) and os.path.isfile(file2):
-		#print file1
-		#print file2
+		print file1
+		print file2
 		#fastqc_report(datadir,fastqcdir)
 		#run_trimmomatic_TruSeq(trimdir,file1,file2,sra)
 		#print "run Trimmomatic on all bash files with this:"
 		#print "cd "+trimdir
 		#print "parallel -j0 bash :::: <(ls *.sh)"
-		interleave_reads(trimdir,sra)
+		#interleave_reads(trimdir,sra)
                 #run_jellyfish(trimdir,sra)
 	else:
 		print "Files do not exist:",file1,file2 	
+    make_orphans(trimdir)
     #run fastqc on all files
     #fastqc_report(trimdir,fastqcdir)	
 
