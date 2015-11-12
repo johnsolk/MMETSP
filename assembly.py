@@ -7,16 +7,26 @@ import glob
 # custom Lisa module
 import clusterfunc
 
-def get_trinity_string(org_seq_dir,file_list,seq_type):
-    if seq_type=="paired":
-        filename1=file_list[0]
-        filename2=file_list[1]
-        trinity_string="Trinity.pl --JM 50G --seqType fq --left "+filename1+" --right "+filename2+" --CPU 3"
-    elif seq_type=="single":
-        filestring=file_list[0]
-        trinity_string="Trinity.pl --JM 50G --seqType fq --single "+filestring+" --CPU 3"
-    print trinity_string
-    return trinity_string
+def build_files(diginormdir):
+	with open("buildfiles.sh","w") as buildfile:
+		buildfile.write("cd /mnt/work"+"\n")
+		buildfile.write("for file in *.keep.abundfilt.fq.gz"+"\n")
+		buildfile.write("do"+"\n")
+   		buildfile.write("\tpython /home/ubuntu/khmer/scripts/split-paired-reads.py ${file}"+"\n")
+		buildfile.write("done"+"\n")
+		buildfile.write("cat *.1 > left.fq"+"\n")
+		buildfile.write("cat *.2 > right.fq"+"\n")
+		buildfile.write("gunzip -c orphans.keep.abundfilt.fq.gz >> left.fq")
+
+
+
+def run_trinity():
+	with open("trinity_run.sh","w") as trinityfile:
+		trinityfile.write("${HOME}/trinity*/Trinity --left left.fq \\"+"\n")
+  		trinityfile.write("--right right.fq --seqType fq --max_memory 14G \\"+"\n")
+  		trinityfile.write("--CPU ${THREADS:-2}"+"\n")
+	s=subprocess.Popen("cat trinity_run.sh",shell=True)
+	s.wait()
 
 def check_trinity_run(seqdir):
    trinity_dir=seqdir+"trinity/trinity_out_dir/"
@@ -48,7 +58,6 @@ def execute(basedir,trinitydir,datafile):
 		newdir=org_seq_dir+filename+"/"
 		for i in listoffiles:
 			if i.endswith(".fq")
-
 
 			
 basedir="/mnt/mmetsp/subset/trim_combined/interleave"
