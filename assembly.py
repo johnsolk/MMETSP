@@ -1,4 +1,8 @@
 import os
+import os.path
+from os.path import basename
+from urllib import urlopen
+from urlparse import urlparse
 import subprocess
 from subprocess import Popen, PIPE
 import urllib
@@ -7,19 +11,76 @@ import glob
 # custom Lisa module
 import clusterfunc
 
-def build_files(diginormdir):
+def get_data(thefile):
+    count=0
+    url_data={}
+    with open(thefile,"rU") as inputfile:
+        headerline=next(inputfile).split(',')
+        #print headerline        
+        position_name=headerline.index("ScientificName")
+        position_reads=headerline.index("Run")
+        position_ftp=headerline.index("download_path")
+        for line in inputfile:
+            line_data=line.split(',')
+            name="_".join(line_data[position_name].split())
+            read_type=line_data[position_reads]
+            ftp=line_data[position_ftp]
+            name_read_tuple=(name,read_type)
+            print name_read_tuple
+            #check to see if Scientific Name and run exist
+            if name_read_tuple in url_data.keys():
+                #check to see if ftp exists
+                if ftp in url_data[name_read_tuple]:
+                    print "url already exists:", ftp
+                else:
+                    url_data[name_read_tuple].append(ftp)
+            else:
+                url_data[name_read_tuple] = [ftp]
+        return url_data
+
+def execute(basedir,url_data,diginormdir):
+    for item in url_data.keys():
+        #Creates directory for each file to be downloaded
+        #Directory will be located according to organism and read type (single or paired)
+        organism=item[0]
+        seqtype=item[1]
+        org_seq_dir=basedir+organism+"/"
+        print org_seq_dir
+	# from here, split paired reads
+	# then go do assembly
+        clusterfunc.check_dir(org_seq_dir)
+        url_list=url_data[item]
+        for url in url_list:
+		SRA=basename(urlparse(url).path)
+		print SRA
+		newdir=org_seq_dir+SRA+"/"
+		print newdir
+		get_files(diginormdir,SRA,newdir)
+		
+		
+def get_files(diginormdir,SRA,newdir):
+	lisoffiles=os.listdir(diginormdir)
+	for i in listoffiles:
+		if i.startswith(SRA)
+			# make symbolic link to i in newdir
+			sym_link="ln -fs "+diginormdir+i+" "+newdir
+			print sym_link
+			#s=subprocess.Popen(sym_link,shell=True)
+			#s.wait()
+			sym_link_file=newdir+i
+			build_files(newdir,SRA,sym_link_file)				
+# take file in /mnt/mmetsp/diginorm/ , startswith SRA filename
+# split reads and put into newdir
+
+def build_files(newdir,SRA,sym_link_file):
+	buildfile=newdir+filename+".buildfiles.sh"
 	with open("buildfiles.sh","w") as buildfile:
-		buildfile.write("cd /mnt/work"+"\n")
-		buildfile.write("for file in *.keep.abundfilt.fq.gz"+"\n")
-		buildfile.write("do"+"\n")
-   		buildfile.write("\tpython /home/ubuntu/khmer/scripts/split-paired-reads.py ${file}"+"\n")
-		buildfile.write("done"+"\n")
-		buildfile.write("cat *.1 > left.fq"+"\n")
-		buildfile.write("cat *.2 > right.fq"+"\n")
-		buildfile.write("gunzip -c orphans.keep.abundfilt.fq.gz >> left.fq")
-
-
-
+   		buildfile.write("python /home/ubuntu/khmer/scripts/split-paired-reads.py "+sym_link_file+"\n")
+		buildfile.write("cat "+newdir+"*.1 > "+newdir+"left.fq"+"\n")
+		buildfile.write("cat "+newdir+"*.2 > "+newdir+"right.fq"+"\n")
+		# orphans are messed up with the way the current files are
+		#buildfile.write("gunzip -c orphans.keep.abundfilt.fq.gz >> left.fq")
+	s=subprocess.Popen("cat buildfile
 def run_trinity():
 	with open("trinity_run.sh","w") as trinityfile:
 		trinityfile.write("${HOME}/trinity*/Trinity --left left.fq \\"+"\n")
@@ -48,20 +109,11 @@ def check_trinity_run(seqdir):
         print "Trinity has already been run successfully:",trinity_file
         print os.path.isfile(trinity_file)
 
-def execute(basedir,trinitydir,datafile):
-	url_data=get_data(datafile)
-	#print url_data
-	#change directory to trinitydir 
-	org_seq_dir=basedir+organism+"/"
-	for url in url_list:
-		filename=basename(urlparse(url).path)	
-		newdir=org_seq_dir+filename+"/"
-		for i in listoffiles:
-			if i.endswith(".fq")
-
-			
-basedir="/mnt/mmetsp/subset/trim_combined/interleave"
-trinity_dir="/mnt/mmetsp/trinity"
+basedir="/mnt/mmetsp/"
+diginormdir="/mnt/mmetsp/diginorm/"
+trinity_dir="/mnt/mmetsp/trinity/"
 clusterfunc.check_dir(trinity_dir)
 datafile="MMETSP_SRA_Run_Info_subset2.csv"
-execute(basedir,datafile)
+url_data=get_data(datafile)
+print url_data
+execute(basedir,url_data,diginormdir)

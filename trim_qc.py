@@ -11,7 +11,6 @@ import glob
 # custom Lisa module
 import clusterfunc
 
-
 #1. Get data from spreadsheet
 
 def get_sra(thefile):
@@ -35,7 +34,6 @@ def get_sra(thefile):
             else:
                 sra_name[name]=[sra]
         return sra_list,sra_name
-
     
 # run trimmomatic
 
