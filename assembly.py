@@ -59,34 +59,40 @@ def execute(basedir,url_data,diginormdir):
 		
 		
 def get_files(diginormdir,SRA,newdir):
-	lisoffiles=os.listdir(diginormdir)
+	listoffiles=os.listdir(diginormdir)
 	for i in listoffiles:
-		if i.startswith(SRA)
+		if i.startswith(SRA):
 			# make symbolic link to i in newdir
 			sym_link="ln -fs "+diginormdir+i+" "+newdir
 			print sym_link
-			#s=subprocess.Popen(sym_link,shell=True)
-			#s.wait()
+			s=subprocess.Popen(sym_link,shell=True)
+			s.wait()
 			sym_link_file=newdir+i
-			build_files(newdir,SRA,sym_link_file)				
-# take file in /mnt/mmetsp/diginorm/ , startswith SRA filename
-# split reads and put into newdir
+			#build_files(newdir,SRA,sym_link_file)				
+# takes file in /mnt/mmetsp/diginorm/ , startswith SRA filename
+# splits reads and put into newdir
+			run_trinity(newdir,SRA)			
 
 def build_files(newdir,SRA,sym_link_file):
-	buildfile=newdir+filename+".buildfiles.sh"
-	with open("buildfiles.sh","w") as buildfile:
-   		buildfile.write("python /home/ubuntu/khmer/scripts/split-paired-reads.py "+sym_link_file+"\n")
+	buildfiles=newdir+SRA+".buildfiles.sh"
+	print sym_link_file
+	print buildfiles
+	with open(buildfiles,"w") as buildfile:
+   		buildfile.write("python /home/ubuntu/khmer/scripts/split-paired-reads.py -d "+newdir+" "+str(sym_link_file)+"\n")
 		buildfile.write("cat "+newdir+"*.1 > "+newdir+"left.fq"+"\n")
 		buildfile.write("cat "+newdir+"*.2 > "+newdir+"right.fq"+"\n")
 		# orphans are messed up with the way the current files are
 		#buildfile.write("gunzip -c orphans.keep.abundfilt.fq.gz >> left.fq")
-	s=subprocess.Popen("cat buildfile
-def run_trinity():
-	with open("trinity_run.sh","w") as trinityfile:
-		trinityfile.write("${HOME}/trinity*/Trinity --left left.fq \\"+"\n")
-  		trinityfile.write("--right right.fq --seqType fq --max_memory 14G \\"+"\n")
+	s=subprocess.Popen("bash "+str(buildfiles),shell=True)
+	s.wait()
+
+def run_trinity(newdir,SRA):
+	trinityfiles=newdir+SRA+".trinityfile.sh"
+	with open(trinityfiles,"w") as trinityfile:
+		trinityfile.write("${HOME}/trinity*/Trinity --left "+newdir+"left.fq \\"+"\n")
+  		trinityfile.write("--right "+newdir+"right.fq --output "+newdir+" --seqType fq --max_memory 14G \\"+"\n")
   		trinityfile.write("--CPU ${THREADS:-2}"+"\n")
-	s=subprocess.Popen("cat trinity_run.sh",shell=True)
+	s=subprocess.Popen("cat "+str(trinityfiles),shell=True)
 	s.wait()
 
 def check_trinity_run(seqdir):
