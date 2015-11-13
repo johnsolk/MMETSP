@@ -125,6 +125,7 @@ def execute(basedir,url_data,fastqcdir,subsetdir,subsetfastqcdir):
         organism=item[0]
         seqtype=item[1]
         org_seq_dir=basedir+organism+"/"
+	print org_seq_dir
 	clusterfunc.check_dir(org_seq_dir)
         url_list=url_data[item]
         for url in url_list:
@@ -140,10 +141,10 @@ def execute(basedir,url_data,fastqcdir,subsetdir,subsetfastqcdir):
                print "file will be downloaded:",filename
 	       download(url,newdir,filename)
 	    #check to see if .fastq exists in newdir
-            sra_extract(newdir,filename)
-            fastqc(newdir,fastqcdir,filename)
-            subset_reads(newdir,subsetdir)
- 	    fastqc(subsetdir,subsetfastqcdir,filename)
+            #sra_extract(newdir,filename)
+            #fastqc(newdir,fastqcdir,filename)
+            #subset_reads(newdir,subsetdir)
+ 	    #fastqc(subsetdir,subsetfastqcdir,filename)
 
 def fastqc(newdir,fastqcdir,filename):
 	listoffiles=os.listdir(newdir)
