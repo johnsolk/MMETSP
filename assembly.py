@@ -39,39 +39,46 @@ def get_data(thefile):
         return url_data
 
 def execute(basedir,url_data,diginormdir):
-    for item in url_data.keys():
+	trinity_scripts=[]
+	for item in url_data.keys():
         #Creates directory for each file to be downloaded
         #Directory will be located according to organism and read type (single or paired)
-        organism=item[0]
-        seqtype=item[1]
-        org_seq_dir=basedir+organism+"/"
-        print org_seq_dir
-	# from here, split paired reads
-	# then go do assembly
-        clusterfunc.check_dir(org_seq_dir)
-        url_list=url_data[item]
-        for url in url_list:
-		SRA=basename(urlparse(url).path)
-		print SRA
-		newdir=org_seq_dir+SRA+"/"
-		print newdir
-		get_files(diginormdir,SRA,newdir)
-		
-		
+        	organism=item[0]
+        	seqtype=item[1]
+        	org_seq_dir=basedir+organism+"/"
+        	print org_seq_dir
+		# from here, split paired reads
+		# then go do assembly
+        	clusterfunc.check_dir(org_seq_dir)
+        	url_list=url_data[item]
+        	for url in url_list:
+			SRA=basename(urlparse(url).path)
+			print SRA
+			newdir=org_seq_dir+SRA+"/"
+			print newdir
+			trinity_script=get_files(diginormdir,SRA,newdir)
+			trinity_scripts.append(trinity_script)
+	run_trinity(trinity_scripts)			
+
 def get_files(diginormdir,SRA,newdir):
 	listoffiles=os.listdir(diginormdir)
+	trinity_scripts=[]
 	for i in listoffiles:
 		if i.startswith(SRA):
 			# make symbolic link to i in newdir
 			sym_link="ln -fs "+diginormdir+i+" "+newdir
-			print sym_link
-			s=subprocess.Popen(sym_link,shell=True)
-			s.wait()
 			sym_link_file=newdir+i
-			#build_files(newdir,SRA,sym_link_file)				
+			if os.path.isfile(sym_link_file)==False:
+				print sym_link
+				s=subprocess.Popen(sym_link,shell=True)
+				s.wait()
+			else:
+				print "already created symlink",sym_link_file
 # takes file in /mnt/mmetsp/diginorm/ , startswith SRA filename
 # splits reads and put into newdir
-			run_trinity(newdir,SRA)			
+			trinity_script=get_trinity_script(newdir,SRA)
+			#build_files(newdir,SRA,sym_link_file)				
+	return trinity_script
 
 def build_files(newdir,SRA,sym_link_file):
 	buildfiles=newdir+SRA+".buildfiles.sh"
@@ -83,17 +90,51 @@ def build_files(newdir,SRA,sym_link_file):
 		buildfile.write("cat "+newdir+"*.2 > "+newdir+"right.fq"+"\n")
 		# orphans are messed up with the way the current files are
 		#buildfile.write("gunzip -c orphans.keep.abundfilt.fq.gz >> left.fq")
-	s=subprocess.Popen("bash "+str(buildfiles),shell=True)
-	s.wait()
+	#s=subprocess.Popen("bash "+str(buildfiles),shell=True)
+	#s.wait()
 
-def run_trinity(newdir,SRA):
-	trinityfiles=newdir+SRA+".trinityfile.sh"
-	with open(trinityfiles,"w") as trinityfile:
-		trinityfile.write("${HOME}/trinity*/Trinity --left "+newdir+"left.fq \\"+"\n")
-  		trinityfile.write("--right "+newdir+"right.fq --output "+newdir+" --seqType fq --max_memory 14G \\"+"\n")
-  		trinityfile.write("--CPU ${THREADS:-2}"+"\n")
-	s=subprocess.Popen("cat "+str(trinityfiles),shell=True)
+def get_trinity_script(newdir,SRA):
+	trinityfiles=newdir+SRA+".trinityfile.sh"	
+	s="""#!/bin/bash
+set -x
+# stops execution if there is an error
+set -e
+if [ -f {}trinity_out_dir/Trinity.fasta ]; then
+	exit 0
+fi
+if [ -d {}trinity_out_dir ]; then
+	mv {}trinity_out_dir {}trinity_out_dir0 || true
+fi
+
+${{HOME}}/trinity*/Trinity --left {}left.fq \\
+--right {}right.fq --output {}trinity_out --seqType fq --max_memory 14G	\\
+--CPU ${{THREADS:-2}}
+
+""".format(newdir,newdir,newdir,newdir,newdir,newdir,newdir)
+	with open(trinityfiles,"w") as trinityfile:	
+		trinityfile.write(s)
+#string interpolation
+#have .format specify dicionary
+	test_string="cat "+trinityfiles
+	s=subprocess.Popen(test_string,shell=True)
 	s.wait()
+	return trinityfiles
+#make a new run.sh in ~/MMETSP/ to run all *.trinityfile.sh in serial
+
+def run_trinity(trinity_script_list):
+	# need to run serially
+	# in general, this is a bad idea
+	# under normal circumstances, would run in parallel, one process for each Trinity
+	# need to loop through and get name of all Trinity scripts
+ 	# make a script running all scripts
+	print trinity_script_list
+	runfile="/home/ubuntu/MMETSP/run.sh"
+	with open(runfile,"w") as run_file:
+		run_file.write("#!/bin/bash"+"\n") 
+		for script in trinity_script_list:
+			command="sudo bash "+script
+			run_file.write(command+"\n")
+	print "File written:",runfile	
 
 def check_trinity_run(seqdir):
    trinity_dir=seqdir+"trinity/trinity_out_dir/"
