@@ -99,12 +99,8 @@ def get_trinity_script(newdir,SRA):
 set -x
 # stops execution if there is an error
 set -e
-if [ -f {}trinity_out_dir/Trinity.fasta ]; then
-	exit 0
-fi
-if [ -d {}trinity_out_dir ]; then
-	mv {}trinity_out_dir {}trinity_out_dir0 || true
-fi
+if [ -f {}trinity_out/Trinity.fasta ]; then exit 0 ; fi
+if [ -d {}trinity_out ]; then mv {}trinity_out_dir {}trinity_out_dir0 || true ; fi
 
 ${{HOME}}/trinity*/Trinity --left {}left.fq \\
 --right {}right.fq --output {}trinity_out --seqType fq --max_memory 14G	\\
