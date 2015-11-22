@@ -39,33 +39,36 @@ def get_sra(thefile):
 
 def run_trimmomatic_TruSeq(trimdir,file1,file2,sra):
     bash_filename=trimdir+sra+".trim.TruSeq.sh"
-    with open(bash_filename,"w") as bash_file:
-        bash_file.write("#!/bin/bash\n")
-	bash_file.write("java -Xmx10g -jar /bin/Trimmomatic-0.33/trimmomatic-0.33.jar PE \\"+"\n")
-        bash_file.write("-threads 8 -baseout "+sra+".Phred30.TruSeq.fq \\"+"\n")
-        bash_file.write(file1+" \\"+"\n")
-        bash_file.write(file2+" \\"+"\n")
-        bash_file.write("ILLUMINACLIP:/bin/Trimmomatic-0.33/adapters/combined.fa:2:30:10 \\"+"\n")
-        bash_file.write("SLIDINGWINDOW:4:30 \\"+"\n")
-        bash_file.write("LEADING:30 \\"+"\n")
-        bash_file.write("TRAILING:30 \\"+"\n")
-	bash_file.write("MINLEN:25 &> trim."+sra+".log"+"\n")
-    bash_file.close()
-    print "file written:",bash_filename
+    if os.path.isfile(bash_filename):
+	print "trim file already written",bash_filename
+    else:	
+	with open(bash_filename,"w") as bash_file:
+        	bash_file.write("#!/bin/bash\n")
+		bash_file.write("java -Xmx10g -jar /bin/Trimmomatic-0.33/trimmomatic-0.33.jar PE \\"+"\n")
+        	bash_file.write("-threads 8 -baseout "+sra+".Phred30.TruSeq.fq \\"+"\n")
+        	bash_file.write(file1+" \\"+"\n")
+        	bash_file.write(file2+" \\"+"\n")
+        	bash_file.write("ILLUMINACLIP:/bin/Trimmomatic-0.33/adapters/combined.fa:2:30:10 \\"+"\n")
+        	bash_file.write("SLIDINGWINDOW:4:30 \\"+"\n")
+        	bash_file.write("LEADING:30 \\"+"\n")
+        	bash_file.write("TRAILING:30 \\"+"\n")
+		bash_file.write("MINLEN:25 &> trim."+sra+".log"+"\n")
+    	print "file written:",bash_filename
 
 def make_orphans(trimdir):
     listoffiles=os.listdir(trimdir)
     orphanreads=[]
     for i in listoffiles:
-	if i.endswith("_1P.fq"):
+	if i.endswith("_1U.fq"):
 		orphanreads.append(trimdir+i)
-	elif i.endswith("_2P.fq"):
+	elif i.endswith("_2U.fq"):
 		orphanreads.append(trimdir+i)
     orphanlist=" ".join(orphanreads)
+    print orphanlist
     orphan_string="gzip -9c "+orphanlist+" > "+trimdir+"orphans.fq.gz"
     print orphan_string
-    s=subprocess.Popen(orphan_string,shell=True)
-    s.wait()
+    #s=subprocess.Popen(orphan_string,shell=True)
+    #s.wait()
 
 def fastqc_report(trimdir,fastqcdir):
     # imports list of files in each directory
@@ -96,22 +99,22 @@ def interleave_reads(trimdir,sra):
     interleavedir="/mnt/mmetsp/subset/trim_combined/interleave/"
     interleave_string="python /usr/local/share/khmer/scripts/interleave-reads.py "+trimdir+sra+".Phred30.TruSeq_1P.fq "+trimdir+sra+".Phred30.TruSeq_2P.fq > "+interleavedir+sra+".trimmed.interleaved.fq"
     print interleave_string
-    s=subprocess.Popen(interleave_string,shell=True)    
-    s.wait()
+    #s=subprocess.Popen(interleave_string,shell=True)    
+    #s.wait()
 
 def run_jellyfish(trimdir,sra):
     jellyfish_string1_TS2="jellyfish count -m 25 -s 200M -t 8 -C -o "+trimdir+sra+".TS2.jf "+trimdir+sra+".TS2.interleaved.fq"
     jellyfish_string2_TS2="jellyfish histo "+trimdir+sra+".TS2.jf -o "+trimdir+sra+".TS2.histo"	
     jellyfish_string1_TS3="jellyfish count -m 25 -s 200M -t 8 -C -o "+trimdir+sra+".TS3.jf "+trimdir+sra+".TS3.interleaved.fq"
     jellyfish_string2_TS3="jellyfish histo "+trimdir+sra+".TS3.jf -o "+trimdir+sra+".TS3.histo"
-    s1=subprocess.Popen(jellyfish_string1_TS2,shell=True)
-    s1.wait()
-    s2=subprocess.Popen(jellyfish_string2_TS2,shell=True)
-    s2.wait()
-    s3=subprocess.Popen(jellyfish_string1_TS3,shell=True)
-    s3.wait()
-    s4=subprocess.Popen(jellyfish_string2_TS3,shell=True)
-    s4.wait()
+    #s1=subprocess.Popen(jellyfish_string1_TS2,shell=True)
+    #s1.wait()
+    #s2=subprocess.Popen(jellyfish_string2_TS2,shell=True)
+    #s2.wait()
+    #s3=subprocess.Popen(jellyfish_string1_TS3,shell=True)
+    #s3.wait()
+    #s4=subprocess.Popen(jellyfish_string2_TS3,shell=True)
+    #s4.wait()
     
 
 def execute(datadir,trimdir,fastqcdir,sra_list):
@@ -122,11 +125,11 @@ def execute(datadir,trimdir,fastqcdir,sra_list):
 		print file1
 		print file2
 		#fastqc_report(datadir,fastqcdir)
-		#run_trimmomatic_TruSeq(trimdir,file1,file2,sra)
+		run_trimmomatic_TruSeq(trimdir,file1,file2,sra)
 		#print "run Trimmomatic on all bash files with this:"
 		#print "cd "+trimdir
 		#print "parallel -j0 bash :::: <(ls *.sh)"
-		#interleave_reads(trimdir,sra)
+		interleave_reads(trimdir,sra)
                 #run_jellyfish(trimdir,sra)
 	else:
 		print "Files do not exist:",file1,file2 	
