@@ -97,10 +97,14 @@ def fastqc_report(trimdir,fastqcdir):
 
 def interleave_reads(trimdir,sra):
     interleavedir="/mnt/mmetsp/subset/trim_combined/interleave/"
-    interleave_string="python /usr/local/share/khmer/scripts/interleave-reads.py "+trimdir+sra+".Phred30.TruSeq_1P.fq "+trimdir+sra+".Phred30.TruSeq_2P.fq > "+interleavedir+sra+".trimmed.interleaved.fq"
-    print interleave_string
-    #s=subprocess.Popen(interleave_string,shell=True)    
-    #s.wait()
+    interleavefile=interleavedir+sra+".trimmed.interleaved.fq"
+    if os.path.isfile(interleavefile):
+	print "already interleaved"
+    else:
+    	interleave_string="python /usr/local/share/khmer/scripts/interleave-reads.py "+trimdir+sra+".Phred30.TruSeq_1P.fq "+trimdir+sra+".Phred30.TruSeq_2P.fq > "+interleavefile
+    	print interleave_string
+    	#s=subprocess.Popen(interleave_string,shell=True)    
+    	#s.wait()
 
 def run_jellyfish(trimdir,sra):
     jellyfish_string1_TS2="jellyfish count -m 25 -s 200M -t 8 -C -o "+trimdir+sra+".TS2.jf "+trimdir+sra+".TS2.interleaved.fq"
@@ -114,8 +118,7 @@ def run_jellyfish(trimdir,sra):
     #s3=subprocess.Popen(jellyfish_string1_TS3,shell=True)
     #s3.wait()
     #s4=subprocess.Popen(jellyfish_string2_TS3,shell=True)
-    #s4.wait()
-    
+    #s4.wait() 
 
 def execute(datadir,trimdir,fastqcdir,sra_list):
     for sra in sra_list:
