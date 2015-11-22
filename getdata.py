@@ -140,10 +140,9 @@ def execute(basedir,url_data,fastqcdir,subsetdir,subsetfastqcdir):
                print "skipping:",filename            
                print "file will be downloaded:",filename
 	       download(url,newdir,filename)
-	    #check to see if .fastq exists in newdir
-            #sra_extract(newdir,filename)
+            sra_extract(newdir,filename)
             #fastqc(newdir,fastqcdir,filename)
-            #subset_reads(newdir,subsetdir)
+            subset_reads(newdir,subsetdir)
  	    #fastqc(subsetdir,subsetfastqcdir,filename)
 
 def fastqc(newdir,fastqcdir,filename):
