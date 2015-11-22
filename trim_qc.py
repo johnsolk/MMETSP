@@ -56,19 +56,22 @@ def run_trimmomatic_TruSeq(trimdir,file1,file2,sra):
     	print "file written:",bash_filename
 
 def make_orphans(trimdir):
-    listoffiles=os.listdir(trimdir)
-    orphanreads=[]
-    for i in listoffiles:
-	if i.endswith("_1U.fq"):
-		orphanreads.append(trimdir+i)
-	elif i.endswith("_2U.fq"):
-		orphanreads.append(trimdir+i)
-    orphanlist=" ".join(orphanreads)
-    print orphanlist
-    orphan_string="gzip -9c "+orphanlist+" > "+trimdir+"orphans.fq.gz"
-    print orphan_string
-    #s=subprocess.Popen(orphan_string,shell=True)
-    #s.wait()
+    if os.path.isfile(trimdir+"orphans.fq.gz"):
+	print "orphans file exists:",trimdir+"orphans.fq.gz"
+    else:
+	listoffiles=os.listdir(trimdir)
+    	orphanreads=[]
+    	for i in listoffiles:
+		if i.endswith("_1U.fq"):
+			orphanreads.append(trimdir+i)
+		elif i.endswith("_2U.fq"):
+			orphanreads.append(trimdir+i)
+    	orphanlist=" ".join(orphanreads)
+    	print orphanlist
+    	orphan_string="gzip -9c "+orphanlist+" > "+trimdir+"orphans.fq.gz"
+    	print orphan_string
+    	#s=subprocess.Popen(orphan_string,shell=True)
+    	#s.wait()
 
 def fastqc_report(trimdir,fastqcdir):
     # imports list of files in each directory
