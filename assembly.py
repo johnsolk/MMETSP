@@ -68,12 +68,12 @@ def get_files(diginormdir,SRA,newdir):
 			# make symbolic link to i in newdir
 			sym_link="ln -fs "+diginormdir+i+" "+newdir
 			sym_link_file=newdir+i
-			if os.path.isfile(sym_link_file)==False:
-				print sym_link
-				s=subprocess.Popen(sym_link,shell=True)
-				s.wait()
-			else:
-				print "already created symlink",sym_link_file
+			#if os.path.isfile(sym_link_file)==False:
+				#print sym_link
+			s=subprocess.Popen(sym_link,shell=True)
+			s.wait()
+			#else:
+			#	print "already created symlink",sym_link_file
 # takes file in /mnt/mmetsp/diginorm/ , startswith SRA filename
 # splits reads and put into newdir
 			trinity_script=get_trinity_script(newdir,SRA)
@@ -82,16 +82,15 @@ def get_files(diginormdir,SRA,newdir):
 
 def build_files(newdir,SRA,sym_link_file):
 	buildfiles=newdir+SRA+".buildfiles.sh"
-	print sym_link_file
-	print buildfiles
 	with open(buildfiles,"w") as buildfile:
    		buildfile.write("python /home/ubuntu/khmer/scripts/split-paired-reads.py -d "+newdir+" "+str(sym_link_file)+"\n")
 		buildfile.write("cat "+newdir+"*.1 > "+newdir+"left.fq"+"\n")
 		buildfile.write("cat "+newdir+"*.2 > "+newdir+"right.fq"+"\n")
-		# orphans are messed up with the way the current files are
+		# need to fix , orphans are now combined for whole dataset, this is incorrect
+		# should be separate orphans file for each sample 
 		#buildfile.write("gunzip -c orphans.keep.abundfilt.fq.gz >> left.fq")
-	#s=subprocess.Popen("bash "+str(buildfiles),shell=True)
-	#s.wait()
+	s=subprocess.Popen("sudo ash "+str(buildfiles),shell=True)
+	s.wait()
 
 def get_trinity_script(newdir,SRA):
 	trinityfiles=newdir+SRA+".trinityfile.sh"	
@@ -111,9 +110,9 @@ ${{HOME}}/trinity*/Trinity --left {}left.fq \\
 		trinityfile.write(s)
 #string interpolation
 #have .format specify dicionary
-	test_string="cat "+trinityfiles
-	s=subprocess.Popen(test_string,shell=True)
-	s.wait()
+	#test_string="cat "+trinityfiles
+	#s=subprocess.Popen(test_string,shell=True)
+	#s.wait()
 	return trinityfiles
 #make a new run.sh in ~/MMETSP/ to run all *.trinityfile.sh in serial
 
@@ -130,7 +129,9 @@ def run_trinity(trinity_script_list):
 		for script in trinity_script_list:
 			command="sudo bash "+script
 			run_file.write(command+"\n")
-	print "File written:",runfile	
+	print "File written:",runfile
+	print "run with:"
+	print "sudo bash run.sh"	
 
 def check_trinity_run(seqdir):
    trinity_dir=seqdir+"trinity/trinity_out_dir/"
@@ -158,5 +159,4 @@ trinity_dir="/mnt/mmetsp/trinity/"
 clusterfunc.check_dir(trinity_dir)
 datafile="MMETSP_SRA_Run_Info_subset2.csv"
 url_data=get_data(datafile)
-print url_data
 execute(basedir,url_data,diginormdir)
