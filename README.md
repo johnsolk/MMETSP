@@ -1,5 +1,5 @@
 # MMETSP
-This is a work-in-progress repository with info and scripts for how to use the large-scale data set from the Marine Microbial Eukaryotic Transcriptome Sequencing Project (MMETSP). MMETSP is a unique set of standardized transcriptomes from 678 cultured samples of 306 pelagic and endosymbiotic marine eukaryotic species representing more than 40 phyla (Keeling et al. 2014).
+This is a work-in-progress repository, assembling and quantifying transcripts from the large-scale data set from the Marine Microbial Eukaryotic Transcriptome Sequencing Project (MMETSP). MMETSP is a unique set of standardized transcriptomes from 678 cultured samples of 306 pelagic and endosymbiotic marine eukaryotic species representing more than 40 phyla (Keeling et al. 2014).
 
 Keeling et al. 2014: http://journals.plos.org/plosbiology/article?id=10.1371/journal.pbio.1001889
 
