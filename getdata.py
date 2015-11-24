@@ -51,6 +51,7 @@ def download(url,newdir,newfile):
     #Use this for Python 2
     s=subprocess.Popen(urlstring,shell=True)
     s.wait()
+    print "Finished downloading from NCBI."
 
 #3. Extract with fastq-dump (sratools)
     
@@ -68,6 +69,7 @@ def sra_extract(newdir,filename):
 	print "extracting SRA..."
     	s=subprocess.Popen(sra_string,shell=True,stdout=PIPE)
     	s.wait()
+	print "Finished SRA extraction."
 
 #4. Generate fastqc from all fastq in directory
 
@@ -90,21 +92,21 @@ def fastqc_report(fastq_file_list,newdir,fastqcdir,filename):
     	s.wait()
 
 #5. For pipeline testing only:
-#   create subset of 100,000 reads for each file
+#   create subset of 1,000,000 reads for each file
 
 def subset_reads(newdir,subsetdir):
     listoffiles=os.listdir(newdir)
     for i in listoffiles:
 	if i.endswith(".fastq"):
-		newfilename=subsetdir+i[:-6]+".subset100k.fastq"
-    		print newfilename
+		newfilename=subsetdir+i[:-6]+".subset1m.fastq"
     		if os.path.isfile(newfilename):
 			print "File has already been subsetted:",newfilename
     		else:	
-    			subset_string="head -400000 "+newdir+i+" > "+newfilename
+    			subset_string="head -4000000 "+newdir+i+" > "+newfilename
     			print subset_string
     			s=subprocess.Popen(subset_string,shell=True,stdout=PIPE)
     			s.wait()
+			print "Finished subsetting."
    
 #6. Create symbolic link from data files to working directory
 
@@ -137,7 +139,6 @@ def execute(basedir,url_data,fastqcdir,subsetdir,subsetfastqcdir):
             if filename in os.listdir(newdir):
                print "sra exists:",filename
             else:        
-               print "skipping:",filename            
                print "file will be downloaded:",filename
 	       download(url,newdir,filename)
             sra_extract(newdir,filename)
@@ -165,15 +166,12 @@ def delete_files(newdir):
 
 datafile="MMETSP_SRA_Run_Info_subset2.csv"
 basedir="/mnt/mmetsp/"
-fastqcdir="/mnt/mmetsp/fastqc/"
+clusterfunc.check_dir(basedir)
 subsetdir="/mnt/mmetsp/subset/"
+fastqcdir="/mnt/mmetsp/fastqc/"
+clusterfunc.check_dir(subsetdir)
 subsetfastqcdir="/mnt/mmetsp/subset/fastqc/"
 url_data=get_data(datafile)
 print url_data
 execute(basedir,url_data,fastqcdir,subsetdir,subsetfastqcdir)
 
-
-## future:
-# make sure you parse only once
-#import os
-#import os.path

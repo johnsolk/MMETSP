@@ -70,8 +70,8 @@ def make_orphans(trimdir):
     	print orphanlist
     	orphan_string="gzip -9c "+orphanlist+" > "+trimdir+"orphans.fq.gz"
     	print orphan_string
-    	#s=subprocess.Popen(orphan_string,shell=True)
-    	#s.wait()
+    	s=subprocess.Popen(orphan_string,shell=True)
+    	s.wait()
 
 def fastqc_report(trimdir,fastqcdir):
     # imports list of files in each directory
@@ -99,15 +99,17 @@ def fastqc_report(trimdir,fastqcdir):
     s.wait()
 
 def interleave_reads(trimdir,sra):
-    interleavedir="/mnt/mmetsp/subset/trim_combined/interleave/"
+    interleavedir="/mnt/mmetsp/subset/trim/interleave/"
     interleavefile=interleavedir+sra+".trimmed.interleaved.fq"
     if os.path.isfile(interleavefile):
 	print "already interleaved"
     else:
     	interleave_string="python /usr/local/share/khmer/scripts/interleave-reads.py "+trimdir+sra+".Phred30.TruSeq_1P.fq "+trimdir+sra+".Phred30.TruSeq_2P.fq > "+interleavefile
     	print interleave_string
-    	#s=subprocess.Popen(interleave_string,shell=True)    
-    	#s.wait()
+	print "Interleaving now..."
+    	s=subprocess.Popen(interleave_string,shell=True)    
+    	s.wait()
+	print "Reads interleaved."
 
 def run_jellyfish(trimdir,sra):
     jellyfish_string1_TS2="jellyfish count -m 25 -s 200M -t 8 -C -o "+trimdir+sra+".TS2.jf "+trimdir+sra+".TS2.interleaved.fq"
@@ -131,10 +133,12 @@ def execute(datadir,trimdir,fastqcdir,sra_list):
 		print file1
 		print file2
 		#fastqc_report(datadir,fastqcdir)
-		run_trimmomatic_TruSeq(trimdir,file1,file2,sra)
+		### need to fix so the following steps run themselves:
+		#run_trimmomatic_TruSeq(trimdir,file1,file2,sra)
 		#print "run Trimmomatic on all bash files with this:"
 		#print "cd "+trimdir
 		#print "parallel -j0 bash :::: <(ls *.sh)"
+		####
 		interleave_reads(trimdir,sra)
                 #run_jellyfish(trimdir,sra)
 	else:
@@ -145,8 +149,10 @@ def execute(datadir,trimdir,fastqcdir,sra_list):
 
 
 datafile="/home/ubuntu/MMETSP/MMETSP_SRA_Run_Info_subset2.csv"
-trimdir="/mnt/mmetsp/subset/trim_combined/"
-interleave="/mnt/mmetsp/subset/trim_combined/interleave/"
+trimdir="/mnt/mmetsp/subset/trim/"
+clusterfunc.check_dir(trimdir)
+interleave=trimdir+"interleave/"
+clusterfunc.check_dir(interleave)
 basedir="/mnt/mmetsp/subset/"
 datadir=basedir
 fastqcdir="/mnt/mmetsp/subset/trim_combined/fastqc/"

@@ -77,7 +77,7 @@ def get_files(diginormdir,SRA,newdir):
 # takes file in /mnt/mmetsp/diginorm/ , startswith SRA filename
 # splits reads and put into newdir
 			trinity_script=get_trinity_script(newdir,SRA)
-			#build_files(newdir,SRA,sym_link_file)				
+			build_files(newdir,SRA,sym_link_file)				
 	return trinity_script
 
 def build_files(newdir,SRA,sym_link_file):
@@ -89,7 +89,7 @@ def build_files(newdir,SRA,sym_link_file):
 		# need to fix , orphans are now combined for whole dataset, this is incorrect
 		# should be separate orphans file for each sample 
 		#buildfile.write("gunzip -c orphans.keep.abundfilt.fq.gz >> left.fq")
-	s=subprocess.Popen("sudo ash "+str(buildfiles),shell=True)
+	s=subprocess.Popen("sudo bash "+str(buildfiles),shell=True)
 	s.wait()
 
 def get_trinity_script(newdir,SRA):
