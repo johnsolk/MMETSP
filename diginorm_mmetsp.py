@@ -53,7 +53,7 @@ def run_diginorm(diginormdir,interleavedir):
 		with open("diginorm.sh","w") as diginormfile:
 			diginormfile.write("sudo python /home/ubuntu/khmer/scripts/normalize-by-median.py -p -k 20 -C 20 -M 4e9 \\"+"\n")
 			diginormfile.write("--savegraph "+diginormdir+"norm.C20k20.ct -u \\"+"\n")
-			diginormfile.write("/mnt/mmetsp/subset/trim_combined/orphans.fq.gz \\"+"\n")
+			diginormfile.write("/mnt/mmetsp/subset/trim/orphans.fq.gz \\"+"\n")
 			diginormfile.write(interleavedir+"*.fq"+"\n")
 		s=subprocess.Popen("sudo bash diginorm.sh",shell=True)
 		s.wait()
@@ -62,7 +62,7 @@ def run_diginorm(diginormdir,interleavedir):
 		os.chdir("/home/ubuntu/MMETSP/")
 
 def combine_orphaned(diginormdir):
-	if glob.glob(diginormdir+"orphans*.pe"):
+	if glob.glob(diginormdir+"orphans.keep.abundfilt.fq.gz"):
 		print "orphan reads already combined"
 	else:
 		os.chdir(diginormdir)
@@ -95,7 +95,7 @@ def rename_pe(diginormdir):
 	s.wait()
 
 basedir="/mnt/mmetsp/"
-interleavedir="/mnt/mmetsp/subset/trim_combined/interleave/"
+interleavedir="/mnt/mmetsp/subset/trim/interleave/"
 diginormdir="/mnt/mmetsp/diginorm/"
 clusterfunc.check_dir(diginormdir)
 run_diginorm(diginormdir,interleavedir)
