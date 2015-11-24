@@ -13,47 +13,59 @@ import clusterfunc
 
 #1. Get data from spreadsheet
 
-def get_sra(thefile):
-    sra_name={}
-    sra_list=[]
+def get_data(thefile):
+    count=0
+    url_data={}
     with open(thefile,"rU") as inputfile:
         headerline=next(inputfile).split(',')
-	#print headerline        
-        position_run=headerline.index("Run")
+        #print headerline        
         position_name=headerline.index("ScientificName")
+        position_reads=headerline.index("Run")
+        position_ftp=headerline.index("download_path")
         for line in inputfile:
             line_data=line.split(',')
             name="_".join(line_data[position_name].split())
-            sra=line_data[position_run]
-            sra_list.append(sra)
-            if name in sra_name.keys():
-                if sra in sra_name[name]:
-                    print "SRA exists",sra
+            read_type=line_data[position_reads]
+            ftp=line_data[position_ftp]
+            name_read_tuple=(name,read_type)
+            print name_read_tuple
+            #check to see if Scientific Name and run exist
+            if name_read_tuple in url_data.keys():
+                #check to see if ftp exists
+                if ftp in url_data[name_read_tuple]:
+                    print "url already exists:", ftp
                 else:
-                    sra_name[name].append(sra)
+                    url_data[name_read_tuple].append(ftp)
             else:
-                sra_name[name]=[sra]
-        return sra_list,sra_name
-    
+                url_data[name_read_tuple] = [ftp]
+        return url_data
+
 # run trimmomatic
 
 def run_trimmomatic_TruSeq(trimdir,file1,file2,sra):
     bash_filename=trimdir+sra+".trim.TruSeq.sh"
+    # need a better check for whether this process has been run:
     if os.path.isfile(bash_filename):
 	print "trim file already written",bash_filename
-    else:	
+    else:
+	os.chdir(trimdir)	
 	with open(bash_filename,"w") as bash_file:
         	bash_file.write("#!/bin/bash\n")
 		bash_file.write("java -Xmx10g -jar /bin/Trimmomatic-0.33/trimmomatic-0.33.jar PE \\"+"\n")
-        	bash_file.write("-threads 8 -baseout "+sra+".Phred30.TruSeq.fq \\"+"\n")
+        	bash_file.write("-baseout "+sra+".Phred30.TruSeq.fq \\"+"\n")
         	bash_file.write(file1+" \\"+"\n")
         	bash_file.write(file2+" \\"+"\n")
-        	bash_file.write("ILLUMINACLIP:/bin/Trimmomatic-0.33/adapters/combined.fa:2:30:10 \\"+"\n")
-        	bash_file.write("SLIDINGWINDOW:4:30 \\"+"\n")
-        	bash_file.write("LEADING:30 \\"+"\n")
-        	bash_file.write("TRAILING:30 \\"+"\n")
+        	bash_file.write("ILLUMINACLIP:/bin/Trimmomatic-0.33/adapters/combined.fa:2:40:15 \\"+"\n")
+        	bash_file.write("SLIDINGWINDOW:4:2 \\"+"\n")
+        	bash_file.write("LEADING:2 \\"+"\n")
+        	bash_file.write("TRAILING:2 \\"+"\n")
 		bash_file.write("MINLEN:25 &> trim."+sra+".log"+"\n")
     	print "file written:",bash_filename
+    	print "Trimming with Trimmomatic now..."
+	#s=subprocess.Popen("sudo bash "+bash_filename,shell=True)
+    	#s.wait()
+    	print "Trimmomatic completed."
+    	os.chdir("/home/ubuntu/MMETSP/")
 
 def make_orphans(trimdir):
     if os.path.isfile(trimdir+"orphans.fq.gz"):
@@ -98,8 +110,7 @@ def fastqc_report(trimdir,fastqcdir):
     s=subprocess.Popen(fastqc_string,shell=True)
     s.wait()
 
-def interleave_reads(trimdir,sra):
-    interleavedir="/mnt/mmetsp/subset/trim/interleave/"
+def interleave_reads(trimdir,sra,interleavedir):
     interleavefile=interleavedir+sra+".trimmed.interleaved.fq"
     if os.path.isfile(interleavefile):
 	print "already interleaved"
@@ -125,25 +136,32 @@ def run_jellyfish(trimdir,sra):
     #s4=subprocess.Popen(jellyfish_string2_TS3,shell=True)
     #s4.wait() 
 
-def execute(datadir,trimdir,fastqcdir,sra_list):
-    for sra in sra_list:
-	file1=datadir+sra+"_1.subset100k.fastq"
-	file2=datadir+sra+"_2.subset100k.fastq"	
-	if os.path.isfile(file1) and os.path.isfile(file2):
-		print file1
-		print file2
-		#fastqc_report(datadir,fastqcdir)
-		### need to fix so the following steps run themselves:
-		#run_trimmomatic_TruSeq(trimdir,file1,file2,sra)
-		#print "run Trimmomatic on all bash files with this:"
-		#print "cd "+trimdir
-		#print "parallel -j0 bash :::: <(ls *.sh)"
-		####
-		interleave_reads(trimdir,sra)
-                #run_jellyfish(trimdir,sra)
-	else:
-		print "Files do not exist:",file1,file2 	
-    make_orphans(trimdir)
+def execute(datadir,trimdir,fastqcdir,url_data):
+    for item in url_data.keys():
+	organism=item[0]
+	org_seq_dir=datadir+organism+"/"
+	url_list=url=url_data[item]
+	for url in url_list:
+		sra=basename(urlparse(url).path)
+		newdir=org_seq_dir+sra+"/"
+		trimdir=newdir+"trim/"
+		interleavedir=newdir+"interleave/"
+		clusterfunc.check_dir(trimdir)
+		interleavedir=newdir+"interleave/"
+		clusterfunc.check_dir(interleavedir)
+		file1=newdir+sra+"_1.fastq"
+		file2=newdir+sra+"_2.fastq"
+		if os.path.isfile(file1) and os.path.isfile(file2):
+			print file1
+			print file2
+			#fastqc_report(datadir,fastqcdir)
+			### need to fix so the following steps run themselves:
+			run_trimmomatic_TruSeq(trimdir,file1,file2,sra)
+			interleave_reads(trimdir,sra,interleavedir)
+                	#run_jellyfish(trimdir,sra)
+		else:
+			print "Files do not exist:",file1,file2 	
+    #make_orphans(trimdir)
     #run fastqc on all files
     #fastqc_report(trimdir,fastqcdir)	
 
@@ -153,12 +171,12 @@ trimdir="/mnt/mmetsp/subset/trim/"
 clusterfunc.check_dir(trimdir)
 interleave=trimdir+"interleave/"
 clusterfunc.check_dir(interleave)
-basedir="/mnt/mmetsp/subset/"
+basedir="/mnt/mmetsp/"
 datadir=basedir
 fastqcdir="/mnt/mmetsp/subset/trim_combined/fastqc/"
-sra_list,sra_name=get_sra(datafile)
-print sra_list
-execute(datadir,trimdir,fastqcdir,sra_list)
+url_data=get_data(datafile)
+print url_data
+execute(datadir,trimdir,fastqcdir,url_data)
 #fastqc_report(fastqcdir)
 
 
