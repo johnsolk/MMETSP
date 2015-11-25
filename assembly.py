@@ -46,54 +46,40 @@ def execute(basedir,url_data,diginormdir):
         	organism=item[0]
         	seqtype=item[1]
         	org_seq_dir=basedir+organism+"/"
-        	print org_seq_dir
 		# from here, split paired reads
 		# then go do assembly
         	clusterfunc.check_dir(org_seq_dir)
         	url_list=url_data[item]
         	for url in url_list:
 			SRA=basename(urlparse(url).path)
-			print SRA
 			newdir=org_seq_dir+SRA+"/"
-			print newdir
-			trinity_script=get_files(diginormdir,SRA,newdir)
+			diginormdir=newdir+"diginorm/"
+			diginormfile=diginormdir+SRA+".trimmed.interleaved.keep.abundfilt.fq.gz"
+			trinitydir=newdir+"trinity/"
+			clusterfunc.check_dir(trinitydir)
+			if os.path.isfile(diginormfile):
+				print "file exists:",diginormfile
+			trinity_script=get_trinity_script(trinitydir,SRA)
 			trinity_scripts.append(trinity_script)
+			build_files(trinitydir,diginormfile,SRA)
 	run_trinity(trinity_scripts)			
-
-def get_files(diginormdir,SRA,newdir):
-	listoffiles=os.listdir(diginormdir)
-	trinity_scripts=[]
-	for i in listoffiles:
-		if i.startswith(SRA):
-			# make symbolic link to i in newdir
-			sym_link="ln -fs "+diginormdir+i+" "+newdir
-			sym_link_file=newdir+i
-			#if os.path.isfile(sym_link_file)==False:
-				#print sym_link
-			s=subprocess.Popen(sym_link,shell=True)
-			s.wait()
-			#else:
-			#	print "already created symlink",sym_link_file
-# takes file in /mnt/mmetsp/diginorm/ , startswith SRA filename
-# splits reads and put into newdir
-			trinity_script=get_trinity_script(newdir,SRA)
-			build_files(newdir,SRA,sym_link_file)				
 	return trinity_script
 
-def build_files(newdir,SRA,sym_link_file):
-	buildfiles=newdir+SRA+".buildfiles.sh"
+def build_files(trinitydir,diginormfile,SRA):
+# takes diginormfile in,splits reads and put into newdir
+	buildfiles=trinitydir+SRA+".buildfiles.sh"
 	with open(buildfiles,"w") as buildfile:
-   		buildfile.write("python /home/ubuntu/khmer/scripts/split-paired-reads.py -d "+newdir+" "+str(sym_link_file)+"\n")
-		buildfile.write("cat "+newdir+"*.1 > "+newdir+"left.fq"+"\n")
-		buildfile.write("cat "+newdir+"*.2 > "+newdir+"right.fq"+"\n")
+   		buildfile.write("python /home/ubuntu/khmer/scripts/split-paired-reads.py -d "+trinitydir+" "+diginormfile+"\n")
+		buildfile.write("cat "+trinitydir+"*.1 > "+trinitydir+"left.fq"+"\n")
+		buildfile.write("cat "+trinitydir+"*.2 > "+trinitydir+"right.fq"+"\n")
 		# need to fix , orphans are now combined for whole dataset, this is incorrect
 		# should be separate orphans file for each sample 
 		#buildfile.write("gunzip -c orphans.keep.abundfilt.fq.gz >> left.fq")
 	s=subprocess.Popen("sudo bash "+str(buildfiles),shell=True)
 	s.wait()
 
-def get_trinity_script(newdir,SRA):
-	trinityfiles=newdir+SRA+".trinityfile.sh"	
+def get_trinity_script(trinitydir,SRA):
+	trinityfiles=trinitydir+SRA+".trinityfile.sh"	
 	s="""#!/bin/bash
 set -x
 # stops execution if there is an error
@@ -105,7 +91,7 @@ ${{HOME}}/trinity*/Trinity --left {}left.fq \\
 --right {}right.fq --output {}trinity_out --seqType fq --max_memory 14G	\\
 --CPU ${{THREADS:-2}}
 
-""".format(newdir,newdir,newdir,newdir,newdir,newdir,newdir)
+""".format(trinitydir,trinitydir,trinitydir,trinitydir,trinitydir,trinitydir,trinitydir)
 	with open(trinityfiles,"w") as trinityfile:	
 		trinityfile.write(s)
 #string interpolation
