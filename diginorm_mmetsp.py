@@ -52,6 +52,16 @@ def run_filter_abund(diginormdir):
 		#s.wait()
 		os.chdir("/home/ubuntu/MMETSP/")
 
+def run_streaming_diginorm():
+# from Jessica's streaming protocol:
+	stream_string="""#!/bin/bash
+zcat orphans.fq.gz && trim-low-abund.py \\
+-V -k 20 -Z 18 -C 3 - -o - -M 4e9 --diginorm \\
+--diginorm-coverage=20 | extract-paired-reads.py \\
+--gzip -p paired.gz -s single.gz
+""".format()
+	with open("diginorm.sh","w") as diginorm_script:
+		diginorm_script.write(stream_string)
 
 def rename_files(diginormdir):
 	if glob.glob(diginormdir+"*.abundfilt.pe"):
@@ -121,7 +131,7 @@ def rename_pe(diginormdir):
 	s=subprocess.Popen("sudo bash rename.sh",shell=True)	
 	s.wait()
 
-def execute(basedir,url_data)
+def execute(basedir,url_data):
 	for item in url_data.keys():
 		organism=item[0]
 		seqtype=item[1]
@@ -134,15 +144,14 @@ def execute(basedir,url_data)
 			interleavedir=newdir+"interleave/"
 			diginormdir=newdir+"diginorm/"
 			clusterfunc.check_dir(diginormdir)
-			run_diginorm(diginormdir,interleavedir)
-			run_filter_abund(diginormdir)
-			rename_files(diginormdir)
+			#run_diginorm(diginormdir,interleavedir)
+			#run_filter_abund(diginormdir)
+			#rename_files(diginormdir)
 			combine_orphaned(diginormdir)
 			rename_pe(diginormdir)	
 
 basedir="/mnt/mmetsp/"
+datafile="MMETSP_SRA_Run_Info_subset2.csv"
+url_data=get_data(datafile)
 execute(basedir,url_data)
 
-# todo: write checks to see if script files exist
-# write more verbose message, e.g. "Done"
-# remove excess files
