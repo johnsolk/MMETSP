@@ -68,9 +68,9 @@ def run_trimmomatic_TruSeq(trimdir,file1,file2,sra):
     	os.chdir("/home/ubuntu/MMETSP/")
 
 def make_orphans(trimdir):
-    if os.path.isfile(trimdir+"orphans.fq.gz"):
-	print "orphans file exists:",trimdir+"orphans.fq.gz"
-    else:
+    #if os.path.isfile(trimdir+"orphans.fq.gz"):
+#	print "orphans file exists:",trimdir+"orphans.fq.gz"
+ #   else:
 	listoffiles=os.listdir(trimdir)
     	orphanreads=[]
     	for i in listoffiles:
@@ -161,7 +161,7 @@ def execute(datadir,trimdir,fastqcdir,url_data):
                 	#run_jellyfish(trimdir,sra)
 		else:
 			print "Files do not exist:",file1,file2 	
-    #make_orphans(trimdir)
+    make_orphans(trimdir)
     #run fastqc on all files
     #fastqc_report(trimdir,fastqcdir)	
 
