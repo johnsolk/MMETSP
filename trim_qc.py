@@ -43,11 +43,11 @@ def get_data(thefile):
 # run trimmomatic
 
 def run_trimmomatic_TruSeq(trimdir,file1,file2,sra):
-    bash_filename=trimdir+sra+".trim.TruSeq.sh"
+  	bash_filename=trimdir+sra+".trim.TruSeq.sh"
     # need a better check for whether this process has been run:
-    if os.path.isfile(bash_filename):
-	print "trim file already written",bash_filename
-    else:
+    #if os.path.isfile(bash_filename):
+#	print "trim file already written",bash_filename
+ #   else:
 	os.chdir(trimdir)	
 	with open(bash_filename,"w") as bash_file:
         	bash_file.write("#!/bin/bash\n")
@@ -62,8 +62,8 @@ def run_trimmomatic_TruSeq(trimdir,file1,file2,sra):
 		bash_file.write("MINLEN:25 &> trim."+sra+".log"+"\n")
     	print "file written:",bash_filename
     	print "Trimming with Trimmomatic now..."
-	#s=subprocess.Popen("sudo bash "+bash_filename,shell=True)
-    	#s.wait()
+	s=subprocess.Popen("sudo bash "+bash_filename,shell=True)
+    	s.wait()
     	print "Trimmomatic completed."
     	os.chdir("/home/ubuntu/MMETSP/")
 
@@ -78,7 +78,9 @@ def make_orphans(trimdir):
 			orphanreads.append(trimdir+i)
 		elif i.endswith("_2U.fq"):
 			orphanreads.append(trimdir+i)
-    	orphanlist=" ".join(orphanreads)
+    	# does it matter what order the orphans are added?
+	# it seems that 2P is always empty, is that normal?
+	orphanlist=" ".join(orphanreads)
     	print orphanlist
     	orphan_string="gzip -9c "+orphanlist+" > "+trimdir+"orphans.fq.gz"
     	print orphan_string
@@ -111,11 +113,11 @@ def fastqc_report(trimdir,fastqcdir):
     s.wait()
 
 def interleave_reads(trimdir,sra,interleavedir):
-    interleavefile=interleavedir+sra+".trimmed.interleaved.fq"
-    if os.path.isfile(interleavefile):
-	print "already interleaved"
-    else:
-    	interleave_string="python /usr/local/share/khmer/scripts/interleave-reads.py "+trimdir+sra+".Phred30.TruSeq_1P.fq "+trimdir+sra+".Phred30.TruSeq_2P.fq > "+interleavefile
+    	interleavefile=interleavedir+sra+".trimmed.interleaved.fq"
+    #if os.path.isfile(interleavefile):
+#	print "already interleaved"
+ #   else:
+    	interleave_string="python /home/ubuntu/khmer/scripts/interleave-reads.py "+trimdir+sra+".Phred30.TruSeq_1P.fq "+trimdir+sra+".Phred30.TruSeq_2P.fq > "+interleavefile
     	print interleave_string
 	print "Interleaving now..."
     	s=subprocess.Popen(interleave_string,shell=True)    
@@ -136,7 +138,7 @@ def run_jellyfish(trimdir,sra):
     #s4=subprocess.Popen(jellyfish_string2_TS3,shell=True)
     #s4.wait() 
 
-def execute(datadir,trimdir,fastqcdir,url_data):
+def execute(url_data,datadir):
     for item in url_data.keys():
 	organism=item[0]
 	org_seq_dir=datadir+organism+"/"
@@ -157,26 +159,20 @@ def execute(datadir,trimdir,fastqcdir,url_data):
 			#fastqc_report(datadir,fastqcdir)
 			### need to fix so the following steps run themselves:
 			run_trimmomatic_TruSeq(trimdir,file1,file2,sra)
-			interleave_reads(trimdir,sra,interleavedir)
+			#interleave_reads(trimdir,sra,interleavedir)
                 	#run_jellyfish(trimdir,sra)
+			make_orphans(trimdir)
 		else:
 			print "Files do not exist:",file1,file2 	
-    make_orphans(trimdir)
     #run fastqc on all files
     #fastqc_report(trimdir,fastqcdir)	
 
 
 datafile="/home/ubuntu/MMETSP/MMETSP_SRA_Run_Info_subset2.csv"
-trimdir="/mnt/mmetsp/subset/trim/"
-clusterfunc.check_dir(trimdir)
-interleave=trimdir+"interleave/"
-clusterfunc.check_dir(interleave)
-basedir="/mnt/mmetsp/"
-datadir=basedir
-fastqcdir="/mnt/mmetsp/subset/trim_combined/fastqc/"
+datadir="/mnt/mmetsp/"
 url_data=get_data(datafile)
 print url_data
-execute(datadir,trimdir,fastqcdir,url_data)
+execute(url_data,datadir)
 #fastqc_report(fastqcdir)
 
 
