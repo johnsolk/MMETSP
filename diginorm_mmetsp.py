@@ -39,9 +39,9 @@ def get_data(thefile):
         return url_data
 
 def run_filter_abund(diginormdir):
-	if glob.glob(diginormdir+"*keep.abundfilt*"):
-		print "filter-abund.py already run"
-	else:
+	#if glob.glob(diginormdir+"*keep.abundfilt*"):
+	#	print "filter-abund.py already run"
+	#else:
 		os.chdir(diginormdir)
 		with open("filter_abund.sh","w") as abundfile:
 			abundfile.write("sudo python /home/ubuntu/khmer/scripts/filter-abund.py -V -Z 18 "+diginormdir+"norm.C20k20.ct "+diginormdir+"*.keep"+"\n")
@@ -52,21 +52,27 @@ def run_filter_abund(diginormdir):
 		#s.wait()
 		os.chdir("/home/ubuntu/MMETSP/")
 
-def run_streaming_diginorm():
+def run_streaming_diginorm(trimdir,SRA,diginormdir):
 # from Jessica's streaming protocol:
+	diginormfile=diginormdir+SRA+".stream.diginorm.sh"
+	os.chdir(diginormdir)
 	stream_string="""#!/bin/bash
-zcat orphans.fq.gz && trim-low-abund.py \\
--V -k 20 -Z 18 -C 3 - -o - -M 4e9 --diginorm \\
---diginorm-coverage=20 | extract-paired-reads.py \\
---gzip -p paired.gz -s single.gz
-""".format()
-	with open("diginorm.sh","w") as diginorm_script:
+(interleave-reads.py {}{}.Phred30.TruSeq_1P.fq {}{}.Phred30.TruSeq_2P.fq && zcat {}.orphans.fq.gz )| \\
+trim-low-abund.py -V -k 20 -Z 18 -C 3 - -o - -M 4:w
+e9 --diginorm --diginorm-coverage=20 | \\
+(extract-paired-reads.py --gzip -p paired.gz -s single.gz)
+""".format(trimdir,SRA,trimdir,SRA,trimdir)
+	with open(diginormfile,"w") as diginorm_script:
 		diginorm_script.write(stream_string)
+	#s=subprocess.Popen("sudo bash "+diginormfile,shell=True)
+	#s.wait()
+	print "file written:",diginormfile	
+	os.chdir("/home/ubuntu/MMETSP/")	
 
 def rename_files(diginormdir):
-	if glob.glob(diginormdir+"*.abundfilt.pe"):
-		print "paired reads already extracted"
-	else:
+	#if glob.glob(diginormdir+"*.abundfilt.pe"):
+	#	print "paired reads already extracted"
+	#else:
 		os.chdir(diginormdir)
 		with open("rename.sh","w") as renamefile:
 			renamefile.write("for file in *.abundfilt"+"\n")
@@ -83,9 +89,9 @@ def rename_files(diginormdir):
 def run_diginorm(diginormdir,interleavedir):
 	# this will create and run a script from the working directory
 	# output *.keep files will be in the working directory
-	if glob.glob(diginormdir+"*keep*"):
-		print "normalize-by-median.py already run"
-	else:
+	#if glob.glob(diginormdir+"*keep*"):
+	#	print "normalize-by-median.py already run"
+	#else:
 		os.chdir(diginormdir)
 		with open("diginorm.sh","w") as diginormfile:
 			diginormfile.write("sudo python /home/ubuntu/khmer/scripts/normalize-by-median.py -p -k 20 -C 20 -M 4e9 \\"+"\n")
@@ -99,9 +105,9 @@ def run_diginorm(diginormdir,interleavedir):
 		os.chdir("/home/ubuntu/MMETSP/")
 
 def combine_orphaned(diginormdir):
-	if glob.glob(diginormdir+"orphans.keep.abundfilt.fq.gz"):
-		print "orphan reads already combined"
-	else:
+	#if glob.glob(diginormdir+"orphans.keep.abundfilt.fq.gz"):
+#		print "orphan reads already combined"
+#	else:
 		os.chdir(diginormdir)
 		print "combinding orphans now..."
 		with open("combine_orphaned.sh","w") as combinedfile:
@@ -144,9 +150,11 @@ def execute(basedir,url_data):
 			interleavedir=newdir+"interleave/"
 			diginormdir=newdir+"diginorm/"
 			clusterfunc.check_dir(diginormdir)
-			#run_diginorm(diginormdir,interleavedir)
-			#run_filter_abund(diginormdir)
-			#rename_files(diginormdir)
+			trimdir=newdir+"trim/"
+			#run_streaming_diginorm(trimdir,SRA,diginormdir)
+			run_diginorm(diginormdir,interleavedir)
+			run_filter_abund(diginormdir)
+			rename_files(diginormdir)
 			combine_orphaned(diginormdir)
 			rename_pe(diginormdir)	
 
