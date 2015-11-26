@@ -44,7 +44,7 @@ def run_filter_abund(diginormdir):
 	#else:
 		os.chdir(diginormdir)
 		with open("filter_abund.sh","w") as abundfile:
-			abundfile.write("sudo python /home/ubuntu/khmer/scripts/filter-abund.py -V -Z 18 "+diginormdir+"norm.C20k20.ct "+diginormdir+"*.keep"+"\n")
+			abundfile.write("filter-abund.py -V -Z 18 "+diginormdir+"norm.C20k20.ct "+diginormdir+"*.keep"+"\n")
 			#trimfile.write("rm "+diginormdir+"*.keep "+diginormdir+"norm.C20k20.ct"+"\n")
 		s=subprocess.Popen("sudo bash filter_abund.sh",shell=True)
 		s.wait()
@@ -77,7 +77,7 @@ def rename_files(diginormdir):
 		with open("rename.sh","w") as renamefile:
 			renamefile.write("for file in *.abundfilt"+"\n")
 			renamefile.write("do"+"\n")
-			renamefile.write("\tpython /home/ubuntu/khmer/scripts/extract-paired-reads.py ${file} && \\"+"\n")
+			renamefile.write("\textract-paired-reads.py ${file} && \\"+"\n")
 			renamefile.write("\t\trm ${file}"+"\n")
 			renamefile.write("done"+"\n")
 		#s=subprocess.Popen("cat rename.sh",shell=True)
@@ -94,7 +94,7 @@ def run_diginorm(diginormdir,interleavedir):
 	#else:
 		os.chdir(diginormdir)
 		with open("diginorm.sh","w") as diginormfile:
-			diginormfile.write("sudo python /home/ubuntu/khmer/scripts/normalize-by-median.py -p -k 20 -C 20 -M 4e9 \\"+"\n")
+			diginormfile.write("normalize-by-median.py -p -k 20 -C 20 -M 4e9 \\"+"\n")
 			diginormfile.write("--savegraph "+diginormdir+"norm.C20k20.ct -u \\"+"\n")
 			diginormfile.write("/mnt/mmetsp/subset/trim/orphans.fq.gz \\"+"\n")
 			diginormfile.write(interleavedir+"*.fq"+"\n")
