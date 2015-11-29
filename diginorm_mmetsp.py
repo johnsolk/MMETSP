@@ -42,14 +42,14 @@ def run_filter_abund(diginormdir):
 	#if glob.glob(diginormdir+"*keep.abundfilt*"):
 	#	print "filter-abund.py already run"
 	#else:
+		j="""
+filter-abund.py -V -Z 18 {}norm.C20k20.ct {}*.keep
+""".format(diginormdir,diginormdir)
 		os.chdir(diginormdir)
 		with open("filter_abund.sh","w") as abundfile:
-			abundfile.write("filter-abund.py -V -Z 18 "+diginormdir+"norm.C20k20.ct "+diginormdir+"*.keep"+"\n")
-			#trimfile.write("rm "+diginormdir+"*.keep "+diginormdir+"norm.C20k20.ct"+"\n")
+			abundfile.write(j)
 		s=subprocess.Popen("sudo bash filter_abund.sh",shell=True)
 		s.wait()
-		#s=subprocess.Popen("cat trim.sh",shell=True)
-		#s.wait()
 		os.chdir("/home/ubuntu/MMETSP/")
 
 def run_streaming_diginorm(trimdir,SRA,diginormdir):
@@ -57,11 +57,10 @@ def run_streaming_diginorm(trimdir,SRA,diginormdir):
 	diginormfile=diginormdir+SRA+".stream.diginorm.sh"
 	os.chdir(diginormdir)
 	stream_string="""#!/bin/bash
-(interleave-reads.py {}{}.Phred30.TruSeq_1P.fq {}{}.Phred30.TruSeq_2P.fq && zcat {}.orphans.fq.gz )| \\
-trim-low-abund.py -V -k 20 -Z 18 -C 3 - -o - -M 4:w
-e9 --diginorm --diginorm-coverage=20 | \\
-(extract-paired-reads.py --gzip -p paired.gz -s single.gz)
-""".format(trimdir,SRA,trimdir,SRA,trimdir)
+(interleave-reads.py {}{}.Phred30.TruSeq_1P.fq {}{}.Phred30.TruSeq_2P.fq && zcat {}orphans.fq.gz)| \\
+trim-low-abund.py -V -k 20 -Z 18 -C 3 - -o - -M 4e9 --diginorm --diginorm-coverage=20 | \\
+(extract-paired-reads.py --gzip -p {}{}.paired.gz -s {}{}.single.gz)
+""".format(trimdir,SRA,trimdir,SRA,trimdir,diginormdir,SRA,diginormdir,SRA)
 	with open(diginormfile,"w") as diginorm_script:
 		diginorm_script.write(stream_string)
 	#s=subprocess.Popen("sudo bash "+diginormfile,shell=True)
@@ -73,31 +72,37 @@ def rename_files(diginormdir):
 	#if glob.glob(diginormdir+"*.abundfilt.pe"):
 	#	print "paired reads already extracted"
 	#else:
+		j="""
+for file in *.abundfilt
+do
+	extract-paired-reads.py ${file} && \\
+		rm ${file}
+done
+""".format()
 		os.chdir(diginormdir)
 		with open("rename.sh","w") as renamefile:
-			renamefile.write("for file in *.abundfilt"+"\n")
-			renamefile.write("do"+"\n")
-			renamefile.write("\textract-paired-reads.py ${file} && \\"+"\n")
-			renamefile.write("\t\trm ${file}"+"\n")
-			renamefile.write("done"+"\n")
+			renamefile.write(j)
 		#s=subprocess.Popen("cat rename.sh",shell=True)
 		#s.wait()
 		s=subprocess.Popen("sudo bash rename.sh",shell=True)
 		s.wait()
 		os.chdir("/home/ubuntu/MMETSP/")
 
-def run_diginorm(diginormdir,interleavedir):
+def run_diginorm(diginormdir,interleavedir,trimdir):
 	# this will create and run a script from the working directory
 	# output *.keep files will be in the working directory
 	#if glob.glob(diginormdir+"*keep*"):
 	#	print "normalize-by-median.py already run"
 	#else:
+		j="""
+normalize-by-median.py -p -k 20 -C 20 -M 4e9 \\
+--savegraph {}norm.C20k20.ct -u \\
+{}orphans.fq.gz \\
+{}*.fq
+""".format(diginormdir,trimdir,interleavedir)
 		os.chdir(diginormdir)
 		with open("diginorm.sh","w") as diginormfile:
-			diginormfile.write("normalize-by-median.py -p -k 20 -C 20 -M 4e9 \\"+"\n")
-			diginormfile.write("--savegraph "+diginormdir+"norm.C20k20.ct -u \\"+"\n")
-			diginormfile.write("/mnt/mmetsp/subset/trim/orphans.fq.gz \\"+"\n")
-			diginormfile.write(interleavedir+"*.fq"+"\n")
+			diginormfile.write(j)
 		s=subprocess.Popen("sudo bash diginorm.sh",shell=True)
 		s.wait()
 		#s=subprocess.Popen("cat diginorm.sh",shell=True)
@@ -108,34 +113,45 @@ def combine_orphaned(diginormdir):
 	#if glob.glob(diginormdir+"orphans.keep.abundfilt.fq.gz"):
 #		print "orphan reads already combined"
 #	else:
+		j="""
+gzip -9c {}orphans.fq.gz.keep.abundfilt > {}orphans.keep.abundfilt.fq.gz && \\
+	rm {}orphans.fq.gz.keep.abundfilt
+for file in {}*.se"
+do
+	gzip -9c ${file} >> orphans.keep.abundfilt.fq.gz && \\
+		rm ${file}
+done
+""".format(diginormdir,diginormdir,diginormdir,diginormdir)
 		os.chdir(diginormdir)
 		print "combinding orphans now..."
 		with open("combine_orphaned.sh","w") as combinedfile:
-			combinedfile.write("gzip -9c "+diginormdir+"orphans.fq.gz.keep.abundfilt > "+diginormdir+"orphans.keep.abundfilt.fq.gz && \\"+"\n")
-			combinedfile.write("\trm "+diginormdir+"orphans.fq.gz.keep.abundfilt"+"\n")
-			combinedfile.write("for file in "+diginormdir+"*.se"+"\n")
-			combinedfile.write("do"+"\n")
-			combinedfile.write("\tgzip -9c ${file} >> orphans.keep.abundfilt.fq.gz && \\"+"\n")
-        		combinedfile.write("\t\trm ${file}"+"\n")
-			combinedfile.write("done"+"\n")
+			combinedfile.write(j)
 		#s=subprocess.Popen("cat combine_orphaned.sh",shell=True)
 		#s.wait()
+		print "Combining *.se orphans now..."
 		s=subprocess.Popen("sudo bash combine_orphaned.sh",shell=True)
 		s.wait()
-	
+		print "Orphans combined."
+		os.chdir("/home/ubuntu/MMETSP/")		
+
 def rename_pe(diginormdir):
-	print "renaming pe files now..."
+	j="""
+for file in {}*trimmed.interleaved.fq.keep.abundfilt.pe
+do
+	newfile=${file%%.fq.keep.abundfilt.pe}.keep.abundfilt.fq
+	mv ${file} ${newfile}
+	gzip ${newfile}
+done
+""".format(diginormdir)
+	os.chdir(diginormdir)
 	with open("rename.sh","w") as renamefile:
-		renamefile.write("for file in "+diginormdir+"*trimmed.interleaved.fq.keep.abundfilt.pe"+"\n")
-		renamefile.write("do"+"\n")
-   		renamefile.write("\tnewfile=${file%%.fq.keep.abundfilt.pe}.keep.abundfilt.fq"+"\n")
-   		renamefile.write("\tmv ${file} ${newfile}"+"\n")
-   		renamefile.write("\tgzip ${newfile}"+"\n")
-		renamefile.write("done"+"\n")
+		renamefile.write(j)
 	#s=subprocess.Popen("cat rename.sh",shell=True)
 	#s.wait()
+	print "renaming pe files now..."
 	s=subprocess.Popen("sudo bash rename.sh",shell=True)	
 	s.wait()
+	os.chdir("/home/ubuntu/MMETSP/")	
 
 def execute(basedir,url_data):
 	for item in url_data.keys():
@@ -152,11 +168,11 @@ def execute(basedir,url_data):
 			clusterfunc.check_dir(diginormdir)
 			trimdir=newdir+"trim/"
 			#run_streaming_diginorm(trimdir,SRA,diginormdir)
-			run_diginorm(diginormdir,interleavedir)
-			run_filter_abund(diginormdir)
-			rename_files(diginormdir)
-			combine_orphaned(diginormdir)
-			rename_pe(diginormdir)	
+			run_diginorm(diginormdir,interleavediri,trimdir)
+			#run_filter_abund(diginormdir)
+			#rename_files(diginormdir)
+			#combine_orphaned(diginormdir)
+			#rename_pe(diginormdir)	
 
 basedir="/mnt/mmetsp/"
 datafile="MMETSP_SRA_Run_Info_subset2.csv"
