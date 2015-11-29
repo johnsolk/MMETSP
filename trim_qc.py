@@ -48,18 +48,19 @@ def run_trimmomatic_TruSeq(trimdir,file1,file2,sra):
     #if os.path.isfile(bash_filename):
 #	print "trim file already written",bash_filename
  #   else:
+	j="""#!/bin/bash
+java -Xmx10g -jar /bin/Trimmomatic-0.33/trimmomatic-0.33.jar PE \\
+-baseout {}.Phred30.TruSeq.fq \\
+{} {} \\
+ILLUMINACLIP:/bin/Trimmomatic-0.33/adapters/combined.fa:2:40:15 \\
+SLIDINGWINDOW:4:2 \\
+LEADING:2 \\
+TRAILING:2 \\
+MINLEN:25 &> trim.{}.log
+""".format(sra,file1,file2,sra)
 	os.chdir(trimdir)	
 	with open(bash_filename,"w") as bash_file:
-        	bash_file.write("#!/bin/bash\n")
-		bash_file.write("java -Xmx10g -jar /bin/Trimmomatic-0.33/trimmomatic-0.33.jar PE \\"+"\n")
-        	bash_file.write("-baseout "+sra+".Phred30.TruSeq.fq \\"+"\n")
-        	bash_file.write(file1+" \\"+"\n")
-        	bash_file.write(file2+" \\"+"\n")
-        	bash_file.write("ILLUMINACLIP:/bin/Trimmomatic-0.33/adapters/combined.fa:2:40:15 \\"+"\n")
-        	bash_file.write("SLIDINGWINDOW:4:2 \\"+"\n")
-        	bash_file.write("LEADING:2 \\"+"\n")
-        	bash_file.write("TRAILING:2 \\"+"\n")
-		bash_file.write("MINLEN:25 &> trim."+sra+".log"+"\n")
+		bash_fil.write(j)
     	print "file written:",bash_filename
     	print "Trimming with Trimmomatic now..."
 	s=subprocess.Popen("sudo bash "+bash_filename,shell=True)
@@ -117,7 +118,7 @@ def interleave_reads(trimdir,sra,interleavedir):
     #if os.path.isfile(interleavefile):
 #	print "already interleaved"
  #   else:
-    	interleave_string="python /home/ubuntu/khmer/scripts/interleave-reads.py "+trimdir+sra+".Phred30.TruSeq_1P.fq "+trimdir+sra+".Phred30.TruSeq_2P.fq > "+interleavefile
+    	interleave_string="interleave-reads.py "+trimdir+sra+".Phred30.TruSeq_1P.fq "+trimdir+sra+".Phred30.TruSeq_2P.fq > "+interleavefile
     	print interleave_string
 	print "Interleaving now..."
     	s=subprocess.Popen(interleave_string,shell=True)    
@@ -158,8 +159,8 @@ def execute(url_data,datadir):
 			print file2
 			#fastqc_report(datadir,fastqcdir)
 			### need to fix so the following steps run themselves:
-			run_trimmomatic_TruSeq(trimdir,file1,file2,sra)
-			#interleave_reads(trimdir,sra,interleavedir)
+			#run_trimmomatic_TruSeq(trimdir,file1,file2,sra)
+			interleave_reads(trimdir,sra,interleavedir)
                 	#run_jellyfish(trimdir,sra)
 			make_orphans(trimdir)
 		else:
