@@ -75,8 +75,7 @@ def rename_files(diginormdir):
 		j="""
 for file in *.abundfilt
 do
-	extract-paired-reads.py ${file} && \\
-		rm ${file}
+	extract-paired-reads.py ${{file}}
 done
 """.format()
 		os.chdir(diginormdir)
@@ -114,12 +113,10 @@ def combine_orphaned(diginormdir):
 #		print "orphan reads already combined"
 #	else:
 		j="""
-gzip -9c {}orphans.fq.gz.keep.abundfilt > {}orphans.keep.abundfilt.fq.gz && \\
-	rm {}orphans.fq.gz.keep.abundfilt
-for file in {}*.se"
+gzip -9c {}orphans.fq.gz.keep.abundfilt > {}orphans.keep.abundfilt.fq.gz
+for file in {}*.se
 do
-	gzip -9c ${file} >> orphans.keep.abundfilt.fq.gz && \\
-		rm ${file}
+	gzip -9c ${{file}} >> orphans.keep.abundfilt.fq.gz
 done
 """.format(diginormdir,diginormdir,diginormdir,diginormdir)
 		os.chdir(diginormdir)
@@ -138,9 +135,9 @@ def rename_pe(diginormdir):
 	j="""
 for file in {}*trimmed.interleaved.fq.keep.abundfilt.pe
 do
-	newfile=${file%%.fq.keep.abundfilt.pe}.keep.abundfilt.fq
-	mv ${file} ${newfile}
-	gzip ${newfile}
+	newfile=${{file%%.fq.keep.abundfilt.pe}}.keep.abundfilt.fq
+	mv ${{file}} ${{newfile}}
+	gzip ${{newfile}}
 done
 """.format(diginormdir)
 	os.chdir(diginormdir)
@@ -168,11 +165,11 @@ def execute(basedir,url_data):
 			clusterfunc.check_dir(diginormdir)
 			trimdir=newdir+"trim/"
 			#run_streaming_diginorm(trimdir,SRA,diginormdir)
-			run_diginorm(diginormdir,interleavedir,trimdir)
+			#run_diginorm(diginormdir,interleavedir,trimdir)
 			#run_filter_abund(diginormdir)
 			#rename_files(diginormdir)
 			#combine_orphaned(diginormdir)
-			#rename_pe(diginormdir)	
+			rename_pe(diginormdir)	
 
 basedir="/mnt/mmetsp/"
 datafile="MMETSP_SRA_Run_Info_subset2.csv"

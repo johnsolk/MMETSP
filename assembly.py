@@ -69,7 +69,7 @@ def build_files(trinitydir,diginormfile,SRA):
 # takes diginormfile in,splits reads and put into newdir
 	buildfiles=trinitydir+SRA+".buildfiles.sh"
 	with open(buildfiles,"w") as buildfile:
-   		buildfile.write("python /home/ubuntu/khmer/scripts/split-paired-reads.py -d "+trinitydir+" "+diginormfile+"\n")
+   		buildfile.write("split-paired-reads.py -d "+trinitydir+" "+diginormfile+"\n")
 		buildfile.write("cat "+trinitydir+"*.1 > "+trinitydir+"left.fq"+"\n")
 		buildfile.write("cat "+trinitydir+"*.2 > "+trinitydir+"right.fq"+"\n")
 		# need to fix , orphans are now combined for whole dataset, this is incorrect
