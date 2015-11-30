@@ -168,7 +168,7 @@ def execute(basedir,url_data):
 			clusterfunc.check_dir(diginormdir)
 			trimdir=newdir+"trim/"
 			#run_streaming_diginorm(trimdir,SRA,diginormdir)
-			run_diginorm(diginormdir,interleavediri,trimdir)
+			run_diginorm(diginormdir,interleavedir,trimdir)
 			#run_filter_abund(diginormdir)
 			#rename_files(diginormdir)
 			#combine_orphaned(diginormdir)
