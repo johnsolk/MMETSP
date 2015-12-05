@@ -11,6 +11,7 @@ import glob
 # custom Lisa module
 import clusterfunc
 
+
 def get_data(thefile):
     count=0
     url_data={}
@@ -38,31 +39,20 @@ def get_data(thefile):
                 url_data[name_read_tuple] = [ftp]
         return url_data
 
-def salmon_index(salmondir,sra,trinity_fasta):
-	index=sra+"_index"
-	os.chdir(salmondir)
-	salmon_index="salmon index --index "+index+" --transcripts "+trinity_fasta+" --type quasi"
-	#print salmon_index	
-	#s=subprocess.Popen(salmon_index,shell=True)
-	#s.wait()
-	#print "Indexed."
-	os.chdir("/home/ubuntu/MMETSP/")
-	return index
-
-def quant_salmon(salmondir,index,sra,newdir):
-	os.chdir(salmondir)
-	file1=newdir+"trinity/left.fq"
-	file2=newdir+"trinity/right.fq"
-	if os.path.isfile(file1):
-		print "file exists:",file1
-	if os.path.isfile(file2):
-		print "file exists:",file2
-	salmon_string="salmon quant -i "+index+" --libType IU -1 "+file1+" -2 "+file2+" -o "+salmondir+sra+".quant"
-	print salmon_string
-        s=subprocess.Popen(salmon_string,shell=True)
-	s.wait()
+def dammit_string(basedir,dammitdir,SRA):
+	j="""
+dammit annotate cdna_nointrons_utrs.fa --user-databases pep.fa --busco-group eukaryota --n_threads 1
+""".format()
+	dammitfile=dammitdir+SRA+".dammit.sh"
+	os.chdir(dammitdir)
+	with open(dammitfile,"w") as dammitfilewrite:
+		dammitfilewrite.write(j)
 	
-def execute(url_data):
+	os.chdir(basedir)
+	#s=subprocess.Popen("sudo bash"+dammitfile)
+	#s.wait()
+	
+def execute(url_data,basedir):
 	for item in url_data.keys():
 		organism=item[0]
 		org_seq_dir=basedir+organism+"/"
@@ -70,15 +60,12 @@ def execute(url_data):
 		for url in url_list:
 			sra=basename(urlparse(url).path)
 			newdir=org_seq_dir+sra+"/"
-			trinitydir=newdir+"trinity/trinity_out/"
-			salmondir=newdir+"salmon/"
-			clusterfunc.check_dir(salmondir)
-			trinity_fasta=trinitydir+"Trinity.fasta"
-			index=salmon_index(salmondir,sra,trinity_fasta)
-			quant_salmon(salmondir,index,sra,newdir)
+			trinitydir=newdir+"trinity_out/"
+			dammitdir=newdir+"dammit_dir/"
+			clusterfunc.check_dir(dammitdir)
 
 basedir="/mnt/mmetsp/"
 datafile="MMETSP_SRA_Run_Info_subset2.csv"
 url_data=get_data(datafile)
 print url_data
-execute(url_data)
+execute(url_data,basedir)
