@@ -39,18 +39,18 @@ def get_data(thefile):
                 url_data[name_read_tuple] = [ftp]
         return url_data
 
-def dammit_string(basedir,dammitdir,SRA):
+def dammit_string(basedir,dammitdir,SRA,trinity_fasta):
 	j="""
-dammit annotate cdna_nointrons_utrs.fa --user-databases pep.fa --busco-group eukaryota --n_threads 1
-""".format()
+dammit annotate {} --busco-group eukaryota --database-dir /mnt/dammit_databases --n_threads 8
+""".format(trinity_fasta)
 	dammitfile=dammitdir+SRA+".dammit.sh"
 	os.chdir(dammitdir)
 	with open(dammitfile,"w") as dammitfilewrite:
 		dammitfilewrite.write(j)
-	
+	print "File written:",dammitfile
+	s=subprocess.Popen("sudo bash "+dammitfile,shell=True)
+	s.wait()
 	os.chdir(basedir)
-	#s=subprocess.Popen("sudo bash"+dammitfile)
-	#s.wait()
 	
 def execute(url_data,basedir):
 	for item in url_data.keys():
@@ -60,9 +60,14 @@ def execute(url_data,basedir):
 		for url in url_list:
 			sra=basename(urlparse(url).path)
 			newdir=org_seq_dir+sra+"/"
-			trinitydir=newdir+"trinity_out/"
+			trinitydir=newdir+"trinity/trinity_out/"
 			dammitdir=newdir+"dammit_dir/"
 			clusterfunc.check_dir(dammitdir)
+			trinity_fasta=trinitydir+"Trinity.fasta"
+			print trinity_fasta
+			if os.path.isfile(trinity_fasta):
+				print "File exists:",trinity_fasta
+				dammit_string(basedir,dammitdir,sra,trinity_fasta)
 
 basedir="/mnt/mmetsp/"
 datafile="MMETSP_SRA_Run_Info_subset2.csv"
