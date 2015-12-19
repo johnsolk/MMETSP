@@ -120,7 +120,7 @@ def sym_link(newdir):
 
 # this is the main function to execute
 
-def execute(basedir,url_data,fastqcdir,subsetdir,subsetfastqcdir):
+def execute(basedir,url_data):
     for item in url_data.keys():
         #Creates directory for each file to be downloaded
         #Directory will be located according to organism and read type (single or paired)
@@ -135,6 +135,8 @@ def execute(basedir,url_data,fastqcdir,subsetdir,subsetfastqcdir):
             print filename
             newdir=org_seq_dir+filename+"/"
             clusterfunc.check_dir(newdir)
+	    fastqcdir=newdir+"fastqc/"
+	    clusterfunc.check_dir(fastqcdir)
             #check to see if filename exists in newdir
             if filename in os.listdir(newdir):
                print "sra exists:",filename
@@ -142,8 +144,8 @@ def execute(basedir,url_data,fastqcdir,subsetdir,subsetfastqcdir):
                print "file will be downloaded:",filename
 	       download(url,newdir,filename)
             sra_extract(newdir,filename)
-            #fastqc(newdir,fastqcdir,filename)
-            subset_reads(newdir,subsetdir)
+            fastqc(newdir,fastqcdir,filename)
+            #subset_reads(newdir,subsetdir)
  	    #fastqc(subsetdir,subsetfastqcdir,filename)
 
 def fastqc(newdir,fastqcdir,filename):
@@ -164,14 +166,10 @@ def delete_files(newdir):
 			os.remove(newdir+i)
 			print "File removed:",newdir+i
 
-datafile="MMETSP_SRA_Run_Info_subset2.csv"
+datafile="MMETSP_SRA_Run_Info_subset_b.csv"
 basedir="/mnt/mmetsp/"
 clusterfunc.check_dir(basedir)
-subsetdir="/mnt/mmetsp/subset/"
-fastqcdir="/mnt/mmetsp/fastqc/"
-clusterfunc.check_dir(subsetdir)
-subsetfastqcdir="/mnt/mmetsp/subset/fastqc/"
 url_data=get_data(datafile)
 print url_data
-execute(basedir,url_data,fastqcdir,subsetdir,subsetfastqcdir)
+execute(basedir,url_data)
 
