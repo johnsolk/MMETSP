@@ -88,8 +88,8 @@ def fastqc_report(fastq_file_list,newdir,fastqcdir,filename):
     	fastqc_string="fastqc -o "+fastqcdir+" "+file_string
     	print fastqc_string
     	print "fastqc reports generated for: "+str(fastq_file_list)
-    	s=subprocess.Popen(fastqc_string,shell=True)
-    	s.wait()
+    	#s=subprocess.Popen(fastqc_string,shell=True)
+    	#s.wait()
 
 #5. For pipeline testing only:
 #   create subset of 1,000,000 reads for each file
