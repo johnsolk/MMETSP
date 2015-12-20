@@ -60,7 +60,7 @@ MINLEN:25 &> trim.{}.log
 """.format(sra,file1,file2,sra)
 	os.chdir(trimdir)	
 	with open(bash_filename,"w") as bash_file:
-		bash_fil.write(j)
+		bash_file.write(j)
     	print "file written:",bash_filename
     	print "Trimming with Trimmomatic now..."
 	s=subprocess.Popen("sudo bash "+bash_filename,shell=True)
@@ -159,7 +159,7 @@ def execute(url_data,datadir):
 			print file2
 			#fastqc_report(datadir,fastqcdir)
 			### need to fix so the following steps run themselves:
-			#run_trimmomatic_TruSeq(trimdir,file1,file2,sra)
+			run_trimmomatic_TruSeq(trimdir,file1,file2,sra)
 			interleave_reads(trimdir,sra,interleavedir)
                 	#run_jellyfish(trimdir,sra)
 			make_orphans(trimdir)
@@ -169,7 +169,7 @@ def execute(url_data,datadir):
     #fastqc_report(trimdir,fastqcdir)	
 
 
-datafile="/home/ubuntu/MMETSP/MMETSP_SRA_Run_Info_subset2.csv"
+datafile="/home/ubuntu/MMETSP/MMETSP_SRA_Run_Info_subset_b.csv"
 datadir="/mnt/mmetsp/"
 url_data=get_data(datafile)
 print url_data
