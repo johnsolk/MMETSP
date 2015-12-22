@@ -38,7 +38,7 @@ def get_data(thefile):
                 url_data[name_read_tuple] = [ftp]
         return url_data
 
-def execute(basedir,url_data,diginormdir):
+def execute(basedir,url_data):
 	trinity_scripts=[]
 	for item in url_data.keys():
         #Creates directory for each file to be downloaded
@@ -61,17 +61,16 @@ def execute(basedir,url_data,diginormdir):
 				print "file exists:",diginormfile
 			trinity_script=get_trinity_script(trinitydir,SRA)
 			trinity_scripts.append(trinity_script)
-			build_files(trinitydir,diginormfile,SRA)
+			#build_files(trinitydir,diginormfile,SRA)
 	run_trinity(trinity_scripts)			
-	return trinity_script
 
 def build_files(trinitydir,diginormfile,SRA):
 # takes diginormfile in,splits reads and put into newdir
 	buildfiles=trinitydir+SRA+".buildfiles.sh"
 	with open(buildfiles,"w") as buildfile:
    		buildfile.write("split-paired-reads.py -d "+trinitydir+" "+diginormfile+"\n")
-		buildfile.write("cat "+trinitydir+"*.1 > "+trinitydir+"left.fq"+"\n")
-		buildfile.write("cat "+trinitydir+"*.2 > "+trinitydir+"right.fq"+"\n")
+		buildfile.write("cat "+trinitydir+"*.1 > "+trinitydir+SRA+".left.fq"+"\n")
+		buildfile.write("cat "+trinitydir+"*.2 > "+trinitydir+SRA+".right.fq"+"\n")
 		# need to fix , orphans are now combined for whole dataset, this is incorrect
 		# should be separate orphans file for each sample 
 		#buildfile.write("gunzip -c orphans.keep.abundfilt.fq.gz >> left.fq")
@@ -87,7 +86,7 @@ set -e
 if [ -f {}trinity_out/Trinity.fasta ]; then exit 0 ; fi
 if [ -d {}trinity_out ]; then mv {}trinity_out_dir {}trinity_out_dir0 || true ; fi
 
-${{HOME}}/trinity*/Trinity --left {}left.fq \\
+/bin/trinity*/Trinity --left {}left.fq \\
 --right {}right.fq --output {}trinity_out --seqType fq --max_memory 14G	\\
 --CPU ${{THREADS:-2}}
 
@@ -140,9 +139,7 @@ def check_trinity_run(seqdir):
         print os.path.isfile(trinity_file)
 
 basedir="/mnt/mmetsp/"
-diginormdir="/mnt/mmetsp/diginorm/"
-trinity_dir="/mnt/mmetsp/trinity/"
-clusterfunc.check_dir(trinity_dir)
-datafile="MMETSP_SRA_Run_Info_subset2.csv"
+datafile="MMETSP_SRA_Run_Info_subset_b.csv"
 url_data=get_data(datafile)
-execute(basedir,url_data,diginormdir)
+print url_data
+execute(basedir,url_data)
