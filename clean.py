@@ -40,7 +40,7 @@ def get_data(thefile):
 
 def delete_file(filename):
 	os.remove(filename)
-	print "File removed:",newdir+i
+	print "File removed:",filename
 
 def execute(url_data):
 	for item in url_data.keys():
@@ -55,11 +55,32 @@ def execute(url_data):
             		newdir=org_seq_dir+sra+"/"
 			filename=newdir+sra
 			print filename
+			if os.path.isfile(filename+"_1.fastq"):
+				delete_file(filename+"_1.fastq")
+			if os.path.isfile(filename+"_2.fastq"):
+				delete_file(filename+"_2.fastq")	
 	    		if os.path.isfile(filename):
 	    			print "File exists:",filename 	
 				delete_file(filename)
-			
-
+			diginormdir=newdir+"diginorm/"
+			os.chdir(diginormdir)
+			diginorm_delete_files=["norm.C20k20.ct","orphans.fq.gz.keep.abundfilt"]
+			for filename in glob.glob("*.keep"):
+				diginorm_delete_files.append(filename)
+			for filename in glob.glob("*.abundfilt"):
+				diginorm_delete_files.append(filename)
+			for filename in glob.glob("*.abundfilt.pe"):
+				diginorm_delete_files.append(filename)
+			for filename in glob.glob("*.abundfilt.se"):
+				diginorm_delete_files.append(filename)
+			print diginorm_delete_files
+			for filetodelete in diginorm_delete_files:
+				if os.path.isfile(filetodelete):
+					print "File in diginorm to delete exists:",filetodelete
+					delete_file(filetodelete)
+				else:
+					print "File in diginorm not found:",filetodelete
+			os.chdir("/home/ubuntu/MMETSP/")
 basedir="/mnt/mmetsp/"
 datafile="MMETSP_SRA_Run_Info_subset_b.csv"
 url_data=get_data(datafile)
