@@ -165,14 +165,14 @@ def execute(basedir,url_data):
 			clusterfunc.check_dir(diginormdir)
 			trimdir=newdir+"trim/"
 			#run_streaming_diginorm(trimdir,SRA,diginormdir)
-			#run_diginorm(diginormdir,interleavedir,trimdir)
-			#run_filter_abund(diginormdir)
+			run_diginorm(diginormdir,interleavedir,trimdir)
+			run_filter_abund(diginormdir)
 			rename_files(diginormdir)
 			combine_orphaned(diginormdir)
 			rename_pe(diginormdir)	
 
 basedir="/mnt/mmetsp/"
-datafile="MMETSP_SRA_Run_Info_subset_b.csv"
+datafile="MMETSP_SRA_Run_Info_subset_d.csv"
 url_data=get_data(datafile)
 execute(basedir,url_data)
 

@@ -86,11 +86,11 @@ set -e
 if [ -f {}trinity_out/Trinity.fasta ]; then exit 0 ; fi
 if [ -d {}trinity_out ]; then mv {}trinity_out_dir {}trinity_out_dir0 || true ; fi
 
-/bin/trinity*/Trinity --left {}left.fq \\
---right {}right.fq --output {}trinity_out --seqType fq --max_memory 14G	\\
+/bin/trinity*/Trinity --left {}{}.left.fq \\
+--right {}{}.right.fq --output {}trinity_out --seqType fq --max_memory 14G	\\
 --CPU ${{THREADS:-2}}
 
-""".format(trinitydir,trinitydir,trinitydir,trinitydir,trinitydir,trinitydir,trinitydir)
+""".format(trinitydir,trinitydir,trinitydir,trinitydir,trinitydir,SRA,trinitydir,SRA,trinitydir)
 	with open(trinityfiles,"w") as trinityfile:	
 		trinityfile.write(s)
 #string interpolation
@@ -139,7 +139,7 @@ def check_trinity_run(seqdir):
         print os.path.isfile(trinity_file)
 
 basedir="/mnt/mmetsp/"
-datafile="MMETSP_SRA_Run_Info_subset_b.csv"
+datafile="MMETSP_SRA_Run_Info_subset_d.csv"
 url_data=get_data(datafile)
 print url_data
 execute(basedir,url_data)
