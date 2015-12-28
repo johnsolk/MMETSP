@@ -169,7 +169,7 @@ def execute(url_data,datadir):
     #fastqc_report(trimdir,fastqcdir)	
 
 
-datafile="/home/ubuntu/MMETSP/MMETSP_SRA_Run_Info_subset_b.csv"
+datafile="/home/ubuntu/MMETSP/MMETSP_SRA_Run_Info_subset_d.csv"
 datadir="/mnt/mmetsp/"
 url_data=get_data(datafile)
 print url_data
