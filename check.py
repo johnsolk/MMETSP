@@ -54,8 +54,8 @@ def execute(url_data):
 			filename=newdir+sra
 			## check if trinity exists
 			trinitydir=newdir+"trinity/"
-			left=trinitydir+"left.fq"
-			right=trinitydir+"right.fq"
+			left=trinitydir+sra+".left.fq"
+			right=trinitydir+sra+".right.fq"
 			if os.stat(left).st_size == 0:
 				print "File is empty:",left
 				if sra not in empty_files:
@@ -80,7 +80,7 @@ def execute(url_data):
 
 
 basedir="/mnt/mmetsp/"
-datafile="MMETSP_SRA_Run_Info_subset_b.csv"
+datafile="MMETSP_SRA_Run_Info_subset_d.csv"
 url_data=get_data(datafile)
 print url_data
 execute(url_data)
