@@ -48,25 +48,29 @@ def run_trimmomatic_TruSeq(trimdir,file1,file2,sra):
     #if os.path.isfile(bash_filename):
 #	print "trim file already written",bash_filename
  #   else:
-	j="""#!/bin/bash
-java -Xmx10g -jar /bin/Trimmomatic-0.33/trimmomatic-0.33.jar PE \\
--baseout {}.Phred30.TruSeq.fq \\
+	j="""java -jar $TRIM/trimmomatic PE \\
+-threads 1 -baseout {}.Phred30.TruSeq.fq \\
 {} {} \\
-ILLUMINACLIP:/bin/Trimmomatic-0.33/adapters/combined.fa:2:40:15 \\
+ILLUMINACLIP:/mnt/home/ljcohen/trim/combined.fa:2:40:15 \\
 SLIDINGWINDOW:4:2 \\
 LEADING:2 \\
 TRAILING:2 \\
 MINLEN:25 &> trim.{}.log
 """.format(sra,file1,file2,sra)
-	os.chdir(trimdir)	
-	with open(bash_filename,"w") as bash_file:
-		bash_file.write(j)
-    	print "file written:",bash_filename
-    	print "Trimming with Trimmomatic now..."
-	s=subprocess.Popen("sudo bash "+bash_filename,shell=True)
-    	s.wait()
+	#os.chdir(trimdir)	
+	#with open(bash_filename,"w") as bash_file:
+	#	bash_file.write(j)
+	print "Trimming with Trimmomatic now..."
+	module_name_list=["Trimmomatic/0.33"]
+	filename=sra
+	process_string=[j]
+	process_name="trim"
+	basedir=trimdir
+    	clusterfunc.qsub_file(basedir,process_name,module_name_list,filename,process_string)
+	#s=subprocess.Popen("sudo bash "+bash_filename,shell=True)
+    	#s.wait()
     	print "Trimmomatic completed."
-    	os.chdir("/home/ubuntu/MMETSP/")
+    	#os.chdir("/home/ubuntu/MMETSP/")
 
 def make_orphans(trimdir):
     #if os.path.isfile(trimdir+"orphans.fq.gz"):
@@ -160,17 +164,17 @@ def execute(url_data,datadir):
 			#fastqc_report(datadir,fastqcdir)
 			### need to fix so the following steps run themselves:
 			run_trimmomatic_TruSeq(trimdir,file1,file2,sra)
-			interleave_reads(trimdir,sra,interleavedir)
+			#interleave_reads(trimdir,sra,interleavedir)
                 	#run_jellyfish(trimdir,sra)
-			make_orphans(trimdir)
+			#make_orphans(trimdir)
 		else:
 			print "Files do not exist:",file1,file2 	
     #run fastqc on all files
     #fastqc_report(trimdir,fastqcdir)	
 
 
-datafile="/home/ubuntu/MMETSP/MMETSP_SRA_Run_Info_subset_d.csv"
-datadir="/mnt/mmetsp/"
+datafile="MMETSP_SRA_Run_Info_subset_e.csv"
+datadir="/mnt/research/ged/lisa/mmetsp/"
 url_data=get_data(datafile)
 print url_data
 execute(url_data,datadir)

@@ -87,8 +87,11 @@ def fastqc_report(fastq_file_list,newdir,fastqcdir,filename):
     	#print file_string
     	fastqc_string="fastqc -o "+fastqcdir+" "+file_string
     	print fastqc_string
-    	print "fastqc reports generated for: "+str(fastq_file_list)
-    	s=subprocess.Popen(fastqc_string,shell=True)
+    	print "fastqc reports being generated for: "+str(fastq_file_list)
+	module_load="module load Java/1.8.0_31 GNU/5.2 FastQC/0.11.3"
+	r=subprocess.Popen(module_load,shell=True)
+    	r.wait()
+	s=subprocess.Popen(fastqc_string,shell=True)
     	s.wait()
 
 #5. For pipeline testing only:
@@ -166,8 +169,8 @@ def delete_files(newdir):
 			os.remove(newdir+i)
 			print "File removed:",newdir+i
 
-datafile="MMETSP_SRA_Run_Info_subset_d.csv"
-basedir="/mnt/mmetsp/"
+datafile="MMETSP_SRA_Run_Info_subset_e.csv"
+basedir="/mnt/research/ged/lisa/mmetsp/"
 clusterfunc.check_dir(basedir)
 url_data=get_data(datafile)
 print url_data

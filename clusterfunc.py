@@ -11,11 +11,11 @@ def check_dir(dirname):
         os.mkdir(dirname)
         print "Directory created:",dirname
 
-def get_sge_filename(basedir,process_name,filename):
-    sge_dir=basedir+"sge_files/"
-    check_dir(sge_dir)
-    sge_filename=sge_dir+process_name+"_"+filename+".sge"
-    return sge_dir,sge_filename
+def get_qsub_filename(basedir,process_name,filename):
+    qsub_dir=basedir+"qsub_files/"
+    check_dir(qsub_dir)
+    qsub_filename=qsub_dir+process_name+"_"+filename+".qsub"
+    return qsub_dir,qsub_filename
 
 def get_module_load_list(module_name_list):
     module_list=[]
@@ -24,29 +24,25 @@ def get_module_load_list(module_name_list):
         module_list.append(module_load)
     return module_list
 
-def qsub_sge_file(basedir,process_name,module_name_list,filename,process_string,threads):
+def qsub_file(basedir,process_name,module_name_list,filename,process_string):
     working_dir=os.getcwd()
-    sge_dir,sge_filename=get_sge_filename(basedir,process_name,filename)
-    os.chdir(sge_dir)
+    qsub_dir,qsub_filename=get_qsub_filename(basedir,process_name,filename)
+    os.chdir(qsub_dir)
     module_load=get_module_load_list(module_name_list)
-    with open(sge_filename,"w") as sge_file:
-         sge_file.write("#!/bin/bash\n")
-         sge_file.write("#$ -S /bin/bash\n")
-         sge_file.write("#$ -cwd\n")
-         sge_file.write("#$ -M lisa.cohen@nyumc.org\n")
-         sge_file.write("#$ -m ae\n")
-         # use this for bedtools (igv module):
-         if any('bedtools' in s for s in module_load):
-             sge_file.write('module unload gcc/4.4\n')
+    with open(qsub_filename,"w") as qsub:
+         qsub.write("#!/bin/bash\n")
+	 qsub.write("#PBS -l walltime=02:00:00,nodes=1,mem=8gb:ppn=2\n")
+	 qsub.write("#PBS -j oe\n")
+	 qsub.write("#PBS -A ged\n")
+         qsub.write("#PBS -M ljcohen@msu.edu\n")
+         qsub.write("#PBS -m ae\n")
          for module_string in module_load:
-             sge_file.write(module_string+"\n")
+             qsub.write(module_string+"\n")
              #print module_string
          for string in process_string:
-             sge_file.write(string+"\n")
+             qsub.write(string+"\n")
              print string
-    #qsub_string="qsub -q tcga.q -pe threaded "+threads+" "+sge_filename
-    qsub_string="qsub -pe threaded "+str(threads)+" "+sge_filename
-    #qsub_string="qsub -q highmem.q -pe threaded "+threads+" "+sge_filename
+    qsub_string='qsub '+qsub_filename
     print qsub_string
     s=subprocess.Popen(qsub_string,shell=True)
     s.wait()
