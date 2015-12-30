@@ -195,7 +195,85 @@ normalize-by-median.py -p -k 20 -C 20 -M 4e9 \\
 
 
 
+def run_filter_abund(diginormdir):
+	#if glob.glob(diginormdir+"*keep.abundfilt*"):
+	#	print "filter-abund.py already run"
+	#else:
+		j="""
+filter-abund.py -V -Z 18 {}norm.C20k20.ct {}*.keep
+""".format(diginormdir,diginormdir)
+		os.chdir(diginormdir)
+		with open("filter_abund.sh","w") as abundfile:
+			abundfile.write(j)
+		s=subprocess.Popen("sudo bash filter_abund.sh",shell=True)
+		s.wait()
+		os.chdir("/home/ubuntu/MMETSP/")
 
+
+def rename_files(diginormdir):
+	#if glob.glob(diginormdir+"*.abundfilt.pe"):
+	#	print "paired reads already extracted"
+	#else:
+		j="""
+for file in *.abundfilt
+do
+	extract-paired-reads.py ${{file}}
+done
+""".format()
+		os.chdir(diginormdir)
+		with open("rename.sh","w") as renamefile:
+			renamefile.write(j)
+		#s=subprocess.Popen("cat rename.sh",shell=True)
+		#s.wait()
+		s=subprocess.Popen("sudo bash rename.sh",shell=True)
+		s.wait()
+		os.chdir("/home/ubuntu/MMETSP/")
+
+
+
+def combine_orphaned(diginormdir):
+	#if glob.glob(diginormdir+"orphans.keep.abundfilt.fq.gz"):
+#		print "orphan reads already combined"
+#	else:
+		j="""
+gzip -9c {}orphans.fq.gz.keep.abundfilt > {}orphans.keep.abundfilt.fq.gz
+for file in {}*.se
+do
+	gzip -9c ${{file}} >> orphans.keep.abundfilt.fq.gz
+done
+""".format(diginormdir,diginormdir,diginormdir,diginormdir)
+		os.chdir(diginormdir)
+		print "combinding orphans now..."
+		with open("combine_orphaned.sh","w") as combinedfile:
+			combinedfile.write(j)
+		#s=subprocess.Popen("cat combine_orphaned.sh",shell=True)
+		#s.wait()
+		print "Combining *.se orphans now..."
+		s=subprocess.Popen("sudo bash combine_orphaned.sh",shell=True)
+		s.wait()
+		print "Orphans combined."
+		os.chdir("/home/ubuntu/MMETSP/")
+
+
+
+def rename_pe(diginormdir):
+	j="""
+for file in {}*trimmed.interleaved.fq.keep.abundfilt.pe
+do
+	newfile=${{file%%.fq.keep.abundfilt.pe}}.keep.abundfilt.fq
+	mv ${{file}} ${{newfile}}
+	gzip ${{newfile}}
+done
+""".format(diginormdir)
+	os.chdir(diginormdir)
+	with open("rename.sh","w") as renamefile:
+		renamefile.write(j)
+	#s=subprocess.Popen("cat rename.sh",shell=True)
+	#s.wait()
+	print "renaming pe files now..."
+	s=subprocess.Popen("sudo bash rename.sh",shell=True)	
+	s.wait()
+	os.chdir("/home/ubuntu/MMETSP/")	
 
 
 
@@ -228,19 +306,22 @@ def run_empty(empty_files,url_data):
 					file2=newdir+sra+"_2.fastq"
 					diginormdir=newdir+"diginorm/"
 					clusterfunc.check_dir(diginormdir)
-					if os.path.isfile(file1) and os.path.isfile(file2):
-						print file1
-						print file2
+					#if os.path.isfile(file1) and os.path.isfile(file2):
+					#	print file1
+					#	print file2
 						#fastqc_report(datadir,fastqcdir)
 						### need to fix so the following steps run themselves:
 						#run_trimmomatic_TruSeq(trimdir,file1,file2,sra)
 						#interleave_reads(trimdir,sra,interleavedir)
                 				#run_jellyfish(trimdir,sra)
 						#make_orphans(trimdir)
-						run_diginorm(diginormdir,interleavedir,trimdir)
-					else:
-						print "Files do not exist:",file1,file2 	
-
+					#else:
+					#	print "Files do not exist:",file1,file2 	
+					#run_diginorm(diginormdir,interleavedir,trimdir)
+                                        run_filter_abund(diginormdir)
+                                        rename_files(diginormdir)
+                                        combine_orphaned(diginormdir)
+                                        rename_pe(diginormdir)
 
 
 basedir="/mnt/mmetsp/"
@@ -248,4 +329,6 @@ datafile="MMETSP_SRA_Run_Info_subset_b.csv"
 url_data=get_data(datafile)
 print url_data
 empty_files,trinity_fail=execute(url_data)
+print empty_files
+print trinity_fail
 run_empty(empty_files,url_data)
