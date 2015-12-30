@@ -1,8 +1,0 @@
-#!/bin/bash
-
-# compile the code
-gcc hello.c -o hello
-
-# submit the job to the cluster
-qsub hello.qsub
-
