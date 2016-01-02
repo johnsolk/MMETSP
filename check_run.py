@@ -276,9 +276,60 @@ done
 	os.chdir("/home/ubuntu/MMETSP/")	
 
 
+def build_files(trinitydir,diginormfile,SRA):
+# takes diginormfile in,splits reads and put into newdir
+	buildfiles=trinitydir+SRA+".buildfiles.sh"
+	with open(buildfiles,"w") as buildfile:
+   		buildfile.write("split-paired-reads.py -d "+trinitydir+" "+diginormfile+"\n")
+		buildfile.write("cat "+trinitydir+"*.1 > "+trinitydir+SRA+".left.fq"+"\n")
+		buildfile.write("cat "+trinitydir+"*.2 > "+trinitydir+SRA+".right.fq"+"\n")
+		# need to fix , orphans are now combined for whole dataset, this is incorrect
+		# should be separate orphans file for each sample 
+		#buildfile.write("gunzip -c orphans.keep.abundfilt.fq.gz >> left.fq")
+	s=subprocess.Popen("sudo bash "+str(buildfiles),shell=True)
+	s.wait()
 
+def get_trinity_script(trinitydir,SRA):
+	trinityfiles=trinitydir+SRA+".trinityfile.sh"	
+	s="""#!/bin/bash
+set -x
+# stops execution if there is an error
+set -e
+if [ -f {}trinity_out/Trinity.fasta ]; then exit 0 ; fi
+if [ -d {}trinity_out ]; then mv {}trinity_out_dir {}trinity_out_dir0 || true ; fi
+/bin/trinity*/Trinity --left {}{}.left.fq \\
+--right {}{}.right.fq --output {}trinity_out --seqType fq --max_memory 14G	\\
+--CPU ${{THREADS:-2}}
+""".format(trinitydir,trinitydir,trinitydir,trinitydir,trinitydir,SRA,trinitydir,SRA,trinitydir)
+	with open(trinityfiles,"w") as trinityfile:	
+		trinityfile.write(s)
+#string interpolation
+#have .format specify dicionary
+	#test_string="cat "+trinityfiles
+	#s=subprocess.Popen(test_string,shell=True)
+	#s.wait()
+	return trinityfiles
+#make a new run.sh in ~/MMETSP/ to run all *.trinityfile.sh in serial
+
+def run_trinity(trinity_script_list):
+	# need to run serially
+	# in general, this is a bad idea
+	# under normal circumstances, would run in parallel, one process for each Trinity
+	# need to loop through and get name of all Trinity scripts
+ 	# make a script running all scripts
+	print trinity_script_list
+	runfile="/home/ubuntu/MMETSP/run.sh"
+	with open(runfile,"w") as run_file:
+		run_file.write("#!/bin/bash"+"\n") 
+		for script in trinity_script_list:
+			command="sudo bash "+script
+			run_file.write(command+"\n")
+	print "File written:",runfile
+	print "run with:"
+	print "sudo bash run.sh"	
 
 def run_empty(empty_files,url_data):
+	trinity_scripts=[]
         for SRA in empty_files:
                 print SRA
                 for item in url_data.keys():
@@ -306,6 +357,7 @@ def run_empty(empty_files,url_data):
 					file2=newdir+sra+"_2.fastq"
 					diginormdir=newdir+"diginorm/"
 					clusterfunc.check_dir(diginormdir)
+					diginormfile=diginormdir+SRA+".trimmed.interleaved.keep.abundfilt.fq.gz"
 					#if os.path.isfile(file1) and os.path.isfile(file2):
 					#	print file1
 					#	print file2
@@ -318,12 +370,18 @@ def run_empty(empty_files,url_data):
 					#else:
 					#	print "Files do not exist:",file1,file2 	
 					#run_diginorm(diginormdir,interleavedir,trimdir)
-                                        run_filter_abund(diginormdir)
-                                        rename_files(diginormdir)
-                                        combine_orphaned(diginormdir)
-                                        rename_pe(diginormdir)
-
-
+                                        #run_filter_abund(diginormdir)
+                                        #rename_files(diginormdir)
+                                        #combine_orphaned(diginormdir)
+                                        #rename_pe(diginormdir)
+					trinitydir=newdir+"trinity/"
+					clusterfunc.check_dir(trinitydir)
+					if os.path.isfile(diginormfile):
+				        	print "file exists:",diginormfile
+					trinity_script=get_trinity_script(trinitydir,SRA)
+					trinity_scripts.append(trinity_script)
+					build_files(trinitydir,diginormfile,SRA)
+		run_trinity(trinity_scripts)
 basedir="/mnt/mmetsp/"
 datafile="MMETSP_SRA_Run_Info_subset_b.csv"
 url_data=get_data(datafile)

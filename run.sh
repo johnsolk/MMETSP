@@ -1,21 +1,7 @@
 #!/bin/bash
-sudo bash /mnt/mmetsp/Polarella_glacialis/SRR1300519/trinity/SRR1300519.trinityfile.sh
-sudo bash /mnt/mmetsp/Heterocapsa_arctica/SRR1300520/trinity/SRR1300520.trinityfile.sh
-sudo bash /mnt/mmetsp/Vitrella_brassicaformis/SRR1300530/trinity/SRR1300530.trinityfile.sh
-sudo bash /mnt/mmetsp/Mantoniella/SRR1300534/trinity/SRR1300534.trinityfile.sh
-sudo bash /mnt/mmetsp/Entomoneis_sp./SRR1300522/trinity/SRR1300522.trinityfile.sh
-sudo bash /mnt/mmetsp/uncultured_eukaryote/SRR1300533/trinity/SRR1300533.trinityfile.sh
-sudo bash /mnt/mmetsp/Chaetoceros_dichaeta/SRR1300526/trinity/SRR1300526.trinityfile.sh
-sudo bash /mnt/mmetsp/Minutocellus_polymorphus/SRR1300535/trinity/SRR1300535.trinityfile.sh
-sudo bash /mnt/mmetsp/uncultured_eukaryote/SRR1300525/trinity/SRR1300525.trinityfile.sh
-sudo bash /mnt/mmetsp/Gonyaulax_spinifera/SRR1300518/trinity/SRR1300518.trinityfile.sh
-sudo bash /mnt/mmetsp/Attheya_septentrionalis/SRR1300527/trinity/SRR1300527.trinityfile.sh
-sudo bash /mnt/mmetsp/Phaeocystis_antarctica/SRR1300523/trinity/SRR1300523.trinityfile.sh
-sudo bash /mnt/mmetsp/Pyramimonas_sp./SRR1300524/trinity/SRR1300524.trinityfile.sh
-sudo bash /mnt/mmetsp/Madagascaria_erythrocladioides/SRR1300528/trinity/SRR1300528.trinityfile.sh
-sudo bash /mnt/mmetsp/Synchroma_pusillum/SRR1300531/trinity/SRR1300531.trinityfile.sh
-sudo bash /mnt/mmetsp/Craspedostauros_australis/SRR1300521/trinity/SRR1300521.trinityfile.sh
-sudo bash /mnt/mmetsp/Pterosperma/SRR1300516/trinity/SRR1300516.trinityfile.sh
-sudo bash /mnt/mmetsp/Pavlova_gyrans/SRR1300532/trinity/SRR1300532.trinityfile.sh
-sudo bash /mnt/mmetsp/Brandtodinium_nutricula/SRR1300537/trinity/SRR1300537.trinityfile.sh
-sudo bash /mnt/mmetsp/uncultured_eukaryote/SRR1300529/trinity/SRR1300529.trinityfile.sh
+sudo bash /mnt/mmetsp/Thalassiosira_weissflogii/SRR1300481/trinity/SRR1300481.trinityfile.sh
+sudo bash /mnt/mmetsp/Thalassiosira_weissflogii/SRR1300488/trinity/SRR1300488.trinityfile.sh
+sudo bash /mnt/mmetsp/Thalassiosira_weissflogii/SRR1300476/trinity/SRR1300476.trinityfile.sh
+sudo bash /mnt/mmetsp/Thalassiosira_weissflogii/SRR1300479/trinity/SRR1300479.trinityfile.sh
+sudo bash /mnt/mmetsp/Thalassiosira_weissflogii/SRR1300484/trinity/SRR1300484.trinityfile.sh
+sudo bash /mnt/mmetsp/Thalassiosira_weissflogii/SRR1300489/trinity/SRR1300489.trinityfile.sh
