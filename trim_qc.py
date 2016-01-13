@@ -49,7 +49,7 @@ def run_trimmomatic_TruSeq(trimdir,file1,file2,sra):
 #	print "trim file already written",bash_filename
  #   else:
 	j="""java -jar $TRIM/trimmomatic PE \\
--threads 1 -baseout {}.Phred30.TruSeq.fq \\
+-threads 1 -baseout {}.trim.fq \\
 {} {} \\
 ILLUMINACLIP:/mnt/home/ljcohen/trim/combined.fa:2:40:15 \\
 SLIDINGWINDOW:4:2 \\
@@ -57,9 +57,9 @@ LEADING:2 \\
 TRAILING:2 \\
 MINLEN:25 &> trim.{}.log
 """.format(sra,file1,file2,sra)
-	#os.chdir(trimdir)	
-	#with open(bash_filename,"w") as bash_file:
-	#	bash_file.write(j)
+	os.chdir(trimdir)	
+	with open(bash_filename,"w") as bash_file:
+		bash_file.write(j)
 	print "Trimming with Trimmomatic now..."
 	module_name_list=["Trimmomatic/0.33"]
 	filename=sra
@@ -163,7 +163,7 @@ def execute(url_data,datadir):
 			print file2
 			#fastqc_report(datadir,fastqcdir)
 			### need to fix so the following steps run themselves:
-			run_trimmomatic_TruSeq(trimdir,file1,file2,sra)
+		        run_trimmomatic_TruSeq(trimdir,file1,file2,sra)
 			#interleave_reads(trimdir,sra,interleavedir)
                 	#run_jellyfish(trimdir,sra)
 			#make_orphans(trimdir)
