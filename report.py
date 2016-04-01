@@ -84,6 +84,20 @@ transrate -o {}{} \\
 	#s=subprocess.Popen(transrate_command,shell=True)
 	#s.wait()
 
+
+def transrate_reverse(transrate_dir,sample,trinity_fasta,mmetsp_assemblies_dir,filename):
+	transrate_command="""
+transrate -o {}{} \\
+--assembly {} \\
+--reference {} \\
+--threads 4
+""".format(transrate_dir,sample,filename,trinity_fasta)
+	print "This is the reverse transrate command:"
+	print transrate_command
+	#s=subprocess.Popen(transrate_command,shell=True)
+	#s.wait()
+
+
 def parse_transrate_stats(transrate_assemblies):
         data=pd.DataFrame.from_csv(transrate_assemblies,header=0,sep=',')
         return data
@@ -94,7 +108,7 @@ def build_DataFrame(data_frame,transrate_data):
 	data_frame=pd.concat(frames)
 	return data_frame
 
-def execute(data_frame,url_data,basedir,extra_dir,mmetsp_assemblies):
+def execute(url_data,basedir,mmetsp_assemblies):
 	trinity_fail=[]
 	# construct an empty pandas dataframe to add on each assembly.csv to
 	for item in mmetsp_data.keys():
@@ -118,27 +132,24 @@ def execute(data_frame,url_data,basedir,extra_dir,mmetsp_assemblies):
 			trinitydir=newdir+"trinity/trinity_out/"
 			dammit_dir=trinitydir+"dammit_dir/"
 			transrate_dir="/mnt/comparisons/"
+			reverse_transrate_dir="/mnt/comparisons_reverse/"
 			clusterfunc.check_dir(transrate_dir)
 			clusterfunc.check_dir(dammit_dir)
+			clusterfunc.check_dir(reverse_transrate_dir)
 			#trinity_fasta=dammit_dir+"Trinity.fasta.dammit.fasta"
 			trinity_fasta=trinitydir+"Trinity.fasta"
 			if os.path.isfile(trinity_fasta):
 				print trinity_fasta
-				#transrate(dammit_dir)
-		        	#print transrate_out
 				fixed_trinity=fix_fasta(trinity_fasta,trinitydir,sample)
 				fixed_mmetsp_ref=fix_fasta_reference(reference_filename,mmetsp_assemblies)
-				transrate(transrate_dir,fixed_trinity,mmetsp_assemblies,fixed_mmetsp_ref)
-				#transrate_assemblies=transrate_out+"assemblies.csv"
-				#data=parse_transrate_stats(transrate_assemblies)
-				#data_frame=build_DataFrame(data_frame,data)
+				#transrate(transrate_dir,fixed_trinity,mmetsp_assemblies,fixed_mmetsp_ref)
+				transrate_reverse(reverse_transrate_dir,sample,fixed_trinity,mmetsp_assemblies_dir,fixed_mmetsp_ref)
 			else:
 				print "Trinity failed:",newdir
 				trinity_fail.append(newdir)	
 	print "This is the number of times Trinity failed:"
 	print len(trinity_fail)
 	print trinity_fail
-	return data_frame
 
 def get_extra_assemblies(extra_dir,data_frame):
 	listofassemblies=os.listdir(extra_dir)
@@ -186,7 +197,9 @@ def get_extra_assemblies_transrate(extradir,transrate_dir,mmetsp_assemblies):
                                                 print "MMETSP assembly found:",ref_filename
                                                 fixed_reference=fix_fasta_reference(ref_filename,mmetsp_assemblies)
 						reference_filename=fixed_reference
-			transrate(transrate_dir,sample,fixed_trinity,mmetsp_assemblies,reference_filename)
+			#transrate(transrate_dir,sample,fixed_trinity,mmetsp_assemblies,reference_filename)
+			transrate_reverse(transrate_dir,sample,fixed_trinity,mmetsp_assemblies_dir,reference_filename)			
+
 
 def get_contigs_data(data_frame,transrate_dir):
 	listofdirs=os.listdir(transrate_dir)
@@ -219,14 +232,6 @@ def get_assemblies_data(data_frame,transrate_dir):
         return data_frame
 
 
-def get_histogram(data_frame):
-	gc=pd.DataFrame.hist(data_frame,column="gc")
-	gc_skew=pd.DataFrame.hist(data_frame,column="gc_skew")
-	mean_orf_percent=pd.DataFrame.hist(data_frame,column="mean_orf_percent")
-	n_bases=pd.DataFrame.hist(data_frame,column="n_bases")
-	gc.plot.hist.savefig("/home/ubuntu/MMETSP/gc_hist.png")
-	
-
 def get_ref_transrate(transrate_dir):
 	listdirs=os.listdir(transrate_dir)
 	print listdirs
@@ -251,6 +256,7 @@ data_frame_assemblies=pd.DataFrame()
 data_frame_contigs=pd.DataFrame()
 mmetsp_assemblies_dir="/mnt/MMETSP_assemblies/"
 transrate_dir="/mnt/comparisons/"
+reverse_transrate_dir="/mnt/comparisons_reverse/"
 #for basedir in file_locations.keys():
 #	datafile=file_locations[basedir]
 #	mmetsp_data=get_data(datafile)
@@ -260,19 +266,47 @@ transrate_dir="/mnt/comparisons/"
 
 #get_extra_assemblies_transrate(extra_dir,transrate_dir,mmetsp_assemblies_dir)
 
-
+# check if transrate data exists:
 #get_ref_transrate(transrate_dir)
 
+# Grab the transrate data after it has completed:
+#data_frame_assemblies=get_assemblies_data(data_frame_assemblies,transrate_dir)
+#data_frame_contigs=get_contigs_data(data_frame_contigs,transrate_dir)
 
-data_frame_assemblies=get_assemblies_data(data_frame_assemblies,transrate_dir)
-data_frame_contigs=get_contigs_data(data_frame_contigs,transrate_dir)
+#print data_frame_contigs
 
-print data_frame_contigs
-data_frame_assemblies.to_csv("/home/ubuntu/MMETSP/MMETSP_transrate_data.csv")
-if os.path.isfile("/home/ubuntu/MMETSP/MMETSP_transrate_data.csv"):
-	print "File written: /home/ubuntu/MMETSP/MMETSP_transrate_data.csv"
-data_frame_contigs.to_csv("/home/ubuntu/MMETSP/MMETSP_transrate_reference_comparisons.csv")
-if os.path.isfile("/home/ubuntu/MMETSP/MMETSP_transrate_reference_comparisons.csv"):
-	print "File written: /home/ubuntu/MMETSP/MMETSP_transrate_reference_comparisons.csv"
+# print the transrate data to files:
+#data_frame_assemblies.to_csv("/home/ubuntu/MMETSP/MMETSP_transrate_data.csv")
+#if os.path.isfile("/home/ubuntu/MMETSP/MMETSP_transrate_data.csv"):
+#	print "File written: /home/ubuntu/MMETSP/MMETSP_transrate_data.csv"
+#data_frame_contigs.to_csv("/home/ubuntu/MMETSP/MMETSP_transrate_reference_comparisons.csv")
+#if os.path.isfile("/home/ubuntu/MMETSP/MMETSP_transrate_reference_comparisons.csv"):
+#	print "File written: /home/ubuntu/MMETSP/MMETSP_transrate_reference_comparisons.csv"
 
-#get_histogram(data_frame)
+
+for basedir in file_locations.keys():
+       datafile=file_locations[basedir]
+       mmetsp_data=get_data(datafile)
+       print mmetsp_data
+       execute(mmetsp_data,basedir,mmetsp_assemblies_dir)
+
+get_extra_assemblies_transrate(extra_dir,reverse_transrate_dir,mmetsp_assemblies_dir)
+
+
+# check if transrate data exists:
+get_ref_transrate(reverse_transrate_dir)
+
+# Grab the transrate data after it has completed:
+data_frame_assemblies=get_assemblies_data(data_frame_assemblies,reverse_transrate_dir)
+data_frame_contigs=get_contigs_data(data_frame_contigs,reverse_transrate_dir)
+
+#print data_frame_contigs
+
+# print the transrate data to files:
+data_frame_assemblies.to_csv("/home/ubuntu/MMETSP/MMETSP_reverse_transrate_data.csv")
+if os.path.isfile("/home/ubuntu/MMETSP/MMETSP_reverse_transrate_data.csv"):
+       print "File written: /home/ubuntu/MMETSP/MMETSP_reverse_transrate_data.csv"
+#data_frame_contigs.to_csv("/home/ubuntu/MMETSP/MMETSP_transrate_reference_comparisons.csv")
+#if os.path.isfile("/home/ubuntu/MMETSP/MMETSP_transrate_reference_comparisons.csv"):
+#       print "File written: /home/ubuntu/MMETSP/MMETSP_transrate_reference_comparisons.csv"
+
