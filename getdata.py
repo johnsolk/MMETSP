@@ -49,8 +49,8 @@ def download(url,newdir,newfile):
     #Note: only for Python 3
     #urllib.request.urlretrieve(url,filestring)
     #Use this for Python 2
-    s=subprocess.Popen(urlstring,shell=True)
-    s.wait()
+    #s=subprocess.Popen(urlstring,shell=True)
+    #s.wait()
     print "Finished downloading from NCBI."
 
 #3. Extract with fastq-dump (sratools)
@@ -67,8 +67,8 @@ def sra_extract(newdir,filename):
     	sra_string="fastq-dump -v -O "+newdir+" --split-3 "+newdir+filename
     	#print sra_string
 	print "extracting SRA..."
-    	s=subprocess.Popen(sra_string,shell=True,stdout=PIPE)
-    	s.wait()
+    	#s=subprocess.Popen(sra_string,shell=True,stdout=PIPE)
+    	#s.wait()
 	print "Finished SRA extraction."
 
 #4. Generate fastqc from all fastq in directory
@@ -88,8 +88,8 @@ def fastqc_report(fastq_file_list,newdir,fastqcdir,filename):
     	fastqc_string="fastqc -o "+fastqcdir+" "+file_string
     	print fastqc_string
     	print "fastqc reports generated for: "+str(fastq_file_list)
-    	s=subprocess.Popen(fastqc_string,shell=True)
-    	s.wait()
+    	#s=subprocess.Popen(fastqc_string,shell=True)
+    	#s.wait()
 
 #5. For pipeline testing only:
 #   create subset of 1,000,000 reads for each file
@@ -104,8 +104,8 @@ def subset_reads(newdir,subsetdir):
     		else:	
     			subset_string="head -4000000 "+newdir+i+" > "+newfilename
     			print subset_string
-    			s=subprocess.Popen(subset_string,shell=True,stdout=PIPE)
-    			s.wait()
+    			#s=subprocess.Popen(subset_string,shell=True,stdout=PIPE)
+    			#s.wait()
 			print "Finished subsetting."
    
 #6. Create symbolic link from data files to working directory
@@ -171,5 +171,5 @@ basedir="/mnt/mmetsp/"
 clusterfunc.check_dir(basedir)
 url_data=get_data(datafile)
 print url_data
-execute(basedir,url_data)
+#execute(basedir,url_data)
 
