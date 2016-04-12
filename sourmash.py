@@ -43,7 +43,8 @@ def get_data(thefile):
 
 def get_sourmash_command(trimdir):
 	sourmash_command="""
-/home/ubuntu/sourmash/sourmash compute {}*P.fq
+head -400000 | \\
+/home/ubuntu/sourmash/sourmash compute {}*_1.fastq
 """.format(trimdir)
 	return sourmash_command
 
@@ -58,15 +59,20 @@ def execute(basedir,url_data):
 			trimdir=newdir+"trim/"
 			sourmash_command=get_sourmash_command(trimdir)
 			print sourmash_command
-			s=subprocess.Popen(sourmash_command,shell=True)
-    			s.wait()
+			#s=subprocess.Popen(sourmash_command,shell=True)
+    			#s.wait()
 			#if os.path.isfile("*.sig"):
 			#	print os.path.listdir(trimdir)
 			#else:
 			#	print "sourmash not run yet"
 				
-datafile="MMETSP_SRA_Run_Info_subset_d.csv"
-basedir="/mnt2/mmetsp/"
-url_data=get_data(datafile)
-print url_data
-execute(basedir,url_data)
+
+datafiles=["MMETSP_SRA_Run_Info_subset2.csv",
+        "MMETSP_SRA_Run_Info_subset_d.csv","MMETSP_SRA_Run_Info_subset_a.csv"]
+
+basedir="/mnt/mmetsp/"
+for datafile in datafiles:
+        url_data=get_data(datafile)
+        print url_data
+        execute(basedir,url_data)
+

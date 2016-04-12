@@ -46,11 +46,13 @@ def get_data(thefile):
 def download(url,newdir,newfile):
     filestring=newdir+newfile
     urlstring="wget -O "+newdir+newfile+" "+url
+    print urlstring
     #Note: only for Python 3
     #urllib.request.urlretrieve(url,filestring)
     #Use this for Python 2
-    #s=subprocess.Popen(urlstring,shell=True)
-    #s.wait()
+    s=subprocess.Popen(urlstring,shell=True)
+    s.wait()
+    
     print "Finished downloading from NCBI."
 
 #3. Extract with fastq-dump (sratools)
@@ -67,8 +69,8 @@ def sra_extract(newdir,filename):
     	sra_string="fastq-dump -v -O "+newdir+" --split-3 "+newdir+filename
     	#print sra_string
 	print "extracting SRA..."
-    	#s=subprocess.Popen(sra_string,shell=True,stdout=PIPE)
-    	#s.wait()
+    	s=subprocess.Popen(sra_string,shell=True,stdout=PIPE)
+    	s.wait()
 	print "Finished SRA extraction."
 
 #4. Generate fastqc from all fastq in directory
@@ -144,7 +146,7 @@ def execute(basedir,url_data):
                print "file will be downloaded:",filename
 	       download(url,newdir,filename)
             sra_extract(newdir,filename)
-            fastqc(newdir,fastqcdir,filename)
+            #fastqc(newdir,fastqcdir,filename)
             #subset_reads(newdir,subsetdir)
  	    #fastqc(subsetdir,subsetfastqcdir,filename)
 
@@ -166,10 +168,13 @@ def delete_files(newdir):
 			os.remove(newdir+i)
 			print "File removed:",newdir+i
 
-datafile="MMETSP_SRA_Run_Info_subset_d.csv"
+datafiles=["MMETSP_SRA_Run_Info_subset2.csv",
+	"MMETSP_SRA_Run_Info_subset_d.csv","MMETSP_SRA_Run_Info_subset_a.csv",
+	"MMETSP_SRA_Run_Info_subset_b.csv"]
 basedir="/mnt/mmetsp/"
 clusterfunc.check_dir(basedir)
-url_data=get_data(datafile)
-print url_data
-#execute(basedir,url_data)
+for datafile in datafiles:
+	url_data=get_data(datafile)
+	print url_data
+	execute(basedir,url_data)
 
