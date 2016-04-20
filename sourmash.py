@@ -1,3 +1,4 @@
+import fnmatch
 import os
 import os.path
 from os.path import basename
@@ -41,12 +42,20 @@ def get_data(thefile):
         return url_data
 
 
-def get_sourmash_command(trimdir):
-	sourmash_command="""
-head -400000 | \\
-/home/ubuntu/sourmash/sourmash compute {}*_1.fastq
-""".format(trimdir)
-	return sourmash_command
+def get_sourmash_command(trinitydir):
+	for file in os.listdir(trinitydir):
+		if fnmatch.fnmatch(file,"*.left.fq"):
+			filename=trinitydir+file
+			if os.stat(filename).st_size!=0:
+				sourmash_command="""
+head -400000000 {} | \\
+/home/ubuntu/sourmash/sourmash compute --protein -k 18,21 - 
+""".format(filename)
+				print sourmash_command
+				#s=subprocess.Popen(sourmash_command,shell=True)
+                        	#s.wait()
+			else:
+				print "File is empty:",filename
 
 def execute(basedir,url_data):
 	for item in url_data.keys():
@@ -56,9 +65,8 @@ def execute(basedir,url_data):
         	for url in url_list:
             		filename=basename(urlparse(url).path)
             		newdir=org_seq_dir+filename+"/"
-			trimdir=newdir+"trim/"
-			sourmash_command=get_sourmash_command(trimdir)
-			print sourmash_command
+			trimdir=newdir+"trinity/"
+			get_sourmash_command(trimdir)
 			#s=subprocess.Popen(sourmash_command,shell=True)
     			#s.wait()
 			#if os.path.isfile("*.sig"):
@@ -67,12 +75,16 @@ def execute(basedir,url_data):
 			#	print "sourmash not run yet"
 				
 
-datafiles=["MMETSP_SRA_Run_Info_subset2.csv",
-        "MMETSP_SRA_Run_Info_subset_d.csv","MMETSP_SRA_Run_Info_subset_a.csv"]
 
 basedir="/mnt/mmetsp/"
-for datafile in datafiles:
-        url_data=get_data(datafile)
-        print url_data
-        execute(basedir,url_data)
+# The following dictionary is formatted as
+# basedir:datafile
+file_locations={"/mnt2/mmetsp/":"MMETSP_SRA_Run_Info_subset_d.csv",
+		"/mnt3/mmetsp/":"MMETSP_SRA_Run_Info_subset_a.csv",
+		"/mnt4/mmetsp/":"MMETSP_SRA_Run_Info_subset_b.csv"}
+for basedir in file_locations.keys():
+	datafile=file_locations[basedir]
+        mmetsp_data=get_data(datafile)
+        print mmetsp_data
+        execute(basedir,mmetsp_data)
 
