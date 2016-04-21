@@ -48,12 +48,12 @@ def get_sourmash_command(trinitydir):
 			filename=trinitydir+file
 			if os.stat(filename).st_size!=0:
 				sourmash_command="""
-head -400000000 {} | \\
-/home/ubuntu/sourmash/sourmash compute --protein -k 18,21 - 
-""".format(filename)
+head -400000000 {} > /mnt3/tmp/{}.head
+""".format(filename,file)
+# /home/ubuntu/sourmash/sourmash compute --protein -k 18,21 -
 				print sourmash_command
-				#s=subprocess.Popen(sourmash_command,shell=True)
-                        	#s.wait()
+				s=subprocess.Popen(sourmash_command,shell=True)
+                        	s.wait()
 			else:
 				print "File is empty:",filename
 
