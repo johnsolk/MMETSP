@@ -24,9 +24,10 @@ ssh -i mmetsp.pem ubuntu@ec2-52-91-248-80.compute-1.amazonaws.com
   
   apt-get -y install screen git curl gcc dos2unix fastqc default-jre \
   make python-pip g++ python-dev unzip build-essential libcurl4-openssl-dev \
-  zlib1g-dev pkg-config libncurses5-dev r-cran-gplots python-virtualenv sysstat
-  samtools bowtie trimmomatic blast2  r-base-core python-matplotlib python-pip fastqc
-  
+  zlib1g-dev pkg-config libncurses5-dev r-cran-gplots python-virtualenv sysstat \
+  samtools bowtie trimmomatic blast2 r-base-core python-matplotlib python-pip fastqc \
+  ruby hmmer unzip infernal ncbi-blast+ liburi-escape-xs-perl emboss liburi-perl \
+  libsm6 libxrender1 libfontconfig1 parallel transdecoder last-align
   pip install --upgrade pip
   
   curl -OL https://3230d63b5fc54e62148e-c95ac804525aac4b6dba79b00b39d1d3.ssl.cf1.rackcdn.com/Anaconda2-2.4.0-Linux-x86_64.sh
@@ -35,6 +36,7 @@ ssh -i mmetsp.pem ubuntu@ec2-52-91-248-80.compute-1.amazonaws.com
   conda update pandas numexpr
   sudo pip install -U setuptools
   sudo pip install dammit
+  sudo gem install crb-blast
   split-paired-reads.py
   
 
