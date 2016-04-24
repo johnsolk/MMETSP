@@ -90,8 +90,8 @@ def fastqc_report(fastq_file_list,newdir,fastqcdir,filename):
     	fastqc_string="fastqc -o "+fastqcdir+" "+file_string
     	print fastqc_string
     	print "fastqc reports generated for: "+str(fastq_file_list)
-    	#s=subprocess.Popen(fastqc_string,shell=True)
-    	#s.wait()
+    	s=subprocess.Popen(fastqc_string,shell=True)
+    	s.wait()
 
 #5. For pipeline testing only:
 #   create subset of 1,000,000 reads for each file
@@ -146,7 +146,7 @@ def execute(basedir,url_data):
                print "file will be downloaded:",filename
 	       download(url,newdir,filename)
             sra_extract(newdir,filename)
-            #fastqc(newdir,fastqcdir,filename)
+            fastqc(newdir,fastqcdir,filename)
             #subset_reads(newdir,subsetdir)
  	    #fastqc(subsetdir,subsetfastqcdir,filename)
 
@@ -168,13 +168,10 @@ def delete_files(newdir):
 			os.remove(newdir+i)
 			print "File removed:",newdir+i
 
-datafiles=["MMETSP_SRA_Run_Info_subset2.csv",
-	"MMETSP_SRA_Run_Info_subset_d.csv","MMETSP_SRA_Run_Info_subset_a.csv",
-	"MMETSP_SRA_Run_Info_subset_b.csv"]
+datafile="MMETSP_SRA_Run_Info_subset_c.csv"
 basedir="/mnt/mmetsp/"
 clusterfunc.check_dir(basedir)
-for datafile in datafiles:
-	url_data=get_data(datafile)
-	print url_data
-	execute(basedir,url_data)
+url_data=get_data(datafile)
+print url_data
+execute(basedir,url_data)
 
