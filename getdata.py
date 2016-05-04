@@ -171,7 +171,7 @@ def delete_files(newdir):
 datafiles=["MMETSP_SRA_Run_Info_subset2.csv",
 	"MMETSP_SRA_Run_Info_subset_d.csv","MMETSP_SRA_Run_Info_subset_a.csv",
 	"MMETSP_SRA_Run_Info_subset_b.csv"]
-basedir="/mnt/mmetsp/"
+basedir="/mnt_redo/mmetsp/"
 clusterfunc.check_dir(basedir)
 for datafile in datafiles:
 	url_data=get_data(datafile)
