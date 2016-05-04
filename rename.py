@@ -56,7 +56,7 @@ def fix_fasta(trinity_fasta,trinity_dir,sra):
 	#os.chdir(trinity_dir)
 	trinity_out=trinity_dir+sra+".Trinity.fixed.fa"
 	fix="""
-sed -e "s/^>/^>{}_/" {} | sed 's_|_-_g' > {}
+sed -e "s/^>/>{}_/" {} | sed 's_|_-_g' | sed "s/\s.*$//" > {}
 """.format(sra,trinity_fasta,trinity_out,trinity_out,trinity_out)
 	print fix
         s=subprocess.Popen(fix,shell=True)
@@ -79,7 +79,7 @@ def execute(url_data):
 
 
 basedir="/mnt/mmetsp/"
-datafile="/home/ubuntu/MMETSP/MMETSP_SRA_Run_Info_subset_e.csv"
+datafile="/home/ubuntu/MMETSP/MMETSP_SRA_Run_Info_subset_g.csv"
 url_data=get_data(datafile)
 print url_data
 execute(url_data)
