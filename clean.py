@@ -103,19 +103,19 @@ def execute(url_data):
 			# to delete extra files
 			##
 				
-			trinitydir=newdir+"trinity/"
-			os.chdir(trinitydir)
-			listoffiles=os.listdir(trinitydir)
-			filestodelete=[]
-			for filename in listoffiles:
-				if filename.endswith(".fq.gz.1"):
-					filestodelete.append(filename)
-				if filename.endswith(".fq.gz.2"):
-					filestodelete.append(filename)
-			print "These files will be deleted:",filestodelete
-			for i in filestodelete:
-				delete_file(i)
-			os.chdir("/home/ubuntu/MMETSP/")
+			#trinitydir=newdir+"trinity/"
+			#os.chdir(trinitydir)
+			#listoffiles=os.listdir(trinitydir)
+			#filestodelete=[]
+			#for filename in listoffiles:
+		#		if filename.endswith(".fq.gz.1"):
+		#			filestodelete.append(filename)
+		#		if filename.endswith(".fq.gz.2"):
+		#			filestodelete.append(filename)
+		#	print "These files will be deleted:",filestodelete
+		#	for i in filestodelete:
+		#		delete_file(i)
+		#	os.chdir("/home/ubuntu/MMETSP/")
 			##
 			# run this to delete interleaved reads
 			##
