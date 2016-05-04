@@ -79,7 +79,7 @@ def execute(url_data):
 
 
 basedir="/mnt/mmetsp/"
-datafile="/home/ubuntu/MMETSP/MMETSP_SRA_Run_Info_subset_g.csv"
+datafile="/home/ubuntu/MMETSP/MMETSP_SRA_Run_Info_subset_f.csv"
 url_data=get_data(datafile)
 print url_data
 execute(url_data)
