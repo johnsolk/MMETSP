@@ -41,18 +41,20 @@ def get_data(thefile):
 def salmon_index(salmondir,sra,trinity_fasta):
 	index=sra+"_index"
 	os.chdir(salmondir)
+	if os.path.isfile(trinity_fasta):
+		print "file exists:",trinity_fasta
 	salmon_index="salmon index --index "+index+" --transcripts "+trinity_fasta+" --type quasi"
-	#print salmon_index	
-	#s=subprocess.Popen(salmon_index,shell=True)
-	#s.wait()
-	#print "Indexed."
+	print salmon_index
+	s=subprocess.Popen(salmon_index,shell=True)
+	s.wait()
+	print "Indexed."
 	os.chdir("/home/ubuntu/MMETSP/")
 	return index
 
 def quant_salmon(salmondir,index,sra,newdir):
 	os.chdir(salmondir)
-	file1=newdir+"trinity/left.fq"
-	file2=newdir+"trinity/right.fq"
+	file1=newdir+"trinity/"+sra+".left.fq"
+	file2=newdir+"trinity/"+sra+".right.fq"
 	if os.path.isfile(file1):
 		print "file exists:",file1
 	if os.path.isfile(file2):
@@ -61,6 +63,24 @@ def quant_salmon(salmondir,index,sra,newdir):
 	print salmon_string
         s=subprocess.Popen(salmon_string,shell=True)
 	s.wait()
+
+def gather_counts(salmondir):
+        os.chdir(salmondir)
+        gather_counts="python /home/ubuntu/MMETSP/gather-counts.py"
+        print os.getcwd()
+        print gather_counts
+        #s=subprocess.Popen(gather_counts,shell=True)
+        #s.wait()
+        os.chdir("/home/ubuntu/MMETSP/")
+
+def sim_link(salmondir,sra):
+        counts_files_dir="/home/ubuntu/MMETSP/counts/"
+        clusterfunc.check_dir(counts_files_dir)
+        link_command="cp "+salmondir+sra+".quant.counts "+counts_files_dir
+        print link_command
+	s=subprocess.Popen(link_command,shell=True)
+        s.wait()
+
 	
 def execute(url_data):
 	for item in url_data.keys():
@@ -74,11 +94,13 @@ def execute(url_data):
 			salmondir=newdir+"salmon/"
 			clusterfunc.check_dir(salmondir)
 			trinity_fasta=trinitydir+"Trinity.fasta"
-			index=salmon_index(salmondir,sra,trinity_fasta)
-			quant_salmon(salmondir,index,sra,newdir)
+			#index=salmon_index(salmondir,sra,trinity_fasta)
+			#quant_salmon(salmondir,index,sra,newdir)
+			#gather_counts(salmondir)
+                        sim_link(salmondir,sra)
 
 basedir="/mnt/mmetsp/"
-datafile="MMETSP_SRA_Run_Info_subset2.csv"
+datafile="MMETSP_SRA_Run_Info_subset_c.csv"
 url_data=get_data(datafile)
 print url_data
 execute(url_data)
