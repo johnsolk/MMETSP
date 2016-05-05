@@ -38,31 +38,46 @@ def get_data(thefile):
                 url_data[name_read_tuple] = [ftp]
         return url_data
 
-def salmon_index(salmondir,sra,trinity_fasta):
-	index=sra+"_index"
-	os.chdir(salmondir)
+def transdecoder_LongOrf(transdecoderdir,trinity_fasta):
+	os.chdir(transdecoderdir)
 	if os.path.isfile(trinity_fasta):
 		print "file exists:",trinity_fasta
-	salmon_index="salmon index --index "+index+" --transcripts "+trinity_fasta+" --type quasi"
-	print salmon_index	
-	s=subprocess.Popen(salmon_index,shell=True)
-	s.wait()
-	print "Indexed."
+		trans_command="""
+/home/ubuntu/bin/TransDecoder-3.0.0/TransDecoder.LongOrfs -t {} -m 100
+""".format(trinity_fasta)
+		print trans_command	
+		s=subprocess.Popen(trans_command,shell=True)
+		s.wait()
+		print "Transdecoder finished."
 	os.chdir("/home/ubuntu/MMETSP/")
-	return index
 
-def quant_salmon(salmondir,index,sra,newdir):
-	os.chdir(salmondir)
-	file1=newdir+"trim/"+sra+".trim_1P.fq"
-	file2=newdir+"trim/"+sra+".trim_2P.fq"
-	if os.path.isfile(file1):
-		print "file exists:",file1
-	if os.path.isfile(file2):
-		print "file exists:",file2
-	salmon_string="salmon quant -i "+index+" --libType IU -1 "+file1+" -2 "+file2+" -o "+salmondir+sra+".quant"
-	print salmon_string
-        s=subprocess.Popen(salmon_string,shell=True)
-	s.wait()
+def transdecoder_Predict(transdecoderdir,trinity_fasta):
+	os.chdir(transdecoderdir)
+	trans_predict_command="""
+/home/ubuntu/bin/TransDecoder-3.0.0/TransDecoder.Predict -t {}
+""".format(trinity_fasta)
+	print trans_predict_command
+	os.chdir("/home/ubuntu/MMETSP/")
+	s=subprocess.Popen(trans_predict_command,shell=True)
+        s.wait()
+
+def get_longest_ORF(transdecoderdir,trinity_fasta):
+	os.chdir(transdecoderdir)
+	get_longest_orf_command="""
+/home/ubuntu/bin/TransDecoder-3.0.0/util/get_longest_ORF_per_transcript.pl {}.transdecoder.pep > {}.transdecoder.pep.longest.pep
+""".format(trinity_fasta,trinity_fasta)
+	print get_longest_orf_command
+	os.chdir("/home/ubuntu/MMETSP/")
+	s=subprocess.Popen(get_longest_orf_command,shell=True)
+        s.wait()
+
+def fix(transdecoderdir,trinity_fasta):
+	fix_command="""
+sed -e 's/>.*::SRR/>SRR/' {}.longest.pep | sed -e 's/::.*//' | sed 's/\*//g'
+""".format(trinity_fasta)
+	#print fix_command
+	s=subprocess.Popen(fix_command,shell=True)
+        s.wait()
 
 def gather_counts(salmondir):
         os.chdir(salmondir)
@@ -90,15 +105,15 @@ def execute(url_data):
 			sra=basename(urlparse(url).path)
 			newdir=org_seq_dir+sra+"/"
 			trinitydir=newdir+"trinity/trinity_out/"
-			salmondir=newdir+"salmon/"
-			clusterfunc.check_dir(salmondir)
+			transdecoderdir=newdir+"transdecoder/"
+			clusterfunc.check_dir(transdecoderdir)
 			trinity_fasta=trinitydir+sra+".Trinity.fixed.fa"
-			#index=salmon_index(salmondir,sra,trinity_fasta)
-			#quant_salmon(salmondir,index,sra,newdir)
+			transdecoder_LongOrf(transdecoderdir,trinity_fasta)
+			transdecoder_Predict(transdecoderdir,trinity_fasta)
+			get_longest_ORF(transdecoderdir,trinity_fasta)
+			fix(transdecoderdir,trinity_fasta)
 			#gather_counts(salmondir)
-                        sim_link(salmondir,sra)
-
-
+                        #sim_link(salmondir,sra)
 
 basedir="/mnt/mmetsp/"
 datafile="MMETSP_SRA_Run_Info_subset_e.csv"
