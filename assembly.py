@@ -59,23 +59,26 @@ def execute(basedir,url_data):
 			clusterfunc.check_dir(trinitydir)
 			if os.path.isfile(diginormfile):
 				print "file exists:",diginormfile
-			trinity_script=get_trinity_script(trinitydir,SRA)
-			trinity_scripts.append(trinity_script)
-			#build_files(trinitydir,diginormfile,SRA)
+			#build_files(trinitydir,diginormdir,diginormfile,SRA)
+	                trinity_script=get_trinity_script(trinitydir,SRA)
+                        trinity_scripts.append(trinity_script)
 	run_trinity(trinity_scripts)			
 
-def build_files(trinitydir,diginormfile,SRA):
+def build_files(trinitydir,diginormdir,diginormfile,sra):
 # takes diginormfile in,splits reads and put into newdir
-	buildfiles=trinitydir+SRA+".buildfiles.sh"
-	with open(buildfiles,"w") as buildfile:
-   		buildfile.write("split-paired-reads.py -d "+trinitydir+" "+diginormfile+"\n")
-		buildfile.write("cat "+trinitydir+"*.1 > "+trinitydir+SRA+".left.fq"+"\n")
-		buildfile.write("cat "+trinitydir+"*.2 > "+trinitydir+SRA+".right.fq"+"\n")
-		# need to fix , orphans are now combined for whole dataset, this is incorrect
-		# should be separate orphans file for each sample 
-		#buildfile.write("gunzip -c orphans.keep.abundfilt.fq.gz >> left.fq")
-	s=subprocess.Popen("sudo bash "+str(buildfiles),shell=True)
-	s.wait()
+	buildfiles=trinitydir+sra+".buildfiles.sh"
+	j="""
+split-paired-reads.py -d {} {}
+cat {}*.1 > {}{}.left.fq
+cat {}*.2 > {}{}.right.fq
+cat {}{}.orphans.keep.abundfilt.fq.gz >> {}{}.left.fq
+""".format(trinitydir,diginormfile,trinitydir,trinitydir,sra,trinitydir,trinitydir,sra,diginormdir,sra,trinitydir,sra)
+        with open(buildfiles,"w") as buildfile:
+                buildfile.write(j)
+        #s=subprocess.Popen("cat "+str(buildfiles),shell=True)
+        #s.wait()
+	#s=subprocess.Popen("sudo bash "+str(buildfiles),shell=True)
+	#s.wait()
 
 def get_trinity_script(trinitydir,SRA):
 	trinityfiles=trinitydir+SRA+".trinityfile.sh"	
@@ -86,7 +89,7 @@ set -e
 if [ -f {}trinity_out/Trinity.fasta ]; then exit 0 ; fi
 if [ -d {}trinity_out ]; then mv {}trinity_out_dir {}trinity_out_dir0 || true ; fi
 
-/bin/trinity*/Trinity --left {}{}.left.fq \\
+/home/ubuntu/bin/trinity*/Trinity --left {}{}.left.fq \\
 --right {}{}.right.fq --output {}trinity_out --seqType fq --max_memory 14G	\\
 --CPU ${{THREADS:-2}}
 
@@ -95,9 +98,9 @@ if [ -d {}trinity_out ]; then mv {}trinity_out_dir {}trinity_out_dir0 || true ; 
 		trinityfile.write(s)
 #string interpolation
 #have .format specify dicionary
-	#test_string="cat "+trinityfiles
-	#s=subprocess.Popen(test_string,shell=True)
-	#s.wait()
+	test_string="cat "+trinityfiles
+	s=subprocess.Popen(test_string,shell=True)
+	s.wait()
 	return trinityfiles
 #make a new run.sh in ~/MMETSP/ to run all *.trinityfile.sh in serial
 
@@ -139,7 +142,7 @@ def check_trinity_run(seqdir):
         print os.path.isfile(trinity_file)
 
 basedir="/mnt/mmetsp/"
-datafile="MMETSP_SRA_Run_Info_subset_d.csv"
+datafile="MMETSP_SRA_Run_Info_subset_g.csv"
 url_data=get_data(datafile)
 print url_data
 execute(basedir,url_data)

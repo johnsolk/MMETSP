@@ -49,16 +49,17 @@ def run_trimmomatic_TruSeq(trimdir,file1,file2,sra):
 #	print "trim file already written",bash_filename
  #   else:
 	j="""#!/bin/bash
-java -Xmx10g -jar /bin/Trimmomatic-0.33/trimmomatic-0.33.jar PE \\
--baseout {}.Phred30.TruSeq.fq \\
+java -Xmx10g -jar /home/ubuntu/bin/Trimmomatic-0.33/trimmomatic-0.33.jar PE \\
+-baseout {}.trim.fq \\
 {} {} \\
-ILLUMINACLIP:/bin/Trimmomatic-0.33/adapters/combined.fa:2:40:15 \\
+ILLUMINACLIP:/home/ubuntu/bin/Trimmomatic-0.33/adapters/combined.fa:2:40:15 \\
 SLIDINGWINDOW:4:2 \\
 LEADING:2 \\
 TRAILING:2 \\
 MINLEN:25 &> trim.{}.log
 """.format(sra,file1,file2,sra)
 	os.chdir(trimdir)	
+	print j
 	with open(bash_filename,"w") as bash_file:
 		bash_file.write(j)
     	print "file written:",bash_filename
@@ -68,7 +69,7 @@ MINLEN:25 &> trim.{}.log
     	print "Trimmomatic completed."
     	os.chdir("/home/ubuntu/MMETSP/")
 
-def make_orphans(trimdir):
+def make_orphans(trimdir,sra):
     #if os.path.isfile(trimdir+"orphans.fq.gz"):
 #	print "orphans file exists:",trimdir+"orphans.fq.gz"
  #   else:
@@ -82,8 +83,7 @@ def make_orphans(trimdir):
     	# does it matter what order the orphans are added?
 	# it seems that 2P is always empty, is that normal?
 	orphanlist=" ".join(orphanreads)
-    	print orphanlist
-    	orphan_string="gzip -9c "+orphanlist+" > "+trimdir+"orphans.fq.gz"
+    	orphan_string="gzip -9c "+orphanlist+" > "+trimdir+sra+".orphans.fq.gz"
     	print orphan_string
     	s=subprocess.Popen(orphan_string,shell=True)
     	s.wait()
@@ -118,26 +118,12 @@ def interleave_reads(trimdir,sra,interleavedir):
     #if os.path.isfile(interleavefile):
 #	print "already interleaved"
  #   else:
-    	interleave_string="interleave-reads.py "+trimdir+sra+".Phred30.TruSeq_1P.fq "+trimdir+sra+".Phred30.TruSeq_2P.fq > "+interleavefile
+    	interleave_string="interleave-reads.py "+trimdir+sra+".trim_1P.fq "+trimdir+sra+".trim_2P.fq > "+interleavefile
     	print interleave_string
 	print "Interleaving now..."
     	s=subprocess.Popen(interleave_string,shell=True)    
     	s.wait()
 	print "Reads interleaved."
-
-def run_jellyfish(trimdir,sra):
-    jellyfish_string1_TS2="jellyfish count -m 25 -s 200M -t 8 -C -o "+trimdir+sra+".TS2.jf "+trimdir+sra+".TS2.interleaved.fq"
-    jellyfish_string2_TS2="jellyfish histo "+trimdir+sra+".TS2.jf -o "+trimdir+sra+".TS2.histo"	
-    jellyfish_string1_TS3="jellyfish count -m 25 -s 200M -t 8 -C -o "+trimdir+sra+".TS3.jf "+trimdir+sra+".TS3.interleaved.fq"
-    jellyfish_string2_TS3="jellyfish histo "+trimdir+sra+".TS3.jf -o "+trimdir+sra+".TS3.histo"
-    #s1=subprocess.Popen(jellyfish_string1_TS2,shell=True)
-    #s1.wait()
-    #s2=subprocess.Popen(jellyfish_string2_TS2,shell=True)
-    #s2.wait()
-    #s3=subprocess.Popen(jellyfish_string1_TS3,shell=True)
-    #s3.wait()
-    #s4=subprocess.Popen(jellyfish_string2_TS3,shell=True)
-    #s4.wait() 
 
 def execute(url_data,datadir):
     for item in url_data.keys():
@@ -155,21 +141,18 @@ def execute(url_data,datadir):
 		file1=newdir+sra+"_1.fastq"
 		file2=newdir+sra+"_2.fastq"
 		if os.path.isfile(file1) and os.path.isfile(file2):
-			print file1
-			print file2
 			#fastqc_report(datadir,fastqcdir)
 			### need to fix so the following steps run themselves:
 			run_trimmomatic_TruSeq(trimdir,file1,file2,sra)
-			interleave_reads(trimdir,sra,interleavedir)
-                	#run_jellyfish(trimdir,sra)
-			make_orphans(trimdir)
+			#interleave_reads(trimdir,sra,interleavedir)
+			#make_orphans(trimdir,sra)
 		else:
 			print "Files do not exist:",file1,file2 	
     #run fastqc on all files
     #fastqc_report(trimdir,fastqcdir)	
 
 
-datafile="/home/ubuntu/MMETSP/MMETSP_SRA_Run_Info_subset_d.csv"
+datafile="/home/ubuntu/MMETSP/MMETSP_SRA_Run_Info_subset_g.csv"
 datadir="/mnt/mmetsp/"
 url_data=get_data(datafile)
 print url_data
