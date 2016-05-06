@@ -57,14 +57,17 @@ def salmon_index(salmondir,sra,trinity_fasta):
 
 def quant_salmon(salmondir,index,sra,newdir):
 	os.chdir(salmondir)
-	file1=newdir+"trinity/left.fq"
-	file2=newdir+"trinity/right.fq"
+	file1=newdir+"trim/"+sra+".Phred30.TruSeq_1P.fq"
+	file2=newdir+"trim/"+sra+".Phred30.TruSeq_2P.fq"
 	if os.path.isfile(file1):
 		print "file exists:",file1
+	else:
+		print "missing:",file1
 	if os.path.isfile(file2):
 		print "file exists:",file2
+	else:
+		print "missing:",file2
 	salmon_string="salmon quant -i "+index+" --libType IU -1 "+file1+" -2 "+file2+" -o "+salmondir+sra+".quant"
-	os.chdir("/home/ubuntu/MMETSP/")
         s=subprocess.Popen(salmon_string,shell=True)
 	s.wait()
 	os.chdir("/home/ubuntu/MMETSP/")
@@ -83,8 +86,10 @@ def gather_counts(salmondir):
 def sim_link(salmondir,sra):
 	counts_files_dir="/home/ubuntu/MMETSP/counts/"
 	clusterfunc.check_dir(counts_files_dir)
-	link_command="ln -fs "+salmondir+"*.counts "+counts_files_dir+sra+".counts" 
+	link_command="cp "+salmondir+sra+".quant.counts "+counts_files_dir+sra+".counts" 
 	print link_command
+	s=subprocess.Popen(link_command,shell=True)
+        s.wait()
 
 
 def execute(url_data):
