@@ -49,8 +49,8 @@ def run_trimmomatic_TruSeq(trimdir,file1,file2,sra):
 #	print "trim file already written",bash_filename
  #   else:
 	j="""#!/bin/bash
-java -Xmx10g -jar /bin/Trimmomatic-0.33/trimmomatic-0.33.jar PE \\
--baseout {}.Phred30.TruSeq.fq \\
+java -Xmx10g -jar /home/ubuntu/Trimmomatic-0.33/trimmomatic-0.33.jar PE \\
+-baseout {}.trim.fq \\
 {} {} \\
 ILLUMINACLIP:/bin/Trimmomatic-0.33/adapters/combined.fa:2:40:15 \\
 SLIDINGWINDOW:4:2 \\
@@ -125,20 +125,6 @@ def interleave_reads(trimdir,sra,interleavedir):
     	s.wait()
 	print "Reads interleaved."
 
-def run_jellyfish(trimdir,sra):
-    jellyfish_string1_TS2="jellyfish count -m 25 -s 200M -t 8 -C -o "+trimdir+sra+".TS2.jf "+trimdir+sra+".TS2.interleaved.fq"
-    jellyfish_string2_TS2="jellyfish histo "+trimdir+sra+".TS2.jf -o "+trimdir+sra+".TS2.histo"	
-    jellyfish_string1_TS3="jellyfish count -m 25 -s 200M -t 8 -C -o "+trimdir+sra+".TS3.jf "+trimdir+sra+".TS3.interleaved.fq"
-    jellyfish_string2_TS3="jellyfish histo "+trimdir+sra+".TS3.jf -o "+trimdir+sra+".TS3.histo"
-    #s1=subprocess.Popen(jellyfish_string1_TS2,shell=True)
-    #s1.wait()
-    #s2=subprocess.Popen(jellyfish_string2_TS2,shell=True)
-    #s2.wait()
-    #s3=subprocess.Popen(jellyfish_string1_TS3,shell=True)
-    #s3.wait()
-    #s4=subprocess.Popen(jellyfish_string2_TS3,shell=True)
-    #s4.wait() 
-
 def execute(url_data,datadir):
     for item in url_data.keys():
 	organism=item[0]
@@ -148,10 +134,10 @@ def execute(url_data,datadir):
 		sra=basename(urlparse(url).path)
 		newdir=org_seq_dir+sra+"/"
 		trimdir=newdir+"trim/"
-		interleavedir=newdir+"interleave/"
+		#interleavedir=newdir+"interleave/"
 		clusterfunc.check_dir(trimdir)
-		interleavedir=newdir+"interleave/"
-		clusterfunc.check_dir(interleavedir)
+		#interleavedir=newdir+"interleave/"
+		#clusterfunc.check_dir(interleavedir)
 		file1=newdir+sra+"_1.fastq"
 		file2=newdir+sra+"_2.fastq"
 		if os.path.isfile(file1) and os.path.isfile(file2):
@@ -160,21 +146,23 @@ def execute(url_data,datadir):
 			#fastqc_report(datadir,fastqcdir)
 			### need to fix so the following steps run themselves:
 			run_trimmomatic_TruSeq(trimdir,file1,file2,sra)
-			interleave_reads(trimdir,sra,interleavedir)
+			#interleave_reads(trimdir,sra,interleavedir)
                 	#run_jellyfish(trimdir,sra)
-			make_orphans(trimdir)
+			#make_orphans(trimdir)
 		else:
 			print "Files do not exist:",file1,file2 	
     #run fastqc on all files
     #fastqc_report(trimdir,fastqcdir)	
 
 
-datafile="/home/ubuntu/MMETSP/MMETSP_SRA_Run_Info_subset_d.csv"
-datadir="/mnt/mmetsp/"
-url_data=get_data(datafile)
-print url_data
-execute(url_data,datadir)
-#fastqc_report(fastqcdir)
-
+datafiles=["MMETSP_SRA_Run_Info_subset2.csv",
+        "MMETSP_SRA_Run_Info_subset_d.csv","MMETSP_SRA_Run_Info_subset_a.csv",
+        "MMETSP_SRA_Run_Info_subset_b.csv"]
+basedir="/mnt_redo/mmetsp/"
+clusterfunc.check_dir(basedir)
+for datafile in datafiles:
+        url_data=get_data(datafile)
+        print url_data
+        execute(url_data,basedir)
 
 
