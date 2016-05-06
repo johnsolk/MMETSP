@@ -48,6 +48,8 @@ filter-abund.py -V -Z 18 {}norm.C20k20.ct {}*.keep
 		os.chdir(diginormdir)
 		with open("filter_abund.sh","w") as abundfile:
 			abundfile.write(j)
+		#s=subprocess.Popen("cat filter_abund.sh",shell=True)
+                #s.wait()
 		s=subprocess.Popen("sudo bash filter_abund.sh",shell=True)
 		s.wait()
 		os.chdir("/home/ubuntu/MMETSP/")
@@ -79,6 +81,7 @@ do
 done
 """.format()
 		os.chdir(diginormdir)
+		print "Workding directory:",diginormdir
 		with open("rename.sh","w") as renamefile:
 			renamefile.write(j)
 		#s=subprocess.Popen("cat rename.sh",shell=True)
@@ -87,7 +90,7 @@ done
 		s.wait()
 		os.chdir("/home/ubuntu/MMETSP/")
 
-def run_diginorm(diginormdir,interleavedir,trimdir):
+def run_diginorm(diginormdir,interleavedir,trimdir,sra):
 	# this will create and run a script from the working directory
 	# output *.keep files will be in the working directory
 	#if glob.glob(diginormdir+"*keep*"):
@@ -96,9 +99,9 @@ def run_diginorm(diginormdir,interleavedir,trimdir):
 		j="""
 normalize-by-median.py -p -k 20 -C 20 -M 4e9 \\
 --savegraph {}norm.C20k20.ct -u \\
-{}orphans.fq.gz \\
+{}{}.orphans.fq.gz \\
 {}*.fq
-""".format(diginormdir,trimdir,interleavedir)
+""".format(diginormdir,trimdir,sra,interleavedir)
 		os.chdir(diginormdir)
 		with open("diginorm.sh","w") as diginormfile:
 			diginormfile.write(j)
@@ -108,17 +111,17 @@ normalize-by-median.py -p -k 20 -C 20 -M 4e9 \\
 		#s.wait()
 		os.chdir("/home/ubuntu/MMETSP/")
 
-def combine_orphaned(diginormdir):
+def combine_orphaned(diginormdir,sra):
 	#if glob.glob(diginormdir+"orphans.keep.abundfilt.fq.gz"):
 #		print "orphan reads already combined"
 #	else:
 		j="""
-gzip -9c {}orphans.fq.gz.keep.abundfilt > {}orphans.keep.abundfilt.fq.gz
+cat {}{}.orphans.fq.gz.keep.abundfilt > {}{}.orphans.keep.abundfilt.fq
 for file in {}*.se
 do
-	gzip -9c ${{file}} >> orphans.keep.abundfilt.fq.gz
+	cat ${{file}} >> {}{}.orphans.keep.abundfilt.fq.gz
 done
-""".format(diginormdir,diginormdir,diginormdir,diginormdir)
+""".format(diginormdir,sra,diginormdir,sra,diginormdir,diginormdir,sra,diginormdir,sra)
 		os.chdir(diginormdir)
 		print "combinding orphans now..."
 		with open("combine_orphaned.sh","w") as combinedfile:
@@ -165,14 +168,14 @@ def execute(basedir,url_data):
 			clusterfunc.check_dir(diginormdir)
 			trimdir=newdir+"trim/"
 			#run_streaming_diginorm(trimdir,SRA,diginormdir)
-			run_diginorm(diginormdir,interleavedir,trimdir)
-			run_filter_abund(diginormdir)
-			rename_files(diginormdir)
-			combine_orphaned(diginormdir)
+			#run_diginorm(diginormdir,interleavedir,trimdir,SRA)
+			#run_filter_abund(diginormdir)
+			#rename_files(diginormdir)
+			combine_orphaned(diginormdir,SRA)
 			rename_pe(diginormdir)	
 
 basedir="/mnt/mmetsp/"
-datafile="MMETSP_SRA_Run_Info_subset_d.csv"
+datafile="MMETSP_SRA_Run_Info_subset_f.csv"
 url_data=get_data(datafile)
 execute(basedir,url_data)
 
