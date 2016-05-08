@@ -45,10 +45,10 @@ def fix_fasta(trinity_fasta,trinity_dir,sra):
 	fix="""
 sed -e "s/^>/>{}_/" {} | sed 's_|_-_g' | sed "s/\s.*$//" > {}
 """.format(sra,trinity_fasta,trinity_out,trinity_out,trinity_out)
-	print fix
-        s=subprocess.Popen(fix,shell=True)
-	s.wait()
-	os.chdir("/home/ubuntu/MMETSP/")
+	#print fix
+        #s=subprocess.Popen(fix,shell=True)
+	#s.wait()
+	#os.chdir("/home/ubuntu/MMETSP/")
 	return trinity_out
 
 def transdecoder_LongOrf(transdecoderdir,trinity_fasta):
@@ -61,8 +61,8 @@ def transdecoder_LongOrf(transdecoderdir,trinity_fasta):
 /home/ubuntu/TransDecoder-3.0.0/TransDecoder.LongOrfs -t {} -m 100
 """.format(trinity_fasta)
 		print trans_command	
-		#s=subprocess.Popen(trans_command,shell=True)
-		#s.wait()
+		s=subprocess.Popen(trans_command,shell=True)
+		s.wait()
 		print "Transdecoder finished."
 	os.chdir("/home/ubuntu/MMETSP/")
 
@@ -74,8 +74,8 @@ def transdecoder_Predict(transdecoderdir,trinity_fasta_prefix):
 /home/ubuntu/TransDecoder-3.0.0/TransDecoder.Predict -t {}
 """.format(trinity_fasta_prefix)
 	print trans_predict_command
-	#s=subprocess.Popen(trans_predict_command,shell=True)
-        #s.wait()
+	s=subprocess.Popen(trans_predict_command,shell=True)
+        s.wait()
 	os.chdir("/home/ubuntu/MMETSP/")
 
 def get_longest_ORF(transdecoderdir,trinity_fasta):
@@ -100,25 +100,13 @@ sed -e 's/>.*::SRR/>SRR/' {}{}.transdecoder.pep.longest.pep | sed -e 's/::.*//' 
         s.wait()
         os.chdir("/home/ubuntu/MMETSP/")
 
-
-
-def gather_counts(salmondir):
-        os.chdir(salmondir)
-        gather_counts="python /home/ubuntu/MMETSP/gather-counts.py"
-        print os.getcwd()
-        print gather_counts
-        #s=subprocess.Popen(gather_counts,shell=True)
-        #s.wait()
-        os.chdir("/home/ubuntu/MMETSP/")
-
-def copy_files(trinitydir,trinity_fasta,transdecoderdir):
-	trinity_file=trinitydir+"Trinity.fasta"
+def copy_files(trinity_file,trinity_fasta,transdecoderdir):
         copy_command="cp "+trinity_file+" "+transdecoderdir+trinity_fasta
         print copy_command
         #rm_command="rm -rf "+transdecoderdir+trinity_fasta+".transdecoder_dir"
 	#print rm_command
-	s=subprocess.Popen(copy_command,shell=True)
-        s.wait()
+	#s=subprocess.Popen(copy_command,shell=True)
+        #s.wait()
 
 def execute(basedir,url_data):
 	for item in url_data.keys():
@@ -131,11 +119,13 @@ def execute(basedir,url_data):
 			trinitydir=newdir+"trinity/trinity_out/"
 			transdecoderdir=newdir+"transdecoder/"
 			clusterfunc.check_dir(transdecoderdir)
-			trinity_fasta=trinitydir+sra+".Trinity.fa"
-			trinity_fasta_prefix=sra+".Trinity.fa"
-			#copy_files(trinitydir,trinity_fasta_prefix,transdecoderdir)
-			#transdecoder_LongOrf(transdecoderdir,trinity_fasta_prefix)
-			#transdecoder_Predict(transdecoderdir,trinity_fasta_prefix)
+			trinity_in_fasta=trinitydir+"Trinity.fasta"
+			#trinity_fasta_prefix=sra+".Trinity.fa"
+			trinity_fasta_prefix=sra+".Trinity.fixed.fa"
+                        trinity_fasta=fix_fasta(trinity_in_fasta,trinitydir,sra)
+			#copy_files(trinity_fasta,trinity_fasta_prefix,transdecoderdir)
+			transdecoder_LongOrf(transdecoderdir,trinity_fasta_prefix)
+			transdecoder_Predict(transdecoderdir,trinity_fasta_prefix)
 			get_longest_ORF(transdecoderdir,trinity_fasta_prefix)
 			new_trinity_fasta="/mnt/mmetsp_trinity_finished/"
                         clusterfunc.check_dir(new_trinity_fasta)
