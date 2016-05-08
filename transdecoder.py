@@ -38,6 +38,19 @@ def get_data(thefile):
                 url_data[name_read_tuple] = [ftp]
         return url_data
 
+def fix_fasta(trinity_fasta,trinity_dir,sra):
+# insert SRR before 
+	#os.chdir(trinity_dir)
+	trinity_out=trinity_dir+sra+".Trinity.fixed.fa"
+	fix="""
+sed -e "s/^>/>{}_/" {} | sed 's_|_-_g' | sed "s/\s.*$//" > {}
+""".format(sra,trinity_fasta,trinity_out,trinity_out,trinity_out)
+	print fix
+        s=subprocess.Popen(fix,shell=True)
+	s.wait()
+	os.chdir("/home/ubuntu/MMETSP/")
+	return trinity_out
+
 def transdecoder_LongOrf(transdecoderdir,trinity_fasta):
 	os.chdir(transdecoderdir)
 	print os.getcwd()
