@@ -51,8 +51,6 @@ def get_data(thefile):
 
 def fix_fasta(trinity_fasta,trinity_dir,sra):
 # insert SRR before 
-
-
 	#os.chdir(trinity_dir)
 	trinity_out=trinity_dir+sra+".Trinity.fixed.fa"
 	fix="""
