@@ -100,9 +100,11 @@ sed -e 's/>.*::SRR/>SRR/' {}{}.transdecoder.pep.longest.pep | sed -e 's/::.*//' 
         s.wait()
         os.chdir("/home/ubuntu/MMETSP/")
 
-def copy_files(trinity_file,trinity_fasta,transdecoderdir):
-        copy_command="cp "+trinity_file+" "+transdecoderdir+trinity_fasta
+def copy_files(trinity_file,trinity_fasta,transdecoderdir,sra):
+	copy_command="cp "+transdecoderdir+sra+".Trinity.fixed.fa.transdecoder.pep.longest.pep"+" "+"/home/ubuntu/MMETSP/mmetsp_trinity_finished/"
         print copy_command
+	#copy_command="cp "+trinity_file+" "+transdecoderdir+trinity_fasta
+        #print copy_command
         #rm_command="rm -rf "+transdecoderdir+trinity_fasta+".transdecoder_dir"
 	#print rm_command
 	#s=subprocess.Popen(copy_command,shell=True)
@@ -124,13 +126,13 @@ def execute(basedir,url_data):
 			trinity_fasta_prefix=sra+".Trinity.fixed.fa"
                         trinity_fasta=fix_fasta(trinity_in_fasta,trinitydir,sra)
 			#copy_files(trinity_fasta,trinity_fasta_prefix,transdecoderdir)
-			transdecoder_LongOrf(transdecoderdir,trinity_fasta_prefix)
-			transdecoder_Predict(transdecoderdir,trinity_fasta_prefix)
-			get_longest_ORF(transdecoderdir,trinity_fasta_prefix)
-			new_trinity_fasta="/mnt/mmetsp_trinity_finished/"
-                        clusterfunc.check_dir(new_trinity_fasta)
-                        fix(transdecoderdir,trinity_fasta_prefix,sra,new_trinity_fasta)
-                        #copy_files(trinity_fasta,transdecoderdir)
+			#transdecoder_LongOrf(transdecoderdir,trinity_fasta_prefix)
+			#transdecoder_Predict(transdecoderdir,trinity_fasta_prefix)
+			#get_longest_ORF(transdecoderdir,trinity_fasta_prefix)
+			#new_trinity_fasta="/mnt/mmetsp_trinity_finished/"
+                        #clusterfunc.check_dir(new_trinity_fasta)
+                        #fix(transdecoderdir,trinity_fasta_prefix,sra,new_trinity_fasta)
+                        copy_files(trinity_fasta_prefix,trinity_fasta,transdecoderdir,sra)
 
 
 
