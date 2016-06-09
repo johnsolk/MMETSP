@@ -8,6 +8,7 @@ from subprocess import Popen, PIPE
 import urllib
 import shutil
 import glob
+import string
 # custom Lisa module
 import clusterfunc
 
@@ -91,6 +92,24 @@ def sim_link(salmondir,sra):
 	s=subprocess.Popen(link_command,shell=True)
         s.wait()
 
+def fix_salmon_counts(salmondir,sra):
+	counts_files_dir="/home/ubuntu/MMETSP/counts/"
+	counts_file=salmondir+sra+".quant.counts"
+	new_counts_file=salmondir+sra+".counts"
+#open file
+#go line by line
+#if line starts with TR
+#replace all '|' with '-'
+#and add sra  + "_" to the beginning of each line
+	with open(counts_file) as thefile:
+		#with open (new_counts_file) as thenewfile:
+			for line in thefile:
+				if line.startswith("TR"):
+					print line
+					replaced = line.replace('\|','-')
+					print replaced				
+					#thenewfile.write(replaced+"\n")	
+
 
 def execute(url_data):
 	for item in url_data.keys():
@@ -103,12 +122,13 @@ def execute(url_data):
 			trinitydir=newdir+"trinity/trinity_out/"
 			salmondir=newdir+"salmon/"
 			clusterfunc.check_dir(salmondir)
-			trinity_fasta=trinitydir+"Trinity.fasta"
+			trinity_fasta=trinitydir+sra+".Trinity.fixed.fa"
 			#index=salmon_index(salmondir,sra,trinity_fasta)
 			#quant_salmon(salmondir,index,sra,newdir)
 			#gather_counts(salmondir)		
-			sim_link(salmondir,sra)			
-	
+			#sim_link(salmondir,sra)			
+			fix_salmon_counts(salmondir,sra)
+
 # The following dictionary is formatted as
 # basedir:datafile
 file_locations={"/mnt2/mmetsp/":"MMETSP_SRA_Run_Info_subset_d.csv",
