@@ -64,8 +64,8 @@ MINLEN:25 &> trim.{}.log
 		bash_file.write(j)
     	print "file written:",bash_filename
     	print "Trimming with Trimmomatic now..."
-	#s=subprocess.Popen("sudo bash "+bash_filename,shell=True)
-    	#s.wait()
+	s=subprocess.Popen("sudo bash "+bash_filename,shell=True)
+    	s.wait()
     	print "Trimmomatic completed."
     	os.chdir("/home/ubuntu/MMETSP/")
 
@@ -143,10 +143,10 @@ def execute(url_data,datadir):
 		if os.path.isfile(file1) and os.path.isfile(file2):
 			#fastqc_report(datadir,fastqcdir)
 			### need to fix so the following steps run themselves:
-			#run_trimmomatic_TruSeq(trimdir,file1,file2,sra)
-			interleave_reads(trimdir,sra,interleavedir)
+			run_trimmomatic_TruSeq(trimdir,file1,file2,sra)
+			#interleave_reads(trimdir,sra,interleavedir)
                 	#run_jellyfish(trimdir,sra)
-			make_orphans(trimdir,sra)
+			#make_orphans(trimdir,sra)
 		else:
 			print "Files do not exist:",file1,file2 	
     #run fastqc on all files

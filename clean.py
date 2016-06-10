@@ -91,16 +91,16 @@ def execute(url_data):
 			diginormdir=newdir+"diginorm/"
 			os.chdir(diginormdir)
 			print diginormdir
-			diginorm_delete_files=["*norm.C20k20.ct"]
+			diginorm_delete_files=["norm.C20k20.ct"]
 			#diginorm_delete_files=["*norm.C20k20.ct","*orphans*abundfilt*"]
 			for filename in glob.glob("*.keep"):
 				diginorm_delete_files.append(filename)
-			#for filename in glob.glob("*.abundfilt"):
-			#	diginorm_delete_files.append(filename)
-			#for filename in glob.glob("*.abundfilt.pe"):
-			#	diginorm_delete_files.append(filename)
-			#for filename in glob.glob("*.abundfilt.se"):
-			#	diginorm_delete_files.append(filename)
+			for filename in glob.glob("*.abundfilt"):
+				diginorm_delete_files.append(filename)
+			for filename in glob.glob("*.abundfilt.pe"):
+				diginorm_delete_files.append(filename)
+			for filename in glob.glob("*.abundfilt.se"):
+				diginorm_delete_files.append(filename)
 			print diginorm_delete_files
 			for filetodelete in diginorm_delete_files:
 				if os.path.isfile(filetodelete):
@@ -132,17 +132,17 @@ def execute(url_data):
 			# run this to delete interleaved reads
 			##
 
-			#interleavedir=newdir+"interleave/"
-			#os.chdir(interleavedir)
-			#listoffiles=os.listdir(interleavedir)
-			#filestodelete=[]
-			#for filename in listoffiles:
-			#	if filename.endswith(".interleaved.fq"):
-			#		filestodelete.append(filename)
-			#print "These files will be deleted:",filestodelete
-			#for i in filestodelete:
-			#	delete_file(i)
-			#os.chdir("/home/ubuntu/MMETSP/")
+			interleavedir=newdir+"interleave/"
+			os.chdir(interleavedir)
+			listoffiles=os.listdir(interleavedir)
+			filestodelete=[]
+			for filename in listoffiles:
+				if filename.endswith(".interleaved.fq"):
+					filestodelete.append(filename)
+			print "These files will be deleted:",filestodelete
+			for i in filestodelete:
+				delete_file(i)
+			os.chdir("/home/ubuntu/MMETSP/")
 basedir="/mnt/mmetsp/"
 datafile="MMETSP_SRA_Run_Info_subset_c.csv"
 url_data=get_data(datafile)
