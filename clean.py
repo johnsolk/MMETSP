@@ -56,16 +56,26 @@ def execute(basedir,url_data):
 			filename=newdir+sra
 			print filename
 			
+			
+			##
+			# run this to delete entire directory and contents:
+			##
+			if os.path.isdir(newdir):
+				shutil.rmtree(newdir)
+				print "Directory removed:",newdir
+
+
+
 			##
 			# run this to delete SRA file:
 			##
 
-			if os.path.isfile(filename):
-                                delete_file(filename)
-                        else:   
-                                print "Already deleted:",filename
+			#if os.path.isfile(filename):
+                        #        delete_file(filename)
+                        #else:   
+                        #        print "Already deleted:",filename
 
-
+			
 			##
 			# run this after trim_qc.py
 			##
@@ -81,79 +91,66 @@ def execute(basedir,url_data):
 			
 			##
 	
-			diginormdir=newdir+"diginorm/"
-			os.chdir(diginormdir)
-			diginorm_delete_files=["norm.C20k20.ct"]
+		#	diginormdir=newdir+"diginorm/"
+		#	os.chdir(diginormdir)
+		#	diginorm_delete_files=["norm.C20k20.ct"]
 			#diginorm_delete_files=["norm.C20k20.ct","orphans.fq.gz.keep.abundfilt"]
-			for filename in glob.glob("*.keep"):
-				diginorm_delete_files.append(filename)
-			for filename in glob.glob("*.abundfilt"):
-				diginorm_delete_files.append(filename)
-			for filename in glob.glob("*.abundfilt.pe"):
-				diginorm_delete_files.append(filename)
-			for filename in glob.glob("*.abundfilt.se"):
-				diginorm_delete_files.append(filename)
-			print diginorm_delete_files
+		#	for filename in glob.glob("*.keep"):
+		#		diginorm_delete_files.append(filename)
+		#	for filename in glob.glob("*.abundfilt"):
+		#		diginorm_delete_files.append(filename)
+		#	for filename in glob.glob("*.abundfilt.pe"):
+		#		diginorm_delete_files.append(filename)
+			#for filename in glob.glob("*.abundfilt.se"):
+			#	diginorm_delete_files.append(filename)
+			#print diginorm_delete_files
 			#for filetodelete in diginorm_delete_files:
 			#	if os.path.isfile(filetodelete):
 			#		print "File in diginorm to delete exists:",filetodelete
 			#		delete_file(filetodelete)
 			#	else:
 			#		print "File in diginorm not found:",filetodelete
-			os.chdir("/home/ubuntu/MMETSP/")
+			#os.chdir("/home/ubuntu/MMETSP/")
 
 			##
 			# run this after assembly.py
 			# to delete extra files
 			##
 				
-			trinitydir=newdir+"trinity/"
-			os.chdir(trinitydir)
-			listoffiles=os.listdir(trinitydir)
-			filestodelete=[]
-			for filename in listoffiles:
-				if filename.endswith(".fq.gz.1"):
-					filestodelete.append(filename)
-				if filename.endswith(".fq.gz.2"):
-					filestodelete.append(filename)
-			print "These files will be deleted:",filestodelete
+			#trinitydir=newdir+"trinity/"
+			#os.chdir(trinitydir)
+			#listoffiles=os.listdir(trinitydir)
+			#filestodelete=[]
+			#for filename in listoffiles:
+			#	if filename.endswith(".fq.gz.1"):
+			#		filestodelete.append(filename)
+			#	if filename.endswith(".fq.gz.2"):
+			#		filestodelete.append(filename)
+			#print "These files will be deleted:",filestodelete
 		#	for i in filestodelete:
 		#		delete_file(i)
-			os.chdir("/home/ubuntu/MMETSP/")
+			#os.chdir("/home/ubuntu/MMETSP/")
 			##
 			# run this to delete interleaved reads
 			##
 
-			interleavedir=newdir+"interleave/"
-			os.chdir(interleavedir)
-			listoffiles=os.listdir(interleavedir)
-			filestodelete=[]
-			for filename in listoffiles:
-				if filename.endswith(".interleaved.fq"):
-					filestodelete.append(filename)
-			print "These files will be deleted:",filestodelete
+			#interleavedir=newdir+"interleave/"
+			#os.chdir(interleavedir)
+			#listoffiles=os.listdir(interleavedir)
+			#filestodelete=[]
+			#for filename in listoffiles:
+		#		if filename.endswith(".interleaved.fq"):
+		#			filestodelete.append(filename)
+		#	print "These files will be deleted:",filestodelete
 			#for i in filestodelete:
 			#	delete_file(i)
-			os.chdir("/home/ubuntu/MMETSP/")
+		#	os.chdir("/home/ubuntu/MMETSP/")
+
+datafile="MMETSP_SRA_Run_Info_subset_jetstream1_delete.csv"
+#datafile="MMETSP_SRA_Run_Info_subset_jetstream1.csv"
+basedir="/vol1/mmetsp/"
+mmetsp_data=get_data(datafile)
+print mmetsp_data
+execute(basedir,mmetsp_data)
 
 
-
-file_locations={"/mnt2/mmetsp/":"MMETSP_SRA_Run_Info_subset_d.csv",
-                "/mnt3/mmetsp/":"MMETSP_SRA_Run_Info_subset_a.csv",
-                "/mnt4/mmetsp/":"MMETSP_SRA_Run_Info_subset_b.csv"}
-for basedir in file_locations.keys():
-        datafile=file_locations[basedir]
-        mmetsp_data=get_data(datafile)
-        print mmetsp_data
-        execute(basedir,mmetsp_data)
-
-
-#datafiles=["MMETSP_SRA_Run_Info_subset2.csv",
-#        "MMETSP_SRA_Run_Info_subset_d.csv","MMETSP_SRA_Run_Info_subset_a.csv",
-#        "MMETSP_SRA_Run_Info_subset_b.csv"]
-#basedir="/mnt_redo/mmetsp/"
-#clusterfunc.check_dir(basedir)
-#for datafile in datafiles:
-#        url_data=get_data(datafile)
-#        print url_data
-#        execute(basedir,url_data)

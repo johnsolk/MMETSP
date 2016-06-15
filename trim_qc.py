@@ -49,10 +49,10 @@ def run_trimmomatic_TruSeq(trimdir,file1,file2,sra):
 #	print "trim file already written",bash_filename
  #   else:
 	j="""#!/bin/bash
-java -Xmx10g -jar /home/ubuntu/Trimmomatic-0.33/trimmomatic-0.33.jar PE \\
+java -Xmx10g -jar /home/ljcohen/Trimmomatic-0.33/trimmomatic-0.33.jar PE \\
 -baseout {}.trim.fq \\
 {} {} \\
-ILLUMINACLIP:/bin/Trimmomatic-0.33/adapters/combined.fa:2:40:15 \\
+ILLUMINACLIP:/home/ljcohen/Trimmomatic-0.33/adapters/combined.fa:2:40:15 \\
 SLIDINGWINDOW:4:2 \\
 LEADING:2 \\
 TRAILING:2 \\
@@ -87,31 +87,6 @@ def make_orphans(trimdir):
     	print orphan_string
     	s=subprocess.Popen(orphan_string,shell=True)
     	s.wait()
-
-def fastqc_report(trimdir,fastqcdir):
-    # imports list of files in each directory
-    listoffiles=os.listdir(trimdir)
-    #print listoffiles
-    fastq_file_list=[]
-    #for filename in listoffiles:
-#	if filename.endswith(".TruSeq_1U.fq"):
-#		fastq_file_list.append(fastqcdir+filename)
-#	elif filename.endswith(".TruSeq_2U.fq"):
-#		fastq_file_list.append(fastqcdir+filename)
-    for o  in listoffiles:
-	if o.endswith(".fq"):
-		fastq_file_list.append(trimdir+o)
-    #print fastq_file_list
-    # creates command to generate fastqc reports from all files in list 
-    file_string=str(fastq_file_list)
-    #print fastq_file_list
-    file_string=" ".join(fastq_file_list)
-    #print file_string
-    fastqc_string="fastqc -o "+fastqcdir+" "+file_string
-    print fastqc_string
-    #print "fastqc reports generated for: "+str(fastq_file_list)
-    s=subprocess.Popen(fastqc_string,shell=True)
-    s.wait()
 
 def interleave_reads(trimdir,sra,interleavedir):
     	interleavefile=interleavedir+sra+".trimmed.interleaved.fq"
