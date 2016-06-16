@@ -44,11 +44,13 @@ def get_data(thefile):
 
 def run_trimmomatic_TruSeq(trimdir,file1,file2,sra):
   	bash_filename=trimdir+sra+".trim.TruSeq.sh"
-    # need a better check for whether this process has been run:
-    #if os.path.isfile(bash_filename):
-#	print "trim file already written",bash_filename
- #   else:
-	j="""#!/bin/bash
+    # check for whether this process has been run:
+    	listoffiles=os.listdir(trimdir)
+	matching = [s for s in listoffiles if "_1P.fq" in s]
+	if len(matching)!=0:
+		print "Already trimmed:",listoffiles
+	else:
+		j="""#!/bin/bash
 java -Xmx10g -jar /home/ljcohen/Trimmomatic-0.33/trimmomatic-0.33.jar PE \\
 -baseout {}.trim.fq \\
 {} {} \\
@@ -58,47 +60,47 @@ LEADING:2 \\
 TRAILING:2 \\
 MINLEN:25 &> trim.{}.log
 """.format(sra,file1,file2,sra)
-	os.chdir(trimdir)	
-	with open(bash_filename,"w") as bash_file:
-		bash_file.write(j)
-    	print "file written:",bash_filename
-    	print "Trimming with Trimmomatic now..."
-	s=subprocess.Popen("sudo bash "+bash_filename,shell=True)
-    	s.wait()
-    	print "Trimmomatic completed."
-    	os.chdir("/home/ubuntu/MMETSP/")
+		os.chdir(trimdir)
+		print j	
+		with open(bash_filename,"w") as bash_file:
+			bash_file.write(j)
+    		print "file written:",bash_filename
+    		print "Trimming with Trimmomatic now..."
+		s=subprocess.Popen("sudo bash "+bash_filename,shell=True)
+    		s.wait()
+    		print "Trimmomatic completed."
+    		os.chdir("/home/ljcohen/MMETSP/")
 
 def make_orphans(trimdir):
-    #if os.path.isfile(trimdir+"orphans.fq.gz"):
-#	print "orphans file exists:",trimdir+"orphans.fq.gz"
- #   else:
-	listoffiles=os.listdir(trimdir)
-    	orphanreads=[]
-    	for i in listoffiles:
-		if i.endswith("_1U.fq"):
-			orphanreads.append(trimdir+i)
-		elif i.endswith("_2U.fq"):
-			orphanreads.append(trimdir+i)
-    	# does it matter what order the orphans are added?
-	# it seems that 2P is always empty, is that normal?
-	orphanlist=" ".join(orphanreads)
-    	print orphanlist
-    	orphan_string="gzip -9c "+orphanlist+" > "+trimdir+"orphans.fq.gz"
-    	print orphan_string
-    	s=subprocess.Popen(orphan_string,shell=True)
-    	s.wait()
+    	if os.path.isfile(trimdir+"orphans.fq.gz"):
+		if os.stat(trimdir+"orphans.fq.gz").st_size != 0:
+			print "orphans file exists:",trimdir+"orphans.fq.gz"
+ 		else:
+			listoffiles=os.listdir(trimdir)
+    			orphanreads=[]
+    			for i in listoffiles:
+				if i.endswith("_1U.fq"):
+					orphanreads.append(trimdir+i)
+				elif i.endswith("_2U.fq"):
+					orphanreads.append(trimdir+i)
+			orphanlist=" ".join(orphanreads)
+    			print orphanlist
+    			orphan_string="gzip -9c "+orphanlist+" > "+trimdir+"orphans.fq.gz"
+    			print orphan_string
+    			s=subprocess.Popen(orphan_string,shell=True)
+    			s.wait()
 
 def interleave_reads(trimdir,sra,interleavedir):
     	interleavefile=interleavedir+sra+".trimmed.interleaved.fq"
-    #if os.path.isfile(interleavefile):
-#	print "already interleaved"
- #   else:
-    	interleave_string="interleave-reads.py "+trimdir+sra+".Phred30.TruSeq_1P.fq "+trimdir+sra+".Phred30.TruSeq_2P.fq > "+interleavefile
-    	print interleave_string
-	print "Interleaving now..."
-    	s=subprocess.Popen(interleave_string,shell=True)    
-    	s.wait()
-	print "Reads interleaved."
+    	if os.path.isfile(interleavefile):
+		print "already interleaved"
+    	else:
+    		interleave_string="interleave-reads.py "+trimdir+sra+".trim_1P.fq "+trimdir+sra+".trim_2P.fq > "+interleavefile
+    		print interleave_string
+		print "Interleaving now..."
+    		s=subprocess.Popen(interleave_string,shell=True)    
+    		s.wait()
+		print "Reads interleaved."
 
 def execute(url_data,datadir):
     for item in url_data.keys():
@@ -109,35 +111,26 @@ def execute(url_data,datadir):
 		sra=basename(urlparse(url).path)
 		newdir=org_seq_dir+sra+"/"
 		trimdir=newdir+"trim/"
-		#interleavedir=newdir+"interleave/"
+		interleavedir=newdir+"interleave/"
 		clusterfunc.check_dir(trimdir)
-		#interleavedir=newdir+"interleave/"
-		#clusterfunc.check_dir(interleavedir)
+		interleavedir=newdir+"interleave/"
+		clusterfunc.check_dir(interleavedir)
 		file1=newdir+sra+"_1.fastq"
 		file2=newdir+sra+"_2.fastq"
-		if os.path.isfile(file1) and os.path.isfile(file2):
-			print file1
-			print file2
-			#fastqc_report(datadir,fastqcdir)
-			### need to fix so the following steps run themselves:
-			run_trimmomatic_TruSeq(trimdir,file1,file2,sra)
-			#interleave_reads(trimdir,sra,interleavedir)
-                	#run_jellyfish(trimdir,sra)
-			#make_orphans(trimdir)
-		else:
-			print "Files do not exist:",file1,file2 	
-    #run fastqc on all files
-    #fastqc_report(trimdir,fastqcdir)	
+		#if os.path.isfile(file1) and os.path.isfile(file2):
+		#	print file1
+		#	print file2
+		#run_trimmomatic_TruSeq(trimdir,file1,file2,sra)
+		#interleave_reads(trimdir,sra,interleavedir)
+		make_orphans(trimdir)
+		#else:
+		#	print "Files do not exist:",file1,file2 	
 
-
-datafiles=["MMETSP_SRA_Run_Info_subset2.csv",
-        "MMETSP_SRA_Run_Info_subset_d.csv","MMETSP_SRA_Run_Info_subset_a.csv",
-        "MMETSP_SRA_Run_Info_subset_b.csv"]
-basedir="/mnt_redo/mmetsp/"
+datafile="MMETSP_SRA_Run_Info_subset_jetstream1.csv"
+basedir="/vol1/mmetsp/"
 clusterfunc.check_dir(basedir)
-for datafile in datafiles:
-        url_data=get_data(datafile)
-        print url_data
-        execute(url_data,basedir)
+url_data=get_data(datafile)
+print url_data
+execute(url_data,basedir)
 
 

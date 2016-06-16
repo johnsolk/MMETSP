@@ -60,9 +60,11 @@ def execute(basedir,url_data):
 			##
 			# run this to delete entire directory and contents:
 			##
-			if os.path.isdir(newdir):
-				shutil.rmtree(newdir)
-				print "Directory removed:",newdir
+			
+
+			#if os.path.isdir(newdir):
+			#	shutil.rmtree(newdir)
+			#	print "Directory removed:",newdir
 
 
 
@@ -70,20 +72,20 @@ def execute(basedir,url_data):
 			# run this to delete SRA file:
 			##
 
-			#if os.path.isfile(filename):
-                        #        delete_file(filename)
-                        #else:   
-                        #        print "Already deleted:",filename
+			if os.path.isfile(filename):
+                                delete_file(filename)
+                        else:   
+                                print "Already deleted:",filename
 
 			
 			##
 			# run this after trim_qc.py
 			##
 
-			#if os.path.isfile(filename+"_1.fastq"):
-			#	delete_file(filename+"_1.fastq")
-			#if os.path.isfile(filename+"_2.fastq"):
-			#	delete_file(filename+"_2.fastq")	
+			if os.path.isfile(filename+"_1.fastq"):
+				delete_file(filename+"_1.fastq")
+			if os.path.isfile(filename+"_2.fastq"):
+				delete_file(filename+"_2.fastq")	
 			
 
 			##
@@ -134,20 +136,20 @@ def execute(basedir,url_data):
 			# run this to delete interleaved reads
 			##
 
-			#interleavedir=newdir+"interleave/"
-			#os.chdir(interleavedir)
-			#listoffiles=os.listdir(interleavedir)
-			#filestodelete=[]
-			#for filename in listoffiles:
-		#		if filename.endswith(".interleaved.fq"):
-		#			filestodelete.append(filename)
-		#	print "These files will be deleted:",filestodelete
-			#for i in filestodelete:
-			#	delete_file(i)
-		#	os.chdir("/home/ubuntu/MMETSP/")
+			interleavedir=newdir+"interleave/"
+			os.chdir(interleavedir)
+			listoffiles=os.listdir(interleavedir)
+			filestodelete=[]
+			for filename in listoffiles:
+				if filename.endswith(".interleaved.fq"):
+					filestodelete.append(filename)
+			print "These files will be deleted:",filestodelete
+			for i in filestodelete:
+				delete_file(i)
+			os.chdir("/home/ljcohen/MMETSP/")
 
-datafile="MMETSP_SRA_Run_Info_subset_jetstream1_delete.csv"
-#datafile="MMETSP_SRA_Run_Info_subset_jetstream1.csv"
+#datafile="MMETSP_SRA_Run_Info_subset_jetstream1_delete.csv"
+datafile="MMETSP_SRA_Run_Info_subset_jetstream1.csv"
 basedir="/vol1/mmetsp/"
 mmetsp_data=get_data(datafile)
 print mmetsp_data

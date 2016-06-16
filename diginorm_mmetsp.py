@@ -57,7 +57,7 @@ def run_streaming_diginorm(trimdir,SRA,diginormdir):
 	diginormfile=diginormdir+SRA+".stream.diginorm.sh"
 	os.chdir(diginormdir)
 	stream_string="""#!/bin/bash
-(interleave-reads.py {}{}.Phred30.TruSeq_1P.fq {}{}.Phred30.TruSeq_2P.fq && zcat {}orphans.fq.gz)| \\
+(interleave-reads.py {}{}.trim_1P.fq {}{}.trim_2P.fq && zcat {}orphans.fq.gz)| \\
 trim-low-abund.py -V -k 20 -Z 18 -C 3 - -o - -M 4e9 --diginorm --diginorm-coverage=20 | \\
 (extract-paired-reads.py --gzip -p {}{}.paired.gz -s {}{}.single.gz)
 """.format(trimdir,SRA,trimdir,SRA,trimdir,diginormdir,SRA,diginormdir,SRA)
