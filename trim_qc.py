@@ -75,20 +75,22 @@ def make_orphans(trimdir):
     	if os.path.isfile(trimdir+"orphans.fq.gz"):
 		if os.stat(trimdir+"orphans.fq.gz").st_size != 0:
 			print "orphans file exists:",trimdir+"orphans.fq.gz"
- 		else:
-			listoffiles=os.listdir(trimdir)
-    			orphanreads=[]
-    			for i in listoffiles:
-				if i.endswith("_1U.fq"):
-					orphanreads.append(trimdir+i)
-				elif i.endswith("_2U.fq"):
-					orphanreads.append(trimdir+i)
-			orphanlist=" ".join(orphanreads)
-    			print orphanlist
-    			orphan_string="gzip -9c "+orphanlist+" > "+trimdir+"orphans.fq.gz"
-    			print orphan_string
-    			s=subprocess.Popen(orphan_string,shell=True)
-    			s.wait()
+		else:
+			print "orphans file exists but is empty:",trimdir+"orphans.fq.gz"
+ 	else:
+		listoffiles=os.listdir(trimdir)
+    		orphanreads=[]
+    		for i in listoffiles:
+			if i.endswith("_1U.fq"):
+				orphanreads.append(trimdir+i)
+			elif i.endswith("_2U.fq"):
+				orphanreads.append(trimdir+i)
+		orphanlist=" ".join(orphanreads)
+    		print orphanlist
+    		orphan_string="gzip -9c "+orphanlist+" > "+trimdir+"orphans.fq.gz"
+    		print orphan_string
+    		s=subprocess.Popen(orphan_string,shell=True)
+    		s.wait()
 
 def interleave_reads(trimdir,sra,interleavedir):
     	interleavefile=interleavedir+sra+".trimmed.interleaved.fq"
@@ -120,7 +122,7 @@ def execute(url_data,datadir):
 		#if os.path.isfile(file1) and os.path.isfile(file2):
 		#	print file1
 		#	print file2
-		#run_trimmomatic_TruSeq(trimdir,file1,file2,sra)
+		run_trimmomatic_TruSeq(trimdir,file1,file2,sra)
 		#interleave_reads(trimdir,sra,interleavedir)
 		make_orphans(trimdir)
 		#else:
