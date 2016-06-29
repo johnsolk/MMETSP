@@ -1,0 +1,120 @@
+
+OrthoFinder version 0.6.0 Copyright (C) 2014 David Emms
+
+    This program comes with ABSOLUTELY NO WARRANTY.
+    This is free software, and you are welcome to redistribute it under certain conditions.
+    For details please see the License.md that came with this software.
+
+/mnt/scratch/ljcohen/pep/SpeciesIDs.txt file must be provided if using previously calculated BLAST results
+Job Id: 33436740.mgr-04.i
+    Job_Name = run_OrthoFinder.qsub
+    Job_Owner = ljcohen@dev-intel14.i
+    job_state = R
+    queue = main_large
+    server = mgr-04.i
+    Account_Name = ged
+    Checkpoint = u
+    ctime = Tue Jun 28 02:02:01 2016
+    Error_Path = dev-intel14.i:/mnt/home/ljcohen/MMETSP/ortho_clustering/run_O
+	rthoFinder.qsub.e33436740
+    exec_host = lac-032/1-27
+    Hold_Types = n
+    Join_Path = oe
+    Keep_Files = n
+    Mail_Points = ae
+    Mail_Users = ljcohen@msu.edu
+    mtime = Tue Jun 28 02:03:21 2016
+    Output_Path = dev-intel14.i:/mnt/home/ljcohen/MMETSP/ortho_clustering/run_
+	OrthoFinder.qsub.o33436740
+    Priority = 0
+    qtime = Tue Jun 28 02:03:13 2016
+    Rerunable = False
+    Resource_List.feature = intel16
+    Resource_List.mem = 125gb
+    Resource_List.nodect = 1
+    Resource_List.nodes = 1:ppn=27
+    Resource_List.walltime = 08:00:00
+    session_id = 1155
+    Variable_List = PBS_O_QUEUE=main,PBS_O_HOME=/mnt/home/ljcohen,
+	PBS_O_LOGNAME=ljcohen,
+	PBS_O_PATH=/mnt/home/ljcohen/anaconda2/bin:/opt/software/Stata/13.0:/
+	opt/software/R/2.15.1--GCC-4.4.5/bin:/opt/software/MATLAB/R2014a/bin:/
+	opt/software/Python/2.7.2--GCC-4.4.5/bin:/opt/software/cmake/2.8.5--GC
+	C-4.4.5/bin:/opt/software/OpenMPI/1.4.3--GCC-4.4.5/bin:/usr/lib64/qt-3
+	.3/bin:/opt/software/lmod/bin:/opt/moab/bin:/usr/local/bin:/bin:/usr/b
+	in:/usr/local/sbin:/usr/sbin:/sbin:/usr/local/hpcc/bin:/mnt/home/ljcoh
+	en/bin/sratoolkit.2.5.4-1-ubuntu64/bin:/mnt/home/ljcohen/bin/transrate
+	-1.0.1-linux-x86_64:/mnt/home/ljcohen/bin/transrate-1.0.3-linux-x86_64
+	/:/mnt/home/ljcohen/bin/transrate-1.0.3-linux-x86_64/bin/:/mnt/home/lj
+	cohen/bin/OrthoFinder-master/:/mnt/home/ljcohen/bin/ncbi-blast-2.4.0+/
+	bin/:/mnt/home/ljcohen/bin/mcl/bin,PBS_O_MAIL=/var/spool/mail/ljcohen,
+	PBS_O_SHELL=/bin/bash,PBS_O_LANG=en_US.UTF-8,
+	PBS_O_WORKDIR=/mnt/home/ljcohen/MMETSP/ortho_clustering,
+	PBS_O_HOST=dev-intel14.i,PBS_O_SERVER=mgr-04
+    euser = ljcohen
+    egroup = ged-lab
+    queue_type = E
+    etime = Tue Jun 28 02:02:01 2016
+    submit_args = run_OrthoFinder.qsub
+    umask = 23
+    start_time = Tue Jun 28 02:03:21 2016
+    Walltime.Remaining = 28786
+    start_count = 1
+    fault_tolerant = False
+    job_radix = 0
+    submit_host = dev-intel14.i
+
+lac-032
+lac-032
+lac-032
+lac-032
+lac-032
+lac-032
+lac-032
+lac-032
+lac-032
+lac-032
+lac-032
+lac-032
+lac-032
+lac-032
+lac-032
+lac-032
+lac-032
+lac-032
+lac-032
+lac-032
+lac-032
+lac-032
+lac-032
+lac-032
+lac-032
+lac-032
+lac-032
+PBS_VERSION=TORQUE-5.0.1.h2
+PBS_JOBNAME=run_OrthoFinder.qsub
+PBS_ENVIRONMENT=PBS_BATCH
+PBS_O_WORKDIR=/mnt/home/ljcohen/MMETSP/ortho_clustering
+PBS_TASKNUM=1
+PBS_O_HOME=/mnt/home/ljcohen
+PBS_WALLTIME=28800
+PBS_MOMPORT=15003
+PBS_GPUFILE=/var/spool/torque/aux//33436740.mgr-04.igpu
+PBS_O_QUEUE=main
+PBS_O_LOGNAME=ljcohen
+PBS_O_LANG=en_US.UTF-8
+PBS_JOBCOOKIE=B673C124BCB08D70764059B530311307
+PBS_NODENUM=0
+PBS_NUM_NODES=1
+PBS_O_SHELL=/bin/bash
+PBS_JOBID=33436740.mgr-04.i
+PBS_O_HOST=dev-intel14.i
+PBS_VNODENUM=0
+PBS_QUEUE=main_large
+PBS_O_MAIL=/var/spool/mail/ljcohen
+PBS_MICFILE=/var/spool/torque/aux//33436740.mgr-04.imic
+PBS_NP=27
+PBS_O_SERVER=mgr-04
+PBS_NUM_PPN=27
+PBS_NODEFILE=/var/spool/torque/aux//33436740.mgr-04.i
+PBS_O_PATH=/mnt/home/ljcohen/anaconda2/bin:/opt/software/Stata/13.0:/opt/software/R/2.15.1--GCC-4.4.5/bin:/opt/software/MATLAB/R2014a/bin:/opt/software/Python/2.7.2--GCC-4.4.5/bin:/opt/software/cmake/2.8.5--GCC-4.4.5/bin:/opt/software/OpenMPI/1.4.3--GCC-4.4.5/bin:/usr/lib64/qt-3.3/bin:/opt/software/lmod/bin:/opt/moab/bin:/usr/local/bin:/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/sbin:/usr/local/hpcc/bin:/mnt/home/ljcohen/bin/sratoolkit.2.5.4-1-ubuntu64/bin:/mnt/home/ljcohen/bin/transrate-1.0.1-linux-x86_64:/mnt/home/ljcohen/bin/transrate-1.0.3-linux-x86_64/:/mnt/home/ljcohen/bin/transrate-1.0.3-linux-x86_64/bin/:/mnt/home/ljcohen/bin/OrthoFinder-master/:/mnt/home/ljcohen/bin/ncbi-blast-2.4.0+/bin/:/mnt/home/ljcohen/bin/mcl/bin

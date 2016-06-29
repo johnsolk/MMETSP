@@ -31,7 +31,7 @@ def qsub_file(basedir,process_name,module_name_list,filename,process_string):
     os.chdir(qsub_dir)
     module_load=get_module_load_list(module_name_list)
     f="""#!/bin/bash
-#PBS -l walltime=48:00:00,nodes=1:ppn=27
+#PBS -l walltime=6:00:00,nodes=1:ppn=27
 #PBS -l mem=100gb
 #PBS -l feature=intel16
 #PBS -j oe
@@ -39,10 +39,6 @@ def qsub_file(basedir,process_name,module_name_list,filename,process_string):
 #PBS -M ljcohen@msu.edu
 #PBS -m ae
 #PBS -W umask=027
-set -o nounset
-set -o errexit
-set -o pipefail
-set -x
 cd ${{PBS_O_WORKDIR}}
 export MKL_NUM_THREADS=27
 export OMP_NUM_THREADS=27

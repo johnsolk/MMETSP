@@ -1,0 +1,22 @@
+#!/bin/bash
+#PBS -l walltime=24:00:00,nodes=1:ppn=64
+#PBS -l mem=2000GB
+#PBS -j oe
+#PBS -A ged
+#PBS -M ljcohen@msu.edu
+#PBS -m ae
+#PBS -W umask=027
+set -o nounset
+set -o errexit
+set -o pipefail
+set -x
+cd ${PBS_O_WORKDIR}
+
+export MMDIR=/mnt/home/ljcohen/bin/MMseqs/
+export PATH=$PATH:$MMDIR/bin
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$MMDIR/lib/ffindex/src
+mmseqs_cluster /mnt/scratch/ljcohen/peppy /mnt/scratch/ljcohen/peppy_clu_29 /mnt/scratch/ljcohen/tmp --cascaded -s 9
+
+qstat -f ${PBS_JOBID}
+cat ${PBS_NODEFILE} # Output Contents of the PBS NODEFILE
+env | grep PBS # Print out values of the current jobs PBS environment variables
