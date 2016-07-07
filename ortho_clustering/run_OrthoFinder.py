@@ -63,6 +63,7 @@ diamond makedb --in {}{} -d {}{}
 def run_diamond_loop(diamond_dir,workingdir,new_diamond_dir,species_filename,db_filename):
 	fnum_dbnum=species_filename+"_"+db_filename
 	output_filename=new_diamond_dir+fnum_dbnum
+	#print output_filename
 	if os.path.isfile(output_filename):
 		print "diamond already run",output_filename
 		return
@@ -107,7 +108,11 @@ diamond view -a {}{} -o {}
                                 process_string=[]
                                 count+=1
 
-
+def run_diamond_view_failed(diamond_out_dir,output_filename,filename):
+	diamond_view_command="""
+diamond view -a {}{} -o {}
+""".format(diamond_out_dir,filename,output_filename)
+	return diamond_view_command
 
 def get_num_files(filesdir,workingdir):
 	listoffiles=os.listdir(workingdir)
@@ -135,15 +140,13 @@ def get_num_files(filesdir,workingdir):
 		print species_filename
 		for db in db_files:
 			if db.endswith(".dmnd"):
-				# not necessary to compare species to themselves
-				if i in range(split_num):
 					#print i
 					#db_filename=os.path.splitext(species_filename)[0]
 					db_filename=db
 					ortho_command=run_diamond_loop(diamond_dir,workingdir,db_out_dir,species_filename,db_filename)
         				process_string.append(ortho_command)
 					i+=1
-				else:
+			else:
 					i = 0
 					basedir=db_out_dir
 					process_name="OrthoFinder"
@@ -163,39 +166,84 @@ def check_failed(failed_file,filesdir,workingdir):
 	diamond_dir = filesdir + "Results_Jun25/diamond/"
 	diamond_out_dir = filesdir + "Results_Jun25/diamond_out/"
 	db_files = os.listdir(diamond_dir)
-	split_num = 4000
+	split_num = 4
 	i = 0
 	count = 0
+	line_count = 0
 	process_string = []
 	with open(failed_file,"rU") as failed_file_lines:
 		for num in failed_file_lines:
-			x_y_info = num.split("_")
-                        x_info = x_y_info[0].split("Blast")
-                        x = x_info[1]
-                        y_info = x_y_info[1].split(".")
+			#print line_count
+			x_y_info = num.split("Blast")
+                        x_info = x_y_info[1].split("_")
+                        x = x_info[0]
+                        y_info = x_info[1].split(".")
                         y = y_info[0]
                         species_file  = "Species"+x+".fa"
 			db_filename = "Species"+y+".dmnd"
-			if os.path.isfile(workingdir+species_file):
-				if os.path.isfile(diamond_dir+db_filename):
-					if i in range(split_num):
-                        			ortho_command = run_diamond_loop(diamond_dir,workingdir,diamond_out_dir,species_file,db_filename)
-                        			process_string.append(ortho_command)
-                        			i+=1
-                			else:
-                        			i = 0
-                        			basedir = diamond_out_dir
-                        			process_name = "OrthoFinder"
-                        			module_name_list = ["GNU/4.4.5","diamond/0.7.9"]
-                        			filename = "Group_"+str(count)
-                        			clusterfunc.qsub_file(basedir,process_name,module_name_list,filename,process_string)
-                        			process_string=[]
-                        			count+=1
-				else:
-					print "db_filename doesn't exist:",db_filename
-			else:
-				print "species_filename doesn't exist:",species_file
-			
+			#if os.path.isfile(workingdir+species_file):
+                       	#	print species_file
+			#	if os.path.isfile(diamond_dir+db_filename):
+			#		print db_filename
+			#		if i in range(split_num):
+			#			line_count += 1 
+			#			ortho_command = run_diamond_loop(diamond_dir,workingdir,diamond_out_dir,species_file,db_filename)
+                        #			process_string.append(ortho_command)
+                        #			i+=1
+			#		else:
+                        #			i = 0
+			#			line_count += 1
+                        #			basedir = diamond_out_dir
+                        #			process_name = "OrthoFinder"
+                        #			module_name_list = ["GNU/4.4.5","diamond/0.7.9"]
+                        #			filename = "Group_"+str(count)
+                        #			clusterfunc.qsub_file(basedir,process_name,module_name_list,filename,process_string)
+                        #			process_string=[]
+                        #			count+=1
+			#	else:
+			#		print "db_filename doesn't exist:",db_filename
+			#else:
+			#	print "species_filename doesn't exist:",species_file
+			species_db_filename = species_file + "_" + db_filename + ".daa"
+			output_filename = workingdir+"Blast"+x+"_"+y+".txt"
+			#if os.path.isfile(diamond_out_dir+species_db_filename):	
+			#	if i in range(split_num): 
+			#		line_count +=1
+			#		diamond_view_command = run_diamond_view_failed(diamond_out_dir,output_filename,species_db_filename)
+                        #       		process_string.append(diamond_view_command)
+                        #        	i+=1
+                        #	else:
+                        #	       	i = 0
+			#		line_count +=1
+                        #        	basedir = diamond_out_dir
+                        #        	process_name = "OrthoFinder"
+                        #        	module_name_list = ["GNU/4.4.5","diamond/0.7.9"]
+                        #        	filename = "Group_"+str(count)
+                        #        	clusterfunc.qsub_file(basedir,process_name,module_name_list,filename,process_string)
+                        #        	process_string=[]
+                        #        	count+=1
+
+
+			#else:
+			#	print "Does not exist:",diamond_out_dir+species_db_filename
+		# grabs remained of processes
+			if (not os.path.isfile(output_filename)):
+				print "Doesn't exist:",output_filename
+				ortho_command = run_diamond_loop(diamond_dir,workingdir,diamond_out_dir,species_file,db_filename)
+				print ortho_command
+				s=subprocess.Popen(ortho_command,shell=True)
+        			s.wait()	
+				diamond_view_command = run_diamond_view_failed(diamond_out_dir,output_filename,species_db_filename)
+				print diamond_view_command
+				s=subprocess.Popen(diamond_view_command,shell=True)
+        			s.wait()
+		#basedir = diamond_out_dir
+                #process_name = "OrthoFinder"
+                #module_name_list = ["GNU/4.4.5","diamond/0.7.9"]
+                #filename = "Group_"+str(count)
+                #clusterfunc.qsub_file(basedir,process_name,module_name_list,filename,process_string)
+                #process_string=[]
+		
 
 
 def execute(filesdir,threads,todaysdate):
@@ -209,8 +257,11 @@ def execute(filesdir,threads,todaysdate):
 	#get_num_files(filesdir,workingdir)
 	#run_diamond_view(diamond_out_dir,workingdir)
 	#run_OrthoFinder(workingdir,threads)
-	failed_file = "NeedToBeRun.txt"
+	#failed_file = "NeedToBeRun.txt"
+	#failed_file = "missing_blast2.txt"
+	failed_file = "missing_blast_third.txt"
 	check_failed(failed_file,filesdir,workingdir)
+ 	#run_OrthoFinder(workingdir,threads)
 	
 # in this format "Jun24"
 todaysdate="Jun25"
