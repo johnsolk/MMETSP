@@ -50,7 +50,7 @@ filter-abund.py -V -Z 18 {}norm.C20k20.ct {}*.keep
 			abundfile.write(j)
 		s=subprocess.Popen("sudo bash filter_abund.sh",shell=True)
 		s.wait()
-		os.chdir("/home/ubuntu/MMETSP/")
+		os.chdir("/home/ljcohen/MMETSP/")
 
 def run_streaming_diginorm(trimdir,SRA,diginormdir):
 # from Jessica's streaming protocol:
@@ -149,7 +149,7 @@ done
 	print "renaming pe files now..."
 	s=subprocess.Popen("sudo bash rename.sh",shell=True)	
 	s.wait()
-	os.chdir("/home/ubuntu/MMETSP/")	
+	os.chdir("/home/ljcohen/MMETSP/")	
 
 def execute(basedir,url_data):
 	for item in url_data.keys():
