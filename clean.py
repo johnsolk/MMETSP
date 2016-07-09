@@ -68,9 +68,9 @@ def execute(url_data):
 			##
 			# run this after getdata.py
 			##
-	    		#if os.path.isfile(filename):
-			#	print "File exists:",filename 	
-			#	delete_file(filename)
+	    		if os.path.isfile(filename):
+				print "File exists:",filename 	
+				delete_file(filename)
 		
 
 			##
@@ -78,61 +78,61 @@ def execute(url_data):
 			
 			##
 	
-			diginormdir=newdir+"diginorm/"
-			os.chdir(diginormdir)
-			diginorm_delete_files=["norm.C20k20.ct","orphans.fq.gz.keep.abundfilt"]
-			for filename in glob.glob("*.keep"):
-				diginorm_delete_files.append(filename)
-			for filename in glob.glob("*.abundfilt"):
-				diginorm_delete_files.append(filename)
-			for filename in glob.glob("*.abundfilt.pe"):
-				diginorm_delete_files.append(filename)
-			for filename in glob.glob("*.abundfilt.se"):
-				diginorm_delete_files.append(filename)
-			print diginorm_delete_files
-			for filetodelete in diginorm_delete_files:
-				if os.path.isfile(filetodelete):
-					print "File in diginorm to delete exists:",filetodelete
-					delete_file(filetodelete)
-				else:
-					print "File in diginorm not found:",filetodelete
-			os.chdir("/home/ubuntu/MMETSP/")
+			#diginormdir=newdir+"diginorm/"
+			#os.chdir(diginormdir)
+			#diginorm_delete_files=["norm.C20k20.ct","orphans.fq.gz.keep.abundfilt"]
+			#for filename in glob.glob("*.keep"):
+			#	diginorm_delete_files.append(filename)
+			#for filename in glob.glob("*.abundfilt"):
+			#	diginorm_delete_files.append(filename)
+			#for filename in glob.glob("*.abundfilt.pe"):
+			#	diginorm_delete_files.append(filename)
+			#for filename in glob.glob("*.abundfilt.se"):
+			#	diginorm_delete_files.append(filename)
+			#print diginorm_delete_files
+			#for filetodelete in diginorm_delete_files:
+			#	if os.path.isfile(filetodelete):
+			#		print "File in diginorm to delete exists:",filetodelete
+			#		delete_file(filetodelete)
+			#	else:
+			#		print "File in diginorm not found:",filetodelete
+			#os.chdir("/home/ubuntu/MMETSP/")
 
 			##
 			# run this after assembly.py
 			# to delete extra files
 			##
 				
-			trinitydir=newdir+"trinity/"
-			os.chdir(trinitydir)
-			listoffiles=os.listdir(trinitydir)
-			filestodelete=[]
-			for filename in listoffiles:
-				if filename.endswith(".fq.gz.1"):
-					filestodelete.append(filename)
-				if filename.endswith(".fq.gz.2"):
-					filestodelete.append(filename)
-			print "These files will be deleted:",filestodelete
-			for i in filestodelete:
-				delete_file(i)
-			os.chdir("/home/ubuntu/MMETSP/")
+			#trinitydir=newdir+"trinity/"
+			#os.chdir(trinitydir)
+			#listoffiles=os.listdir(trinitydir)
+			#filestodelete=[]
+			#for filename in listoffiles:
+			#	if filename.endswith(".fq.gz.1"):
+			#		filestodelete.append(filename)
+			#	if filename.endswith(".fq.gz.2"):
+			#		filestodelete.append(filename)
+			#print "These files will be deleted:",filestodelete
+			#for i in filestodelete:
+			#	delete_file(i)
+			#os.chdir("/home/ubuntu/MMETSP/")
 			##
 			# run this to delete interleaved reads
 			##
 
-			interleavedir=newdir+"interleave/"
-			os.chdir(interleavedir)
-			listoffiles=os.listdir(interleavedir)
-			filestodelete=[]
-			for filename in listoffiles:
-				if filename.endswith(".interleaved.fq"):
-					filestodelete.append(filename)
-			print "These files will be deleted:",filestodelete
-			for i in filestodelete:
-				delete_file(i)
-			os.chdir("/home/ubuntu/MMETSP/")
-basedir="/mnt/mmetsp/"
-datafile="MMETSP_SRA_Run_Info_subset_d.csv"
+			#interleavedir=newdir+"interleave/"
+			#os.chdir(interleavedir)
+			#listoffiles=os.listdir(interleavedir)
+			#filestodelete=[]
+			#for filename in listoffiles:
+			#	if filename.endswith(".interleaved.fq"):
+			#		filestodelete.append(filename)
+			#print "These files will be deleted:",filestodelete
+			#for i in filestodelete:
+			#	delete_file(i)
+			#os.chdir("/home/ubuntu/MMETSP/")
+basedir="/mnt/scratch/ljcohen/mmetsp/"
+datafile="MMETSP_SRA_Run_Info_subset_msu1.csv"
 url_data=get_data(datafile)
 print url_data
 execute(url_data)

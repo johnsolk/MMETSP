@@ -45,7 +45,11 @@ def get_data(thefile):
 
 def download(url,newdir,newfile):
     filestring=newdir+newfile
-    urlstring="wget -O "+newdir+newfile+" "+url
+    if os.path.isfile(filestring):
+	print "file exists:",filestring
+    else:
+	urlstring="wget -O "+newdir+newfile+" "+url
+        print urlstring
     #Note: only for Python 3
     #urllib.request.urlretrieve(url,filestring)
     #Use this for Python 2
@@ -65,7 +69,7 @@ def sra_extract(newdir,filename):
     	print "SRA has already been extracted", filename
     else:
     	sra_string="fastq-dump -v -O "+newdir+" --split-3 "+newdir+filename
-    	#print sra_string
+    	print sra_string
 	print "extracting SRA..."
     	s=subprocess.Popen(sra_string,shell=True,stdout=PIPE)
     	s.wait()
@@ -88,38 +92,8 @@ def fastqc_report(fastq_file_list,newdir,fastqcdir,filename):
     	fastqc_string="fastqc -o "+fastqcdir+" "+file_string
     	print fastqc_string
     	print "fastqc reports being generated for: "+str(fastq_file_list)
-	module_load="module load Java/1.8.0_31 GNU/5.2 FastQC/0.11.3"
-	r=subprocess.Popen(module_load,shell=True)
-    	r.wait()
 	s=subprocess.Popen(fastqc_string,shell=True)
     	s.wait()
-
-#5. For pipeline testing only:
-#   create subset of 1,000,000 reads for each file
-
-def subset_reads(newdir,subsetdir):
-    listoffiles=os.listdir(newdir)
-    for i in listoffiles:
-	if i.endswith(".fastq"):
-		newfilename=subsetdir+i[:-6]+".subset1m.fastq"
-    		if os.path.isfile(newfilename):
-			print "File has already been subsetted:",newfilename
-    		else:	
-    			subset_string="head -4000000 "+newdir+i+" > "+newfilename
-    			print subset_string
-    			s=subprocess.Popen(subset_string,shell=True,stdout=PIPE)
-    			s.wait()
-			print "Finished subsetting."
-   
-#6. Create symbolic link from data files to working directory
-
-def sym_link(newdir):
-    listoffiles=os.listdir(newdir)
-    for i in listoffiles:
-    	if i.endswith(".subset100k.fastq"):
-    		symlink_string="ln -fs "+newdir+i+" /mnt/mmetsp/"+i
-		print symlink_string
-	    
 
 # this is the main function to execute
 
@@ -137,19 +111,21 @@ def execute(basedir,url_data):
             filename=basename(urlparse(url).path)
             print filename
             newdir=org_seq_dir+filename+"/"
+	    full_filename=newdir+filename
             clusterfunc.check_dir(newdir)
 	    fastqcdir=newdir+"fastqc/"
 	    clusterfunc.check_dir(fastqcdir)
             #check to see if filename exists in newdir
             if filename in os.listdir(newdir):
                print "sra exists:",filename
-            else:        
+               if os.stat(full_filename).st_size == 0:
+	             print "SRA file is empty:",filename
+		     os.remove(full_filename)
+	    else:        
                print "file will be downloaded:",filename
 	       download(url,newdir,filename)
             sra_extract(newdir,filename)
             fastqc(newdir,fastqcdir,filename)
-            #subset_reads(newdir,subsetdir)
- 	    #fastqc(subsetdir,subsetfastqcdir,filename)
 
 def fastqc(newdir,fastqcdir,filename):
 	listoffiles=os.listdir(newdir)
@@ -160,17 +136,8 @@ def fastqc(newdir,fastqcdir,filename):
 			fastq_file_list.append(newdir+i)
 	fastqc_report(fastq_file_list,newdir,fastqcdir,filename)         
 
-# use this in case you make a mistake and need to delete a bunch of files:
-def delete_files(newdir):
-	listoffiles=os.listdir(newdir)
-        print listoffiles
-	for i in listoffiles:
-		if i.endswith(".subset100k.fastq"):
-			os.remove(newdir+i)
-			print "File removed:",newdir+i
-
-datafile="MMETSP_SRA_Run_Info_subset_e.csv"
-basedir="/mnt/research/ged/lisa/mmetsp/"
+datafile="MMETSP_SRA_Run_Info_subset_msu1.csv"
+basedir="/mnt/scratch/ljcohen/mmetsp/"
 clusterfunc.check_dir(basedir)
 url_data=get_data(datafile)
 print url_data
