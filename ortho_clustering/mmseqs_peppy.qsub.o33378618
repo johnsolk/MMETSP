@@ -1,0 +1,160 @@
++ cd /mnt/home/ljcohen
++ export MMDIR=/mnt/home/ljcohen/bin/MMseqs/
++ MMDIR=/mnt/home/ljcohen/bin/MMseqs/
++ export PATH=/mnt/home/ljcohen/anaconda2/bin:/opt/software/Stata/13.0:/opt/software/R/2.15.1--GCC-4.4.5/bin:/opt/software/MATLAB/R2014a/bin:/opt/software/Python/2.7.2--GCC-4.4.5/bin:/opt/software/cmake/2.8.5--GCC-4.4.5/bin:/opt/software/OpenMPI/1.4.3--GCC-4.4.5/bin:/usr/lib64/qt-3.3/bin:/opt/software/lmod/bin:/opt/moab/bin:/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/sbin:/usr/local/hpcc/bin:/usr/local/bin:/mnt/home/ljcohen/bin/sratoolkit.2.5.4-1-ubuntu64/bin:/mnt/home/ljcohen/bin/transrate-1.0.1-linux-x86_64:/mnt/home/ljcohen/bin/transrate-1.0.3-linux-x86_64/:/mnt/home/ljcohen/bin/transrate-1.0.3-linux-x86_64/bin/:/mnt/home/ljcohen/bin/MMseqs//bin
++ PATH=/mnt/home/ljcohen/anaconda2/bin:/opt/software/Stata/13.0:/opt/software/R/2.15.1--GCC-4.4.5/bin:/opt/software/MATLAB/R2014a/bin:/opt/software/Python/2.7.2--GCC-4.4.5/bin:/opt/software/cmake/2.8.5--GCC-4.4.5/bin:/opt/software/OpenMPI/1.4.3--GCC-4.4.5/bin:/usr/lib64/qt-3.3/bin:/opt/software/lmod/bin:/opt/moab/bin:/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/sbin:/usr/local/hpcc/bin:/usr/local/bin:/mnt/home/ljcohen/bin/sratoolkit.2.5.4-1-ubuntu64/bin:/mnt/home/ljcohen/bin/transrate-1.0.1-linux-x86_64:/mnt/home/ljcohen/bin/transrate-1.0.3-linux-x86_64/:/mnt/home/ljcohen/bin/transrate-1.0.3-linux-x86_64/bin/:/mnt/home/ljcohen/bin/MMseqs//bin
++ export LD_LIBRARY_PATH=/opt/software/R/2.15.1--GCC-4.4.5/lib64/R/lib:/opt/software/ClusterStudio/2013sp1/composer_xe_2013_sp1.0.080/mkl/lib/intel64:/opt/software/MATLAB/R2014a/sys/opengl/lib/glnxa64:/opt/software/Python/2.7.2--GCC-4.4.5/lib/python2.7/lib-dynload:/opt/software/Python/2.7.2--GCC-4.4.5/lib:/opt/software/boost/1.47.0--GCC-4.4.5/lib:/opt/software/ClusterStudio/2011.0/composerxe-2011.5.220/tbb/lib/intel64/cc4.1.0_libc2.4_kernel2.6.16.21/irml:/opt/software/ClusterStudio/2011.0/composerxe-2011.5.220/tbb/lib/intel64/cc4.1.0_libc2.4_kernel2.6.16.21:/opt/software/OpenMPI/1.4.3--GCC-4.4.5/lib:/mnt/home/ljcohen/bin/MMseqs//lib/ffindex/src
++ LD_LIBRARY_PATH=/opt/software/R/2.15.1--GCC-4.4.5/lib64/R/lib:/opt/software/ClusterStudio/2013sp1/composer_xe_2013_sp1.0.080/mkl/lib/intel64:/opt/software/MATLAB/R2014a/sys/opengl/lib/glnxa64:/opt/software/Python/2.7.2--GCC-4.4.5/lib/python2.7/lib-dynload:/opt/software/Python/2.7.2--GCC-4.4.5/lib:/opt/software/boost/1.47.0--GCC-4.4.5/lib:/opt/software/ClusterStudio/2011.0/composerxe-2011.5.220/tbb/lib/intel64/cc4.1.0_libc2.4_kernel2.6.16.21/irml:/opt/software/ClusterStudio/2011.0/composerxe-2011.5.220/tbb/lib/intel64/cc4.1.0_libc2.4_kernel2.6.16.21:/opt/software/OpenMPI/1.4.3--GCC-4.4.5/lib:/mnt/home/ljcohen/bin/MMseqs//lib/ffindex/src
++ mmseqs_cluster /mnt/scratch/ljcohen/peppy /mnt/scratch/ljcohen/peppy_clu_29 /mnt/scratch/ljcohen/tmp --cascaded -s 9
+
+Running cascaded clustering for the database /mnt/scratch/ljcohen/peppy
+Target sensitivity: 9
+
+
+------------------------------- Step 1 ----------------------------------------------
+------------------------------------------------------------
+GENERAL PARAMETERS:
+max. sequence length: 50000
+max. result list length: 50
+PREFILTERING PARAMETERS:
+k-mer size: 6
+z-score threshold: 700
+sensitivity: 1
+ALIGNMENT PARAMETERS:
+e-value threshold: 0.001
+coverage threshold: 0.8
+Maximum number of rejects: 10
+------------------------------------------------------------
+
+
+##### Step 1: PREFILTERING #####
+
+Using 1 threads.
+
+Query database: /mnt/scratch/ljcohen/peppy(size=84559379)
+Target database: /mnt/scratch/ljcohen/peppy(size=84559379)
+Substitution matrices...
+
+Adjusting k-mer similarity threshold within +-10% deviation from the reference time value, sensitivity = 1)...
+Index table: counting k-mers...
+.........
+Index table: init... from 0 to 100000
+Index table: fill...
+.........
+Index table: removing duplicate entries...
+Index table init done.
+
+Time for index table init: 0 h 6 m 28s
+
+
+k-mer threshold range: [18:480], trying threshold 364
+	k-mers per position = 0, k-mer match probability: 0
+	time value = 1.41114, allowed range: [1.8:2.2]
+k-mer threshold range: [18:363], trying threshold 276
+	k-mers per position = 0, k-mer match probability: 0
+	time value = 1.41114, allowed range: [1.8:2.2]
+k-mer threshold range: [18:275], trying threshold 210
+	k-mers per position = 0, k-mer match probability: 0
+	time value = 1.41114, allowed range: [1.8:2.2]
+k-mer threshold range: [18:209], trying threshold 161
+	k-mers per position = 0.0227921, k-mer match probability: 2.85196e-10
+	time value = 1.414, allowed range: [1.8:2.2]
+k-mer threshold range: [18:160], trying threshold 124
+	k-mers per position = 4.67693, k-mer match probability: 3.08533e-08
+	time value = 1.97295, allowed range: [1.8:2.2]
+
+k-mer threshold set, yielding sensitivity 0.980356
+
+k-mer similarity threshold: 124
+k-mer match probability: 3.08533e-08
+
+Starting prefiltering scores calculation.
+Index table: counting k-mers...
+...................................................................................................	1 Mio. sequences processed
+...................................................................................................	2 Mio. sequences processed
+...................................................................................................	3 Mio. sequences processed
+...................................................................................................	4 Mio. sequences processed
+...................................................................................................	5 Mio. sequences processed
+...................................................................................................	6 Mio. sequences processed
+...................................................................................................	7 Mio. sequences processed
+...................................................................................................	8 Mio. sequences processed
+...................................................................................................	9 Mio. sequences processed
+...................................................................................................	10 Mio. sequences processed
+...................................................................................................	11 Mio. sequences processed
+...................................................................................................	12 Mio. sequences processed
+...................................................................................................	13 Mio. sequences processed
+...................................................................................................	14 Mio. sequences processed
+...................................................................................................	15 Mio. sequences processed
+...................................................................................................	16 Mio. sequences processed
+...................................................................................................	17 Mio. sequences processed
+...................................................................................................	18 Mio. sequences processed
+...................................................................................................	19 Mio. sequences processed
+...................................................................................................	20 Mio. sequences processed
+...................................................................................................	21 Mio. sequences processed
+...................................................................................................	22 Mio. sequences processed
+...................................................................................................	23 Mio. sequences processed
+...................................................................................................	24 Mio. sequences processed
+...................................................................................................	25 Mio. sequences processed
+...................................................................................................	26 Mio. sequences processed
+...................................................................................................	27 Mio. sequences processed
+...................................................................................................	28 Mio. sequences processed
+...................................................................................................	29 Mio. sequences processed
+...................................................................................................	30 Mio. sequences processed
+...................................................................................................	31 Mio. sequences processed
+...................................................................................................	32 Mio. sequences processed
+...................................................................................................	33 Mio. sequences processed
+...................................................................................................	34 Mio. sequences processed
+...................................................................................................	35 Mio. sequences processed
+...................................................................................................	36 Mio. sequences processed
+...................................................................................................	37 Mio. sequences processed
+...................................................................................................	38 Mio. sequences processed
+...................................................................................................	39 Mio. sequences processed
+...................................................................................................	40 Mio. sequences processed
+...................................................................................................	41 Mio. sequences processed
+...................................................................................................	42 Mio. sequences processed
+...................................................................................................	43 Mio. sequences processed
+...................................................................................................	44 Mio. sequences processed
+...................................................................................................	45 Mio. sequences processed
+...................................................................................................	46 Mio. sequences processed
+...................................................................................................	47 Mio. sequences processed
+...................................................................................................	48 Mio. sequences processed
+...................................................................................................	49 Mio. sequences processed
+...................................................................................................	50 Mio. sequences processed
+...................................................................................................	51 Mio. sequences processed
+...................................................................................................	52 Mio. sequences processed
+...................................................................................................	53 Mio. sequences processed
+...................................................................................................	54 Mio. sequences processed
+...................................................................................................	55 Mio. sequences processed
+...................................................................................................	56 Mio. sequences processed
+...................................................................................................	57 Mio. sequences processed
+...................................................................................................	58 Mio. sequences processed
+...................................................................................................	59 Mio. sequences processed
+...................................................................................................	60 Mio. sequences processed
+...................................................................................................	61 Mio. sequences processed
+...................................................................................................	62 Mio. sequences processed
+...................................................................................................	63 Mio. sequences processed
+...................................................................................................	64 Mio. sequences processed
+...................................................................................................	65 Mio. sequences processed
+...................................................................................................	66 Mio. sequences processed
+...................................................................................................	67 Mio. sequences processed
+...................................................................................................	68 Mio. sequences processed
+...................................................................................................	69 Mio. sequences processed
+...................................................................................................	70 Mio. sequences processed
+...................................................................................................	71 Mio. sequences processed
+...................................................................................................	72 Mio. sequences processed
+...................................................................................................	73 Mio. sequences processed
+...................................................................................................	74 Mio. sequences processed
+...................................................................................................	75 Mio. sequences processed
+...................................................................................................	76 Mio. sequences processed
+...................................................................................................	77 Mio. sequences processed
+...................................................................................................	78 Mio. sequences processed
+...................................................................................................	79 Mio. sequences processed
+...................................................................................................	80 Mio. sequences processed
+...................................................................................................	81 Mio. sequences processed
+...................................................................................................	82 Mio. sequences processed
+...................................................................................................	83 Mio. sequences processed
+...................................................................................................	84 Mio. sequences processed
+.......................................................
+Index table: init... from 0 to 84559379
+Index table: fill...
+/var/spool/torque/mom_priv/jobs/33378618.mgr-04.i.SC: line 18: 59644 Segmentation fault      (core dumped) mmseqs_cluster /mnt/scratch/ljcohen/peppy /mnt/scratch/ljcohen/peppy_clu_29 /mnt/scratch/ljcohen/tmp --cascaded -s 9

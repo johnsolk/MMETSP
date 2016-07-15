@@ -1,0 +1,102 @@
+
+OrthoFinder version 0.6.0 Copyright (C) 2014 David Emms
+
+    This program comes with ABSOLUTELY NO WARRANTY.
+    This is free software, and you are welcome to redistribute it under certain conditions.
+    For details please see the License.md that came with this software.
+
+Using previously calculated BLAST results in /mnt/scratch/ljcohen/pep/Results_Jun25/WorkingDirectory/
+27 threads for BLAST searches
+1 threads for OrthoFinder algorithm
+
+1. Checking required programs are installed
+-------------------------------------------
+Test can run "mcl -h" - ok
+
+2. Temporarily renaming sequences with unique, simple identifiers
+------------------------------------------------------------------
+Skipping
+
+3. Dividing up work for BLAST for parallel processing
+-----------------------------------------------------
+Skipping
+
+4. Running BLAST all-versus-all
+-------------------------------
+Skipping
+
+5. Running OrthoFinder algorithm
+--------------------------------
+2016-07-06 12:29:24 : Initial processing of each species
+/mnt/home/ljcohen/anaconda2/lib/python2.7/site-packages/scipy/optimize/minpack.py:604: OptimizeWarning: Covariance of the parameters could not be estimated
+  category=OptimizeWarning)
+
+ERROR: Query or hit sequence ID in BLAST results file was missing or incorrectly formatted.
+Process Process-1:
+Traceback (most recent call last):
+  File "/mnt/home/ljcohen/anaconda2/lib/python2.7/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/mnt/home/ljcohen/anaconda2/lib/python2.7/multiprocessing/process.py", line 114, in run
+    self._target(*self._args, **self._kwargs)
+  File "/mnt/home/ljcohen/bin/OrthoFinder-master/orthofinder.py", line 777, in Worker_ProcessBlastHits
+    WaterfallMethod.ProcessBlastHits(*args)
+  File "/mnt/home/ljcohen/bin/OrthoFinder-master/orthofinder.py", line 764, in ProcessBlastHits
+    Bij = BlastFileProcessor.GetBLAST6Scores(seqsInfo, fileInfo, iSpecies, jSpecies)
+  File "/mnt/home/ljcohen/bin/OrthoFinder-master/orthofinder.py", line 664, in GetBLAST6Scores
+    sys.stderr.write("Malformatted line in %sBlast%d_%d.txt\nOffending line was:\n" % (seqsInfo.inputdir, iSpecies, jSpecies))
+AttributeError: 'SequencesInfo' object has no attribute 'inputdir'
+2016-07-06 12:29:24 : Starting species 0
+2016-07-06 12:42:09 : Initial processing of species 0 complete
+2016-07-06 12:42:11 : Starting species 1
+2016-07-06 12:50:34 : Initial processing of species 1 complete
+2016-07-06 12:50:35 : Starting species 2
+2016-07-06 13:15:49 : Initial processing of species 2 complete
+2016-07-06 13:15:52 : Starting species 3
+2016-07-06 13:52:02 : Initial processing of species 3 complete
+2016-07-06 13:52:08 : Starting species 4
+2016-07-06 14:19:04 : Initial processing of species 4 complete
+2016-07-06 14:19:08 : Starting species 5
+2016-07-06 14:43:40 : Initial processing of species 5 complete
+2016-07-06 14:43:43 : Starting species 6
+WARNING: Too few hits between species 6 and species 508 to normalise the scores, these hits will be ignored
+2016-07-06 14:45:07 : Initial processing of species 6 complete
+2016-07-06 14:45:08 : Starting species 7
+2016-07-06 15:00:10 : Initial processing of species 7 complete
+2016-07-06 15:00:13 : Starting species 8
+2016-07-06 15:13:58 : Initial processing of species 8 complete
+2016-07-06 15:14:00 : Starting species 9
+WARNING: Too few hits between species 9 and species 357 to normalise the scores, these hits will be ignored
+2016-07-06 16:01:34 : Initial processing of species 9 complete
+2016-07-06 16:01:40 : Starting species 10
+2016-07-06 16:49:56 : Initial processing of species 10 complete
+2016-07-06 16:50:02 : Starting species 11
+Process Process-2:
+Traceback (most recent call last):
+  File "/mnt/home/ljcohen/anaconda2/lib/python2.7/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/mnt/home/ljcohen/anaconda2/lib/python2.7/multiprocessing/process.py", line 114, in run
+    self._target(*self._args, **self._kwargs)
+  File "/mnt/home/ljcohen/bin/OrthoFinder-master/orthofinder.py", line 796, in Worker_ConnectCognates
+    WaterfallMethod.ConnectCognates(*args)
+  File "/mnt/home/ljcohen/bin/OrthoFinder-master/orthofinder.py", line 785, in ConnectCognates
+    BHxi = LoadMatrixArray("BH", fileInfo, seqsInfo, iSpecies, row=False)
+  File "/mnt/home/ljcohen/bin/OrthoFinder-master/orthofinder.py", line 699, in LoadMatrixArray
+    matrixArray.append(LoadMatrix(name, fileInfo, jSpecies, iSpecies))
+  File "/mnt/home/ljcohen/bin/OrthoFinder-master/orthofinder.py", line 689, in LoadMatrix
+    with open(fileInfo.outputDir + "%s%d_%d.pic" % (name, iSpecies, jSpecies), 'rb') as picFile:
+IOError: [Errno 2] No such file or directory: '/mnt/scratch/ljcohen/pep/Results_Jun25/WorkingDirectory/BH11_0.pic'
+2016-07-06 16:50:35 : Connected putatitive homologs
+Traceback (most recent call last):
+  File "/mnt/home/ljcohen/bin/OrthoFinder-master/orthofinder.py", line 1334, in <module>
+    WaterfallMethod.WriteGraphParallel(seqsInfo, fileInfo)
+  File "/mnt/home/ljcohen/bin/OrthoFinder-master/orthofinder.py", line 806, in WriteGraphParallel
+    pool.map(WriteGraph_perSpecies, [(seqsInfo, fileInfo, iSpec) for iSpec in xrange(seqsInfo.nSpecies)])
+  File "/mnt/home/ljcohen/anaconda2/lib/python2.7/multiprocessing/pool.py", line 251, in map
+    return self.map_async(func, iterable, chunksize).get()
+  File "/mnt/home/ljcohen/anaconda2/lib/python2.7/multiprocessing/pool.py", line 567, in get
+    raise self._value
+IOError: [Errno 2] No such file or directory: '/mnt/scratch/ljcohen/pep/Results_Jun25/WorkingDirectory/connect18_0.pic'
+=>> PBS: job killed: walltime 172823 exceeded limit 172800
+Unknown option: 1
+Unknown option: 1
+Usage: /var/spool/torque/mom_priv/epilogue [-hkbv]

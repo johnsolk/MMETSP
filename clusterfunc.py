@@ -30,18 +30,17 @@ def qsub_file(basedir,process_name,module_name_list,filename,process_string):
     os.chdir(qsub_dir)
     module_load=get_module_load_list(module_name_list)
     f="""#!/bin/bash
-#PBS -l walltime=02:00:00,nodes=1:ppn=2
-#PBS -l mem=8gb
+#PBS -l walltime=03:00:00,nodes=1:ppn=27
+#PBS -l mem=100gb
+#PBS -l feature=intel16
 #PBS -j oe
 #PBS -A ged
 #PBS -M ljcohen@msu.edu
 #PBS -m ae
 #PBS -W umask=027
-set -o nounset
-set -o errexit
-set -o pipefail
-set -x
 cd ${{PBS_O_WORKDIR}}
+export MKL_NUM_THREADS=27
+export OMP_NUM_THREADS=27
 """.format()
     with open(qsub_filename,"w") as qsub:
 	 qsub.write(f)
@@ -54,8 +53,8 @@ cd ${{PBS_O_WORKDIR}}
 	 qsub.write("qstat -f ${PBS_JOBID}\n")
 	 qsub.write("cat ${PBS_NODEFILE} # Output Contents of the PBS NODEFILE\n")
          qsub.write("env | grep PBS # Print out values of the current jobs PBS environment variables\n")
-    qsub_string='qsub '+qsub_filename
+    qsub_string='qsub -V '+qsub_filename
     print qsub_string
-    s=subprocess.Popen(qsub_string,shell=True)
-    s.wait()
+    #s=subprocess.Popen(qsub_string,shell=True)
+    #s.wait()
     os.chdir(working_dir)

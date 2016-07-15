@@ -55,18 +55,23 @@ filter-abund.py -V -Z 18 {}norm.C20k20.ct {}*.keep
 def run_streaming_diginorm(trimdir,SRA,diginormdir):
 # from Jessica's streaming protocol:
 	diginormfile=diginormdir+SRA+".stream.diginorm.sh"
-	os.chdir(diginormdir)
+	#os.chdir(diginormdir)
 	stream_string="""#!/bin/bash
-(interleave-reads.py {}{}.Phred30.TruSeq_1P.fq {}{}.Phred30.TruSeq_2P.fq && zcat {}orphans.fq.gz)| \\
-trim-low-abund.py -V -k 20 -Z 18 -C 3 - -o - -M 4e9 --diginorm --diginorm-coverage=20 | \\
-(extract-paired-reads.py --gzip -p {}{}.paired.gz -s {}{}.single.gz)
+(interleave-reads.py {}{}.trim_1P.fq {}{}.trim_2P.fq && zcat {}orphans.fq.gz)| \\
+(trim-low-abund.py -V -k 20 -Z 18 -C 2 - -o - -M 4e9 --diginorm --diginorm-coverage=20) | \\
+(extract-paired-reads.py --gzip -p {}{}.paired.gz -s {}{}.single.gz) > /dev/null
 """.format(trimdir,SRA,trimdir,SRA,trimdir,diginormdir,SRA,diginormdir,SRA)
-	with open(diginormfile,"w") as diginorm_script:
-		diginorm_script.write(stream_string)
+	print stream_string
+	#with open(diginormfile,"w") as diginorm_script:
+	#	diginorm_script.write(stream_string)
 	#s=subprocess.Popen("sudo bash "+diginormfile,shell=True)
 	#s.wait()
-	print "file written:",diginormfile	
-	os.chdir("/home/ubuntu/MMETSP/")	
+	#print "file written:",diginormfile	
+	#os.chdir("/home/ubuntu/MMETSP/")
+	streaming_diginorm_command=[stream_string]
+        module_load_list=[]
+        process_name="diginorm_stream"
+        clusterfunc.qsub_file(diginormdir,process_name,module_load_list,SRA,streaming_diginorm_command)	
 
 def rename_files(diginormdir):
 	#if glob.glob(diginormdir+"*.abundfilt.pe"):
@@ -164,15 +169,15 @@ def execute(basedir,url_data):
 			diginormdir=newdir+"diginorm/"
 			clusterfunc.check_dir(diginormdir)
 			trimdir=newdir+"trim/"
-			#run_streaming_diginorm(trimdir,SRA,diginormdir)
-			run_diginorm(diginormdir,interleavedir,trimdir)
-			run_filter_abund(diginormdir)
-			rename_files(diginormdir)
-			combine_orphaned(diginormdir)
-			rename_pe(diginormdir)	
+			run_streaming_diginorm(trimdir,SRA,diginormdir)
+			#run_diginorm(diginormdir,interleavedir,trimdir)
+			#run_filter_abund(diginormdir)
+			#rename_files(diginormdir)
+			#combine_orphaned(diginormdir)
+			#rename_pe(diginormdir)	
 
-basedir="/mnt/mmetsp/"
-datafile="MMETSP_SRA_Run_Info_subset_d.csv"
+basedir="/mnt/scratch/ljcohen/mmetsp/"
+datafile="MMETSP_SRA_Run_Info_subset_msu1.csv"
 url_data=get_data(datafile)
 execute(basedir,url_data)
 

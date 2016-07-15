@@ -1,7 +1,6 @@
 #!/bin/bash
-#PBS -l walltime=23:59:00,nodes=1:ppn=27
-#PBS -l mem=125GB
-#PBS -l feature=intel16
+#PBS -l walltime=5:00:00:00,nodes=1:ppn=64
+#PBS -l mem=300GB
 #PBS -j oe
 #PBS -A ged
 #PBS -M ljcohen@msu.edu
@@ -10,10 +9,7 @@
 
 cd ${PBS_O_WORKDIR}
 
-export MKL_NUM_THREADS=27
-export OMP_NUM_THREADS=27
-
-python /mnt/home/ljcohen/bin/OrthoFinder-master/orthofinder.py -b /mnt/scratch/ljcohen/pep/Results_Jun25/WorkingDirectory/ -t 27
+python /mnt/home/ljcohen/bin/OrthoFinder-master/orthofinder.py -b /mnt/scratch/ljcohen/pep/Results_Jun25/WorkingDirectory/ -t 64
 
 qstat -f ${PBS_JOBID}
 cat ${PBS_NODEFILE} # Output Contents of the PBS NODEFILE

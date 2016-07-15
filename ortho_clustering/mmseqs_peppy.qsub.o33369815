@@ -1,0 +1,4 @@
++ cd /mnt/home/ljcohen
++ mmseqs_cluster /mnt/scratch/ljcohen/peppy /mnt/scratch/ljcohen/peppy_clu_29 /mnt/scratch/ljcohen/tmp --cascaded -s 9
+/var/spool/torque/mom_priv/jobs/33369815.mgr-04.i.SC: line 15: mmseqs_cluster: command not found
+Numeric username, exiting at /var/spool/torque/mom_priv/epilogue line 236, <PS> line 2328.
