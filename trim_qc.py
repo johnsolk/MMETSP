@@ -94,18 +94,6 @@ def make_orphans(trimdir,sra):
     	#s.wait()
 	return orphan_string
 
-def interleave_reads(trimdir,sra,interleavedir):
-    interleavefile=interleavedir+sra+".trimmed.interleaved.fq"
-    if os.path.isfile(interleavefile):
-	print "already interleaved"
-    else:
-    	interleave_string="interleave-reads.py "+trimdir+sra+".trim_1P.fq "+trimdir+sra+".trim_2P.fq > "+interleavefile
-    	print interleave_string
-	print "Interleaving now..."
-    	#s=subprocess.Popen(interleave_string,shell=True)    
-    	#s.wait()
-	print "Reads interleaved."
-
 def execute(url_data,datadir):
     for item in url_data.keys():
 	organism=item[0]

@@ -38,6 +38,23 @@ def get_data(thefile):
                 url_data[name_read_tuple] = [ftp]
         return url_data
 
+
+def interleave_reads(trimdir,sra,interleavedir):
+    interleavefile=interleavedir+sra+".trimmed.interleaved.fq"
+    if os.path.isfile(interleavefile):
+        print "already interleaved"
+    else:
+        interleave_string="interleave-reads.py "+trimdir+sra+".trim_1P.fq "+trimdir+sra+".trim_2P.fq > "+interleavefile
+        print interleave_string
+        #s=subprocess.Popen(interleave_string,shell=True)    
+        #s.wait()
+	interleave_command=[interleave_string]
+        process_name="interleave"
+        module_name_list=["GNU/4.8.3","khmer/2.0"]
+        filename=sra
+        clusterfunc.qsub_file(interleavedir,process_name,module_name_list,filename,interleave_command)
+
+
 def run_filter_abund(diginormdir):
 	#if glob.glob(diginormdir+"*keep.abundfilt*"):
 	#	print "filter-abund.py already run"
@@ -92,26 +109,25 @@ done
 		s.wait()
 		os.chdir("/home/ubuntu/MMETSP/")
 
-def run_diginorm(diginormdir,interleavedir,trimdir):
+def run_diginorm(diginormdir,interleavedir,trimdir,sra):
 	# this will create and run a script from the working directory
 	# output *.keep files will be in the working directory
 	#if glob.glob(diginormdir+"*keep*"):
 	#	print "normalize-by-median.py already run"
 	#else:
-		j="""
+		normalize_median_string="""
 normalize-by-median.py -p -k 20 -C 20 -M 4e9 \\
 --savegraph {}norm.C20k20.ct -u \\
 {}orphans.fq.gz \\
 {}*.fq
 """.format(diginormdir,trimdir,interleavedir)
-		os.chdir(diginormdir)
-		with open("diginorm.sh","w") as diginormfile:
-			diginormfile.write(j)
-		s=subprocess.Popen("sudo bash diginorm.sh",shell=True)
-		s.wait()
 		#s=subprocess.Popen("cat diginorm.sh",shell=True)
 		#s.wait()
-		os.chdir("/home/ubuntu/MMETSP/")
+		normalize_median_command=[normalize_median_string]
+        	process_name="diginorm"
+        	module_name_list=["GNU/4.8.3","khmer/2.0"]
+        	filename=sra
+        	clusterfunc.qsub_file(diginormdir,process_name,module_name_list,filename,normalize_median_command)
 
 def combine_orphaned(diginormdir):
 	#if glob.glob(diginormdir+"orphans.keep.abundfilt.fq.gz"):
@@ -169,8 +185,9 @@ def execute(basedir,url_data):
 			diginormdir=newdir+"diginorm/"
 			clusterfunc.check_dir(diginormdir)
 			trimdir=newdir+"trim/"
-			run_streaming_diginorm(trimdir,SRA,diginormdir)
-			#run_diginorm(diginormdir,interleavedir,trimdir)
+			#run_streaming_diginorm(trimdir,SRA,diginormdir)
+			#interleave_reads(trimdir,SRA,interleavedir)
+			run_diginorm(diginormdir,interleavedir,trimdir,SRA)
 			#run_filter_abund(diginormdir)
 			#rename_files(diginormdir)
 			#combine_orphaned(diginormdir)
