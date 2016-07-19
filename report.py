@@ -11,13 +11,13 @@ import glob
 # custom Lisa module
 import clusterfunc
 # Python plotting libraries
-import numpy as np
-import matplotlib.mlab as mlab
-import matplotlib.pyplot as plt
-import pandas as pd
-from scipy import stats, integrate
-import seaborn as sns
-sns.set(color_codes=True)
+#import numpy as np
+#import matplotlib.mlab as mlab
+#import matplotlib.pyplot as plt
+#import pandas as pd
+#from scipy import stats, integrate
+#import seaborn as sns
+#sns.set(color_codes=True)
 
 
 
@@ -78,8 +78,9 @@ def build_DataFrame(data_frame,transrate_data):
 	data_frame=pd.concat(frames)
 	return data_frame
 
-def execute(data_frame,url_data,basedir,extra_dir):
+def execute(url_data,basedir):
 	trinity_fail=[]
+	count = 0
 	# construct an empty pandas dataframe to add on each assembly.csv to
 	for item in url_data.keys():
 		#print item
@@ -91,45 +92,30 @@ def execute(data_frame,url_data,basedir,extra_dir):
 			sra=basename(urlparse(url).path)
 			newdir=org_seq_dir+sra+"/"
 			trinitydir=newdir+"trinity/trinity_out/"
-			dammit_dir=trinitydir+"dammit_dir/"
-			transrate_dir=newdir+"transrate/"
-			clusterfunc.check_dir(transrate_dir)
+			#dammit_dir=trinitydir+"dammit_dir/"
+			#transrate_dir=newdir+"transrate/"
+			#clusterfunc.check_dir(transrate_dir)
 			#trinity_fasta=dammit_dir+"Trinity.fasta.dammit.fasta"
 			trinity_fasta=trinitydir+"Trinity.fasta"
-			transrate_out=transrate_dir+sample+"/"
+			#transrate_out=transrate_dir+sample+"/"
 			if os.path.isfile(trinity_fasta):
 				#transrate(dammit_dir)
 		        	#print transrate_out
+				count +=1
 				#fixed_trinity=fix_fasta(trinity_fasta,trinitydir,sample)
 				#transrate(trinitydir,transrate_out,fixed_trinity)
-				transrate_assemblies=transrate_out+"assemblies.csv"
-				data=parse_transrate_stats(transrate_assemblies)
-				data_frame=build_DataFrame(data_frame,data)
+				#transrate_assemblies=transrate_out+"assemblies.csv"
+				#data=parse_transrate_stats(transrate_assemblies)
+				#data_frame=build_DataFrame(data_frame,data)
 			else:
 				print "Trinity failed:",newdir
 				trinity_fail.append(newdir)	
+	print "This is the number of Trinity de novo transcriptome assemblies:"
+	print count
 	print "This is the number of times Trinity failed:"
 	print len(trinity_fail)
 	print trinity_fail
-	return data_frame
-
-def get_extra_assemblies(extra_dir,data_frame):
-	listofassemblies=os.listdir(extra_dir)
-	for assembly_fasta in listofassemblies:
-                sample_info=assembly_fasta.split("_")
-                sra=sample_info[2].split(".")[0]
-		sample_info=sample_info[:-1]
-		sample_info.append(sra)
-		sample="_".join(sample_info)
-		#print sample
-                transrate_out=extra_dir+sample+"/"
-                fixed_trinity=fix_fasta(assembly_fasta,extra_dir,sample)
-                transrate(extra_dir,transrate_out,fixed_trinity)
-                transrate_assemblies=transrate_out+"assemblies.csv"
-                data=parse_transrate_stats(transrate_assemblies)
-                data_frame=build_DataFrame(data_frame,data)
-	return data_frame
-
+	#return data_frame
 
 def get_histogram(data_frame):
 	gc=pd.DataFrame.hist(data_frame,column="gc")
@@ -141,19 +127,11 @@ def get_histogram(data_frame):
 	
 
 
-# basedir:datafile
-file_locations={"/mnt/mmetsp/":"MMETSP_SRA_Run_Info_subset_d.csv",
-		"/mnt/mmetsp1/mmetsp/":"MMETSP_SRA_Run_Info_subset_a.csv",
-		"/mnt/mmetsp2/mmetsp/":"MMETSP_SRA_Run_Info_subset_b.csv"}
-#datafile="MMETSP_SRA_Run_Info_subset2.csv"
-extra_dir="/mnt/mmetsp3/"
-data_frame=pd.DataFrame()
-for basedir in file_locations.keys():
-	datafile=file_locations[basedir]
-	url_data=get_data(datafile)
-	#print url_data
-	data_frame=execute(data_frame,url_data,basedir,extra_dir)
-data_frame=get_extra_assemblies(extra_dir,data_frame)
-print data_frame
-data_frame.to_csv("MMETSP_transrate_data.csv")
+basedir = "/mnt/scratch/ljcohen/mmetsp/"	
+datafile="MMETSP_SRA_Run_Info_subset_msu1.csv"
+url_data=get_data(datafile)
+#print url_data
+execute(url_data,basedir)
+#print data_frame
+#data_frame.to_csv("MMETSP_transrate_data.csv")
 #get_histogram(data_frame)

@@ -55,19 +55,17 @@ def interleave_reads(trimdir,sra,interleavedir):
         clusterfunc.qsub_file(interleavedir,process_name,module_name_list,filename,interleave_command)
 
 
-def run_filter_abund(diginormdir):
-	#if glob.glob(diginormdir+"*keep.abundfilt*"):
-	#	print "filter-abund.py already run"
-	#else:
-		j="""
+def run_filter_abund(diginormdir,sra):
+	keep_dir = diginormdir+"qsub_files/"
+	filter_string="""
 filter-abund.py -V -Z 18 {}norm.C20k20.ct {}*.keep
-""".format(diginormdir,diginormdir)
-		os.chdir(diginormdir)
-		with open("filter_abund.sh","w") as abundfile:
-			abundfile.write(j)
-		s=subprocess.Popen("sudo bash filter_abund.sh",shell=True)
-		s.wait()
-		os.chdir("/home/ubuntu/MMETSP/")
+""".format(diginormdir,keep_dir)
+	extract_paired_string=extract_paired()
+	commands=[filter_string,extract_paired_string]
+        process_name="filterabund"
+        module_name_list=["GNU/4.8.3","khmer/2.0"]
+        filename=sra
+        clusterfunc.qsub_file(diginormdir,process_name,module_name_list,filename,commands)
 
 def run_streaming_diginorm(trimdir,SRA,diginormdir):
 # from Jessica's streaming protocol:
@@ -90,24 +88,14 @@ def run_streaming_diginorm(trimdir,SRA,diginormdir):
         process_name="diginorm_stream"
         clusterfunc.qsub_file(diginormdir,process_name,module_load_list,SRA,streaming_diginorm_command)	
 
-def rename_files(diginormdir):
-	#if glob.glob(diginormdir+"*.abundfilt.pe"):
-	#	print "paired reads already extracted"
-	#else:
-		j="""
+def extract_paired():
+	extract_paired_string="""
 for file in *.abundfilt
 do
 	extract-paired-reads.py ${{file}}
 done
 """.format()
-		os.chdir(diginormdir)
-		with open("rename.sh","w") as renamefile:
-			renamefile.write(j)
-		#s=subprocess.Popen("cat rename.sh",shell=True)
-		#s.wait()
-		s=subprocess.Popen("sudo bash rename.sh",shell=True)
-		s.wait()
-		os.chdir("/home/ubuntu/MMETSP/")
+	return extract_paired_string
 
 def run_diginorm(diginormdir,interleavedir,trimdir,sra):
 	# this will create and run a script from the working directory
@@ -187,10 +175,10 @@ def execute(basedir,url_data):
 			trimdir=newdir+"trim/"
 			#run_streaming_diginorm(trimdir,SRA,diginormdir)
 			#interleave_reads(trimdir,SRA,interleavedir)
-			run_diginorm(diginormdir,interleavedir,trimdir,SRA)
-			#run_filter_abund(diginormdir)
+			#run_diginorm(diginormdir,interleavedir,trimdir,SRA)
+			run_filter_abund(diginormdir,SRA)
 			#rename_files(diginormdir)
-			#combine_orphaned(diginormdir)
+			combine_orphaned(diginormdir)
 			#rename_pe(diginormdir)	
 
 basedir="/mnt/scratch/ljcohen/mmetsp/"

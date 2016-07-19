@@ -39,7 +39,6 @@ def get_data(thefile):
         return url_data
 
 def execute(basedir,url_data):
-	trinity_scripts=[]
 	for item in url_data.keys():
         #Creates directory for each file to be downloaded
         #Directory will be located according to organism and read type (single or paired)
@@ -54,92 +53,80 @@ def execute(basedir,url_data):
 			SRA=basename(urlparse(url).path)
 			newdir=org_seq_dir+SRA+"/"
 			diginormdir=newdir+"diginorm/"
-			diginormfile=diginormdir+SRA+".trimmed.interleaved.keep.abundfilt.fq.gz"
+			diginormfile=diginormdir+"qsub_files/"+SRA+".trimmed.interleaved.fq.keep.abundfilt.pe"
 			trinitydir=newdir+"trinity/"
 			clusterfunc.check_dir(trinitydir)
 			if os.path.isfile(diginormfile):
-				print "file exists:",diginormfile
-			trinity_script=get_trinity_script(trinitydir,SRA)
-			trinity_scripts.append(trinity_script)
-			#build_files(trinitydir,diginormfile,SRA)
-	run_trinity(trinity_scripts)			
+				#print "file exists:",diginormfile
+				#rename_files(trinitydir,diginormdir,diginormfile,SRA)
+			        run_trinity(trinitydir,SRA)	
+			else:
+				"There was a problem.",diginormfile
+			#check_trinity(newdir)
 
-def build_files(trinitydir,diginormfile,SRA):
+def combine_orphans(diginormdir):
+	diginorm_files_dir = diginormdir + "qsub_files/"
+	rename_orphans="""
+gzip -9c {}orphans.fq.gz.keep.abundfilt > {}orphans.keep.abundfilt.fq.gz
+for file in {}*.se
+do
+        gzip -9c ${{file}} >> {}orphans.keep.abundfilt.fq.gz
+done
+""".format(diginorm_files_dir,diginormdir,diginorm_files_dir,diginormdir)
+	return rename_orphans
+
+def rename_files(trinitydir,diginormdir,diginormfile,SRA):
 # takes diginormfile in,splits reads and put into newdir
-	buildfiles=trinitydir+SRA+".buildfiles.sh"
-	with open(buildfiles,"w") as buildfile:
-   		buildfile.write("split-paired-reads.py -d "+trinitydir+" "+diginormfile+"\n")
-		buildfile.write("cat "+trinitydir+"*.1 > "+trinitydir+SRA+".left.fq"+"\n")
-		buildfile.write("cat "+trinitydir+"*.2 > "+trinitydir+SRA+".right.fq"+"\n")
-		# need to fix , orphans are now combined for whole dataset, this is incorrect
-		# should be separate orphans file for each sample 
-		#buildfile.write("gunzip -c orphans.keep.abundfilt.fq.gz >> left.fq")
-	s=subprocess.Popen("sudo bash "+str(buildfiles),shell=True)
-	s.wait()
+	rename_orphans = combine_orphans(diginormdir)
+	split_paired = "split-paired-reads.py -d "+diginormdir+" "+diginormfile
+	rename_string1 = "cat "+diginormdir+"*.1 > "+trinitydir+SRA+".left.fq"
+	rename_string2 = "cat "+diginormdir+"*.2 > "+trinitydir+SRA+".right.fq"
+	rename_string3 = "gunzip -c "+diginormdir+"orphans.keep.abundfilt.fq.gz >> "+trinitydir+SRA+".left.fq"
+	commands=[rename_orphans,split_paired,rename_string1,rename_string2,rename_string3]
+        process_name="renmae"
+        module_name_list=["GNU/4.8.3","khmer/2.0"]
+        filename=SRA
+        clusterfunc.qsub_file(diginormdir,process_name,module_name_list,filename,commands)
 
-def get_trinity_script(trinitydir,SRA):
-	trinityfiles=trinitydir+SRA+".trinityfile.sh"	
-	s="""#!/bin/bash
+def run_trinity(trinitydir,SRA):
+	trinity_command="""
 set -x
 # stops execution if there is an error
 set -e
 if [ -f {}trinity_out/Trinity.fasta ]; then exit 0 ; fi
 if [ -d {}trinity_out ]; then mv {}trinity_out_dir {}trinity_out_dir0 || true ; fi
 
-/bin/trinity*/Trinity --left {}{}.left.fq \\
---right {}{}.right.fq --output {}trinity_out --seqType fq --max_memory 14G	\\
---CPU ${{THREADS:-2}}
+Trinity --left {}{}.left.fq \\
+--right {}{}.right.fq --output {}trinity_out --seqType fq --JM 20G --CPU 20
 
 """.format(trinitydir,trinitydir,trinitydir,trinitydir,trinitydir,SRA,trinitydir,SRA,trinitydir)
-	with open(trinityfiles,"w") as trinityfile:	
-		trinityfile.write(s)
-#string interpolation
-#have .format specify dicionary
-	#test_string="cat "+trinityfiles
-	#s=subprocess.Popen(test_string,shell=True)
-	#s.wait()
-	return trinityfiles
-#make a new run.sh in ~/MMETSP/ to run all *.trinityfile.sh in serial
+	commands=[trinity_command]
+        process_name="trinity"
+        module_name_list=["trinity/20140413p1"]
+        filename=SRA
+        clusterfunc.qsub_file(trinitydir,process_name,module_name_list,filename,commands)
 
-def run_trinity(trinity_script_list):
-	# need to run serially
-	# in general, this is a bad idea
-	# under normal circumstances, would run in parallel, one process for each Trinity
-	# need to loop through and get name of all Trinity scripts
- 	# make a script running all scripts
-	print trinity_script_list
-	runfile="/home/ubuntu/MMETSP/run.sh"
-	with open(runfile,"w") as run_file:
-		run_file.write("#!/bin/bash"+"\n") 
-		for script in trinity_script_list:
-			command="sudo bash "+script
-			run_file.write(command+"\n")
-	print "File written:",runfile
-	print "run with:"
-	print "sudo bash run.sh"	
-
-def check_trinity_run(seqdir):
-   trinity_dir=seqdir+"trinity/trinity_out_dir/"
+def check_trinity(seqdir):
+   trinity_dir=seqdir+"trinity/trinity_out/"
    trinity_file=trinity_dir+"Trinity.fasta"
    if os.path.isfile(trinity_file)==False:
         if os.path.isdir(trinity_dir)==False:
-            print SRA
-            file_list=data_dir[item]
-            trinity_string=get_trinity_string(org_seq_dir,file_list,seq_type)
-            submit_qsub_trinity(org_seq_dir,organism,seq_type,trinity_string)
+            print "Still need to run.",trinity_dir
+            #file_list=data_dir[item]
+            #trinity_string=get_trinity_string(org_seq_dir,file_list,seq_type)
+            #submit_qsub_trinity(org_seq_dir,organism,seq_type,trinity_string)
         else:
-            print "Trinity has already been run before, but unsuccessfully."
-            print "The directory will be renamed now."
-            trinity_dir_old=org_seq_dir+"trinity/trinity_out_dir_old/"
-            print "Old directory name:",trinity_dir_old
-            os.rename(trinity_dir,trinity_dir_old)
-            print os.path.isdir(trinity_dir_old)
+            print "Unsuccessful.",trinity_dir
+            #print "The directory will be renamed now."
+            #trinity_dir_old=seqdir+"trinity/trinity_out_old/"
+            #print "Old directory name:",trinity_dir_old
+            #os.rename(trinity_dir,trinity_dir_old)
+            #print os.path.isdir(trinity_dir_old)
    else:
         print "Trinity has already been run successfully:",trinity_file
         print os.path.isfile(trinity_file)
 
-basedir="/mnt/mmetsp/"
-datafile="MMETSP_SRA_Run_Info_subset_d.csv"
+basedir="/mnt/scratch/ljcohen/mmetsp/"
+datafile="MMETSP_SRA_Run_Info_subset_msu1.csv"
 url_data=get_data(datafile)
-print url_data
 execute(basedir,url_data)
