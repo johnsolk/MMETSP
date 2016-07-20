@@ -40,27 +40,26 @@ def get_data(thefile):
 
 def salmon_index(salmondir,sra,trinity_fasta):
 	index=sra+"_index"
-	os.chdir(salmondir)
-	salmon_index="salmon index --index "+index+" --transcripts "+trinity_fasta+" --type quasi"
-	#print salmon_index	
-	#s=subprocess.Popen(salmon_index,shell=True)
-	#s.wait()
-	#print "Indexed."
-	os.chdir("/home/ubuntu/MMETSP/")
-	return index
+	salmon_index_string="salmon index --index "+index+" --transcripts "+trinity_fasta+" --type quasi"
+	return index,salmon_index_string
 
-def quant_salmon(salmondir,index,sra,newdir):
-	os.chdir(salmondir)
-	file1=newdir+"trinity/left.fq"
-	file2=newdir+"trinity/right.fq"
+def quant_salmon(salmondir,sra,newdir,trinity_fasta):
+	file1=newdir+"trim/"+sra+".trim_1P.fq"
+	file2=newdir+"trim/"+sra+".trim_2P.fq"
 	if os.path.isfile(file1):
 		print "file exists:",file1
 	if os.path.isfile(file2):
 		print "file exists:",file2
+	index,salmon_index_string = salmon_index(salmondir,sra,trinity_fasta)
 	salmon_string="salmon quant -i "+index+" --libType IU -1 "+file1+" -2 "+file2+" -o "+salmondir+sra+".quant"
-	print salmon_string
-        s=subprocess.Popen(salmon_string,shell=True)
-	s.wait()
+	commands = [salmon_index_string,salmon_string]
+	process_name = "salmon"
+	module_name_list = ""
+	filename = sra
+	clusterfunc.qsub_file(salmondir,process_name,module_name_list,filename,commands)	
+def gather_counts():
+        gather_counts_string="python /home/ubuntu/MMETSP/gather-counts.py"
+	return gather_counts_string
 	
 def execute(url_data):
 	for item in url_data.keys():
@@ -74,11 +73,10 @@ def execute(url_data):
 			salmondir=newdir+"salmon/"
 			clusterfunc.check_dir(salmondir)
 			trinity_fasta=trinitydir+"Trinity.fasta"
-			index=salmon_index(salmondir,sra,trinity_fasta)
-			quant_salmon(salmondir,index,sra,newdir)
+			quant_salmon(salmondir,sra,newdir,trinity_fasta)
 
-basedir="/mnt/mmetsp/"
-datafile="MMETSP_SRA_Run_Info_subset2.csv"
+basedir="/mnt/scratch/ljcohen/mmetsp/"
+datafile="MMETSP_SRA_Run_Info_subset_msu1.csv"
 url_data=get_data(datafile)
 print url_data
 execute(url_data)

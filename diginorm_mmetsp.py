@@ -46,8 +46,6 @@ def interleave_reads(trimdir,sra,interleavedir):
     else:
         interleave_string="interleave-reads.py "+trimdir+sra+".trim_1P.fq "+trimdir+sra+".trim_2P.fq > "+interleavefile
         print interleave_string
-        #s=subprocess.Popen(interleave_string,shell=True)    
-        #s.wait()
 	interleave_command=[interleave_string]
         process_name="interleave"
         module_name_list=["GNU/4.8.3","khmer/2.0"]
@@ -62,7 +60,7 @@ filter-abund.py -V -Z 18 {}norm.C20k20.ct {}*.keep
 """.format(diginormdir,keep_dir)
 	extract_paired_string=extract_paired()
 	commands=[filter_string,extract_paired_string]
-        process_name="filterabund"
+        process_name="filtabund"
         module_name_list=["GNU/4.8.3","khmer/2.0"]
         filename=sra
         clusterfunc.qsub_file(diginormdir,process_name,module_name_list,filename,commands)
@@ -98,15 +96,10 @@ done
 	return extract_paired_string
 
 def run_diginorm(diginormdir,interleavedir,trimdir,sra):
-	# this will create and run a script from the working directory
-	# output *.keep files will be in the working directory
-	#if glob.glob(diginormdir+"*keep*"):
-	#	print "normalize-by-median.py already run"
-	#else:
 		normalize_median_string="""
 normalize-by-median.py -p -k 20 -C 20 -M 4e9 \\
---savegraph {}norm.C20k20.ct -u \\
-{}orphans.fq.gz \\
+--savegraph {}norm.C20k20.ct \\
+-u {}orphans.fq.gz \\
 {}*.fq
 """.format(diginormdir,trimdir,interleavedir)
 		#s=subprocess.Popen("cat diginorm.sh",shell=True)
@@ -175,14 +168,14 @@ def execute(basedir,url_data):
 			trimdir=newdir+"trim/"
 			#run_streaming_diginorm(trimdir,SRA,diginormdir)
 			#interleave_reads(trimdir,SRA,interleavedir)
-			#run_diginorm(diginormdir,interleavedir,trimdir,SRA)
-			run_filter_abund(diginormdir,SRA)
+			run_diginorm(diginormdir,interleavedir,trimdir,SRA)
+			#run_filter_abund(diginormdir,SRA)
 			#rename_files(diginormdir)
-			combine_orphaned(diginormdir)
+			#combine_orphaned(diginormdir)
 			#rename_pe(diginormdir)	
 
 basedir="/mnt/scratch/ljcohen/mmetsp/"
-datafile="MMETSP_SRA_Run_Info_subset_msu1.csv"
+datafile="MMETSP_SRA_Run_Info_subset_msu2.csv"
 url_data=get_data(datafile)
 execute(basedir,url_data)
 

@@ -44,14 +44,15 @@ def get_data(thefile):
 
 def run_trimmomatic_TruSeq(trimdir,file1,file2,sra):
 	bash_filename=trimdir+sra+".trim.TruSeq.sh"
-	listoffile = os.listdir(trimdir)
+	listoffile = os.listdir(trimdir+"qsub_files/")
 	#print listoffile
-	trim_file = trimdir+"trim."+sra+".log"
+	trim_file = trimdir+"qsub_files/""trim."+sra+".log"
 	#print trim_file
 	matching = [s for s in listoffile if "trim."+sra+".log" in s]
 	matching_string = "TrimmomaticPE: Completed successfully"
-	with open(trim_file) as f:
-    		content = f.readlines()
+	if os.path.isfile(trim_file):
+		with open(trim_file) as f:
+    			content = f.readlines()
 	if len(matching)!=0:
 		trim_complete = [m for m in content if matching_string in m]
 		if len(trim_complete)!=0:
@@ -68,15 +69,28 @@ TRAILING:2 \\
 MINLEN:25 &> trim.{}.log
 """.format(sra,file1,file2,sra)
 			orphan_string=make_orphans(trimdir,sra)
-			os.chdir(trimdir)	
-			with open(bash_filename,"w") as bash_file:
-				bash_file.write(j)
-				bash_file.write(orphan_string)
-			print "Trimming with Trimmomatic now..."
-			s=subprocess.Popen("bash "+bash_filename,shell=True)
-    			s.wait()
-    			print "Trimmomatic completed."
-    			os.chdir("/mnt/home/ljcohen/MMETSP/")
+			commands = [j,orphan_string]
+        		process_name="trim"
+        		module_name_list=""
+        		filename=sra
+        		clusterfunc.qsub_file(trimdir,process_name,module_name_list,filename,commands)
+	else:
+        	j="""#!/bin/bash
+#java -jar /mnt/home/ljcohen/bin/Trimmomatic-0.33/trimmomatic-0.33.jar PE \\
+#-baseout {}.trim.fq \\
+#{} {} \\
+#ILLUMINACLIP:/mnt/home/ljcohen/bin/Trimmomatic-0.33/adapters/combined.fa:2:40:15 \\
+#SLIDINGWINDOW:4:2 \\
+#LEADING:2 \\
+#TRAILING:2 \\
+#MINLEN:25 &> trim.{}.log
+#""".format(sra,file1,file2,sra)
+                orphan_string=make_orphans(trimdir,sra)
+                commands = [j,orphan_string]
+                process_name="trim"
+                module_name_list=""
+                filename=sra
+                clusterfunc.qsub_file(trimdir,process_name,module_name_list,filename,commands)
 
 def make_orphans(trimdir,sra):
     #if os.path.isfile(trimdir+"orphans.fq.gz"):
@@ -85,14 +99,51 @@ def make_orphans(trimdir,sra):
     	#else:
 	#	print "orphans file exists but is empty:",trimdir+"orphans.fq.gz"
     #else:
-    	file1 = sra+".trim_1U.fq"
-	file2 = sra+".trim_2U.fq"
+    	file1 = trimdir+"qsub_files/"+sra+".trim_1U.fq"
+	file2 = trimdir+"qsub_files/"+sra+".trim_2U.fq"
 	orphanlist=file1 + " " + file2
     	orphan_string="gzip -9c "+orphanlist+" > "+trimdir+"orphans.fq.gz"
     	print orphan_string
     	#s=subprocess.Popen(orphan_string,shell=True)
     	#s.wait()
 	return orphan_string
+
+def move_files(trimdir,sra):
+	tmp_trimdir = trimdir + "qsub_files/"
+	file1 = tmp_trimdir+sra+".trim_1P.fq"
+	file2 = tmp_trimdir+sra+".trim_2P.fq"
+	print file1
+	print file2
+	if os.path.isfile(file1):
+		if os.path.isfile(file2):
+			mv_string1 = "cp "+file1+" "+trimdir
+			mv_string2 = "cp "+file2+" "+trimdir
+			#s=subprocess.Popen(mv_string1,shell=True)
+        		#s.wait()
+			#t=subprocess.Popen(mv_string2,shell=True)
+        		#t.wait()
+	#if os.path.isfile(trimdir+sra+".trim_1P.fq"):
+	#	if os.path.isfile(trimdir+sra+".trim_2P.fq"):
+	#		print "Files all here:",os.listdir(trimdir)
+	return mv_string1,mv_string2
+
+def run_move_files(trimdir,sra):
+	orphan_string=make_orphans(trimdir,sra)
+        mv_string1,mv_string2 = move_files(trimdir,sra)
+	commands = [orphan_string,mv_string1,mv_string2]
+        process_name="move"
+        module_name_list=""
+        filename=sra
+        clusterfunc.qsub_file(trimdir,process_name,module_name_list,filename,commands)	
+
+def check_files(trimdir,sra):
+	file1 = trimdir+sra+".trim_1P.fq"
+	file2 = trimdir+sra+".trim_2P.fq"
+	if os.path.isfile(file1):
+        	if os.path.isfile(file2):
+                       	print "Files all here:",os.listdir(trimdir)
+		else:
+			print "Still waiting:",trimdir
 
 def execute(url_data,datadir):
     for item in url_data.keys():
@@ -113,12 +164,14 @@ def execute(url_data,datadir):
 			print file2
 		run_trimmomatic_TruSeq(trimdir,file1,file2,sra)
 		#interleave_reads(trimdir,sra,interleavedir)
-		#make_orphans(trimdir)
+		#make_orphans(trimdir,sra)
+		#run_move_files(trimdir,sra)
+		#check_files(trimdir,sra)
 		#else:
 		#	print "Files do not exist:",file1,file2 	
 
 
-datafile="MMETSP_SRA_Run_Info_subset_msu1.csv"
+datafile="MMETSP_SRA_Run_Info_subset_msu2.csv"
 datadir="/mnt/scratch/ljcohen/mmetsp/"
 url_data=get_data(datafile)
 print url_data
