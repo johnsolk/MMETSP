@@ -44,6 +44,7 @@ def get_data(thefile):
 
 def run_trimmomatic_TruSeq(trimdir,file1,file2,sra):
 	bash_filename=trimdir+sra+".trim.TruSeq.sh"
+	clusterfunc.check_dir(trimdir+"qsub_files/")
 	listoffile = os.listdir(trimdir+"qsub_files/")
 	#print listoffile
 	trim_file = trimdir+"qsub_files/""trim."+sra+".log"
@@ -58,7 +59,7 @@ def run_trimmomatic_TruSeq(trimdir,file1,file2,sra):
 		if len(trim_complete)!=0:
 			print "Already trimmed:",matching
 		else:
-			j="""#!/bin/bash
+			j="""
 java -jar /mnt/home/ljcohen/bin/Trimmomatic-0.33/trimmomatic-0.33.jar PE \\
 -baseout {}.trim.fq \\
 {} {} \\
@@ -75,16 +76,16 @@ MINLEN:25 &> trim.{}.log
         		filename=sra
         		clusterfunc.qsub_file(trimdir,process_name,module_name_list,filename,commands)
 	else:
-        	j="""#!/bin/bash
-#java -jar /mnt/home/ljcohen/bin/Trimmomatic-0.33/trimmomatic-0.33.jar PE \\
-#-baseout {}.trim.fq \\
-#{} {} \\
-#ILLUMINACLIP:/mnt/home/ljcohen/bin/Trimmomatic-0.33/adapters/combined.fa:2:40:15 \\
-#SLIDINGWINDOW:4:2 \\
-#LEADING:2 \\
-#TRAILING:2 \\
-#MINLEN:25 &> trim.{}.log
-#""".format(sra,file1,file2,sra)
+        	j="""
+java -jar /mnt/home/ljcohen/bin/Trimmomatic-0.33/trimmomatic-0.33.jar PE \\
+-baseout {}.trim.fq \\
+{} {} \\
+ILLUMINACLIP:/mnt/home/ljcohen/bin/Trimmomatic-0.33/adapters/combined.fa:2:40:15 \\
+SLIDINGWINDOW:4:2 \\
+LEADING:2 \\
+TRAILING:2 \\
+MINLEN:25 &> trim.{}.log
+""".format(sra,file1,file2,sra)
                 orphan_string=make_orphans(trimdir,sra)
                 commands = [j,orphan_string]
                 process_name="trim"
@@ -171,7 +172,7 @@ def execute(url_data,datadir):
 		#	print "Files do not exist:",file1,file2 	
 
 
-datafile="MMETSP_SRA_Run_Info_subset_msu2.csv"
+datafile="MMETSP_SRA_Run_Info_subset_msu3.csv"
 datadir="/mnt/scratch/ljcohen/mmetsp/"
 url_data=get_data(datafile)
 print url_data

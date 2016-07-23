@@ -57,12 +57,12 @@ def execute(basedir,url_data):
 			trinitydir=newdir+"trinity/"
 			clusterfunc.check_dir(trinitydir)
 			if os.path.isfile(diginormfile):
-				#print "file exists:",diginormfile
+				print "file exists:",diginormfile
 				#rename_files(trinitydir,diginormdir,diginormfile,SRA)
-			        run_trinity(trinitydir,SRA)	
+			        #run_trinity(trinitydir,SRA)	
 			else:
 				"There was a problem.",diginormfile
-			#check_trinity(newdir)
+			check_trinity(newdir,SRA)
 
 def combine_orphans(diginormdir):
 	diginorm_files_dir = diginormdir + "qsub_files/"
@@ -83,7 +83,7 @@ def rename_files(trinitydir,diginormdir,diginormfile,SRA):
 	rename_string2 = "cat "+diginormdir+"*.2 > "+trinitydir+SRA+".right.fq"
 	rename_string3 = "gunzip -c "+diginormdir+"orphans.keep.abundfilt.fq.gz >> "+trinitydir+SRA+".left.fq"
 	commands=[rename_orphans,split_paired,rename_string1,rename_string2,rename_string3]
-        process_name="renmae"
+        process_name="rename"
         module_name_list=["GNU/4.8.3","khmer/2.0"]
         filename=SRA
         clusterfunc.qsub_file(diginormdir,process_name,module_name_list,filename,commands)
@@ -94,10 +94,10 @@ set -x
 # stops execution if there is an error
 set -e
 if [ -f {}trinity_out/Trinity.fasta ]; then exit 0 ; fi
-if [ -d {}trinity_out ]; then mv {}trinity_out_dir {}trinity_out_dir0 || true ; fi
+#if [ -d {}trinity_out ]; then mv {}trinity_out_dir {}trinity_out_dir0 || true ; fi
 
 Trinity --left {}{}.left.fq \\
---right {}{}.right.fq --output {}trinity_out --seqType fq --JM 20G --CPU 20
+--right {}{}.right.fq --output {}trinity_out --seqType fq --JM 20G --CPU 16
 
 """.format(trinitydir,trinitydir,trinitydir,trinitydir,trinitydir,SRA,trinitydir,SRA,trinitydir)
 	commands=[trinity_command]
@@ -106,7 +106,7 @@ Trinity --left {}{}.left.fq \\
         filename=SRA
         clusterfunc.qsub_file(trinitydir,process_name,module_name_list,filename,commands)
 
-def check_trinity(seqdir):
+def check_trinity(seqdir,SRA):
    trinity_dir=seqdir+"trinity/trinity_out/"
    trinity_file=trinity_dir+"Trinity.fasta"
    if os.path.isfile(trinity_file)==False:
@@ -116,8 +116,9 @@ def check_trinity(seqdir):
             #trinity_string=get_trinity_string(org_seq_dir,file_list,seq_type)
             #submit_qsub_trinity(org_seq_dir,organism,seq_type,trinity_string)
         else:
-            print "Unsuccessful.",trinity_dir
-            #print "The directory will be renamed now."
+            print "Incomplete:",trinity_dir
+	    run_trinity(trinity_dir,SRA) 
+	    #print "The directory will be renamed now."
             #trinity_dir_old=seqdir+"trinity/trinity_out_old/"
             #print "Old directory name:",trinity_dir_old
             #os.rename(trinity_dir,trinity_dir_old)
@@ -127,6 +128,6 @@ def check_trinity(seqdir):
         print os.path.isfile(trinity_file)
 
 basedir="/mnt/scratch/ljcohen/mmetsp/"
-datafile="MMETSP_SRA_Run_Info_subset_msu1.csv"
+datafile="MMETSP_SRA_Run_Info_subset_msu2.csv"
 url_data=get_data(datafile)
 execute(basedir,url_data)

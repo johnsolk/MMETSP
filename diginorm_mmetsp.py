@@ -168,8 +168,11 @@ def execute(basedir,url_data):
 			trimdir=newdir+"trim/"
 			#run_streaming_diginorm(trimdir,SRA,diginormdir)
 			#interleave_reads(trimdir,SRA,interleavedir)
-			run_diginorm(diginormdir,interleavedir,trimdir,SRA)
+			#run_diginorm(diginormdir,interleavedir,trimdir,SRA)
 			#run_filter_abund(diginormdir,SRA)
+
+			# These might not be necessary?
+
 			#rename_files(diginormdir)
 			#combine_orphaned(diginormdir)
 			#rename_pe(diginormdir)	
