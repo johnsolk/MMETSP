@@ -39,6 +39,7 @@ def get_data(thefile):
         return url_data
 
 def execute(basedir,url_data):
+	count = 1
 	for item in url_data.keys():
         #Creates directory for each file to be downloaded
         #Directory will be located according to organism and read type (single or paired)
@@ -57,12 +58,13 @@ def execute(basedir,url_data):
 			trinitydir=newdir+"trinity/"
 			clusterfunc.check_dir(trinitydir)
 			if os.path.isfile(diginormfile):
-				print "file exists:",diginormfile
+				#print "file exists:",diginormfile
 				#rename_files(trinitydir,diginormdir,diginormfile,SRA)
-			        #run_trinity(trinitydir,SRA)	
+			        run_trinity(trinitydir,SRA)	
 			else:
-				"There was a problem.",diginormfile
-			check_trinity(newdir,SRA)
+				"Re-run diginorm:",diginormfile
+			#count = check_trinity(newdir,SRA,count)
+	#print "Number of times Trinity needs to be re-run:",count
 
 def combine_orphans(diginormdir):
 	diginorm_files_dir = diginormdir + "qsub_files/"
@@ -106,28 +108,20 @@ Trinity --left {}{}.left.fq \\
         filename=SRA
         clusterfunc.qsub_file(trinitydir,process_name,module_name_list,filename,commands)
 
-def check_trinity(seqdir,SRA):
-   trinity_dir=seqdir+"trinity/trinity_out/"
-   trinity_file=trinity_dir+"Trinity.fasta"
+def check_trinity(seqdir,SRA,count):
+   trinity_dir=seqdir+"trinity/"
+   trinity_file=trinity_dir+"trinity_out/Trinity.fasta"
    if os.path.isfile(trinity_file)==False:
         if os.path.isdir(trinity_dir)==False:
             print "Still need to run.",trinity_dir
-            #file_list=data_dir[item]
-            #trinity_string=get_trinity_string(org_seq_dir,file_list,seq_type)
-            #submit_qsub_trinity(org_seq_dir,organism,seq_type,trinity_string)
-        else:
+            run_trinity(trinity_dir,SRA)
+            count += 1
+	else:
             print "Incomplete:",trinity_dir
-	    run_trinity(trinity_dir,SRA) 
-	    #print "The directory will be renamed now."
-            #trinity_dir_old=seqdir+"trinity/trinity_out_old/"
-            #print "Old directory name:",trinity_dir_old
-            #os.rename(trinity_dir,trinity_dir_old)
-            #print os.path.isdir(trinity_dir_old)
-   else:
-        print "Trinity has already been run successfully:",trinity_file
-        print os.path.isfile(trinity_file)
-
+	    run_trinity(trinity_dir,SRA)
+	    count += 1 
+   return count
 basedir="/mnt/scratch/ljcohen/mmetsp/"
-datafile="MMETSP_SRA_Run_Info_subset_msu2.csv"
+datafile="MMETSP_SRA_Run_Info_subset_msu3.csv"
 url_data=get_data(datafile)
 execute(basedir,url_data)

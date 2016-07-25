@@ -163,10 +163,8 @@ def execute(url_data,datadir):
 		if os.path.isfile(file1) and os.path.isfile(file2):
 			print file1
 			print file2
-		run_trimmomatic_TruSeq(trimdir,file1,file2,sra)
-		#interleave_reads(trimdir,sra,interleavedir)
-		#make_orphans(trimdir,sra)
-		#run_move_files(trimdir,sra)
+		#run_trimmomatic_TruSeq(trimdir,file1,file2,sra)
+		run_move_files(trimdir,sra)
 		#check_files(trimdir,sra)
 		#else:
 		#	print "Files do not exist:",file1,file2 	

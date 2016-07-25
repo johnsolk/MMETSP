@@ -79,11 +79,11 @@ def sra_extract(newdir,filename):
 
 def fastqc_report(fastq_file_list,newdir,fastqcdir,filename):
     # imports list of files in each directory
-    	print fastq_file_list
-    	print fastqcdir+filename
-    #if glob.glob(fastqcdir+filename+"_*_fastqc.zip"):
-#	print "fastqc already complete:",filename
- #   else:		
+    print fastq_file_list
+    print fastqcdir+filename
+    if glob.glob(fastqcdir+filename+"_*_fastqc.zip"):
+	print "fastqc already complete:",filename
+    else:		
     	# creates command to generate fastqc reports from all files in list 
     	file_string=str(fastq_file_list)
     #print fastq_file_list
@@ -138,7 +138,7 @@ def fastqc(newdir,fastqcdir,filename):
 			fastq_file_list.append(newdir+i)
 	fastqc_report(fastq_file_list,newdir,fastqcdir,filename)         
 
-datafile="MMETSP_SRA_Run_Info_subset_msu3.csv"
+datafile="MMETSP_SRA_Run_Info_subset_msu4.csv"
 basedir="/mnt/scratch/ljcohen/mmetsp/"
 clusterfunc.check_dir(basedir)
 url_data=get_data(datafile)

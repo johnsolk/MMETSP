@@ -169,16 +169,10 @@ def execute(basedir,url_data):
 			#run_streaming_diginorm(trimdir,SRA,diginormdir)
 			#interleave_reads(trimdir,SRA,interleavedir)
 			#run_diginorm(diginormdir,interleavedir,trimdir,SRA)
-			#run_filter_abund(diginormdir,SRA)
-
-			# These might not be necessary?
-
-			#rename_files(diginormdir)
-			#combine_orphaned(diginormdir)
-			#rename_pe(diginormdir)	
+			run_filter_abund(diginormdir,SRA)
 
 basedir="/mnt/scratch/ljcohen/mmetsp/"
-datafile="MMETSP_SRA_Run_Info_subset_msu2.csv"
+datafile="MMETSP_SRA_Run_Info_subset_msu3.csv"
 url_data=get_data(datafile)
 execute(basedir,url_data)
 

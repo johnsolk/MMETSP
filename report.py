@@ -128,7 +128,7 @@ def get_histogram(data_frame):
 
 
 basedir = "/mnt/scratch/ljcohen/mmetsp/"	
-datafile="MMETSP_SRA_Run_Info_subset_msu2.csv"
+datafile="MMETSP_SRA_Run_Info_subset_msu3.csv"
 url_data=get_data(datafile)
 #print url_data
 execute(url_data,basedir)
