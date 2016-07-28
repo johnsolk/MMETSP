@@ -60,10 +60,10 @@ def execute(url_data):
 			# run this after trim_qc.py
 			##
 
-			#if os.path.isfile(filename+"_1.fastq"):
-			#	delete_file(filename+"_1.fastq")
-			#if os.path.isfile(filename+"_2.fastq"):
-			#	delete_file(filename+"_2.fastq")	
+			if os.path.isfile(filename+"_1.fastq"):
+				delete_file(filename+"_1.fastq")
+			if os.path.isfile(filename+"_2.fastq"):
+				delete_file(filename+"_2.fastq")	
 			
 			##
 			# run this after getdata.py
@@ -78,25 +78,24 @@ def execute(url_data):
 			
 			##
 	
-			#diginormdir=newdir+"diginorm/"
-			#os.chdir(diginormdir)
-			#diginorm_delete_files=["norm.C20k20.ct","orphans.fq.gz.keep.abundfilt"]
-			#for filename in glob.glob("*.keep"):
-			#	diginorm_delete_files.append(filename)
-			#for filename in glob.glob("*.abundfilt"):
-			#	diginorm_delete_files.append(filename)
-			#for filename in glob.glob("*.abundfilt.pe"):
-			#	diginorm_delete_files.append(filename)
-			#for filename in glob.glob("*.abundfilt.se"):
-			#	diginorm_delete_files.append(filename)
-			#print diginorm_delete_files
-			#for filetodelete in diginorm_delete_files:
-			#	if os.path.isfile(filetodelete):
-			#		print "File in diginorm to delete exists:",filetodelete
-			#		delete_file(filetodelete)
-			#	else:
-			#		print "File in diginorm not found:",filetodelete
-			#os.chdir("/home/ubuntu/MMETSP/")
+			diginormdir=newdir+"diginorm/"
+			os.chdir(diginormdir)
+			diginorm_delete_files=["norm.C20k20.ct","orphans.keep.abundfilt.fq.gz"]
+			for filename in glob.glob("*.keep"):
+				diginorm_delete_files.append(filename)
+			for filename in glob.glob("*.abundfilt"):
+				diginorm_delete_files.append(filename)
+			for filename in glob.glob("*.abundfilt.pe*"):
+				diginorm_delete_files.append(filename)
+			for filename in glob.glob("*.abundfilt.se"):
+				diginorm_delete_files.append(filename)
+			print diginorm_delete_files
+			for filetodelete in diginorm_delete_files:
+				if os.path.isfile(filetodelete):
+					print "File in diginorm to delete exists:",filetodelete
+					delete_file(filetodelete)
+				else:
+					print "File in diginorm not found:",filetodelete
 
 			##
 			# run this after assembly.py
@@ -120,19 +119,23 @@ def execute(url_data):
 			# run this to delete interleaved reads
 			##
 
-			#interleavedir=newdir+"interleave/"
-			#os.chdir(interleavedir)
-			#listoffiles=os.listdir(interleavedir)
-			#filestodelete=[]
-			#for filename in listoffiles:
-			#	if filename.endswith(".interleaved.fq"):
-			#		filestodelete.append(filename)
-			#print "These files will be deleted:",filestodelete
-			#for i in filestodelete:
-			#	delete_file(i)
-			#os.chdir("/home/ubuntu/MMETSP/")
+			interleavedir=newdir+"interleave/"
+			os.chdir(interleavedir)
+			listoffiles=os.listdir(interleavedir)
+			filestodelete=[]
+			for filename in listoffiles:
+				if filename.endswith(".interleaved.fq"):
+					filestodelete.append(filename)
+			print "These files will be deleted:",filestodelete
+			for i in filestodelete:
+				delete_file(i)
+			os.chdir("/mnt/home/ljcohen/MMETSP")
 basedir="/mnt/scratch/ljcohen/mmetsp/"
-datafile="MMETSP_SRA_Run_Info_subset_msu1.csv"
-url_data=get_data(datafile)
-print url_data
-execute(url_data)
+datafiles=["MMETSP_SRA_Run_Info_subset_msu1.csv",
+	   "MMETSP_SRA_Run_Info_subset_msu2.csv",
+ 	   "MMETSP_SRA_Run_Info_subset_msu3.csv"]
+#	   "MMETSP_SRA_Run_Info_subset_msu4.csv"]
+for datafile in datafiles:
+	url_data=get_data(datafile)
+	print url_data
+	execute(url_data)
