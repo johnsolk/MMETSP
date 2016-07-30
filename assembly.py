@@ -122,6 +122,6 @@ def check_trinity(seqdir,SRA,count):
 	    count += 1 
    return count
 basedir="/mnt/scratch/ljcohen/mmetsp/"
-datafile="MMETSP_SRA_Run_Info_subset_msu3.csv"
+datafile="MMETSP_SRA_Run_Info_subset_msu4.csv"
 url_data=get_data(datafile)
 execute(basedir,url_data)

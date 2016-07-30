@@ -31,7 +31,7 @@ def qsub_file(basedir,process_name,module_name_list,filename,process_string):
     module_load=get_module_load_list(module_name_list)
     f="""#!/bin/bash
 #PBS -l walltime=02:00:00,nodes=1:ppn=8
-#PBS -l mem=32gb
+#PBS -l mem=75gb
 #PBS -l feature=intel16
 #PBS -j oe
 #PBS -A ged

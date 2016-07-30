@@ -170,7 +170,7 @@ def execute(url_data,datadir):
 		#	print "Files do not exist:",file1,file2 	
 
 
-datafile="MMETSP_SRA_Run_Info_subset_msu3.csv"
+datafile="MMETSP_SRA_Run_Info_subset_msu4.csv"
 datadir="/mnt/scratch/ljcohen/mmetsp/"
 url_data=get_data(datafile)
 print url_data
