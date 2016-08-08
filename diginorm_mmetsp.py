@@ -172,7 +172,7 @@ def execute(basedir,url_data):
 			run_filter_abund(diginormdir,SRA)
 
 basedir="/mnt/scratch/ljcohen/mmetsp/"
-datafile="MMETSP_SRA_Run_Info_subset_msu4.csv"
+datafile="MMETSP_SRA_Run_Info_subset_msu7.csv"
 url_data=get_data(datafile)
 execute(basedir,url_data)
 
