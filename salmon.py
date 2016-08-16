@@ -51,12 +51,15 @@ def quant_salmon(salmondir,sra,newdir,trinity_fasta):
 	if os.path.isfile(file2):
 		print "file exists:",file2
 	index,salmon_index_string = salmon_index(salmondir,sra,trinity_fasta)
-	salmon_string="salmon quant -i "+index+" --libType IU -1 "+file1+" -2 "+file2+" -o "+salmondir+sra+".quant"
+	salmon_string="salmon quant -i "+index+" --libType IU -1 "+file1+" -2 "+file2+" -o "+salmondir+sra+".quant --dumpEq --auxDir aux"
 	commands = [salmon_index_string,salmon_string]
 	process_name = "salmon"
 	module_name_list = ""
 	filename = sra
+	#s=subprocess.Popen(salmon_index_string,shell=True)
+	#s.wait()
 	clusterfunc.qsub_file(salmondir,process_name,module_name_list,filename,commands)	
+	
 def gather_counts():
         gather_counts_string="python /home/ubuntu/MMETSP/gather-counts.py"
 	return gather_counts_string
@@ -76,7 +79,9 @@ def execute(url_data):
 			quant_salmon(salmondir,sra,newdir,trinity_fasta)
 
 basedir="/mnt/scratch/ljcohen/mmetsp/"
-datafile="MMETSP_SRA_Run_Info_subset_msu1.csv"
-url_data=get_data(datafile)
-print url_data
-execute(url_data)
+datafiles=["MMETSP_SRA_Run_Info_subset_msu1.csv","MMETSP_SRA_Run_Info_subset_msu2.csv","MMETSP_SRA_Run_Info_subset_msu3.csv","MMETSP_SRA_Run_Info_subset_msu4.csv",
+	"MMETSP_SRA_Run_Info_subset_msu5.csv","MMETSP_SRA_Run_Info_subset_msu6.csv","MMETSP_SRA_Run_Info_subset_msu7.csv"]
+for datafile in datafiles:
+	url_data=get_data(datafile)
+	print url_data
+	execute(url_data)
