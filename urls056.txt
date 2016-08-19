@@ -1,0 +1,4 @@
+ftp://ftp.imicrobe.us/projects/104/transcriptomes/MMETSP056/MMETSP0562.cds.fa.gz
+ftp://ftp.imicrobe.us/projects/104/transcriptomes/MMETSP056/MMETSP0562.cds.fa.gz
+ftp://ftp.imicrobe.us/projects/104/transcriptomes/MMETSP056/MMETSP0563.cds.fa.gz
+ftp://ftp.imicrobe.us/projects/104/transcriptomes/MMETSP056/MMETSP0563.cds.fa.gz

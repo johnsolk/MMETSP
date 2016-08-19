@@ -1,0 +1,10 @@
+ftp://ftp.imicrobe.us/projects/104/transcriptomes/MMETSP069/MMETSP0693.cds.fa.gz
+ftp://ftp.imicrobe.us/projects/104/transcriptomes/MMETSP069/MMETSP0693.cds.fa.gz
+ftp://ftp.imicrobe.us/projects/104/transcriptomes/MMETSP069/MMETSP0696.cds.fa.gz
+ftp://ftp.imicrobe.us/projects/104/transcriptomes/MMETSP069/MMETSP0696.cds.fa.gz
+ftp://ftp.imicrobe.us/projects/104/transcriptomes/MMETSP069/MMETSP0697.cds.fa.gz
+ftp://ftp.imicrobe.us/projects/104/transcriptomes/MMETSP069/MMETSP0697.cds.fa.gz
+ftp://ftp.imicrobe.us/projects/104/transcriptomes/MMETSP069/MMETSP0698.cds.fa.gz
+ftp://ftp.imicrobe.us/projects/104/transcriptomes/MMETSP069/MMETSP0698.cds.fa.gz
+ftp://ftp.imicrobe.us/projects/104/transcriptomes/MMETSP069/MMETSP0699.cds.fa.gz
+ftp://ftp.imicrobe.us/projects/104/transcriptomes/MMETSP069/MMETSP0699.cds.fa.gz
