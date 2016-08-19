@@ -1,2 +1,0 @@
-ftp://ftp.imicrobe.us/projects/104/transcriptomes/MMETSP082/MMETSP0820.cds.fa.gz
-ftp://ftp.imicrobe.us/projects/104/transcriptomes/MMETSP082/MMETSP0820.cds.fa.gz
