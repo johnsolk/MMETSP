@@ -56,8 +56,6 @@ def quant_salmon(salmondir,sra,newdir,trinity_fasta):
 	process_name = "salmon"
 	module_name_list = ""
 	filename = sra
-	#s=subprocess.Popen(salmon_index_string,shell=True)
-	#s.wait()
 	clusterfunc.qsub_file(salmondir,process_name,module_name_list,filename,commands)	
 	
 def gather_counts():

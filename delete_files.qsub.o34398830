@@ -1,0 +1,140 @@
++ cd /mnt/home/ljcohen/MMETSP
++ python /mnt/home/ljcohen/MMETSP/clean.py
+('uncultured_eukaryote', 'SRR1300247')
+('Ostreococcus_mediterraneus', 'SRR1300248')
+('Ostreococcus_mediterraneus', 'SRR1300249')
+('Bathycoccus_prasinos', 'SRR1300250')
+('Ostreococcus_mediterraneus', 'SRR1300251')
+('Ostreococcus_mediterraneus', 'SRR1300252')
+('Ostreococcus_mediterraneus', 'SRR1300253')
+('Ostreococcus_lucimarinus', 'SRR1300254')
+('Lingulodinium_polyedrum', 'SRR1300255')
+('Lingulodinium_polyedrum', 'SRR1300256')
+('Lingulodinium_polyedrum', 'SRR1300257')
+('Lingulodinium_polyedrum', 'SRR1300258')
+('Skeletonema_marinoi', 'SRR1300259')
+('Skeletonema_marinoi', 'SRR1300260')
+('uncultured_eukaryote', 'SRR1300261')
+('uncultured_eukaryote', 'SRR1300262')
+('Symbiodinium_sp.', 'SRR1300263')
+('Symbiodinium_sp.', 'SRR1300264')
+('Symbiodinium_sp.', 'SRR1300265')
+('Symbiodinium_sp.', 'SRR1300266')
+('Symbiodinium_sp.', 'SRR1300267')
+('Isochrysis_sp.', 'SRR1300268')
+('Pavlova', 'SRR1300269')
+('Pavlova', 'SRR1300270')
+('Minutocellus_polymorphus', 'SRR1300271')
+('Ditylum_brightwellii', 'SRR1300272')
+('Ditylum_brightwellii', 'SRR1300273')
+('Thalassiosira', 'SRR1300274')
+('uncultured_eukaryote', 'SRR1300275')
+('uncultured_eukaryote', 'SRR1300276')
+('uncultured_eukaryote', 'SRR1300277')
+('Aureococcus_anophagefferens', 'SRR1300278')
+('Aureococcus_anophagefferens', 'SRR1300279')
+('Aureococcus_anophagefferens', 'SRR1300280')
+('Aureococcus_anophagefferens', 'SRR1300281')
+('Emiliania_huxleyi', 'SRR1300282')
+('Emiliania_huxleyi', 'SRR1300283')
+('Emiliania_huxleyi', 'SRR1300284')
+('Emiliania_huxleyi', 'SRR1300285')
+('Emiliania_huxleyi', 'SRR1300286')
+('Emiliania_huxleyi', 'SRR1300287')
+('Emiliania_huxleyi', 'SRR1300288')
+('Emiliania_huxleyi', 'SRR1300289')
+('Aurantiochytrium_limacinum', 'SRR1300290')
+('Ditylum_brightwellii', 'SRR1300291')
+('Ditylum_brightwellii', 'SRR1300292')
+('Ditylum_brightwellii', 'SRR1300293')
+('Ditylum_brightwellii', 'SRR1300294')
+('Micromonas', 'SRR1300295')
+('Gloeochaete_wittrockiana', 'SRR1300296')
+('Dunaliella_tertiolecta', 'SRR1300297')
+('Dunaliella_tertiolecta', 'SRR1300298')
+('Pavlova', 'SRR1300299')
+('Neoceratium_fusus', 'SRR1300300')
+('Neoceratium_fusus', 'SRR1300301')
+('Symbiodinium_kawagutii', 'SRR1300302')
+('Symbiodinium_kawagutii', 'SRR1300303')
+('Symbiodinium_kawagutii', 'SRR1300304')
+('Symbiodinium_kawagutii', 'SRR1300305')
+('Azadinium_spinosum', 'SRR1300306')
+('Azadinium_spinosum', 'SRR1300307')
+('Azadinium_spinosum', 'SRR1300308')
+('Ditylum_brightwellii', 'SRR1300309')
+('Chromulina_nebulosa', 'SRR1300310')
+('Haptolina_ericina', 'SRR1300311')
+('Pseudopedinella_elastica', 'SRR1300312')
+('Phaeocystis_antarctica', 'SRR1300313')
+('Rhodomonas_abbreviata', 'SRR1300314')
+('Geminigera', 'SRR1300315')
+('Paraphysomonas_bandaiensis', 'SRR1300316')
+('Ochromonas', 'SRR1300317')
+('Mantoniella_antarctica', 'SRR1300318')
+('Picocystis_salinarum', 'SRR1300322')
+('Picochlorum_oklahomense', 'SRR1300323')
+('Mallomonas', 'SRR1300324')
+('Karlodinium_veneficum', 'SRR1300325')
+('Karlodinium_veneficum', 'SRR1300326')
+('Karlodinium_veneficum', 'SRR1300327')
+('uncultured_eukaryote', 'SRR1300328')
+('uncultured_eukaryote', 'SRR1300329')
+('uncultured_eukaryote', 'SRR1300330')
+('Isochrysis_galbana', 'SRR1300331')
+('Isochrysis_galbana', 'SRR1300332')
+('Aplanochytrium', 'SRR1300333')
+('Aplanochytrium', 'SRR1300334')
+('Aurantiochytrium_limacinum', 'SRR1300335')
+('Aurantiochytrium_limacinum', 'SRR1300336')
+('Aurantiochytrium_limacinum', 'SRR1300337')
+('uncultured_eukaryote', 'SRR1300338')
+('uncultured_eukaryote', 'SRR1300339')
+('uncultured_eukaryote', 'SRR1300340')
+('uncultured_eukaryote', 'SRR1300341')
+('Euplotes_focardii', 'SRR1296928')
+('Noctiluca_scintillans', 'SRR1296929')
+('Mayorella', 'SRR1296930')
+('Thalassiosira_weissflogii', 'SRR1296931')
+('Thalassiosira_weissflogii', 'SRR1296932')
+('Thalassiosira_weissflogii', 'SRR1296933')
+('Thalassiosira_weissflogii', 'SRR1296934')
+('Litonotus_pictus', 'SRR1296935')
+{('uncultured_eukaryote', 'SRR1300275'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300275'], ('Lingulodinium_polyedrum', 'SRR1300256'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300256'], ('Dunaliella_tertiolecta', 'SRR1300298'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300298'], ('Isochrysis_galbana', 'SRR1300331'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300331'], ('Aureococcus_anophagefferens', 'SRR1300279'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300279'], ('Ditylum_brightwellii', 'SRR1300291'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300291'], ('Litonotus_pictus', 'SRR1296935'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296935'], ('uncultured_eukaryote', 'SRR1300341'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300341'], ('Minutocellus_polymorphus', 'SRR1300271'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300271'], ('Azadinium_spinosum', 'SRR1300306'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300306'], ('Ostreococcus_mediterraneus', 'SRR1300252'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300252'], ('Skeletonema_marinoi', 'SRR1300259'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300259'], ('Emiliania_huxleyi', 'SRR1300282'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300282'], ('Skeletonema_marinoi', 'SRR1300260'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300260'], ('Dunaliella_tertiolecta', 'SRR1300297'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300297'], ('Aurantiochytrium_limacinum', 'SRR1300336'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300336'], ('Chromulina_nebulosa', 'SRR1300310'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300310'], ('Haptolina_ericina', 'SRR1300311'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300311'], ('Aureococcus_anophagefferens', 'SRR1300280'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300280'], ('Karlodinium_veneficum', 'SRR1300327'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300327'], ('Geminigera', 'SRR1300315'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300315'], ('Symbiodinium_sp.', 'SRR1300267'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300267'], ('Emiliania_huxleyi', 'SRR1300288'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300288'], ('Euplotes_focardii', 'SRR1296928'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296928'], ('Emiliania_huxleyi', 'SRR1300287'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300287'], ('Aplanochytrium', 'SRR1300334'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300334'], ('Thalassiosira_weissflogii', 'SRR1296931'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296931'], ('Symbiodinium_kawagutii', 'SRR1300303'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300303'], ('Ditylum_brightwellii', 'SRR1300273'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300273'], ('Symbiodinium_sp.', 'SRR1300264'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300264'], ('uncultured_eukaryote', 'SRR1300261'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300261'], ('Lingulodinium_polyedrum', 'SRR1300255'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300255'], ('uncultured_eukaryote', 'SRR1300338'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300338'], ('Thalassiosira_weissflogii', 'SRR1296934'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296934'], ('Isochrysis_galbana', 'SRR1300332'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300332'], ('uncultured_eukaryote', 'SRR1300262'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300262'], ('Lingulodinium_polyedrum', 'SRR1300258'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300258'], ('Isochrysis_sp.', 'SRR1300268'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300268'], ('Pseudopedinella_elastica', 'SRR1300312'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300312'], ('uncultured_eukaryote', 'SRR1300340'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300340'], ('Ochromonas', 'SRR1300317'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300317'], ('Symbiodinium_sp.', 'SRR1300263'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300263'], ('Neoceratium_fusus', 'SRR1300300'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300300'], ('Ostreococcus_mediterraneus', 'SRR1300251'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300251'], ('Aurantiochytrium_limacinum', 'SRR1300290'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300290'], ('Ditylum_brightwellii', 'SRR1300293'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300293'], ('Emiliania_huxleyi', 'SRR1300283'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300283'], ('Picocystis_salinarum', 'SRR1300322'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300322'], ('Thalassiosira', 'SRR1300274'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300274'], ('Aurantiochytrium_limacinum', 'SRR1300335'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300335'], ('Pavlova', 'SRR1300269'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300269'], ('Karlodinium_veneficum', 'SRR1300326'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300326'], ('Ostreococcus_mediterraneus', 'SRR1300248'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300248'], ('Emiliania_huxleyi', 'SRR1300289'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300289'], ('Emiliania_huxleyi', 'SRR1300284'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300284'], ('Aplanochytrium', 'SRR1300333'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300333'], ('uncultured_eukaryote', 'SRR1300329'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300329'], ('Mallomonas', 'SRR1300324'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300324'], ('Karlodinium_veneficum', 'SRR1300325'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300325'], ('Ditylum_brightwellii', 'SRR1300272'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300272'], ('Symbiodinium_sp.', 'SRR1300265'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300265'], ('Ditylum_brightwellii', 'SRR1300294'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300294'], ('uncultured_eukaryote', 'SRR1300277'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300277'], ('Symbiodinium_kawagutii', 'SRR1300304'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300304'], ('Bathycoccus_prasinos', 'SRR1300250'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300250'], ('Ditylum_brightwellii', 'SRR1300309'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300309'], ('uncultured_eukaryote', 'SRR1300339'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300339'], ('Thalassiosira_weissflogii', 'SRR1296933'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296933'], ('Noctiluca_scintillans', 'SRR1296929'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296929'], ('Mantoniella_antarctica', 'SRR1300318'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300318'], ('uncultured_eukaryote', 'SRR1300247'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300247'], ('Lingulodinium_polyedrum', 'SRR1300257'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300257'], ('Neoceratium_fusus', 'SRR1300301'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300301'], ('Aureococcus_anophagefferens', 'SRR1300278'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300278'], ('Micromonas', 'SRR1300295'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300295'], ('Ditylum_brightwellii', 'SRR1300292'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300292'], ('Ostreococcus_mediterraneus', 'SRR1300249'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300249'], ('Azadinium_spinosum', 'SRR1300307'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300307'], ('Phaeocystis_antarctica', 'SRR1300313'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300313'], ('Ostreococcus_mediterraneus', 'SRR1300253'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300253'], ('Azadinium_spinosum', 'SRR1300308'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300308'], ('Mayorella', 'SRR1296930'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296930'], ('Emiliania_huxleyi', 'SRR1300285'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300285'], ('Pavlova', 'SRR1300299'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300299'], ('Picochlorum_oklahomense', 'SRR1300323'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300323'], ('Aurantiochytrium_limacinum', 'SRR1300337'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300337'], ('uncultured_eukaryote', 'SRR1300328'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300328'], ('uncultured_eukaryote', 'SRR1300330'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300330'], ('Aureococcus_anophagefferens', 'SRR1300281'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300281'], ('Symbiodinium_kawagutii', 'SRR1300305'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300305'], ('Ostreococcus_lucimarinus', 'SRR1300254'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300254'], ('Symbiodinium_sp.', 'SRR1300266'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300266'], ('Pavlova', 'SRR1300270'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300270'], ('Gloeochaete_wittrockiana', 'SRR1300296'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300296'], ('uncultured_eukaryote', 'SRR1300276'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300276'], ('Rhodomonas_abbreviata', 'SRR1300314'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300314'], ('Emiliania_huxleyi', 'SRR1300286'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300286'], ('Paraphysomonas_bandaiensis', 'SRR1300316'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300316'], ('Thalassiosira_weissflogii', 'SRR1296932'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296932'], ('Symbiodinium_kawagutii', 'SRR1300302'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300302']}
+/mnt/scratch/ljcohen/mmetsp/uncultured_eukaryote/
+/mnt/scratch/ljcohen/mmetsp/uncultured_eukaryote/SRR1300275/SRR1300275
+/mnt/scratch/ljcohen/mmetsp/Lingulodinium_polyedrum/
+/mnt/scratch/ljcohen/mmetsp/Lingulodinium_polyedrum/SRR1300256/SRR1300256
+/mnt/scratch/ljcohen/mmetsp/Dunaliella_tertiolecta/
+/mnt/scratch/ljcohen/mmetsp/Dunaliella_tertiolecta/SRR1300298/SRR1300298
+/mnt/scratch/ljcohen/mmetsp/Isochrysis_galbana/
+/mnt/scratch/ljcohen/mmetsp/Isochrysis_galbana/SRR1300331/SRR1300331
+/mnt/scratch/ljcohen/mmetsp/Aureococcus_anophagefferens/
+/mnt/scratch/ljcohen/mmetsp/Aureococcus_anophagefferens/SRR1300279/SRR1300279
+/mnt/scratch/ljcohen/mmetsp/Ditylum_brightwellii/
+/mnt/scratch/ljcohen/mmetsp/Ditylum_brightwellii/SRR1300291/SRR1300291
+/mnt/scratch/ljcohen/mmetsp/Litonotus_pictus/
+/mnt/scratch/ljcohen/mmetsp/Litonotus_pictus/SRR1296935/SRR1296935
+/mnt/scratch/ljcohen/mmetsp/uncultured_eukaryote/
+/mnt/scratch/ljcohen/mmetsp/uncultured_eukaryote/SRR1300341/SRR1300341
+/mnt/scratch/ljcohen/mmetsp/Minutocellus_polymorphus/
+/mnt/scratch/ljcohen/mmetsp/Minutocellus_polymorphus/SRR1300271/SRR1300271
+/mnt/scratch/ljcohen/mmetsp/Azadinium_spinosum/
+/mnt/scratch/ljcohen/mmetsp/Azadinium_spinosum/SRR1300306/SRR1300306
+/mnt/scratch/ljcohen/mmetsp/Ostreococcus_mediterraneus/
+/mnt/scratch/ljcohen/mmetsp/Ostreococcus_mediterraneus/SRR1300252/SRR1300252
+These files will be copied: /mnt/scratch/ljcohen/mmetsp/Ostreococcus_mediterraneus/SRR1300252/trinity/trinity_out/Trinity.fasta
+New trinity file location: /mnt/scratch/ljcohen/mmetsp/Ostreococcus_mediterraneus/SRR1300252/trinity/SRR1300252.Trinity.fasta
+These files will be deleted: /mnt/scratch/ljcohen/mmetsp/Ostreococcus_mediterraneus/SRR1300252/trinity/trinity_out/
+/mnt/scratch/ljcohen/mmetsp/Skeletonema_marinoi/
+/mnt/scratch/ljcohen/mmetsp/Skeletonema_marinoi/SRR1300259/SRR1300259
+These files will be copied: /mnt/scratch/ljcohen/mmetsp/Skeletonema_marinoi/SRR1300259/trinity/trinity_out/Trinity.fasta
+New trinity file location: /mnt/scratch/ljcohen/mmetsp/Skeletonema_marinoi/SRR1300259/trinity/SRR1300259.Trinity.fasta
+These files will be deleted: /mnt/scratch/ljcohen/mmetsp/Skeletonema_marinoi/SRR1300259/trinity/trinity_out/
+/mnt/scratch/ljcohen/mmetsp/Emiliania_huxleyi/
+/mnt/scratch/ljcohen/mmetsp/Emiliania_huxleyi/SRR1300282/SRR1300282
+These files will be copied: /mnt/scratch/ljcohen/mmetsp/Emiliania_huxleyi/SRR1300282/trinity/trinity_out/Trinity.fasta
+New trinity file location: /mnt/scratch/ljcohen/mmetsp/Emiliania_huxleyi/SRR1300282/trinity/SRR1300282.Trini=>> PBS: job killed: walltime 14431 exceeded limit 14400
+Unknown option: 1
+Unknown option: 1
+Usage: /var/spool/torque/mom_priv/epilogue [-hkbv]

@@ -36,30 +36,21 @@ def get_data(thefile):
                 url_data[name_read_tuple] = [ftp]
         return url_data
 
-def get_quant_file(salmondir,sra):
-	quant_file = salmondir+sra+".quant"
-	return quant_file
+def get_read_numbers(salmondir,sra):
+	salmondir_quant = salmondir+sra+".quant/"
+	read_count="cat "+salmondir_quant+"quant.sf | wc -l"
+	print salmondir
+	print read_count
+	s=subprocess.Popen(read_count,shell=True)
+        s.wait()
 
-def get_config_file(quant_file,rapclustdir,sra):
-	config_file=rapclustdir+sra+"_config.yaml"
-	out_dir=rapclustdir+sra+"_rapclust_out"
-	yaml_dict={"conditions":[sra],"samples":{sra:[quant_file]},"outdir":out_dir}
-	yaml_dump=yaml.dump(yaml_dict)
-	with open(config_file,"w") as config_file:
-		config_file.write(yaml_dump)
-	return config_file
-
-def run_rap_clust(salmondir,rapclustdir,sra):
-	quant_file=get_quant_file(salmondir,sra)
-	config_file=get_config_file(quant_file,rapclustdir,sra)
-	config_filename=rapclustdir+sra+"_config.yaml"
-	rapclust_string="RapClust --config "+str(config_filename)
-	print rapclust_string
-	commands=[rapclust_string]
-	process_name="rapclust"
-	module_name_list=""
-	filename=sra
-	clusterfunc.qsub_file(rapclustdir,process_name,module_name_list,filename,commands)
+def get_clusters(salmondir,rapclustdir,sra):
+	out_dir=rapclustdir+sra+"_rapclust_out/"
+	cluster_num="cat "+out_dir+"mag.clust | wc -l"
+	print rapclustdir
+	print cluster_num
+	s=subprocess.Popen(cluster_num,shell=True)
+        s.wait()
 
 def execute(url_data):
         for item in url_data.keys():
@@ -73,7 +64,8 @@ def execute(url_data):
 			rapclustdir=newdir+"rapclust/"
 			clusterfunc.check_dir(rapclustdir)
                         clusterfunc.check_dir(salmondir)
-			run_rap_clust(salmondir,rapclustdir,sra)
+			get_read_numbers(salmondir,sra)
+			get_clusters(salmondir,rapclustdir,sra)
 
 basedir="/mnt/scratch/ljcohen/mmetsp/"
 datafiles=["MMETSP_SRA_Run_Info_subset_msu1.csv","MMETSP_SRA_Run_Info_subset_msu2.csv","MMETSP_SRA_Run_Info_subset_msu3.csv","MMETSP_SRA_Run_Info_subset_msu4.csv",
