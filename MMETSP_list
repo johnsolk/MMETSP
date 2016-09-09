@@ -1,0 +1,612 @@
+MMETSP ID	Phylum	Class	Family	Genus	Species	Strain	Clonal *	Axenic *	PCRamp	Principle Investgator(s)
+MMETSP0004	Ochrophyta	Synurophyceae	Ochromonadaceae	Ochromonas	sp.	CCMP1393	Unknown	No	No	 David Caron
+MMETSP0005	Ochrophyta	Synurophyceae	Ochromonadaceae	Ochromonas	sp.	CCMP1393	Unknown	No	No	 David Caron
+MMETSP0006	Haptophyta	Prymnesiophyceae	Prymenesiaceae	Prymnesium	parvum	Texoma1	Yes	Yes	No	 David Caron
+MMETSP0007	Haptophyta	Prymnesiophyceae	Prymenesiaceae	Prymnesium	parvum	Texoma1	Yes	Yes	No	 David Caron
+MMETSP0008	Haptophyta	Prymnesiophyceae	Prymenesiaceae	Prymnesium	parvum	Texoma1	Yes	Yes	No	 David Caron
+MMETSP0009	Bacillariophyta	Bacillariophyceae	Striatellaceae	Grammatophora	oceanica	CCMP 410	Unknown	No	No	 E. Virginia Armbrust
+MMETSP0010	Bacillariophyta	Coscinodiscophyceae	Corethraceae	Corethron	hystrix	308	Unknown	No	No	 E. Virginia Armbrust
+MMETSP0011	Rhodophyta	Rhodellophyceae	Stylonemataceae	Rhodosorus	marinus	CCMP 769	Unknown	No	No	 E. Virginia Armbrust
+MMETSP0013	Bacillariophyta	Coscinodiscophyceae	Skeletonemaceae	Skeletonema	costatum	1716	Unknown	No	No	 E. Virginia Armbrust
+MMETSP0014	Bacillariophyta	Bacillariophyceae	Bacillariaceae	Nitzschia	sp.	RCC80	Unknown	No	No	 E. Virginia Armbrust
+MMETSP0015	Bacillariophyta	Coscinodiscophyceae	Triceratiaceae	Odontella	aurita	isolate 1302-5	Unknown	No	No	 E. Virginia Armbrust
+MMETSP0017	Bacillariophyta	Bacillariophyceae	Bacillariaceae	Cylindrotheca	closterium	KMMCC:B-181	Unknown	No	No	 E. Virginia Armbrust
+MMETSP0018	Ciliophora	Oligohymenophorea	Uronematidae	Uronema	sp.	Bbcil	Yes	No	No	 David Caron
+MMETSP0019	Ochrophyta	Synurophyceae	Dinobryaceae	Dinobryon	sp.	UTEXLB2267	Unknown	No	No	 David Caron
+MMETSP0020	Ochrophyta	Synurophyceae	Dinobryaceae	Dinobryon	sp.	UTEXLB2267	Unknown	No	No	 David Caron
+MMETSP0027	Dinophyta	Dinophyceae	Gymnodiniaceae	Karenia	brevis	CCMP2229	Yes	No	No	 Geoff Sinclair, Boris Wawrik
+MMETSP0029	Dinophyta	Dinophyceae	Gymnodiniaceae	Karenia	brevis	CCMP2229	Yes	No	No	 Geoff Sinclair, Boris Wawrik
+MMETSP0030	Dinophyta	Dinophyceae	Gymnodiniaceae	Karenia	brevis	CCMP2229	Yes	No	No	 Geoff Sinclair, Boris Wawrik
+MMETSP0031	Dinophyta	Dinophyceae	Gymnodiniaceae	Karenia	brevis	CCMP2229	Yes	No	No	 Geoff Sinclair, Boris Wawrik
+MMETSP0033	Chlorophyta	Prasinophyceae	Mamiellaceae	Dolichomastix	tenuilepis	CCMP3274	Unknown	Unknown	No	 Alexandra Z. Worden
+MMETSP0034	Chlorophyta	Prasinophyceae	Pycnococcaceae	Nephroselmis	pyriformis	CCMP717	Unknown	No	No	 Alexandra Z. Worden
+MMETSP0038	Cryptophyta	Cryptophyceae	Cryptomonadaceae	Cryptomonas	paramecium	CCAP977/2a	Unknown	No	No	 John Archibald
+MMETSP0039	Euglenozoa	Euglenida	Eutreptiaceae	Eutreptiella	gymnastica	NIES-381	Unknown	Yes	No	 John Archibald
+MMETSP0040	Cercozoa	Chlorarachniophyceae	Chlorarachniaceae	Lotharella	oceanica	CCMP622	Unknown	Yes	No	 John Archibald
+MMETSP0041	Cercozoa	Chlorarachniophyceae	Chlorarachniaceae	Lotharella	globosa	LEX01	Yes	Yes	No	 John Archibald
+MMETSP0042	Cercozoa	Chlorarachniophyceae	Chlorarachniaceae	Lotharella	amoebiformis	CCMP2058	Yes	Yes	No	 John Archibald
+MMETSP0043	Cryptophyta	Cryptophyceae	Hemiselmidaceae	Hemiselmis	andersenii	CCMP644	Unknown	No	No	 John Archibald
+MMETSP0044	Dinophyta	Dinophyceae	Oxyrrhinaceae	Oxyrrhis	marina	CCMP1788	Unknown	No	Yes	 Claudio Slamovits
+MMETSP0045	Chlorarachniophyta	Chlorarachniophyceae	Chlorarachniaceae	Bigelowiella	natans	CCMP 2755	Unknown	Yes	No	 John Archibald
+MMETSP0046	Cryptophyta	Cryptophyceae	Geminigeracea	Guillardia	theta	CCMP 2712	Unknown	Yes	No	 John Archibald
+MMETSP0052	Chlorophyta	Chlorophyceae	Chlamydomonadaceae	Polytomella	parva	SAG 63-3	Yes	Yes	No	 David Smith
+MMETSP0058	Chlorophyta	Prasinophyceae	Halosphaeraceae	Pyramimonas	parkeae	CCMP726	Yes	Yes	No	 Aurora Nedelcu
+MMETSP0059	Chlorophyta	Prasinophyceae	Halosphaeraceae	Pyramimonas	parkeae	CCMP726	Yes	Yes	No	 Aurora Nedelcu
+MMETSP0063	Chlorophyta	Chlorophyceae	Chlamydomonadaceae	Chlamydomonas	euryale	CCMP219	Yes	Yes	No	 Aurora Nedelcu
+MMETSP0086	Unknown	Unknown	Unknown	Unknown	Unknown	D1	Yes	No	No	 Brian Palenik
+MMETSP0087	Unknown	Unknown	Unknown	Unknown	Unknown	D1	Yes	No	No	 Brian Palenik
+MMETSP0093	Dinophyta	Dinophyceae	Goniodomataceae	Alexandrium	monilatum	CCMP3105	Yes	No	No	 Sonya Dyhrman, Andrew Juhl
+MMETSP0095	Dinophyta	Dinophyceae	Goniodomataceae	Alexandrium	monilatum	CCMP3105	Yes	No	No	 Sonya Dyhrman, Andrew Juhl
+MMETSP0096	Dinophyta	Dinophyceae	Goniodomataceae	Alexandrium	monilatum	CCMP3105	Yes	No	No	 Sonya Dyhrman, Andrew Juhl
+MMETSP0097	Dinophyta	Dinophyceae	Goniodomataceae	Alexandrium	monilatum	CCMP3105	Yes	No	No	 Sonya Dyhrman, Andrew Juhl
+MMETSP0101	Ochrophyta	Dictyochophyceae	Pedinellaceae	Pteridomonas	danica	PT	Yes	No	No	 Brian Palenik
+MMETSP0102	Ochrophyta	Dictyochophyceae	Pedinellaceae	Pteridomonas	danica	PT	Yes	No	No	 Brian Palenik
+MMETSP0103	Ochrophyta	Chrysophyceae	Synuraceae	Paraphysomonas	Imperforata	PA2	Yes	No	No	 Brian Palenik
+MMETSP0104	Ochrophyta	Chrysophyceae	Synuraceae	Paraphysomonas	Imperforata	PA2	Yes	No	No	 Brian Palenik
+MMETSP0105	Sarcomastigophora	Zoomastigophora	Acanthoecidae	Acanthoeca-like	sp.	10tr	Yes	No	No	 Brian Palenik
+MMETSP0106	Sarcomastigophora	Zoomastigophora	Acanthoecidae	Acanthoeca-like	sp.	10tr	Yes	No	No	 Brian Palenik
+MMETSP0107	Cryptophyta	Cryptophyceae	Goniomonodaceae	Goniomonas	Pacifica	CCMP1869	Yes	No	No	 Brian Palenik
+MMETSP0108	Cryptophyta	Cryptophyceae	Goniomonodaceae	Goniomonas	Pacifica	CCMP1869	Yes	No	No	 Brian Palenik
+MMETSP0109	Cercozoa	Chlorarachniophyceae	Chlorarachniaceae	Chlorarachnion	reptans	CCCM449	Yes	No	No	 Patrick Keeling
+MMETSP0110	Cercozoa	Chlorarachniophyceae	Chlorarachniaceae	Gymnochlora	sp.	CCMP2014	Yes	No	No	 Patrick Keeling
+MMETSP0111	Cercozoa	Chlorarachniophyceae	Chlorarachniaceae	Lotharella	globosa	CCCM811	Yes	No	No	 Patrick Keeling
+MMETSP0112	Cercozoa	Chlorarachniophyceae	Chlorarachniaceae	Lotharella	globosa	CCCM811	Yes	No	No	 Patrick Keeling
+MMETSP0113	Cercozoa	Chlorarachniophyceae	Chlorarachniaceae	Norrisiella	sphaerica	BC52	Yes	No	No	 Patrick Keeling
+MMETSP0114	Cryptophyta	Cryptophyceae	Goniomonodaceae	Goniomonas	sp	m	Yes	No	No	 Eunsoo Kim
+MMETSP0116	Dinophyta	Dinophyceae	Peridiniaceae	Durinskia	baltica	CSIRO CS-38	No	No	No	 Patrick Keeling
+MMETSP0117	Dinophyta	Dinophyceae	Peridiniaceae	Durinskia	baltica	CSIRO CS-38	No	No	No	 Patrick Keeling
+MMETSP0118	Dinophyta	Dinophyceae	Peridiniaceae	Glenodinium	foliaceum	CCAP 1116/3	No	No	No	 Patrick Keeling
+MMETSP0119	Dinophyta	Dinophyceae	Peridiniaceae	Glenodinium	foliaceum	CCAP 1116/3	No	No	No	 Patrick Keeling
+MMETSP0120	Dinophyta	Dinophyceae	Peridiniaceae	Kryptoperidinium	foliaceum	CCMP 1326	No	No	No	 Patrick Keeling
+MMETSP0121	Dinophyta	Dinophyceae	Peridiniaceae	Kryptoperidinium	foliaceum	CCMP 1326	No	No	No	 Patrick Keeling
+MMETSP0123	Ciliophora	Spirotrichea	Ptychocylididae	Favella	ehrenbergii	Fehren 1	Yes	No	No	 Denis Lynn
+MMETSP0125	Ciliophora	Oligohymenophorea	Unknown	Aristerostoma	sp.	ATCC 50986	No	No	No	 Denis Lynn
+MMETSP0126	Ciliophora	Spirotrichea	Strombidinopsidae	Strombidinopsis	acuminatum	SPMC142	Yes	No	No	 Denis Lynn
+MMETSP0127	Ciliophora	Colopdea	Platyophryidae	Platyophrya	macrostoma	WH	Unknown	No	No	 Denis Lynn
+MMETSP0132C	Dinophyta	Dinophyceae	Symbiodiniaceae	Symbiodinium	kawagutii	CCMP2468	Yes	No	Yes	 Senjie Lin
+MMETSP0139	Bacillariophyta	Bacillariophyceae	Bacillariaceae	Pseudo-nitzschia	australis	10249 10 AB	Yes	No	No	 G Jason Smith
+MMETSP0140	Bacillariophyta	Bacillariophyceae	Bacillariaceae	Pseudo-nitzschia	australis	10249 10 AB	Yes	No	No	 G Jason Smith
+MMETSP0141	Bacillariophyta	Bacillariophyceae	Bacillariaceae	Pseudo-nitzschia	australis	10249 10 AB	Yes	No	No	 G Jason Smith
+MMETSP0142	Bacillariophyta	Bacillariophyceae	Bacillariaceae	Pseudo-nitzschia	australis	10249 10 AB	Yes	No	No	 G Jason Smith
+MMETSP0143	Haptophyta	Prymnesiophyceae	Prymnesiaceae	Chrysochromulina	polylepis	CCMP1757	Yes	Yes	No	 Sonya Dyhrman, Andrew Juhl
+MMETSP0145	Haptophyta	Prymnesiophyceae	Prymnesiaceae	Chrysochromulina	polylepis	CCMP1757	Yes	Yes	No	 Sonya Dyhrman, Andrew Juhl
+MMETSP0146	Haptophyta	Prymnesiophyceae	Prymnesiaceae	Chrysochromulina	polylepis	CCMP1757	Yes	Yes	No	 Sonya Dyhrman, Andrew Juhl
+MMETSP0147	Haptophyta	Prymnesiophyceae	Prymnesiaceae	Chrysochromulina	polylepis	CCMP1757	Yes	Yes	No	 Sonya Dyhrman, Andrew Juhl
+MMETSP0149	Bacillariophyta	Coscinodiscophyceae	Chaetocerotaceae	Chaetoceros	debilis	MM31A-1	Yes	No	No	 Bank Beszteri
+MMETSP0150	Bacillariophyta	Coscinodiscophyceae	Chaetocerotaceae	Chaetoceros	debilis	MM31A-1	Yes	No	No	 Bank Beszteri
+MMETSP0151	Unknown	Lobosa	Paramoebidae	Paramoeba	atlantica	621/1 / CCAP 1560/9	Yes	No	No	 Jan Pawlowski
+MMETSP0152	Bacillariophyta	Fragilariophyceae	Thalassionemataceae	Thalassiothrix	antarctica	L6-D1	Yes	No	No	 Bank Beszteri
+MMETSP0154	Bacillariophyta	Fragilariophyceae	Thalassionemataceae	Thalassiothrix	antarctica	L6-D1	Yes	No	No	 Bank Beszteri
+MMETSP0156	Bacillariophyta	Fragilariophyceae	Thalassionemataceae	Thalassionema	nitzschioides	L26-B	Yes	No	No	 Bank Beszteri
+MMETSP0158	Bacillariophyta	Fragilariophyceae	Thalassionemataceae	Thalassionema	nitzschioides	L26-B	Yes	No	No	 Bank Beszteri
+MMETSP0160	Bacillariophyta	Coscinodiscophyceae	Triceratiaceae	Odontella	Sinensis	Grunow 1884	Yes	No	No	 Declan Schroeder
+MMETSP0161	Unknown	Lobosa	Vexilliferidae	Neoparamoeba	aestuarina	SoJaBio B1-5/56/2	Yes	No	No	 Jan Pawlowski
+MMETSP0164	Haptophyta	Prymnesiophyceae	Coccolithaceae	Coccolithus	pelagicus ssp braarudi	PLY182g	Yes	No	No	 Glen Wheeler
+MMETSP0167	Rhodophyta	Rhodellophyceae	Rhodellaceae	Rhodella	maculata	CCMP736	Yes	Yes	No	 Thomas Mock
+MMETSP0168	Unknown	Unknown	Vannellidae	Vannella	sp.	DIVA3 517/6/12	Yes	No	No	 Jan Pawlowski
+MMETSP0169	Bacillariophyta	Coscinodiscophyceae	Corethraceae	Corethron	pennatum	L29A3	Yes	No	No	 Bank Beszteri
+MMETSP0171	Bacillariophyta	Coscinodiscophyceae	Corethraceae	Corethron	pennatum	L29A3	Yes	No	No	 Bank Beszteri
+MMETSP0173	Unknown	Lobosa	Vexilliferidae	Vexillifera	sp.	DIVA3 564/2	Yes	No	No	 Jan Pawlowski
+MMETSP0174	Bacillariophyta	Coscinodiscophyceae	Rhizosoleniaceae	Proboscia	alata	PI-D3	Yes	No	No	 Bank Beszteri
+MMETSP0176	Bacillariophyta	Coscinodiscophyceae	Rhizosoleniaceae	Proboscia	alata	PI-D3	Yes	No	No	 Bank Beszteri
+MMETSP0186	Cercozoa	Haplosporea	Haplosporidiidae	Minchinia	chitonis		Unknown	Unknown	Yes	 Claudio Slamovits
+MMETSP0190	Forminafera	Rotaliida	Rosalinidae	Rosalina	sp.		Yes	No	No	 Jan Pawlowski
+MMETSP0191	Forminafera	Polythalamea	Soritidae	Sorites	sp.		No	No	No	 Jan Pawlowski
+MMETSP0196C	Dinophyta	Dinophyceae	Goniodomataceae	Alexandrium	fundyense	CCMP1719	Yes	No	Yes	 Senjie Lin
+MMETSP0198	Labyrinthista	Labyrinthulea	Thraustochytriaceae	Thraustochytrium	sp.	LLF1b	Yes	Yes	No	 Eric E. Allen
+MMETSP0199	Labyrinthista	Labyrinthulea	Thraustochytriaceae	Thraustochytrium	sp.	LLF1b	Yes	Yes	No	 Eric E. Allen
+MMETSP0200	Bacillariophyta	Coscinodiscophyceae	Chaetocerotaceae	Chaetoceros	sp.	GSL56	Yes	Yes	No	 Matthew Posewitz
+MMETSP0201	Dinophyta	Dinophyceae	Gymnodiniaceae	Karenia	brevis	Wilson	Unknown	No	No	 Frances Van Dolah
+MMETSP0202	Dinophyta	Dinophyceae	Gymnodiniaceae	Karenia	brevis	Wilson	Unknown	No	No	 Frances Van Dolah
+MMETSP0208	Ciliophora	Spirotrichea	Strombidiidae	Strombidium	inclinatum	S3	Yes	No	No	 Denis Lynn
+MMETSP0209	Ciliophora	Litostomatea	Litonotidae	Litonotus	pictus	P1	Yes	No	No	 Denis Lynn
+MMETSP0210	Ciliophora	Heterotrichea	Condylostomatidae	Condylostoma	magnum	COL2	Yes	No	No	 Denis Lynn
+MMETSP0211	Ciliophora	Spirotrichea	Pseudokeronopsidae	Pseudokeronopsis	sp.	OXSARD2	Yes	No	No	 Denis Lynn
+MMETSP0213	Ciliophora	Spirotrichea	Euplotidae	Euplotes	harpa	FSP1.4	Yes	No	No	 Denis Lynn
+MMETSP0216	Ciliophora	Spirotrichea	Protocruziidae	Protocruzia	adherens	Boccale	No	No	No	 Denis Lynn
+MMETSP0224	Dinophyta	Dinophyceae	Gymnodiniaceae	Togula	jolla	CCCM 725	Unknown	No	No	 Juan Saldarriaga
+MMETSP0225	Dinophyta	Dinophyceae	Thoracosphaeraceae	Thoracosphaera	heimii	CCCM 670 (=CCMP 1069)	Unknown	No	Yes	 Juan Saldarriaga
+MMETSP0227	Dinophyta	Dinophyceae	Suessiaceae	Polarella	glacialis	CCMP 1383	Unknown	No	No	 Juan Saldarriaga
+MMETSP0228	Dinophyta	Dinophyceae	Gonyaulacaceae	Protoceratium	reticulatum	CCCM 535 (=CCMP 1889)	Unknown	No	No	 Juan Saldarriaga
+MMETSP0229	Dinophyta	Dinophyceae	Pyrocystaceae	Pyrocystis	lunula	CCCM 517	Unknown	No	Yes	 Juan Saldarriaga
+MMETSP0232	Ascomycota	Saccharomycetes	Saccharomycetaceae	Debaryomyces	hansenii	J26	Yes	Yes	No	 Nadathur Govind
+MMETSP0233	Ascomycota	Saccharomycetes	Saccharomycetaceae	Debaryomyces	hansenii	J26	Yes	Yes	No	 Nadathur Govind
+MMETSP0234	Ascomycota	Saccharomycetes	Saccharomycetaceae	Debaryomyces	hansenii	J26	Yes	Yes	No	 Nadathur Govind
+MMETSP0235	Ascomycota	Saccharomycetes	Saccharomycetaceae	Debaryomyces	hansenii	J26	Yes	Yes	No	 Nadathur Govind
+MMETSP0253	Dinophyta	Dinophyceae	Noctilucaceae	Noctiluca	scintillans		No	No	Yes	 Juan Saldarriaga
+MMETSP0258	Dinophyta	Dinophyceae	Gymnodiniaceae	Amphidinium	carterae	CCMP1314	Unknown	No	No	 Geoff Sinclair, Boris Wawrik
+MMETSP0259	Dinophyta	Dinophyceae	Gymnodiniaceae	Amphidinium	carterae	CCMP1314	Unknown	No	No	 Geoff Sinclair, Boris Wawrik
+MMETSP0267	Dinophyta	Dinophyceae	Prorocentraceae	Prorocentrum	minimum	CCMP2233	Unknown	No	No	 Geoff Sinclair, Boris Wawrik
+MMETSP0268	Dinophyta	Dinophyceae	Prorocentraceae	Prorocentrum	minimum	CCMP2233	Unknown	No	No	 Geoff Sinclair, Boris Wawrik
+MMETSP0269	Dinophyta	Dinophyceae	Prorocentraceae	Prorocentrum	minimum	CCMP2233	Unknown	No	No	 Geoff Sinclair, Boris Wawrik
+MMETSP0270	Dinophyta	Dinophyceae	Peridiniaceae	Scrippsiella	trochoidea	CCMP3099	No	No	No	 Geoff Sinclair, Boris Wawrik
+MMETSP0271	Dinophyta	Dinophyceae	Peridiniaceae	Scrippsiella	trochoidea	CCMP3099	No	No	No	 Geoff Sinclair, Boris Wawrik
+MMETSP0272	Dinophyta	Dinophyceae	Peridiniaceae	Scrippsiella	trochoidea	CCMP3099	No	No	No	 Geoff Sinclair, Boris Wawrik
+MMETSP0286	Haptophyta	Prymnesiophyceae	Prymnesiaceae	Chrysochromulina	polylepis	UIO037	Yes	Yes	No	 Bente Edvardsen
+MMETSP0287	Haptophyta	Prymnesiophyceae	Prymnesiaceae	Chrysochromulina	rotalis	UIO044	No	No	No	 Bente Edvardsen
+MMETSP0288	Apicomplexa	Aconoidasia	Bbesiidae	Alveolata	sp.	CCMP3155	Yes	No	No	 Patrick Keeling
+MMETSP0290	Unknown	Unknown	Unknown	Chromera	velia	CCMP2878	Yes	Yes	No	 Patrick Keeling
+MMETSP0292	Ochrophyta	Raphidophyceae	Chattonellaceae	Heterosigma	akashiwo	CCMP2393	Yes	No	No	 Sonya Dyhrman, Andrew Juhl
+MMETSP0294	Ochrophyta	Raphidophyceae	Chattonellaceae	Heterosigma	akashiwo	CCMP2393	Yes	No	No	 Sonya Dyhrman, Andrew Juhl
+MMETSP0295	Ochrophyta	Raphidophyceae	Chattonellaceae	Heterosigma	akashiwo	CCMP2393	Yes	No	No	 Sonya Dyhrman, Andrew Juhl
+MMETSP0296	Ochrophyta	Raphidophyceae	Chattonellaceae	Heterosigma	akashiwo	CCMP2393	Yes	No	No	 Sonya Dyhrman, Andrew Juhl
+MMETSP0308	Glaucophyta	Glaucophyceae	Gloeochaetaceae	Gloeochaete	witrockiana	SAG 46.84	Unknown	No	No	 Patrick Keeling
+MMETSP0312	Rhodophyta	Compsopogonophyceae	Compsopogonaceae	Compsopogon	coeruleus	SAG 36.94	Unknown	No	No	 Patrick Keeling
+MMETSP0313	Rhodophyta	Rhodellophyceae	Porphyridiaceae	Porphyridium	aerugineum	SAG 1380-2	Unknown	Yes	No	 Patrick Keeling
+MMETSP0314	Rhodophyta	Rhodellophyceae	Rhodellaceae	Rhodella	maculata	CCMP736	Unknown	Yes	No	 Patrick Keeling
+MMETSP0315	Rhodophyta	Rhodellophyceae	Stylonemataceae	Rhodosorus	marinus	UTEX LB 2760	Unknown	No	No	 Patrick Keeling
+MMETSP0316	Bacillariophyta	Bacillariophyceae	Catenulaceae	Amphora	coffeaeformis	CCMP127	Unknown	Yes	No	 Peter Stief
+MMETSP0317	Bacillariophyta	Bacillariophyceae	Catenulaceae	Amphora	coffeaeformis	CCMP127	Unknown	Yes	No	 Peter Stief
+MMETSP0318	Bacillariophyta	Bacillariophyceae	Catenulaceae	Amphora	coffeaeformis	CCMP127	Unknown	Yes	No	 Peter Stief
+MMETSP0319	Bacillariophyta	Coscinodiscophyceae	Skeletonemaceae	Skeletonema	marinoi	SM1012Hels-07	Yes	No	No	 Satoshi Nagai
+MMETSP0320	Bacillariophyta	Coscinodiscophyceae	Skeletonemaceae	Skeletonema	marinoi	SM1012Den-03	Yes	No	No	 Satoshi Nagai
+MMETSP0321	Bacillariophyta	Coscinodiscophyceae	Leptocylindraceae	Leptocylindrus	danicus var. danicus	B650	Yes	No	No	 ADRIANA ZINGONE
+MMETSP0322	Bacillariophyta	Coscinodiscophyceae	Leptocylindraceae	Leptocylindrus	danicus var. apora	B651	Yes	No	No	 ADRIANA ZINGONE
+MMETSP0323	Dinophyta	Dinophyceae	Crypthecodiniacea	Crypthecodinium	cohnii	Seligo	Yes	Yes	No	 Philippe Deschamps
+MMETSP0324	Dinophyta	Dinophyceae	Crypthecodiniacea	Crypthecodinium	cohnii	Seligo	Yes	Yes	No	 Philippe Deschamps
+MMETSP0325	Dinophyta	Dinophyceae	Crypthecodiniacea	Crypthecodinium	cohnii	Seligo	Yes	Yes	No	 Philippe Deschamps
+MMETSP0326	Dinophyta	Dinophyceae	Crypthecodiniacea	Crypthecodinium	cohnii	Seligo	Yes	Yes	No	 Philippe Deschamps
+MMETSP0327	Bacillariophyta	Bacillariophyceae	Bacillariaceae	Pseudo-nitzschia	delicatissima	B596	Yes	No	No	 Marina Montresor
+MMETSP0328	Dinophyta	Dinophyceae	Goniodomataceae	Alexandrium	minutum	CCMP113	Yes	No	Yes	 Kjetill Sigurd Jakobsen
+MMETSP0329	Bacillariophyta	Bacillariophyceae	Bacillariaceae	Pseudo-nitzschia	arenysensis	B593	Yes	No	No	 Marina Montresor
+MMETSP0347	Dinophyta	Dinophyceae	Goniodomataceae	Alexandrium	fundyense	CCMP1719	Yes	No	Yes	 Kjetill Sigurd Jakobsen
+MMETSP0367	Dinophyta	Dinophyceae	Peridiniaceae	Scrippsiella	hangoei-like	SHHI-4	Yes	No	No	 Karin Rengefors
+MMETSP0368	Dinophyta	Dinophyceae	Peridiniaceae	Scrippsiella	hangoei-like	SHHI-4	Yes	No	No	 Karin Rengefors
+MMETSP0369	Dinophyta	Dinophyceae	Peridiniaceae	Scrippsiella	hangoei-like	SHHI-4	Yes	No	No	 Karin Rengefors
+MMETSP0370	Dinophyta	Dinophyceae	Peridiniaceae	Peridinium	aciculiferum	PAER-2	Yes	No	No	 Karin Rengefors
+MMETSP0371	Dinophyta	Dinophyceae	Peridiniaceae	Peridinium	aciculiferum	PAER-2	Yes	No	No	 Karin Rengefors
+MMETSP0372	Apicomplexa	Gregarinia	Lecudinidae	Lankesteria	abbottii	Grappler Inlet BC	No	No	Yes	 Claudio Slamovits
+MMETSP0378	Dinophyta	Dinophyceae	Goniodomataceae	Alexandrium	tamarense	CCMP1771	Yes	Yes	No	 Mary Ann Moran
+MMETSP0380	Dinophyta	Dinophyceae	Goniodomataceae	Alexandrium	tamarense	CCMP1771	Yes	Yes	No	 Mary Ann Moran
+MMETSP0382	Dinophyta	Dinophyceae	Goniodomataceae	Alexandrium	tamarense	CCMP1771	Yes	Yes	No	 Mary Ann Moran
+MMETSP0384	Dinophyta	Dinophyceae	Goniodomataceae	Alexandrium	tamarense	CCMP1771	Yes	Yes	No	 Mary Ann Moran
+MMETSP0397	Bacillariophyta	Bacillariophyceae	Cyclophoraceae	Cyclophora	tenuis	ECT3854	Unknown	No	No	 Matt Ashworth
+MMETSP0398C	Dinophyta	Dinophyceae	Gymnodiniaceae	Amphidinium	carterae	CCMP1314	Yes	No	Yes	 Senjie Lin
+MMETSP0403	Bacillariophyta	Coscinodiscophyceae	Skeletonemaceae	Thalassiosira	rotula	CCMP3096	Yes	Yes	No	 Bethany Jenkins
+MMETSP0404	Bacillariophyta	Coscinodiscophyceae	Skeletonemaceae	Thalassiosira	rotula	CCMP3096	Yes	Yes	No	 Bethany Jenkins
+MMETSP0405	Unknown	Lobosa	Trichosidae	Trichosphaerium	sp	Am-I-7 wt	No	No	No	 Laura Katz
+MMETSP0409	Ochrophyta	Raphidophyceae	Chattonellaceae	Heterosigma	akashiwo	CCMP3107	Yes	No	No	 Susanne Menden-Deuer
+MMETSP0410	Ochrophyta	Raphidophyceae	Chattonellaceae	Heterosigma	akashiwo	CCMP3107	Yes	No	No	 Susanne Menden-Deuer
+MMETSP0411	Ochrophyta	Raphidophyceae	Chattonellaceae	Heterosigma	akashiwo	CCMP3107	Yes	No	No	 Susanne Menden-Deuer, Leo Tolstoy
+MMETSP0413	Unknown	Lobosa	Echinamoebidae	Filamoeba	nolandi	NC-AS-23-1	No	No	No	 Laura Katz
+MMETSP0414	Ochrophyta	Raphidophyceae	Chattonellaceae	Heterosigma	akashiwo	NB	Yes	No	No	 Susanne Menden-Deuer
+MMETSP0415	Ochrophyta	Raphidophyceae	Chattonellaceae	Heterosigma	akashiwo	NB	Yes	No	No	 Susanne Menden-Deuer
+MMETSP0416	Ochrophyta	Raphidophyceae	Chattonellaceae	Heterosigma	akashiwo	NB	Yes	No	No	 Susanne Menden-Deuer
+MMETSP0417	Unknown	Lobosa	Paramoebidae	Mayorella	sp	BSH-02190019	No	No	No	 Laura Katz
+MMETSP0418	Bacillariophyta	Fragilariophyceae	Cyclophoraceae	Astrosyne	radiata	13vi08-1A	Yes	No	No	 Matt Ashworth
+MMETSP0419	Chlorophyta	Prasinophyceae	Chlorodendraceae	Tetraselmis	sp.	GSL018	Yes	Yes	No	 SARAH D'ADAMO
+MMETSP0420	Unknown	Lobosa	Vannellidae	Pessonella	sp.		No	No	No	 Laura Katz
+MMETSP0434	Ciliophora	Spirotrichea	Ptychocylididae	Favella	taraikaensis	Fe Narragansett Bay	Yes	No	No	 Susanne Menden-Deuer
+MMETSP0436	Ciliophora	Spirotrichea	Ptychocylididae	Favella	taraikaensis	Fe Narragansett Bay	Yes	No	No	 Susanne Menden-Deuer
+MMETSP0437	Unknown	Lobosa	Difflugiidae	Sexangularia	sp.		No	No	No	 Laura Katz
+MMETSP0439	Unknown	Unknown	Stereomyxidae	Stereomyxa	ramosa	Chinc5	No	No	No	 Laura Katz
+MMETSP0447	Unknown	Unknown	Unknown	Stygamoeba	regulata	BSH-02190019	No	No	No	 Laura Katz
+MMETSP0448	Dinophyta	Dinophyceae	Heterocapsaceae	Heterocapsa	triquestra	CCMP 448	Yes	No	No	 Susanne Menden-Deuer
+MMETSP0449	Ciliophora	Spirotrichea	Strombidiidae	Strombidium	rassoulzadegani	ras09	No	No	No	 George McManus
+MMETSP0451C	Dinophyta	Dinophyceae	Oxyrrhinaceae	Oxyrrhis	marina	CCMP1795	Unknown	Unknown	Yes	 Senjie Lin
+MMETSP0463	Ciliophora	Spirotrichea	Strombidinopsidae	Strombidinopsis	sp	SopsisLIS2011	Unknown	No	No	 George McManus
+MMETSP0467	Ciliophora	Litostomatea	Mesodiniidae	Mesodinium	pulex	SPMC105	Unknown	No	No	 George McManus
+MMETSP0472	Ciliophora	Prostomatea	Colepidae	Tiarina	fusus	LIS	No	No	No	 George McManus
+MMETSP0484	Cryptophyta	Cryptophyceae	Pyrenomonadaceae	Rhodomonas	lens	RHODO	Unknown	No	No	 George McManus
+MMETSP0491	Chlorophyta	Prasinophyceae	Chlorodendraceae	Tetraselmis	chuii	PLY429	Unknown	No	No	 George McManus
+MMETSP0492	Bacillariophyta	Coscinodiscophyceae	Skeletonemaceae	Thalassiosira	gravida	GMp14c1	Yes	No	No	 Tatiana Rynearson
+MMETSP0493	Bacillariophyta	Coscinodiscophyceae	Skeletonemaceae	Thalassiosira	gravida	GMp14c1	Yes	No	No	 Tatiana Rynearson
+MMETSP0494	Bacillariophyta	Coscinodiscophyceae	Skeletonemaceae	Thalassiosira	gravida	GMp14c1	Yes	No	No	 Tatiana Rynearson
+MMETSP0503	Dinophyta	Dinophyceae	Heterocapsaceae	Heterocapsa	rotundata	SCCAP K-0483	No	No	No	 George McManus
+MMETSP0527	Dinophyta	Dinophyceae	Gymnodiniaceae	Karenia	brevis	SP3	Yes	No	No	 Lisa Campbell
+MMETSP0528	Dinophyta	Dinophyceae	Gymnodiniaceae	Karenia	brevis	SP3	Yes	No	No	 Lisa Campbell
+MMETSP0562	Bacillariophyta	Coscinodiscophyceae	Skeletonemaceae	Skeletonema	dohrnii	SkelB	Yes	No	No	 Tatiana Rynearson
+MMETSP0563	Bacillariophyta	Coscinodiscophyceae	Skeletonemaceae	Skeletonema	dohrnii	SkelB	Yes	No	No	 Tatiana Rynearson
+MMETSP0573	Dinophyta	Dinophyceae	Gymnodiniaceae	Karenia	brevis	SP1	Yes	No	No	 Lisa Campbell
+MMETSP0574	Dinophyta	Dinophyceae	Gymnodiniaceae	Karenia	brevis	SP1	Yes	No	No	 Lisa Campbell
+MMETSP0578	Bacillariophyta	Coscinodiscophyceae	Skeletonemaceae	Skeletonema	grethea	CCMP 1804	Yes	No	No	 Tatiana Rynearson
+MMETSP0580	Bacillariophyta	Coscinodiscophyceae	Rhizosoleniaceae	Dactyliosolen	fragilissimus		Yes	Yes	No	 Robert Olson
+MMETSP0593	Bacillariophyta	Coscinodiscophyceae	Skeletonemaceae	Skeletonema	japonicum	CCMP2506	Yes	No	No	 Tatiana Rynearson
+MMETSP0595	Haptophyta	Prymnesiophyceae	Isochrysidaceae	Isochrysis	galbana	CCMP1323	Yes	No	No	 Susanne Menden-Deuer
+MMETSP0603	Bacillariophyta	Coscinodiscophyceae	Skeletonemaceae	Skeletonema	menzelii	CCMP793	Yes	No	No	 Tatiana Rynearson
+MMETSP0604	Bacillariophyta	Coscinodiscophyceae	Skeletonemaceae	Skeletonema	menzelii	CCMP793	Yes	No	No	 Tatiana Rynearson
+MMETSP0648	Dinophyta	Dinophyceae	Gymnodiniaceae	Karenia	brevis	Wilson	Yes	No	No	 Lisa Campbell
+MMETSP0649	Dinophyta	Dinophyceae	Gymnodiniaceae	Karenia	brevis	Wilson	Yes	No	No	 Lisa Campbell
+MMETSP0689	Dinophyta	Dinophyceae	Gymnodiniaceae	Amphidinium	massartii	CS-259	Yes	No	No	 Shauna Murray
+MMETSP0696	Bacillariophyta	Coscinodiscophyceae	Cymatosiraceae	Extubocellulus	spinifer	CCMP396	Yes	Yes	No	 Sarah Smith
+MMETSP0697	Bacillariophyta	Coscinodiscophyceae	Cymatosiraceae	Extubocellulus	spinifer	CCMP396	Yes	Yes	No	 Sarah Smith
+MMETSP0698	Bacillariophyta	Coscinodiscophyceae	Cymatosiraceae	Extubocellulus	spinifer	CCMP396	Yes	Yes	No	 Sarah Smith
+MMETSP0699	Bacillariophyta	Coscinodiscophyceae	Cymatosiraceae	Extubocellulus	spinifer	CCMP396	Yes	Yes	No	 Sarah Smith
+MMETSP0705	Bacillariophyta	Fragilariophyceae	Fragilariaceae	Asterionellopsis	glacialis	CCMP134	Yes	No	No	 Sarah Smith
+MMETSP0706	Bacillariophyta	Fragilariophyceae	Fragilariaceae	Asterionellopsis	glacialis	CCMP134	Yes	No	No	 Sarah Smith
+MMETSP0707	Bacillariophyta	Fragilariophyceae	Fragilariaceae	Asterionellopsis	glacialis	CCMP134	Yes	No	No	 Sarah Smith
+MMETSP0708	Bacillariophyta	Fragilariophyceae	Fragilariaceae	Asterionellopsis	glacialis	CCMP134	Yes	No	No	 Sarah Smith
+MMETSP0713	Bacillariophyta	Fragilariophyceae	Fragilariaceae	Asterionellopsis	glacialis		Yes	Yes	No	 Robert Olson
+MMETSP0724	Bacillariophyta	Bacillariophyceae	Amphipleuraceae	Amphiprora	sp.	CCMP467	Yes	No	No	 Sarah Smith
+MMETSP0725	Bacillariophyta	Bacillariophyceae	Amphipleuraceae	Amphiprora	sp.	CCMP467	Yes	No	No	 Sarah Smith
+MMETSP0726	Bacillariophyta	Bacillariophyceae	Amphipleuraceae	Amphiprora	sp.	CCMP467	Yes	No	No	 Sarah Smith
+MMETSP0727	Bacillariophyta	Bacillariophyceae	Amphipleuraceae	Amphiprora	sp.	CCMP467	Yes	No	No	 Sarah Smith
+MMETSP0733	Bacillariophyta	Bacillariophyceae	Bacillariaceae	Fragilariopsis	kerguelensis	L26-C5	Yes	No	No	 Adrian Marchetti
+MMETSP0734	Bacillariophyta	Bacillariophyceae	Bacillariaceae	Fragilariopsis	kerguelensis	L26-C5	Yes	No	No	 Adrian Marchetti
+MMETSP0735	Bacillariophyta	Bacillariophyceae	Bacillariaceae	Fragilariopsis	kerguelensis	L26-C5	Yes	No	No	 Adrian Marchetti
+MMETSP0736	Bacillariophyta	Bacillariophyceae	Bacillariaceae	Fragilariopsis	kerguelensis	L26-C5	Yes	No	No	 Adrian Marchetti
+MMETSP0737	Bacillariophyta	Coscinodiscophyceae	Skeletonemaceae	Thalassiosira	miniscula	CCMP1093	Yes	No	No	 Sarah Smith
+MMETSP0738	Bacillariophyta	Coscinodiscophyceae	Skeletonemaceae	Thalassiosira	miniscula	CCMP1093	Yes	No	No	 Sarah Smith
+MMETSP0739	Bacillariophyta	Coscinodiscophyceae	Skeletonemaceae	Thalassiosira	miniscula	CCMP1093	Yes	No	No	 Sarah Smith
+MMETSP0740	Bacillariophyta	Coscinodiscophyceae	Skeletonemaceae	Thalassiosira	miniscula	CCMP1093	Yes	No	No	 Sarah Smith
+MMETSP0744	Bacillariophyta	Bacillariophyceae	Bacillariaceae	Nitzschia	punctata	CCMP561	Yes	No	No	 Sarah Smith
+MMETSP0745	Bacillariophyta	Bacillariophyceae	Bacillariaceae	Nitzschia	punctata	CCMP561	Yes	No	No	 Sarah Smith
+MMETSP0746	Bacillariophyta	Bacillariophyceae	Bacillariaceae	Nitzschia	punctata	CCMP561	Yes	No	No	 Sarah Smith
+MMETSP0747	Bacillariophyta	Bacillariophyceae	Bacillariaceae	Nitzschia	punctata	CCMP561	Yes	No	No	 Sarah Smith
+MMETSP0751	Bacillariophyta	Coscinodiscophyceae	Chaetocerotaceae	Chaetoceros	neogracile	CCMP1317	Yes	No	No	 Sarah Smith
+MMETSP0752	Bacillariophyta	Coscinodiscophyceae	Chaetocerotaceae	Chaetoceros	neogracile	CCMP1317	Yes	No	No	 Sarah Smith
+MMETSP0753	Bacillariophyta	Coscinodiscophyceae	Chaetocerotaceae	Chaetoceros	neogracile	CCMP1317	Yes	No	No	 Sarah Smith
+MMETSP0754	Bacillariophyta	Coscinodiscophyceae	Chaetocerotaceae	Chaetoceros	neogracile	CCMP1317	Yes	No	No	 Sarah Smith
+MMETSP0758	Unknown	Unknown	Unknown	Percolomonas	cosmopolitus	AE-1 (ATCC 50343)	Unknown	No	No	 Alastair Simpson
+MMETSP0759	Unknown	Unknown	Unknown	Percolomonas	cosmopolitus	WS	Unknown	No	No	 Alastair Simpson
+MMETSP0766	Dinophyta	Dinophyceae	Goniodomaceae	Gambierdiscus	australes	CAWD 149	Yes	No	No	 Shauna Murray
+MMETSP0780	Unknown	Unknown	Unknown	Palpitomonas	bilix	NIES-2562	Unknown	No	No	 John Archibald
+MMETSP0784	Dinophyta	Dinophyceae	Gymnodiniaceae	Gymnodinium	catenatum	GC744	Yes	No	No	 Jeremiah Hackett
+MMETSP0785	Ochrophyta	Bolidophyceae	Bolidomonoadaceae	Bolidomonas	pacifica	CCMP 1866	Unknown	No	No	 E. Virginia Armbrust
+MMETSP0786	Bacillariophyta	Fragilariophyceae	Thalassionemataceae	Thalassionema	frauenfeldii	CCMP 1798	Unknown	No	No	 E. Virginia Armbrust
+MMETSP0789	Bacillariophyta	Coscinodiscophyceae	Rhizosoleniaceae	Rhizosolenia	setigera	CCMP 1694	Unknown	Unknown	No	 E. Virginia Armbrust
+MMETSP0790	Dinophyta	Dinophyceae	Goniodomataceae	Alexandrium	catenella	OF101	Yes	Unknown	No	 Jeremiah Hackett
+MMETSP0794	Bacillariophyta	Coscinodiscophyceae	Stephanopyxidacea	Stephanopyxis	turris	CCMP 815	Unknown	No	No	 E. Virginia Armbrust
+MMETSP0795	Dinophyta	Dinophyceae	Goniodomaceae	Amoebophrya	sp.	Ameob2	Yes	No	No	 Jeremiah Hackett
+MMETSP0796	Dinophyta	Dinophyceae	Gonyaulacaceae	Pyrodinium	bahamense	pbaha01	Yes	No	No	 Jeremiah Hackett
+MMETSP0797	Dinophyta	Dinophyceae	Dinophysiaceae	Dinophysis	acuminata	DAEP01	Unknown	No	No	 Jeremiah Hackett
+MMETSP0798	Ciliophora	Litostomatea	Mesodiniidae	Myrionecta	rubra	CCMP2563	Yes	No	No	 Jeremiah Hackett
+MMETSP0799	Cryptophyta	Cryptophyceae	Geminigeracea	Geminigera	cryophila	CCMP2564	Yes	No	No	 Jeremiah Hackett
+MMETSP0800	Bacillariophyta	Bacillariophyceae	Striatellaceae	Striatella	unipunctata	CCMP2910	Unknown	No	No	 E. Virginia Armbrust
+MMETSP0802	Chlorophyta	Prasinophyceae	Mamiellaceae	Micromonas	sp.	CCMP2099	Unknown	No	No	 Alexandra Z. Worden
+MMETSP0803	Chlorophyta	Prasinophyceae	Unknown	Crustomastix	stigmata	CCMP3273	Unknown	No	No	 Alexandra Z. Worden
+MMETSP0804	Chlorophyta	Prasinophyceae	Chlorodendraceae	Tetraselmis	astigmatica	CCMP880	Unknown	Unknown	No	 Alexandra Z. Worden
+MMETSP0806	Chlorophyta	Prasinophyceae	Pyncnococcaceae	Prasinoderma	coloniale	CCMP1413	Unknown	No	No	 Alexandra Z. Worden
+MMETSP0807	Chlorophyta	Unknown	Unknown	Picocystis	salinarum	CCMP1897	Unknown	No	No	 Alexandra Z. Worden
+MMETSP0809	Euglenozoa	Euglenida	Eutreptiaceae	Eutreptiella	gymnastica-like	CCMP1594	Unknown	No	No	 David Caron
+MMETSP0810	Euglenozoa	Euglenida	Eutreptiaceae	Eutreptiella	gymnastica-like	CCMP1594	Unknown	No	No	 David Caron
+MMETSP0811	Euglenozoa	Euglenida	Eutreptiaceae	Eutreptiella	gymnastica-like	CCMP1594	Unknown	No	No	 David Caron
+MMETSP0812	Ochrophyta	Synurophyceae	Dinobryaceae	Dinobryon	sp.	UTEXLB2267	Unknown	No	No	 David Caron
+MMETSP0814	Haptophyta	Prymnesiophyceae	Prymenesiaceae	Prymnesium	parvum	Texoma1	Yes	Yes	No	 David Caron
+MMETSP0815	Haptophyta	Prymnesiophyceae	Prymenesiaceae	Prymnesium	parvum	Texoma1	Yes	Yes	No	 David Caron
+MMETSP0816	Bacillariophyta	Coscinodiscophyceae	Rhizosoleniaceae	Proboscia	inermis	CCAP1064/1	Yes	No	No	 Thomas Mock
+MMETSP0817	Chlorophyta	Prasinophyceae	Chlorodendraceae	Tetraselmis	striata	LANL1001	Yes	No	No	 Min Park
+MMETSP0818	Chlorophyta	Prasinophyceae	Chlorodendraceae	Tetraselmis	striata	LANL1001	Yes	No	No	 Min Park
+MMETSP0819	Chlorophyta	Prasinophyceae	Chlorodendraceae	Tetraselmis	striata	LANL1001	Yes	No	No	 Min Park
+MMETSP0820	Chlorophyta	Prasinophyceae	Chlorodendraceae	Tetraselmis	striata	LANL1001	Yes	No	No	 Min Park
+MMETSP0850	Bacillariophyta	Bacillariophyceae	Bacillariaceae	Pseudo-nitzschia	fraudulenta	WWA7	Yes	No	No	 Bethany Jenkins
+MMETSP0851	Bacillariophyta	Bacillariophyceae	Bacillariaceae	Pseudo-nitzschia	fraudulenta	WWA7	Yes	No	No	 Bethany Jenkins
+MMETSP0852	Bacillariophyta	Bacillariophyceae	Bacillariaceae	Pseudo-nitzschia	fraudulenta	WWA7	Yes	No	No	 Bethany Jenkins
+MMETSP0853	Bacillariophyta	Bacillariophyceae	Bacillariaceae	Pseudo-nitzschia	fraudulenta	WWA7	Yes	No	No	 Bethany Jenkins
+MMETSP0878	Bacillariophyta	Coscinodiscophyceae	Skeletonemaceae	Thalassiosira	weissflogii	CCMP1336	Yes	No	No	 Francois Morel
+MMETSP0879	Bacillariophyta	Coscinodiscophyceae	Skeletonemaceae	Thalassiosira	weissflogii	CCMP1336	Yes	No	No	 Francois Morel
+MMETSP0880	Bacillariophyta	Coscinodiscophyceae	Skeletonemaceae	Thalassiosira	weissflogii	CCMP1336	Yes	No	No	 Francois Morel
+MMETSP0881	Bacillariophyta	Coscinodiscophyceae	Skeletonemaceae	Thalassiosira	weissflogii	CCMP1336	Yes	No	No	 Francois Morel
+MMETSP0882	Ochrophyta	Pelagophyceae	Pelagomonodaceae	Pelagococcus	subviridis	CCMP1429	Unknown	No	No	 Christopher Gobler
+MMETSP0883	Ochrophyta	Pelagophyceae	Pelagomonodaceae	Pelagococcus	subviridis	CCMP1429	Unknown	No	No	 Christopher Gobler
+MMETSP0884	Ochrophyta	Pelagophyceae	Pelagomonodaceae	Pelagococcus	subviridis	CCMP1429	Unknown	No	No	 Christopher Gobler
+MMETSP0885	Ochrophyta	Pelagophyceae	Pelagomonodaceae	Pelagococcus	subviridis	CCMP1429	Unknown	No	No	 Christopher Gobler
+MMETSP0886	Ochrophyta	Pelagophyceae	Pelagomonodaceae	Pelagomonas	calceolata	CCMP1756	Unknown	No	No	 Christopher Gobler
+MMETSP0887	Ochrophyta	Pelagophyceae	Pelagomonodaceae	Pelagomonas	calceolata	CCMP1756	Unknown	No	No	 Christopher Gobler
+MMETSP0888	Ochrophyta	Pelagophyceae	Pelagomonodaceae	Pelagomonas	calceolata	CCMP1756	Unknown	No	No	 Christopher Gobler
+MMETSP0889	Ochrophyta	Pelagophyceae	Pelagomonodaceae	Pelagomonas	calceolata	CCMP1756	Unknown	No	No	 Christopher Gobler
+MMETSP0890	Ochrophyta	Pelagophyceae	Sarcionochrysidaceae	Aureoumbra	lagunensis	CCMP1510	Yes	Unknown	No	 Christopher Gobler
+MMETSP0891	Ochrophyta	Pelagophyceae	Sarcionochrysidaceae	Aureoumbra	lagunensis	CCMP1510	Yes	Unknown	No	 Christopher Gobler
+MMETSP0892	Ochrophyta	Pelagophyceae	Sarcionochrysidaceae	Aureoumbra	lagunensis	CCMP1510	Yes	Unknown	No	 Christopher Gobler
+MMETSP0893	Ochrophyta	Pelagophyceae	Sarcionochrysidaceae	Aureoumbra	lagunensis	CCMP1510	Yes	Unknown	No	 Christopher Gobler
+MMETSP0894	Ochrophyta	Raphidophyceae	Chattonellaceae	Heterosigma	akashiwo	CCMP 452	No	Yes	No	 Rose Ann Cattolico
+MMETSP0895	Ochrophyta	Raphidophyceae	Chattonellaceae	Heterosigma	akashiwo	CCMP 452	No	Yes	No	 Rose Ann Cattolico
+MMETSP0896	Ochrophyta	Raphidophyceae	Chattonellaceae	Heterosigma	akashiwo	CCMP 452	No	Yes	No	 Rose Ann Cattolico
+MMETSP0897	Ochrophyta	Raphidophyceae	Chattonellaceae	Heterosigma	akashiwo	CCMP 452	No	Yes	No	 Rose Ann Cattolico
+MMETSP0898	Bacillariophyta	Coscinodiscophyceae	Skeletonemaceae	Thalassiosira	weissflogii	CCMP1010	Yes	Yes	No	 Bethany Jenkins
+MMETSP0899	Bacillariophyta	Coscinodiscophyceae	Skeletonemaceae	Thalassiosira	weissflogii	CCMP1010	Yes	Yes	No	 Bethany Jenkins
+MMETSP0900	Bacillariophyta	Coscinodiscophyceae	Skeletonemaceae	Thalassiosira	weissflogii	CCMP1010	Yes	Yes	No	 Bethany Jenkins
+MMETSP0901	Bacillariophyta	Coscinodiscophyceae	Skeletonemaceae	Thalassiosira	weissflogii	CCMP1010	Yes	Yes	No	 Bethany Jenkins
+MMETSP0902	Bacillariophyta	Coscinodiscophyceae	Skeletonemaceae	Thalassiosira	antarctica	CCMP982	Yes	No	No	 Thomas Mock
+MMETSP0903	Bacillariophyta	Coscinodiscophyceae	Skeletonemaceae	Thalassiosira	antarctica	CCMP982	Yes	No	No	 Thomas Mock
+MMETSP0904	Bacillariophyta	Coscinodiscophyceae	Skeletonemaceae	Thalassiosira	antarctica	CCMP982	Yes	No	No	 Thomas Mock
+MMETSP0905	Bacillariophyta	Coscinodiscophyceae	Skeletonemaceae	Thalassiosira	antarctica	CCMP982	Yes	No	No	 Thomas Mock
+MMETSP0906	Bacillariophyta	Bacillariophyceae	Bacillariaceae	Fragilariopsis	kerguelensis	L2-C3	Yes	Yes	No	 Thomas Mock
+MMETSP0907	Bacillariophyta	Bacillariophyceae	Bacillariaceae	Fragilariopsis	kerguelensis	L2-C3	Yes	Yes	No	 Thomas Mock
+MMETSP0908	Bacillariophyta	Bacillariophyceae	Bacillariaceae	Fragilariopsis	kerguelensis	L2-C3	Yes	Yes	No	 Thomas Mock
+MMETSP0909	Bacillariophyta	Bacillariophyceae	Bacillariaceae	Fragilariopsis	kerguelensis	L2-C3	Yes	Yes	No	 Thomas Mock
+MMETSP0910	Bacillariophyta	Coscinodiscophyceae	Skeletonemaceae	Thalassiosira	rotula	GSO102	Yes	Yes	No	 Tatiana Rynearson
+MMETSP0911	Bacillariophyta	Coscinodiscophyceae	Skeletonemaceae	Thalassiosira	rotula	GSO102	Yes	Yes	No	 Tatiana Rynearson
+MMETSP0912	Bacillariophyta	Coscinodiscophyceae	Skeletonemaceae	Thalassiosira	rotula	GSO102	Yes	Yes	No	 Tatiana Rynearson
+MMETSP0913	Bacillariophyta	Coscinodiscophyceae	Skeletonemaceae	Thalassiosira	rotula	GSO102	Yes	Yes	No	 Tatiana Rynearson
+MMETSP0914	Ochrophyta	Pelagophyceae	Pelagomonodaceae	Aureococcus	anophagefferens	CCMP1850	Yes	Yes	No	 Christopher Gobler
+MMETSP0915	Ochrophyta	Pelagophyceae	Pelagomonodaceae	Aureococcus	anophagefferens	CCMP1850	Yes	Yes	No	 Christopher Gobler
+MMETSP0916	Ochrophyta	Pelagophyceae	Pelagomonodaceae	Aureococcus	anophagefferens	CCMP1850	Yes	Yes	No	 Christopher Gobler
+MMETSP0917	Ochrophyta	Pelagophyceae	Pelagomonodaceae	Aureococcus	anophagefferens	CCMP1850	Yes	Yes	No	 Christopher Gobler
+MMETSP0918	Bacillariophyta	Coscinodiscophyceae	Skeletonemaceae	Skeletonema	marinoi	skelA	Yes	No	No	 Tatiana Rynearson
+MMETSP0920	Bacillariophyta	Coscinodiscophyceae	Skeletonemaceae	Skeletonema	marinoi	skelA	Yes	No	No	 Tatiana Rynearson
+MMETSP0922C	Perkinsozoa	Perkinsea	Perkinsidae	Perkinsus	marinus	ATCC 50439	Yes	No	Yes	 Senjie Lin
+MMETSP0924C	Perkinsozoa	Perkinsea	Perkinsidae	Perkinsus	chesapeaki	ATCC PRA-65	Yes	No	Yes	 Senjie Lin
+MMETSP0929	Chlorophyta	Prasinophyceae	Mamiellaceae	Ostreococcus	mediterraneus	clade-D-RCC2572	Yes	Yes	No	 Gwenael Piganeau
+MMETSP0930	Chlorophyta	Prasinophyceae	Mamiellaceae	Ostreococcus	mediterraneus	clade-D-RCC1621	Yes	Yes	No	 Gwenael Piganeau
+MMETSP0932	Chlorophyta	Prasinophyceae	Mamiellaceae	Ostreococcus	mediterraneus	clade-D-RCC2596	Yes	Yes	No	 Gwenael Piganeau
+MMETSP0933	Chlorophyta	Prasinophyceae	Mamiellaceae	Ostreococcus	prasinos	BCC99000	Yes	Yes	No	 Gwenael Piganeau
+MMETSP0936	Chlorophyta	Prasinophyceae	Mamiellaceae	Ostreococcus	mediterraneus	clade-D-RCC2573	Yes	Yes	No	 Gwenael Piganeau
+MMETSP0937	Chlorophyta	Prasinophyceae	Mamiellaceae	Ostreococcus	mediterraneus	clade-D-RCC2593	Yes	Yes	No	 Gwenael Piganeau
+MMETSP0938	Chlorophyta	Prasinophyceae	Mamiellaceae	Ostreococcus	mediterraneus	clade-D-RCC1107	Yes	Yes	No	 Gwenael Piganeau
+MMETSP0939	Chlorophyta	Prasinophyceae	Mamiellaceae	Ostreococcus	lucimarinus	clade-A-BCC118000	Yes	Yes	No	 Gwenael Piganeau
+MMETSP0941	Chlorophyta	Prasinophyceae	Pyncnococcaceae	Prasinococcus	capsulatus	CCMP1194	Unknown	No	No	 Alexandra Z. Worden
+MMETSP0942	Bicosoecida	Bicosoecophyceae	Cafeteriaceae	Cafeteria	roenbergensis	E4-10	Yes	No	No	 Alastair Simpson
+MMETSP0943	Haptophyta	Prymnesiophyceae	Isochrysidaceae	Isochrysis	galbana	CCMP1323	Unknown	Unknown	No	 Linda A. Amaral-Zettler
+MMETSP0944	Haptophyta	Prymnesiophyceae	Isochrysidaceae	Isochrysis	galbana	CCMP1323	Unknown	Unknown	No	 Linda A. Amaral-Zettler
+MMETSP0945	Ochrophyta	Xanthophyceae	Vaucheriaceae	Vaucheria	litorea	CCMP2940	No	No	No	 Mary Rumpho
+MMETSP0946	Ochrophyta	Xanthophyceae	Vaucheriaceae	Vaucheria	litorea	CCMP2940	No	No	No	 Mary Rumpho
+MMETSP0947	Ochrophyta	Raphidophyceae	Chattonellaceae	Chattonella	subsalsa	CCMP2191	No	No	No	 Kathryn Coyne
+MMETSP0948	Ochrophyta	Raphidophyceae	Chattonellaceae	Chattonella	subsalsa	CCMP2191	No	No	No	 Kathryn Coyne
+MMETSP0949	Ochrophyta	Raphidophyceae	Chattonellaceae	Chattonella	subsalsa	CCMP2191	No	No	No	 Kathryn Coyne
+MMETSP0950	Ochrophyta	Raphidophyceae	Chattonellaceae	Chattonella	subsalsa	CCMP2191	No	No	No	 Kathryn Coyne
+MMETSP0954	Labyrinthista	Labyrinthulea	Thraustochytriaceae	Aplanochytrium	sp	PBS07	Yes	Yes	No	 Jackie Collier
+MMETSP0955	Labyrinthista	Labyrinthulea	Thraustochytriaceae	Aplanochytrium	sp	PBS07	Yes	Yes	No	 Jackie Collier
+MMETSP0956	Labyrinthista	Labyrinthulea	Thraustochytriaceae	Aplanochytrium	sp	PBS07	Yes	Yes	No	 Jackie Collier
+MMETSP0957	Labyrinthista	Labyrinthulea	Thraustochytriaceae	Aplanochytrium	sp	PBS07	Yes	Yes	No	 Jackie Collier
+MMETSP0958	Labyrinthista	Labyrinthulea	Thraustochytriidae	Aurantiochytrium	limacinum	ATCCMYA-1381	Yes	Yes	No	 Jackie Collier
+MMETSP0959	Labyrinthista	Labyrinthulea	Thraustochytriidae	Aurantiochytrium	limacinum	ATCCMYA-1381	Yes	Yes	No	 Jackie Collier
+MMETSP0960	Labyrinthista	Labyrinthulea	Thraustochytriidae	Aurantiochytrium	limacinum	ATCCMYA-1381	Yes	Yes	No	 Jackie Collier
+MMETSP0961	Labyrinthista	Labyrinthulea	Thraustochytriidae	Aurantiochytrium	limacinum	ATCCMYA-1381	Yes	Yes	No	 Jackie Collier
+MMETSP0962	Labyrinthista	Labyrinthulea	Thraustochytriaceae	Schizochytrium	aggregatum	ATCC28209	Yes	Yes	No	 Jackie Collier
+MMETSP0963	Labyrinthista	Labyrinthulea	Thraustochytriaceae	Schizochytrium	aggregatum	ATCC28209	Yes	Yes	No	 Jackie Collier
+MMETSP0964	Labyrinthista	Labyrinthulea	Thraustochytriaceae	Schizochytrium	aggregatum	ATCC28209	Yes	Yes	No	 Jackie Collier
+MMETSP0965	Labyrinthista	Labyrinthulea	Thraustochytriaceae	Schizochytrium	aggregatum	ATCC28209	Yes	Yes	No	 Jackie Collier
+MMETSP0970	Bacillariophyta	Coscinodiscophyceae	Skeletonemaceae	Thalassiosira	oceanica	CCMP1005	Yes	Yes	No	 Bethany Jenkins
+MMETSP0971	Bacillariophyta	Coscinodiscophyceae	Skeletonemaceae	Thalassiosira	oceanica	CCMP1005	Yes	Yes	No	 Bethany Jenkins
+MMETSP0972	Bacillariophyta	Coscinodiscophyceae	Skeletonemaceae	Thalassiosira	oceanica	CCMP1005	Yes	Yes	No	 Bethany Jenkins
+MMETSP0973	Bacillariophyta	Coscinodiscophyceae	Skeletonemaceae	Thalassiosira	oceanica	CCMP1005	Yes	Yes	No	 Bethany Jenkins
+MMETSP0974	Unknown	Unknown	Unknown	Undescribed	Undescribed	CCMP2097	Unknown	Yes	No	 Connie Lovejoy
+MMETSP0975	Unknown	Unknown	Unknown	Undescribed	Undescribed	CCMP2097	Unknown	Yes	No	 Connie Lovejoy
+MMETSP0976	Unknown	Unknown	Unknown	Undescribed	Undescribed	CCMP2097	Unknown	Yes	No	 Connie Lovejoy
+MMETSP0977	Unknown	Unknown	Unknown	Undescribed	Undescribed	CCMP2097	Unknown	Yes	No	 Connie Lovejoy
+MMETSP0982	Unknown	Unknown	Unknown	Undescribed	Undescribed	CCMP 2436	Unknown	Yes	No	 Connie Lovejoy
+MMETSP0983	Unknown	Unknown	Unknown	Undescribed	Undescribed	CCMP 2436	Unknown	Yes	No	 Connie Lovejoy
+MMETSP0984	Unknown	Unknown	Unknown	Undescribed	Undescribed	CCMP 2436	Unknown	Yes	No	 Connie Lovejoy
+MMETSP0985	Unknown	Unknown	Unknown	Undescribed	Undescribed	CCMP 2436	Unknown	Yes	No	 Connie Lovejoy
+MMETSP0986	Unknown	Unknown	Unknown	Undescribed	Undescribed	CCMP2293	Unknown	Yes	No	 Connie Lovejoy
+MMETSP0987	Unknown	Unknown	Unknown	Undescribed	Undescribed	CCMP2293	Unknown	Yes	No	 Connie Lovejoy
+MMETSP0988	Unknown	Unknown	Unknown	Undescribed	Undescribed	CCMP2293	Unknown	Yes	No	 Connie Lovejoy
+MMETSP0989	Unknown	Unknown	Unknown	Undescribed	Undescribed	CCMP2293	Unknown	Yes	No	 Connie Lovejoy
+MMETSP0990	Unknown	Unknown	Unknown	Undescribed	Undescribed	CCMP2098	Unknown	Yes	No	 Connie Lovejoy
+MMETSP0991	Unknown	Unknown	Unknown	Undescribed	Undescribed	CCMP2098	Unknown	Yes	No	 Connie Lovejoy
+MMETSP0992	Unknown	Unknown	Unknown	Undescribed	Undescribed	CCMP2098	Unknown	Yes	No	 Connie Lovejoy
+MMETSP0993	Unknown	Unknown	Unknown	Undescribed	Undescribed	CCMP2098	Unknown	Yes	No	 Connie Lovejoy
+MMETSP0994	Haptophyta	Prymnesiophyceae	Noelaerhabdaceae	Emiliania	huxleyi	379	Unknown	No	No	 Kay Bidle
+MMETSP0995	Haptophyta	Prymnesiophyceae	Noelaerhabdaceae	Emiliania	huxleyi	379	Unknown	No	No	 Kay Bidle
+MMETSP0996	Haptophyta	Prymnesiophyceae	Noelaerhabdaceae	Emiliania	huxleyi	379	Unknown	No	No	 Kay Bidle
+MMETSP0997	Haptophyta	Prymnesiophyceae	Noelaerhabdaceae	Emiliania	huxleyi	379	Unknown	No	No	 Kay Bidle
+MMETSP0998	Bacillariophyta	Coscinodiscophyceae	Lithodesmiaceae	Ditylum	brightwellii	GSO105	Yes	Yes	No	 Tatiana Rynearson
+MMETSP1001	Bacillariophyta	Coscinodiscophyceae	Lithodesmiaceae	Ditylum	brightwellii	GSO105	Yes	Yes	No	 Tatiana Rynearson
+MMETSP1006	Haptophyta	Prymnesiophyceae	Noelaerhabdaceae	Emiliania	huxleyi	374	Unknown	No	No	 Kay Bidle
+MMETSP1007	Haptophyta	Prymnesiophyceae	Noelaerhabdaceae	Emiliania	huxleyi	374	Unknown	No	No	 Kay Bidle
+MMETSP1008	Haptophyta	Prymnesiophyceae	Noelaerhabdaceae	Emiliania	huxleyi	374	Unknown	No	No	 Kay Bidle
+MMETSP1009	Haptophyta	Prymnesiophyceae	Noelaerhabdaceae	Emiliania	huxleyi	374	Unknown	No	No	 Kay Bidle
+MMETSP1015	Dinophyta	Dinophyceae	Gymnodiniaceae	Karlodinium	micrum	CCMP2283	Unknown	No	No	 Geoff Sinclair, Boris Wawrik
+MMETSP1016	Dinophyta	Dinophyceae	Gymnodiniaceae	Karlodinium	micrum	CCMP2283	Unknown	No	No	 Geoff Sinclair, Boris Wawrik
+MMETSP1017	Dinophyta	Dinophyceae	Gymnodiniaceae	Karlodinium	micrum	CCMP2283	Unknown	No	No	 Geoff Sinclair, Boris Wawrik
+MMETSP1032	Dinophyta	Dinophyceae	Gonyaulacaceae	Lingulodinium	polyedra	CCMP 1738	Yes	No	No	 Mary Ann Moran
+MMETSP1033	Dinophyta	Dinophyceae	Gonyaulacaceae	Lingulodinium	polyedra	CCMP 1738	Yes	No	No	 Mary Ann Moran
+MMETSP1034	Dinophyta	Dinophyceae	Gonyaulacaceae	Lingulodinium	polyedra	CCMP 1738	Yes	No	No	 Mary Ann Moran
+MMETSP1035	Dinophyta	Dinophyceae	Gonyaulacaceae	Lingulodinium	polyedra	CCMP 1738	Yes	No	No	 Mary Ann Moran
+MMETSP1036	Dinophyta	Dinophyceae	Unknown	Azadinium	spinosum	3D9	Yes	Yes	No	 Uwe John
+MMETSP1037	Dinophyta	Dinophyceae	Unknown	Azadinium	spinosum	3D9	Yes	Yes	No	 Uwe John
+MMETSP1038	Dinophyta	Dinophyceae	Unknown	Azadinium	spinosum	3D9	Yes	Yes	No	 Uwe John
+MMETSP1039	Bacillariophyta	Coscinodiscophyceae	Skeletonemaceae	Skeletonema	marinoi	FE7	Yes	No	No	 Giovanna Romano
+MMETSP1040	Bacillariophyta	Coscinodiscophyceae	Skeletonemaceae	Skeletonema	marinoi	FE60	Yes	No	No	 Giovanna Romano
+MMETSP1041	Cryptophyta	Cryptophyceae	Hemiselmidaceae	Hemiselmis	andersenii	CCMP439	Unknown	Unknown	No	 John Archibald
+MMETSP1042	Cryptophyta	Cryptophyceae	Hemiselmidaceae	Hemiselmis	andersenii	CCMP1180	Unknown	Unknown	No	 John Archibald
+MMETSP1043	Cryptophyta	Cryptophyceae	Hemiselmidaceae	Hemiselmis	andersenii	CCMP441	Unknown	Unknown	No	 John Archibald
+MMETSP1047	Cryptophyta	Cryptophyceae	Pyrenomonadaceae	Rhodomonas	salina	CCMP1319	Unknown	Unknown	No	 John Archibald
+MMETSP1048	Cryptophyta	Cryptophyceae	Geminigeraceae	Hanusia	phi	CCMP325	Unknown	Unknown	No	 John Archibald
+MMETSP1049	Cryptophyta	Cryptophyceae	Geminigeraceae	Proteomonas	sulcata	CCMP704	Unknown	Unknown	No	 John Archibald
+MMETSP1050	Cryptophyta	Cryptophyceae	Cryptomonadaceae	Cryptomonas	curvata	CCAP979/52	Unknown	No	No	 John Archibald
+MMETSP1052	Chlorarachniophyta	Chlorarachniophyceae	Chlorarachniaceae	Bigelowiella	natans	CCMP623	Unknown	Unknown	No	 John Archibald
+MMETSP1054	Unknown	Unknown	Unknown	Bigelowiella	natans	CCMP1259	Unknown	Unknown	No	 John Archibald
+MMETSP1055	Unknown	Unknown	Unknown	Bigelowiella	natans	CCMP1258.1	Unknown	Unknown	No	 John Archibald
+MMETSP1057	Bacillariophyta	Coscinodiscophyceae	Skeletonemaceae	Cyclotella	meneghiniana	CCMP 338	Yes	No	No	 E. Virginia Armbrust
+MMETSP1058	Bacillariophyta	Coscinodiscophyceae	Skeletonemaceae	Detonula	confervacea	CCMP 353	Yes	No	No	 E. Virginia Armbrust
+MMETSP1059	Bacillariophyta	Coscinodiscophyceae	Skeletonemaceae	Thalassiosira	sp.	FW	Yes	No	No	 E. Virginia Armbrust
+MMETSP1060	Bacillariophyta	Bacillariophyceae	Bacillariaceae	Pseudo-nitzschia	pungens	cf. cingulata	Yes	No	No	 E. Virginia Armbrust
+MMETSP1061	Bacillariophyta	Bacillariophyceae	Bacillariaceae	Pseudo-nitzschia	pungens	cf. pungens	Yes	No	No	 E. Virginia Armbrust
+MMETSP1062	Bacillariophyta	Coscinodiscophyceae	Lithodesmiaceae	Ditylum	brightwellii	Pop1 (SS4)	Yes	No	No	 E. Virginia Armbrust
+MMETSP1063	Bacillariophyta	Coscinodiscophyceae	Lithodesmiaceae	Ditylum	brightwellii	Pop2 (SS10)	Yes	No	No	 E. Virginia Armbrust
+MMETSP1064	Bacillariophyta	Coscinodiscophyceae	Aulacoseiraceae	Aulacoseira	subarctica	CCAP 1002/5	Yes	No	No	 E. Virginia Armbrust
+MMETSP1065	Bacillariophyta	Bacillariophyceae	Amphipleuraceae	Amphiprora	paludosa	CCMP125	Unknown	Unknown	No	 E. Virginia Armbrust
+MMETSP1066	Bacillariophyta	Coscinodiscophyceae	Conscinodiscaceae	Coscinodiscus	wailesii	CCMP2513	Yes	No	No	 E. Virginia Armbrust
+MMETSP1067	Bacillariophyta	Coscinodiscophyceae	Skeletonemaceae	Thalassiosira	punctigera	Tpunct2005C2	Yes	No	No	 E. Virginia Armbrust
+MMETSP1068	Ochrophyta	Dictyochophyceae	Pedinellaceae	Pseudopedinella	elastica	CCMP716	Yes	No	No	 E. Virginia Armbrust
+MMETSP1070	Bacillariophyta	Coscinodiscophyceae	Cymatosiraceae	Minutocellus	polymorphus	NH13	Yes	No	No	 E. Virginia Armbrust
+MMETSP1071	Bacillariophyta	Coscinodiscophyceae	Skeletonemaceae	Thalassiosira	sp.	NH16	Yes	No	No	 E. Virginia Armbrust
+MMETSP1074	Dinophyta	Dinophyceae	Ceratiaceae	Ceratium	fusus	PA161109	Yes	No	No	 Susanne Menden-Deuer
+MMETSP1075	Dinophyta	Dinophyceae	Ceratiaceae	Ceratium	fusus	PA161109	Yes	No	No	 Susanne Menden-Deuer
+MMETSP1080	Chlorophyta	Prasinophyceae	Mamiellaceae	Micromonas	sp	CCMP1646	Unknown	Yes	No	 Alexandra Z. Worden
+MMETSP1081	Unknown	Unknown	Unknown	Pyramimonas	amylifera	CCMP720	Unknown	No	No	 Alexandra Z. Worden
+MMETSP1082	Chlorophyta	Prasinophyceae	Mamiellaceae	Micromonas	sp.	NEPCC29	Unknown	No	No	 Alexandra Z. Worden
+MMETSP1084	Unknown	Unknown	Unknown	Micromonas	sp.	RCC472	Unknown	No	No	 Alexandra Z. Worden
+MMETSP1085	Chlorophyta	Prasinophyceae	Pyncnococcaceae	Pycnococcus	sp	CCMP1998	Unknown	No	No	 Alexandra Z. Worden
+MMETSP1086	Glaucophyta	Glaucocystophyceae	Glaucosphaeraceae	Cyanoptyche	gloeocystis	SAG4.97	Unknown	No	No	 Alexandra Z. Worden
+MMETSP1089	Glaucophyta	Glaucophyceae	Gloeochaetaceae	Gloeochaete	wittrockiana	SAG46.84	Unknown	No	No	 Alexandra Z. Worden
+MMETSP1090	Haptophyta	Prymnesiophyceae	Isochrysidaceae	Isochrysis	sp	CCMP1244	Unknown	No	No	 Alexandra Z. Worden
+MMETSP1091	Cryptophyta	Cryptophyceae	Pyrenomonadaceae	Rhodomonas	sp.	CCMP768	Unknown	No	No	 Alexandra Z. Worden
+MMETSP1094	Haptophyta	Prymnesiophyceae	Prymnesiaceae	Chrysochromulina	brevifilum	UTEX LB 985	Unknown	No	No	 David Caron
+MMETSP1095	Ochrophyta	Chrysophyceae	Chromulinaceae	Chromulina	nebulosa	UTEXLB2642	Unknown	No	No	 David Caron
+MMETSP1096	Haptophyta	Prymnesiophyceae	Prymnesiaceae	Chrysochromulina	ericina	CCMP281	Unknown	No	No	 David Caron
+MMETSP1097	Ochrophyta	Dictyochophyceae	Pedinellaceae	Pseudopedinella	elastica	CCMP716	Unknown	No	No	 David Caron
+MMETSP1098	Ochrophyta	Chrysophyceae	Chromulinaceae	Spumella	elongata	CCAP 955/1	Unknown	No	No	 David Caron
+MMETSP1100	Haptophyta	Prymnesiophyceae	Phaeocystaceae	Phaeocystis	antarctica	Caron Lab Isolate	Unknown	No	No	 David Caron
+MMETSP1101	Cryptophyta	Cryptophyceae	Pyrenomonadaceae	Rhodomonas	abbreviata	Caron Lab Isolate	Yes	No	No	 David Caron
+MMETSP1102	Cryptophyta	Cryptophyceae	Geminigeracea	Geminigera	sp.	Caron Lab Isolate	Unknown	No	No	 David Caron
+MMETSP1103	Ochrophyta	Chrysophyceae	Synuraceae	Paraphysomonas	bandaiensis	Caron Lab Isolate	Yes	No	No	 David Caron
+MMETSP1104	Bicosoecida	Bicosoecophyceae	Cafeteriaceae	Cafeteria	sp.	Caron Lab Isolate	Unknown	No	No	 David Caron
+MMETSP1105	Ochrophyta	Synurophyceae	Ochromonadaceae	Ochromonas	sp.	BG-1	Unknown	No	No	 David Caron
+MMETSP1106	Chlorophyta	Mamiellophyceae	Mamiellaceae	Mantoniella	antarctica	SL-175	Unknown	Unknown	No	 David Caron
+MMETSP1107	Ochrophyta	Chrysophyceae	Synuraceae	Paraphysomonas	vestita	GFlagA	Unknown	No	No	 David Caron
+MMETSP1110	Dinophyta	Dinophyceae	Symbiodiniaceae	Symbiodinium	sp.	CCMP421	No	No	No	 William Wilson
+MMETSP1114	Unknown	Kinetoplastea	Bodonidae	Neobodo	designis	CCAP 1951/1	Unknown	No	No	 David Caron
+MMETSP1115	Dinophyta	Dinophyceae	Symbiodiniaceae	Symbiodinium	sp.	CCMP2430	No	No	No	 William Wilson
+MMETSP1116	Dinophyta	Dinophyceae	Symbiodiniaceae	Symbiodinium	sp.	CCMP2430	No	No	No	 William Wilson
+MMETSP1117	Dinophyta	Dinophyceae	Symbiodiniaceae	Symbiodinium	sp.	CCMP2430	No	No	No	 William Wilson
+MMETSP1122	Dinophyta	Dinophyceae	Symbiodiniaceae	Symbiodinium	sp.	Mp	No	No	No	 William Wilson
+MMETSP1123	Dinophyta	Dinophyceae	Symbiodiniaceae	Symbiodinium	sp.	Mp	No	No	No	 William Wilson
+MMETSP1124	Dinophyta	Dinophyceae	Symbiodiniaceae	Symbiodinium	sp.	Mp	No	No	No	 William Wilson
+MMETSP1125	Dinophyta	Dinophyceae	Symbiodiniaceae	Symbiodinium	sp.	Mp	No	No	No	 William Wilson
+MMETSP1126	Chlorophyta	Chlorophyceae	Dunaliellaceae	Dunaliella	tertiolecta	CCMP1320	Yes	Yes	No	 Sheri Floge
+MMETSP1127	Chlorophyta	Chlorophyceae	Dunaliellaceae	Dunaliella	tertiolecta	CCMP1320	Yes	Yes	No	 Sheri Floge
+MMETSP1128	Chlorophyta	Chlorophyceae	Dunaliellaceae	Dunaliella	tertiolecta	CCMP1320	Yes	Yes	No	 Sheri Floge
+MMETSP1129	Haptophyta	Prymnesiophyceae	Isochrysidaceae	Isochrysis	sp.	CCMP1324	Yes	Yes	No	 Sheri Floge
+MMETSP1130	Haptophyta	Prymnesiophyceae	Isochrysidaceae	Isochrysis	sp.	CCMP1324	Yes	Yes	No	 Sheri Floge
+MMETSP1131	Haptophyta	Prymnesiophyceae	Isochrysidaceae	Isochrysis	sp.	CCMP1324	Yes	Yes	No	 Sheri Floge
+MMETSP1132	Haptophyta	Prymnesiophyceae	Isochrysidaceae	Isochrysis	sp.	CCMP1324	Yes	Yes	No	 Sheri Floge
+MMETSP1136	Haptophyta	Prymnesiophyceae	Pleurochrysidaceae	Pleurochrysis	carterae	CCMP645	Yes	Yes	No	 Sheri Floge
+MMETSP1137	Haptophyta	Prymnesiophyceae	Pleurochrysidaceae	Pleurochrysis	carterae	CCMP645	Yes	Yes	No	 Sheri Floge
+MMETSP1138	Haptophyta	Prymnesiophyceae	Pleurochrysidaceae	Pleurochrysis	carterae	CCMP645	Yes	Yes	No	 Sheri Floge
+MMETSP1139	Haptophyta	Pavlovophyceae	Pavlovaceae	Pavlova	sp.	CCMP459	Yes	Yes	No	 Sheri Floge
+MMETSP1140	Haptophyta	Pavlovophyceae	Pavlovaceae	Pavlova	sp.	CCMP459	Yes	Yes	No	 Sheri Floge
+MMETSP1141	Unknown	Unknown	Unknown	Undescribed	Undescribed	CCMP2298	No	Yes	No	 Connie Lovejoy
+MMETSP1142	Unknown	Unknown	Unknown	Undescribed	Undescribed	CCMP2298	No	Yes	No	 Connie Lovejoy
+MMETSP1143	Unknown	Unknown	Unknown	Undescribed	Undescribed	CCMP2298	No	Yes	No	 Connie Lovejoy
+MMETSP1144	Unknown	Unknown	Unknown	Undescribed	Undescribed	CCMP2298	No	Yes	No	 Connie Lovejoy
+MMETSP1147	Dinophyta	Dinophyceae	Lessardiaceae	Lessardia	elongata	SPMC 104	Unknown	No	Yes	 Juan Saldarriaga
+MMETSP1148	Dinophyta	Dinophyceae	Gymnodiniaceae	Gyrodinium	dominans	SPMC 103	No	No	Yes	 Juan Saldarriaga
+MMETSP1150	Haptophyta	Prymnesiophyceae	Noelaerhabdaceae	Emiliania	huxleyi	PLY M219	Unknown	No	No	 Francois Morel
+MMETSP1151	Haptophyta	Prymnesiophyceae	Noelaerhabdaceae	Emiliania	huxleyi	PLY M219	Unknown	No	No	 Francois Morel
+MMETSP1152	Haptophyta	Prymnesiophyceae	Noelaerhabdaceae	Emiliania	huxleyi	PLY M219	Unknown	No	No	 Francois Morel
+MMETSP1153	Haptophyta	Prymnesiophyceae	Noelaerhabdaceae	Emiliania	huxleyi	PLY M219	Unknown	No	No	 Francois Morel
+MMETSP1154	Haptophyta	Prymnesiophyceae	Noelaerhabdaceae	Emiliania	huxleyi	CCMP370	Unknown	No	No	 Francois Morel
+MMETSP1155	Haptophyta	Prymnesiophyceae	Noelaerhabdaceae	Emiliania	huxleyi	CCMP370	Unknown	No	No	 Francois Morel
+MMETSP1156	Haptophyta	Prymnesiophyceae	Noelaerhabdaceae	Emiliania	huxleyi	CCMP370	Unknown	No	No	 Francois Morel
+MMETSP1157	Haptophyta	Prymnesiophyceae	Noelaerhabdaceae	Emiliania	huxleyi	CCMP370	Unknown	No	No	 Francois Morel
+MMETSP1159	Chlorophyta	Unknown	Unknown	Picocystis	salinarum	CCMP1897	Unknown	No	No	 Willie Wilson
+MMETSP1160	Ochrophyta	Dictyochophyceae	Pinguiochrysidaceae	Pinguiococcus	pyrenoidosus	CCMP2078	Unknown	Yes	No	 Willie Wilson
+MMETSP1161	Chlorophyta	Trebouxiophyceae	Chlorellales incertae sedis	Picochlorum	oklahomensis	CCMP2329	Unknown	Unknown	No	 Willie Wilson
+MMETSP1162	Haptophyta	Prymnesiophyceae	Phaeocystacear	Phaeocystis	Sp	CCMP2710	Unknown	No	No	 Willie Wilson
+MMETSP1163	Ochrophyta	Pinguiophyceae	Pinguiochrysidaceae	Phaeomonas	parva	CCMP2877	Unknown	No	No	 Willie Wilson
+MMETSP1164	Ochrophyta	Pelagophyceae	Unknown	Chrysoreinhardia	sp	CCMP2950	Unknown	No	No	 Willie Wilson
+MMETSP1165	Ochrophyta	Dictyochophyceae	Sarcinochrysidaceae	Chrysocystis	fragilis	CCMP3189	Unknown	No	No	 Willie Wilson
+MMETSP1166	Ochrophyta	Pelagophyceae	Unknown	Chrysoreinhardia	sp	CCMP3193	Unknown	No	No	 Willie Wilson
+MMETSP1167	Ochrophyta	Synurophyceae	Mallomonadaceae	Mallomonas	Sp	CCMP3275	Unknown	No	No	 Willie Wilson
+MMETSP1169	Chlorophyta	Prasinophyceae	Pyramimonadaceae	Pyramimonas	obovata	CCMP722	Unknown	No	No	 Willie Wilson
+MMETSP1170	Ochrophyta	Pelagophyceae	Unknown	Sarcinochrysis	sp	CCMP770	Unknown	No	No	 Willie Wilson
+MMETSP1171	Bacillariophyta	Mediophyceae	Lithodesmiaceae	Helicotheca	tamensis	CCMP826	Unknown	No	No	 Willie Wilson
+MMETSP1172	Rhodophyta	Porphyridiophyceae	Porphyridiaceae	Timspurckia	oligopyrenoides	CCMP3278	Unknown	No	No	 Willie Wilson
+MMETSP1173	Ochrophyta	Dictyochophyceae	Rhizochromulinaceae	Rhizochromulina	marina cf	CCMP1243	Unknown	No	No	 Willie Wilson
+MMETSP1174	Ochrophyta	Dictyochophyceae	Dictyochaceae	Dictyocha	speculum	CCMP1381	Unknown	No	No	 Willie Wilson
+MMETSP1175	Bacillariophyta	Bacillariophyceae	Triceratiaceae	Triceratium	dubium	CCMP147	Unknown	No	No	 Willie Wilson
+MMETSP1176	Bacillariophyta	Bacillariophyceae/Fragilariophyceae	Fragilariaceae	Synedropsis	recta cf	CCMP1620	No	No	No	 Willie Wilson
+MMETSP1177	Ochrophyta	Chrysophyceae	Chromulinaceae	Ochromonas	sp	CCMP1899	No	No	No	 Willie Wilson
+MMETSP1178	Haptophyta	Prymnesiophyceae	Unknown	unid	sp	CCMP2000	No	No	No	 Willie Wilson
+MMETSP1180	Chlorophyta	Chlorophyceae	Unknown	Chlamydomonas	cf sp	CCMP681	Unknown	Yes	No	 Willie Wilson
+MMETSP1309	Unknown	Unknown	Unknown	Genus nov.	species nov.	RCC998	No	No	No	 Willie Wilson
+MMETSP1310	Unknown	Unknown	Unknown	Genus nov.	species nov.	RCC2339	No	No	No	 Daniel Vaulot
+MMETSP1311	Unknown	Unknown	Unknown	Genus nov.	species nov.	RCC856	No	No	No	 Willie Wilson
+MMETSP1312	Unknown	Unknown	Unknown	Genus nov.	species nov.	RCC2335	No	No	No	 Daniel Vaulot
+MMETSP1315	Chlorophyta	Prasinophyceae	Pycnococcaceae	Prasinoderma	singularis	RCC927	No	No	No	 Daniel Vaulot
+MMETSP1316	Chlorophyta	Prasinophyceae	Pycnococcaceae	Pycnococcus	provasolii	RCC2336	No	Unknown	No	 Daniel Vaulot
+MMETSP1317	Unknown	Unknown	Unknown	Undescribed	Undescribed	Undescribed	No	No	No	 Denis Lynn
+MMETSP1318	Cercozoa	Chlorarachnea	Chlorarachniaceae	Partenskyella	glossopodia	RCC365	No	No	No	 Willie Wilson
+MMETSP1319	Ochrophyta	Bolidophyceae	Bolidomonadaceae	Bolidomonas	pacifica	RCC208	No	No	No	 Daniel Vaulot
+MMETSP1320	Ochrophyta	Bolidophyceae	Bolidomonoadaceae	Bolidomonas	sp.	RCC2347	No	No	No	 Willie Wilson
+MMETSP1321	Ochrophyta	Bolidophyceae	Bolidomonoadaceae	Bolidomonas	sp.	RCC1657	No	No	No	 Daniel Vaulot
+MMETSP1322	Bacillariophyta	Coscinodiscophyceae	Cymatosiraceae	Minutocellus	polymorphus	RCC2270	No	No	No	 Daniel Vaulot
+MMETSP1323	Ochrophyta	Dictyochophyceae	Florenciellales	Florenciella	parvula	RCC1693	No	No	No	 Daniel Vaulot
+MMETSP1324	Ochrophyta	Dictyochophyceae	Florenciellales	Florenciella	sp.	RCC1587	No	No	No	 Daniel Vaulot
+MMETSP1326	Chlorophyta	Mamiellophyceae	Mamiellaceae	Genus nov.	species nov.	RCC2288	No	No	No	 Willie Wilson
+MMETSP1327	Chlorophyta	Mamiellophyceae	Mamiellaceae	Micromonas	pusilla	RCC2306	No	Unknown	No	 Daniel Vaulot
+MMETSP1328	Ochrophyta	Pelagophyceae	Pelagomonadaceae	Pelagomonas	calceolata	RCC969	No	No	No	 Daniel Vaulot
+MMETSP1329	Ochrophyta	Pelagophyceae	Unknown	Genus nov.	species nov.	RCC1024	No	No	No	 Daniel Vaulot
+MMETSP1330	Chlorophyta	Trebouxiophyceae	Trebouxiophyceae incertae sedis	Picochlorum	sp.	RCC944	No	No	No	 Daniel Vaulot
+MMETSP1333	Haptophyta	Coccolithophyceae	Pontosphaeraceae	Scyphosphaera	apsteinii	RCC1455	No	No	No	 Daniel Vaulot
+MMETSP1334	Haptophyta	Prymnesiophyceae	Calcidiscaceae	Calcidiscus	leptoporus	RCC1130	No	No	No	 Daniel Vaulot
+MMETSP1335	Haptophyta	Prymnesiophyceae	Prymnesiaceae	Chrysoculter	rhomboideus	RCC1486	No	Unknown	No	 Daniel Vaulot
+MMETSP1336	Bacillariophyta	Bacillariophyceae	Chaetocerotaceae	Chaetoceros	cf. neogracile	RCC1993	No	No	No	 Daniel Vaulot
+MMETSP1338	Dinophyta	Dinophyceae	Suessiaceae	Pelagodinium	beii	RCC1491	No	No	No	 Willie Wilson
+MMETSP1339	Ochrophyta	Raphidophyceae	Chattonellaceae	Fibrocapsa	japonica	CCMP1661	Unknown	No	No	 Willie Wilson
+MMETSP1344	Ochrophyta	Dictyochophyceae	Florenciellales incertae sedis	Florenciella	parvula	CCMP2471	Unknown	No	No	 Willie Wilson
+MMETSP1345	Ciliophora	Heterotrichea	Climacostomidae	Fabrea	Fabrea salina		No	No	No	 Giulio Petroni
+MMETSP1352	Bacillariophyta	Bacillariophyceae	Stauroneidaceae	Stauroneis	constricta	CCMP1120	Unknown	No	No	 Willie Wilson
+MMETSP1353	Rhodophyta	Bangiophyceae	Porphyridiaceae	Erythrolobus	australicus	CCMP3124	Unknown	No	No	 Willie Wilson
+MMETSP1354	Rhodophyta	Bangiophyceae	Porphyridiaceae	Erythrolobus	madagascarensis	CCMP3276	Unknown	No	No	 Willie Wilson
+MMETSP1355	Cryptophyta	Cryptophyceae	Hemiselmidaceae	Hemiselmis	tepida	CCMP443	Unknown	Unknown	No	 John Archibald
+MMETSP1356	Cryptophyta	Cryptophyceae	Hemiselmidaceae	Hemiselmis	viresens	PCC157	Unknown	No	No	 John Archibald
+MMETSP1357	Cryptophyta	Cryptophyceae	Hemiselmidaceae	Hemiselmis	rufescens	PCC563	Unknown	Unknown	No	 John Archibald
+MMETSP1358	Chlorarachniophyta	Chlorarachniophyceae	Chlorarachniaceae	Bigelowiella	natans	CCMP1242	Unknown	No	No	 John Archibald
+MMETSP1359	Chlorarachniophyta	Chlorarachniophyceae	Chlorarachniaceae	Bigelowiella	longifila	CCMP242	Unknown	No	No	 John Archibald
+MMETSP1360	Bacillariophyta	Bacillariophyceae	Licmophoraceae	Licmophora	paradoxa	CCMP2313	Unknown	No	No	 E. Virginia Armbrust
+MMETSP1361	Bacillariophyta	Fragilariophyceae	Fragilariaceae	Staurosira	complex sp.	CCMP2646	Unknown	No	No	 E. Virginia Armbrust
+MMETSP1362	Bacillariophyta	Coscinodiscophyceae	Leptocylindraceae	Leptocylindrus	danicus	CCMP1856	Unknown	No	No	 E. Virginia Armbrust
+MMETSP1363	Haptophyta	Prymnesiophyceae	Noelaerhabdaceae	Gephyrocapsa	oceanica	RCC1303	Unknown	No	No	 Sonya Dyhrman, Andrew Juhl
+MMETSP1364	Haptophyta	Prymnesiophyceae	Noelaerhabdaceae	Gephyrocapsa	oceanica	RCC1303	Unknown	No	No	 Sonya Dyhrman, Andrew Juhl
+MMETSP1365	Haptophyta	Prymnesiophyceae	Noelaerhabdaceae	Gephyrocapsa	oceanica	RCC1303	Unknown	No	No	 Sonya Dyhrman, Andrew Juhl
+MMETSP1366	Haptophyta	Prymnesiophyceae	Noelaerhabdaceae	Gephyrocapsa	oceanica	RCC1303	Unknown	No	No	 Sonya Dyhrman, Andrew Juhl
+MMETSP1367	Dinophyta	Dinophyceae	Symbiodiniaceae	Symbiodinium	sp.	C1	Unknown	No	No	 Ruth Gates
+MMETSP1369	Dinophyta	Dinophyceae	Symbiodiniaceae	Symbiodinium	sp.	C1	Unknown	No	No	 Ruth Gates
+MMETSP1370	Dinophyta	Dinophyceae	Symbiodiniaceae	Symbiodinium	sp.	C15	Unknown	No	No	 Ruth Gates
+MMETSP1371	Dinophyta	Dinophyceae	Symbiodiniaceae	Symbiodinium	sp.	C15	Unknown	No	No	 Ruth Gates
+MMETSP1374	Dinophyta	Dinophyceae	Symbiodiniaceae	Symbiodinium	sp.	cladeA	Unknown	No	No	 Ruth Gates
+MMETSP1377	Dinophyta	Dinophyceae	Symbiodiniaceae	Symbiodinium	sp.	D1a	Unknown	No	No	 Ruth Gates
+MMETSP1380	Ciliophora	Spirotrichea	Euplotidae	Euplotes	crassus	CT5	Unknown	No	No	 Cristina Miceli
+MMETSP1381	Haptophyta	Pavlovophyceae	Pavlovaceae	Pavlova	sp.	CCMP459	Yes	Yes	No	 Sheri Floge
+MMETSP1384	Foraminifera	Globothalamea	Rotaliidae	Ammonia	sp.		No	No	No	 Jan Pawlowski
+MMETSP1385	Foraminifera	Globothalamea	Elphidiidae	Elphidium	margaritaceum		No	No	No	 Jan Pawlowski
+MMETSP1386	Chlorophyta	Prasinophyceae	Mamiellaceae	Micromonas	sp.	NEPCC29	Unknown	No	No	 Alexandra Z. Worden
+MMETSP1387	Chlorophyta	Prasinophyceae	Mamiellaceae	Micromonas	sp.	RCC472	Unknown	No	No	 Alexandra Z. Worden
+MMETSP1388	Haptophyta	Prymnesiophyceae	Isochrysidaceae	Isochrysis	sp	CCMP1244	No	No	No	 Alexandra Z. Worden
+MMETSP1389	Unknown	Unknown	Unknown	Rhodomonas	sp.	CCMP768	Unknown	No	No	 Alexandra Z. Worden
+MMETSP1390	Chlorophyta	Prasinophyceae	Mamiellaceae	Micromonas	sp.	CCMP2099	Unknown	No	No	 Alexandra Z. Worden
+MMETSP1391	Chlorophyta	Chlorophyceae	Chlamydomonadaceae	Chlamydomonas	leiostraca	SAG 11-49	Unknown	No	No	 Alexandra Z. Worden
+MMETSP1392	Chlorophyta	Chlorophyceae	Chlamydomonadaceae	Chlamydomonas	chlamydogama	SAG 11-48b	Unknown	No	No	 Alexandra Z. Worden
+MMETSP1393	Chlorophyta	Prasinophyceae	Mamiellaceae	Micromonas	sp	CS-222	Unknown	No	No	 Alexandra Z. Worden
+MMETSP1394	Bacillariophyta	Fragilariophyceae	Fragilariaceae	Asterionellopsis	glacialis	CCMP1581	Unknown	No	No	 E. Virginia Armbrust
+MMETSP1395	Ciliophora	Heterotrichea	Blepharismidae	Blepharisma	japonicum	Stock R1072	Unknown	No	No	 Giulio Petroni
+MMETSP1396	Ciliophora	Spirotrichea	Pseudokeronopsidae	Pseudokeronopsis	sp.	Brazil	Yes	No	No	 Giulio Petroni
+MMETSP1399	Chlorophyta	Prasinophyceae	Bathycoccaceae	Bathycoccus	prasinos	CCMP1898	Unknown	No	No	 Alexandra Z. Worden
+MMETSP1400	Chlorophyta	Prasinophyceae	Mamiellaceae	Micromonas	sp.	RCC451	No	No	No	 Alexandra Z. Worden
+MMETSP1401	Chlorophyta	Prasinophyceae	Mamiellaceae	Micromonas	pusilla	CCAC1681	No	No	No	 Alexandra Z. Worden
+MMETSP1402	Chlorophyta	Prasinophyceae	Mamiellaceae	Micromonas	pusilla	RCC1614	No	No	No	 Alexandra Z. Worden
+MMETSP1403	Chlorophyta	Prasinophyceae	Mamiellaceae	Micromonas	pusilla	CCMP1723	No	No	No	 Alexandra Z. Worden
+MMETSP1404	Chlorophyta	Prasinophyceae	Mamiellaceae	Micromonas	pusilla	CCMP494	No	No	No	 Alexandra Z. Worden
+MMETSP1405	Bacillariophyta	Coscinodiscophyceae	Skeletonemaceae	Thalassiosira	weissflogii	CCMP1010	Yes	Yes	No	 Bethany Jenkins
+MMETSP1406	Bacillariophyta	Coscinodiscophyceae	Skeletonemaceae	Thalassiosira	weissflogii	CCMP1010	Yes	Yes	No	 Bethany Jenkins
+MMETSP1407	Bacillariophyta	Coscinodiscophyceae	Skeletonemaceae	Thalassiosira	weissflogii	CCMP1010	Yes	Yes	No	 Bethany Jenkins
+MMETSP1408	Bacillariophyta	Coscinodiscophyceae	Skeletonemaceae	Thalassiosira	weissflogii	CCMP1010	Yes	Yes	No	 Bethany Jenkins
+MMETSP1409	Bacillariophyta	Coscinodiscophyceae	Skeletonemaceae	Thalassiosira	weissflogii	CCMP1010	Yes	Yes	No	 Bethany Jenkins
+MMETSP1410	Bacillariophyta	Coscinodiscophyceae	Skeletonemaceae	Thalassiosira	weissflogii	CCMP1010	Yes	Yes	No	 Bethany Jenkins
+MMETSP1411	Bacillariophyta	Coscinodiscophyceae	Skeletonemaceae	Thalassiosira	weissflogii	CCMP1010	Yes	Yes	No	 Bethany Jenkins
+MMETSP1412	Bacillariophyta	Coscinodiscophyceae	Skeletonemaceae	Thalassiosira	weissflogii	CCMP1010	Yes	Yes	No	 Bethany Jenkins
+MMETSP1413	Bacillariophyta	Coscinodiscophyceae	Skeletonemaceae	Thalassiosira	weissflogii	CCMP1010	Yes	Yes	No	 Bethany Jenkins
+MMETSP1414	Bacillariophyta	Coscinodiscophyceae	Skeletonemaceae	Thalassiosira	weissflogii	CCMP1010	Yes	Yes	No	 Bethany Jenkins
+MMETSP1415	Bacillariophyta	Coscinodiscophyceae	Skeletonemaceae	Thalassiosira	weissflogii	CCMP1010	Yes	Yes	No	 Bethany Jenkins
+MMETSP1416	Bacillariophyta	Coscinodiscophyceae	Skeletonemaceae	Thalassiosira	weissflogii	CCMP1010	Yes	Yes	No	 Bethany Jenkins
+MMETSP1417	Bacillariophyta	Coscinodiscophyceae	Skeletonemaceae	Thalassiosira	weissflogii	CCMP1010	Yes	Yes	No	 Bethany Jenkins
+MMETSP1418	Bacillariophyta	Coscinodiscophyceae	Skeletonemaceae	Thalassiosira	weissflogii	CCMP1010	Yes	Yes	No	 Bethany Jenkins
+MMETSP1419	Bacillariophyta	Coscinodiscophyceae	Skeletonemaceae	Thalassiosira	weissflogii	CCMP1010	Yes	Yes	No	 Bethany Jenkins
+MMETSP1420	Bacillariophyta	Coscinodiscophyceae	Skeletonemaceae	Thalassiosira	weissflogii	CCMP1010	Yes	Yes	No	 Bethany Jenkins
+MMETSP1421	Bacillariophyta	Coscinodiscophyceae	Skeletonemaceae	Thalassiosira	weissflogii	CCMP1010	Yes	Yes	No	 Bethany Jenkins
+MMETSP1422	Bacillariophyta	Coscinodiscophyceae	Skeletonemaceae	Thalassiosira	weissflogii	CCMP1010	Yes	Yes	No	 Bethany Jenkins
+MMETSP1423	Bacillariophyta	Bacillariophyceae	Bacillariaceae	Pseudo-nitzschia	heimii	UNC1101	Unknown	No	No	 E. Virginia Armbrust
+MMETSP1428	Bacillariophyta	Coscinodiscophyceae	Skeletonemaceae	Skeletonema	marinoi	UNC1201	Unknown	No	No	 Adrian Marchetti
+MMETSP1429	Bacillariophyta	Coscinodiscophyceae	Chaetocerotaceae	Chaetoceros	sp.	UNC1202	Unknown	No	No	 Adrian Marchetti
+MMETSP1432	Bacillariophyta	Bacillariophyceae	Bacillariaceae	Pseudo-nitzschia	delicatissima	UNC1205	Unknown	No	No	 Adrian Marchetti
+MMETSP1434	Bacillariophyta	Bacillariophyceae	Thalassiosiraceae	Minutocellus	polymorphus	CCMP3303	Yes	No	No	 Mike Preston
+MMETSP1435	Bacillariophyta	Bacillariophyceae	Chaetocerotaceae	Chaetoceros	brevis	CCMP164	Yes	No	No	 Mike Preston
+MMETSP1436	Dinophyta	Dinophyceae	Goniodomataceae	Alexandrium	andersonii	CCMP2222	Yes	Unknown	No	 Mike Preston
+MMETSP1437	Bacillariophyta	Coscinodiscophyceae	Hemiaulaceae	Eucampia	antarctica	CCMP1452	Yes	Unknown	No	 Mike Preston
+MMETSP1438	Chlorophyta	Prasinophyceae	Pterospermataceae	Pterosperma	sp.	CCMP1384	Yes	No	No	 Mike Preston
+MMETSP1439	Pyrrophycophyta	Dinophyceae	Gonyaulacaceae	Gonyaulax	spinifera	CCMP409	Unknown	No	No	 Mike Preston
+MMETSP1440	Alveolata	Dinophyceae	Suessiaceae	Polarella	glacialis	CCMP2088	Yes	No	No	 Mike Preston
+MMETSP1441	Alveolata	Dinophyceae	Heterocapsaceae	Heterocapsa	arctica	CCMP445	Yes	Yes	No	 Mike Preston
+MMETSP1442	Ochrophyta	Bacillariophyceae	Naviculaceae	Craspedostauros	australis	CCMP3328	Yes	No	No	 Mike Preston
+MMETSP1443	Bacillariophyta	Bacillariophyceae	Entomoneidaceae	Entomoneis	sp.	CCMP2396	Yes	No	No	 Mike Preston
+MMETSP1444	Haptophyta	Prymnesiophyceae	Phaeocystaceae	Phaeocystis	antarctica	CCMP1374	Yes	No	No	 Mike Preston
+MMETSP1445	Chlorophyta	Prasinophyceae	Halosphaeraceae	Pyramimonas	sp.	CCMP2087	Yes	No	No	 Mike Preston
+MMETSP1446	Unknown	Unknown	Unknown	Unidentified	sp	CCMP2111	Yes	No	No	 Mike Preston
+MMETSP1447	Bacillariophyta	Bacillariophyceae	Chaetocerotaceae	Chaetoceros	dichaeta	CCMP1751	Yes	No	No	 Mike Preston
+MMETSP1449	Bacillariophyta	Coscinodiscophyceae	Attheyaceae	Attheya	septentrionalis	CCMP2084	Yes	No	No	 Mike Preston
+MMETSP1450	Rhodophyta	Compsopogonophyceae	Erythrotrichiaceae	Madagascaria	erythrocladiodes	CCMP3234	Yes	No	No	 Mike Preston
+MMETSP1451	Alveolata	Chromerida	Unknown	Vitrella	brassicaformis	CCMP3346	Yes	No	No	 Mike Preston
+MMETSP1452	Unknown	Unknown	Synchromophyceae	Synchroma	pusillum	CCMP3072	Yes	No	No	 Mike Preston
+MMETSP1453	Unknown	Unknown	Unknown	Unidentified	sp.	RCC701	Yes	No	No	 Mike Preston
+MMETSP1456	Unknown	Unknown	Unknown	Unidentified	sp.	RCC1871	Yes	No	No	 Mike Preston
+MMETSP1460	Chlorophyta	Mamiellophyceae	Bathycoccaceae	Bathycoccus	prasinos	RCC716	Yes	No	No	 Mike Preston
+MMETSP1462	Alveolata	Dinophyceae	Peridiniaceae	Brandtodinium	nutriculum	RCC3387	Yes	No	No	 Mike Preston
+MMETSP1465	Haptophyta	Prymnesiophyceae	Phaeocystaceae	Phaeocystis	cordata	RCC1383	Yes	Unknown	No	 Mike Preston
+MMETSP1467	Unknown	Unknown	Unknown	unid.	sp.	CCMP2135	Yes	No	No	 Mike Preston
+MMETSP1468	Chlorophyta	Mamiellophyceae	Mamiellaceae	Mantoniella	sp	CCMP1436	Yes	No	No	 Mike Preston
+MMETSP1471	Chlorophyta	Prasinophyceae	Pycnococcaceae	Pycnococcus	provasolii	RCC733	Yes	Unknown	No	 Mike Preston
+MMETSP1475	Unknown	Unknown	Unknown	Unidentified	sp.	CCMP1999	Yes	No	No	 Mike Preston

@@ -46,11 +46,13 @@ def get_data(thefile):
 def download(url,newdir,newfile):
     filestring=newdir+newfile
     urlstring="wget -O "+newdir+newfile+" "+url
+    print urlstring
     #Note: only for Python 3
     #urllib.request.urlretrieve(url,filestring)
     #Use this for Python 2
     s=subprocess.Popen(urlstring,shell=True)
     s.wait()
+    
     print "Finished downloading from NCBI."
 
 #3. Extract with fastq-dump (sratools)
@@ -88,8 +90,8 @@ def fastqc_report(fastq_file_list,newdir,fastqcdir,filename):
     	fastqc_string="fastqc -o "+fastqcdir+" "+file_string
     	print fastqc_string
     	print "fastqc reports generated for: "+str(fastq_file_list)
-    	s=subprocess.Popen(fastqc_string,shell=True)
-    	s.wait()
+    	#s=subprocess.Popen(fastqc_string,shell=True)
+    	#s.wait()
 
 #5. For pipeline testing only:
 #   create subset of 1,000,000 reads for each file
@@ -104,8 +106,8 @@ def subset_reads(newdir,subsetdir):
     		else:	
     			subset_string="head -4000000 "+newdir+i+" > "+newfilename
     			print subset_string
-    			s=subprocess.Popen(subset_string,shell=True,stdout=PIPE)
-    			s.wait()
+    			#s=subprocess.Popen(subset_string,shell=True,stdout=PIPE)
+    			#s.wait()
 			print "Finished subsetting."
    
 #6. Create symbolic link from data files to working directory
@@ -144,7 +146,7 @@ def execute(basedir,url_data):
                print "file will be downloaded:",filename
 	       download(url,newdir,filename)
             sra_extract(newdir,filename)
-            fastqc(newdir,fastqcdir,filename)
+            #fastqc(newdir,fastqcdir,filename)
             #subset_reads(newdir,subsetdir)
  	    #fastqc(subsetdir,subsetfastqcdir,filename)
 
@@ -166,10 +168,13 @@ def delete_files(newdir):
 			os.remove(newdir+i)
 			print "File removed:",newdir+i
 
-datafile="MMETSP_SRA_Run_Info_subset_d.csv"
-basedir="/mnt/mmetsp/"
+datafiles=["MMETSP_SRA_Run_Info_subset2.csv",
+	"MMETSP_SRA_Run_Info_subset_d.csv","MMETSP_SRA_Run_Info_subset_a.csv",
+	"MMETSP_SRA_Run_Info_subset_b.csv"]
+basedir="/mnt_redo/mmetsp/"
 clusterfunc.check_dir(basedir)
-url_data=get_data(datafile)
-print url_data
-execute(basedir,url_data)
+for datafile in datafiles:
+	url_data=get_data(datafile)
+	print url_data
+	execute(basedir,url_data)
 

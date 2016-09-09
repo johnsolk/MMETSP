@@ -31,9 +31,10 @@ def get_data(thefile):
             line_data=line.split(',')
             name="_".join(line_data[position_name].split())
             read_type=line_data[position_reads]
-            mmetsp=line_data[position_mmetsp]
+            mmetsp=line_data[position_mmetsp] 
 	    test_mmetsp=mmetsp.split("_")
 	    if len(test_mmetsp)>1:
+		print mmetsp
 		print test_mmetsp
 		mmetsp=test_mmetsp[0]
             name_read_tuple=(name,read_type)
@@ -288,24 +289,25 @@ for basedir in file_locations.keys():
        datafile=file_locations[basedir]
        mmetsp_data=get_data(datafile)
        print mmetsp_data
-       execute(mmetsp_data,basedir,mmetsp_assemblies_dir)
+       #execute(mmetsp_data,basedir,mmetsp_assemblies_dir)
 
-get_extra_assemblies_transrate(extra_dir,reverse_transrate_dir,mmetsp_assemblies_dir)
+#get_extra_assemblies_transrate(extra_dir,reverse_transrate_dir,mmetsp_assemblies_dir)
 
 
 # check if transrate data exists:
-get_ref_transrate(reverse_transrate_dir)
+#get_ref_transrate(reverse_transrate_dir)
 
 # Grab the transrate data after it has completed:
-data_frame_assemblies=get_assemblies_data(data_frame_assemblies,reverse_transrate_dir)
-data_frame_contigs=get_contigs_data(data_frame_contigs,reverse_transrate_dir)
+#data_frame_assemblies=get_assemblies_data(data_frame_assemblies,reverse_transrate_dir)
+#data_frame_contigs=get_contigs_data(data_frame_contigs,reverse_transrate_dir)
 
 #print data_frame_contigs
 
 # print the transrate data to files:
-data_frame_assemblies.to_csv("/home/ubuntu/MMETSP/MMETSP_reverse_transrate_data.csv")
-if os.path.isfile("/home/ubuntu/MMETSP/MMETSP_reverse_transrate_data.csv"):
-       print "File written: /home/ubuntu/MMETSP/MMETSP_reverse_transrate_data.csv"
+#data_frame_assemblies.to_csv("/home/ubuntu/MMETSP/MMETSP_reverse_transrate_data.csv")
+#if os.path.isfile("/home/ubuntu/MMETSP/MMETSP_reverse_transrate_data.csv"):
+#       print "File written: /home/ubuntu/MMETSP/MMETSP_reverse_transrate_data.csv"
+		        	#print transrate_out
 #data_frame_contigs.to_csv("/home/ubuntu/MMETSP/MMETSP_transrate_reference_comparisons.csv")
 #if os.path.isfile("/home/ubuntu/MMETSP/MMETSP_transrate_reference_comparisons.csv"):
 #       print "File written: /home/ubuntu/MMETSP/MMETSP_transrate_reference_comparisons.csv"
