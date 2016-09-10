@@ -10,22 +10,22 @@ The Marine Microbial Eukaryotic Transcriptome Sequencing Project (MMETSP) data s
 
 Automated scripts running the protocols:
 
-1. getdata.py, download data from NCBI and organize into individual directories for each sample/accession ID
-2. trim_qc.py, trim reads for quality, interleave reads
-3. diginorm_mmetsp.py, normalize-by-median and filter-abund from khmer, rename, combined orphans,
-4. assembly.py, runs Trinity de novo transcriptome assembly software 
-5. salmon.py, runs salmon reference-free transcript quantification
+1. `getdata.py`, download data from NCBI and organize into individual directories for each sample/accession ID
+2. `trim_qc.py`, trim reads for quality, interleave reads
+3. `diginorm_mmetsp.py`, normalize-by-median and filter-abund from khmer, rename, combined orphans,
+4. `assembly.py`, runs Trinity de novo transcriptome assembly software 
+5. `salmon.py`, runs salmon reference-free transcript quantification
 
 Additional scripts:
 
-1. dammit.py, annotation https://github.com/camillescott/dammit/tree/master/dammit
-2. busco.py, asseing assembly and annotation completeness with single-copy orthologs http://busco.ezlab.org/
-3. clusterfunc.py, cluster control module
-4. rapclust.py, clustering contigs https://github.com/COMBINE-lab/rapclust
-5. sourmash.py, MinHash signatures to cluster unassembled reads https://github.com/dib-lab/sourmash/tree/v0.9.4
-6. transdecoder.py, translate nucleotide contigs to amino acid contigs http://transdecoder.github.io/
-7. transrate.py, evaluate assembly with reads http://hibberdlab.com/transrate/
-8. transrate_reference.py, evaluate assembly with reference assembly http://hibberdlab.com/transrate/
+1. `dammit.py`, annotation https://github.com/camillescott/dammit/tree/master/dammit
+2. `busco.py`, asseing assembly and annotation completeness with single-copy orthologs http://busco.ezlab.org/
+3. `clusterfunc.py`, cluster control module
+4. `rapclust.py`, clustering contigs https://github.com/COMBINE-lab/rapclust
+5. `sourmash.py`, MinHash signatures to cluster unassembled reads https://github.com/dib-lab/sourmash/tree/v0.9.4
+6. `transdecoder.py`, translate nucleotide contigs to amino acid contigs http://transdecoder.github.io/
+7. `transrate.py`, evaluate assembly with reads http://hibberdlab.com/transrate/
+8. `transrate_reference.py`, evaluate assembly with reference assembly http://hibberdlab.com/transrate/
 
 References:
 
