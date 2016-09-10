@@ -11,27 +11,28 @@ import glob
 # custom Lisa module
 import clusterfunc
 
-#1. Get data from spreadsheet
+# 1. Get data from spreadsheet
+
 
 def get_data(thefile):
-    count=0
-    url_data={}
-    with open(thefile,"rU") as inputfile:
-        headerline=next(inputfile).split(',')
-        #print headerline        
-        position_name=headerline.index("ScientificName")
-        position_reads=headerline.index("Run")
-        position_ftp=headerline.index("download_path")
+    count = 0
+    url_data = {}
+    with open(thefile, "rU") as inputfile:
+        headerline = next(inputfile).split(',')
+        # print headerline
+        position_name = headerline.index("ScientificName")
+        position_reads = headerline.index("Run")
+        position_ftp = headerline.index("download_path")
         for line in inputfile:
-            line_data=line.split(',')
-            name="_".join(line_data[position_name].split())
-            read_type=line_data[position_reads]
-            ftp=line_data[position_ftp]
-            name_read_tuple=(name,read_type)
+            line_data = line.split(',')
+            name = "_".join(line_data[position_name].split())
+            read_type = line_data[position_reads]
+            ftp = line_data[position_ftp]
+            name_read_tuple = (name, read_type)
             print name_read_tuple
-            #check to see if Scientific Name and run exist
+            # check to see if Scientific Name and run exist
             if name_read_tuple in url_data.keys():
-                #check to see if ftp exists
+                # check to see if ftp exists
                 if ftp in url_data[name_read_tuple]:
                     print "url already exists:", ftp
                 else:
@@ -42,22 +43,23 @@ def get_data(thefile):
 
 # run trimmomatic
 
-def run_trimmomatic_TruSeq(trimdir,file1,file2,sra):
-<<<<<<< .merge_file_bYoSrk
-  	bash_filename=trimdir+sra+".trim.TruSeq.sh"
+
+def run_trimmomatic_TruSeq(trimdir, file1, file2, sra):
+<< << << < .merge_file_bYoSrk
+  	bash_filename = trimdir + sra + ".trim.TruSeq.sh"
     # need a better check for whether this process has been run:
-    #if os.path.isfile(bash_filename):
+    # if os.path.isfile(bash_filename):
 #	print "trim file already written",bash_filename
  #   else:
-	j="""#!/bin/bash
+	j = """#!/bin/bash
 java -Xmx10g -jar /home/ubuntu/Trimmomatic-0.33/trimmomatic-0.33.jar PE \\
 =======
 	bash_filename=trimdir+sra+".trim.TruSeq.sh"
 	clusterfunc.check_dir(trimdir+"qsub_files/")
 	listoffile = os.listdir(trimdir+"qsub_files/")
-	#print listoffile
+	# print listoffile
 	trim_file = trimdir+"qsub_files/""trim."+sra+".log"
-	#print trim_file
+	# print trim_file
 	matching = [s for s in listoffile if "trim."+sra+".log" in s]
 	matching_string = "TrimmomaticPE: Completed successfully"
 	if os.path.isfile(trim_file):
@@ -69,14 +71,14 @@ java -Xmx10g -jar /home/ubuntu/Trimmomatic-0.33/trimmomatic-0.33.jar PE \\
 			print "Already trimmed:",matching
 		else:
 			j="""
-java -jar /mnt/home/ljcohen/bin/Trimmomatic-0.33/trimmomatic-0.33.jar PE \\
--baseout {}.trim.fq \\
+java - jar / mnt / home / ljcohen / bin / Trimmomatic - 0.33 / trimmomatic - 0.33.jar PE \\
+- baseout {}.trim.fq \\
 {} {} \\
-ILLUMINACLIP:/mnt/home/ljcohen/bin/Trimmomatic-0.33/adapters/combined.fa:2:40:15 \\
-SLIDINGWINDOW:4:2 \\
-LEADING:2 \\
-TRAILING:2 \\
-MINLEN:25 &> trim.{}.log
+ILLUMINACLIP: / mnt / home / ljcohen / bin / Trimmomatic - 0.33 / adapters / combined.fa: 2: 40: 15 \\
+SLIDINGWINDOW: 4: 2 \\
+LEADING: 2 \\
+TRAILING: 2 \\
+MINLEN: 25 & > trim.{}.log
 """.format(sra,file1,file2,sra)
 			orphan_string=make_orphans(trimdir,sra)
 			commands = [j,orphan_string]
@@ -86,15 +88,15 @@ MINLEN:25 &> trim.{}.log
         		clusterfunc.qsub_file(trimdir,process_name,module_name_list,filename,commands)
 	else:
         	j="""
-java -jar /mnt/home/ljcohen/bin/Trimmomatic-0.33/trimmomatic-0.33.jar PE \\
->>>>>>> .merge_file_xj8fMp
+java - jar / mnt / home / ljcohen / bin / Trimmomatic - 0.33 / trimmomatic - 0.33.jar PE \\
+>> >>>> > .merge_file_xj8fMp
 -baseout {}.trim.fq \\
 {} {} \\
-ILLUMINACLIP:/mnt/home/ljcohen/bin/Trimmomatic-0.33/adapters/combined.fa:2:40:15 \\
-SLIDINGWINDOW:4:2 \\
-LEADING:2 \\
-TRAILING:2 \\
-MINLEN:25 &> trim.{}.log
+ILLUMINACLIP: / mnt / home / ljcohen / bin / Trimmomatic - 0.33 / adapters / combined.fa: 2: 40: 15 \\
+SLIDINGWINDOW: 4: 2 \\
+LEADING: 2 \\
+TRAILING: 2 \\
+MINLEN: 25 & > trim.{}.log
 """.format(sra,file1,file2,sra)
                 orphan_string=make_orphans(trimdir,sra)
                 commands = [j,orphan_string]
@@ -104,19 +106,19 @@ MINLEN:25 &> trim.{}.log
                 clusterfunc.qsub_file(trimdir,process_name,module_name_list,filename,commands)
 
 def make_orphans(trimdir,sra):
-    #if os.path.isfile(trimdir+"orphans.fq.gz"):
-	#if os.stat(trimdir+"orphans.fq.gz").st_size != 0:
+    # if os.path.isfile(trimdir+"orphans.fq.gz"):
+	# if os.stat(trimdir+"orphans.fq.gz").st_size != 0:
 	#	print "orphans file exists:",trimdir+"orphans.fq.gz"
-    	#else:
+    	# else:
 	#	print "orphans file exists but is empty:",trimdir+"orphans.fq.gz"
-    #else:
+    # else:
     	file1 = trimdir+"qsub_files/"+sra+".trim_1U.fq"
 	file2 = trimdir+"qsub_files/"+sra+".trim_2U.fq"
 	orphanlist=file1 + " " + file2
     	orphan_string="gzip -9c "+orphanlist+" > "+trimdir+"orphans.fq.gz"
     	print orphan_string
-    	#s=subprocess.Popen(orphan_string,shell=True)
-    	#s.wait()
+    	# s=subprocess.Popen(orphan_string,shell=True)
+    	# s.wait()
 	return orphan_string
 
 def move_files(trimdir,sra):
@@ -129,11 +131,11 @@ def move_files(trimdir,sra):
 		if os.path.isfile(file2):
 			mv_string1 = "cp "+file1+" "+trimdir
 			mv_string2 = "cp "+file2+" "+trimdir
-			#s=subprocess.Popen(mv_string1,shell=True)
-        		#s.wait()
-			#t=subprocess.Popen(mv_string2,shell=True)
-        		#t.wait()
-	#if os.path.isfile(trimdir+sra+".trim_1P.fq"):
+			# s=subprocess.Popen(mv_string1,shell=True)
+        		# s.wait()
+			# t=subprocess.Popen(mv_string2,shell=True)
+        		# t.wait()
+	# if os.path.isfile(trimdir+sra+".trim_1P.fq"):
 	#	if os.path.isfile(trimdir+sra+".trim_2P.fq"):
 	#		print "Files all here:",os.listdir(trimdir)
 	return mv_string1,mv_string2
@@ -169,28 +171,28 @@ def execute(url_data,datadir):
 		newdir=org_seq_dir+sra+"/"
 		trimdir=newdir+"trim/"
 <<<<<<< .merge_file_bYoSrk
-		#interleavedir=newdir+"interleave/"
+		# interleavedir=newdir+"interleave/"
 =======
 >>>>>>> .merge_file_xj8fMp
 		clusterfunc.check_dir(trimdir)
-		#interleavedir=newdir+"interleave/"
-		#clusterfunc.check_dir(interleavedir)
+		# interleavedir=newdir+"interleave/"
+		# clusterfunc.check_dir(interleavedir)
 		file1=newdir+sra+"_1.fastq"
 		file2=newdir+sra+"_2.fastq"
 		if os.path.isfile(file1) and os.path.isfile(file2):
 			print file1
 			print file2
 <<<<<<< .merge_file_bYoSrk
-			#fastqc_report(datadir,fastqcdir)
-			### need to fix so the following steps run themselves:
+			# fastqc_report(datadir,fastqcdir)
+			# need to fix so the following steps run themselves:
 			run_trimmomatic_TruSeq(trimdir,file1,file2,sra)
-			#interleave_reads(trimdir,sra,interleavedir)
-                	#run_jellyfish(trimdir,sra)
-			#make_orphans(trimdir)
+			# interleave_reads(trimdir,sra,interleavedir)
+                	# run_jellyfish(trimdir,sra)
+			# make_orphans(trimdir)
 		else:
 			print "Files do not exist:",file1,file2 	
-    #run fastqc on all files
-    #fastqc_report(trimdir,fastqcdir)	
+    # run fastqc on all files
+    # fastqc_report(trimdir,fastqcdir)	
 
 
 datafiles=["MMETSP_SRA_Run_Info_subset2.csv",
@@ -203,10 +205,10 @@ for datafile in datafiles:
         print url_data
         execute(url_data,basedir)
 =======
-		#run_trimmomatic_TruSeq(trimdir,file1,file2,sra)
+		# run_trimmomatic_TruSeq(trimdir,file1,file2,sra)
 		run_move_files(trimdir,sra)
-		#check_files(trimdir,sra)
-		#else:
+		# check_files(trimdir,sra)
+		# else:
 		#	print "Files do not exist:",file1,file2 	
 
 
