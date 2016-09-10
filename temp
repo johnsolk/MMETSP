@@ -1,0 +1,69 @@
+# hmmsearch :: search profile(s) against a sequence database
+# HMMER 3.1b2 (February 2015); http://hmmer.org/
+# Copyright (C) 2015 Howard Hughes Medical Institute.
+# Freely distributed under the GNU General Public License (GPLv3).
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# query HMM file:                  /mnt/research/ged/lisa/busco/eukaryota/hmms/BUSCOeuk64602.hmm
+# target sequence database:        ./run_Neobodo_designis_SRR1300419.euk//translated_proteins/c6399_g1_i1.fas
+# output directed to file:         temp
+# per-dom hits tabular output:     ./run_Neobodo_designis_SRR1300419.euk/hmmer_output/BUSCOeuk64602.out.3
+# number of worker threads:        30
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+Query:       BUSCOeuk64602  [M=529]
+Scores for complete sequences (score includes all domains):
+   --- full sequence ---   --- best 1 domain ---    -#dom-
+    E-value  score  bias    E-value  score  bias    exp  N  Sequence     Description
+    ------- ------ -----    ------- ------ -----   ---- --  --------     -----------
+    6.9e-82  264.2   1.6    1.3e-81  263.3   1.6    1.3  1  transcript_3  
+
+
+Domain annotation for each sequence (and alignments):
+>> transcript_3  
+   #    score  bias  c-Evalue  i-Evalue hmmfrom  hmm to    alifrom  ali to    envfrom  env to     acc
+ ---   ------ ----- --------- --------- ------- -------    ------- -------    ------- -------    ----
+   1 !  263.3   1.6   2.1e-82   1.3e-81      32     346 ..      15     428 ..       8     435 .. 0.90
+
+  Alignments for each domain:
+  == domain 1  score: 263.3 bits;  conditional E-value: 2.1e-82
+  BUSCOeuk64602  32 esviLvtagydhtirfWealsgicsrtiqh.pdsqvnaLeitpdkrllAaagyqhirlYDiks.........snpnpvitl...egvtkNvtgvgf 114
+                    +s++ +ta+yd  i++W  +    +r ++  +ds vn L+++pd++ lAaagy++i++YD++          ++++ v++    +g+t Nvt++gf
+   transcript_3  15 SSILVATASYDRHIKLWRVHPVEQTRSFNFsQDSHVNCLCVSPDRTRLAAAGYTTIKVYDLTAlmgdgssahAQQQTVVSQsqdNGHTANVTAIGF 110
+                    577889***************999999976269**************************************966666665423379********** PP
+
+  BUSCOeuk64602 115 hee...gkWmvtggeDgtvkiwdlrtsr..vqriyqvkapvndvvlhpnqgelisgdqsgsvkvWDlkenkcehl........lipeedvsiqsvs 197
+                           + +++ +eDgt k+wd+r++   ++r+ +vk p n+ vl  n   ++ g q g++ vW l+ ++ ++          +++ed +++sv+
+   transcript_3 111 VRSvqgAHMLYSISEDGTWKLWDTRAPGlrLKRVVDVKEPLNCGVLLHNS-MIVAGGQLGTIGVWSLNASTDQKNpdglidsvTVQSEDPAVRSVA 205
+                    9986655678999************866679************9999886.5899************998877652222222146677899***** PP
+
+  BUSCOeuk64602 198 vasdgsllvAvnnkGnvyvwrling..............................................................ekdltelqp 231
+                    + + g++lvA++n+G+vyv  +++                                                               ++   +lq 
+   transcript_3 206 LTPGGDVLVAATNSGHVYVLAISKAigpnagskadgatkpsdegdaekdaeapgpsdtvaraaselpnvsvftsgtdtkgqgaspqvRGGQGHLQL 301
+                    *************************************************************************************87467899*** PP
+
+  BUSCOeuk64602 232 ktkfqahkkYllrvllSpDvklLaTcSADatvkiwstsdfsllael..............ekefklektleghqrWvWDcaFsaDSaYlvTassdh 313
+                      +f+ah++Y+l++  Sp   +L T+SAD +v++w++ +   +  l              +++ +l +  ++hqrWvWDcaFs  S Y+vTassdh
+   transcript_3 302 LWTFEAHSRYVLKCCVSPNGAMLCTTSADCSVNLWRVPEELPK--LaeqsssgggvpeprTDKWTLVRSITSHQRWVWDCAFSRCSLYVVTASSDH 395
+                    *************************************854433..23479**********9999******************************** PP
+
+  BUSCOeuk64602 314 varlWelesgeivrqYsGHhkaavcvAlndasl 346
+                    + rlW++esg+ + ++sGH+k+++c+ l d   
+   transcript_3 396 TGRLWQIESGKLEANFSGHQKPVTCILLDDRRD 428
+                    ***************************999765 PP
+
+
+
+Internal pipeline statistics summary:
+-------------------------------------
+Query model(s):                              1  (529 nodes)
+Target sequences:                            6  (2622 residues searched)
+Passed MSV filter:                         2  (0.333333); expected 0.1 (0.02)
+Passed bias filter:                        1  (0.166667); expected 0.1 (0.02)
+Passed Vit filter:                         1  (0.166667); expected 0.0 (0.001)
+Passed Fwd filter:                         1  (0.166667); expected 0.0 (1e-05)
+Initial search space (Z):                  6  [actual number of targets]
+Domain search space  (domZ):               1  [number of targets reported over threshold]
+# CPU time: 0.02u 0.01s 00:00:00.03 Elapsed: 00:00:00.02
+# Mc/sec: 69.35
+//
+[ok]

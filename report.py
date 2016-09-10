@@ -91,7 +91,7 @@ def execute(url_data,basedir):
 		for url in url_list:
 			sra=basename(urlparse(url).path)
 			newdir=org_seq_dir+sra+"/"
-			trinitydir=newdir+"trinity/trinity_out/"
+			trinitydir=newdir+"trinity/"
 			#dammit_dir=trinitydir+"dammit_dir/"
 			#transrate_dir=newdir+"transrate/"
 			#clusterfunc.check_dir(transrate_dir)
@@ -128,7 +128,7 @@ def get_histogram(data_frame):
 
 
 basedir = "/mnt/scratch/ljcohen/mmetsp/"	
-datafile="MMETSP_SRA_Run_Info_subset_msu7.csv"
+datafile="SraRunInfo.csv"
 url_data=get_data(datafile)
 #print url_data
 execute(url_data,basedir)

@@ -37,43 +37,38 @@ def get_data(thefile):
                 url_data[name_read_tuple] = [ftp]
         return url_data
 
-def fix_fasta(trinity_fasta,trinity_dir,sample):
-	#os.chdir(trinity_dir)
-	trinity_out=trinity_dir+sample+".Trinity.fixed.fa"
-	fix="""
-sed 's_|_-_g' {} > {}
-""".format(trinity_fasta,trinity_out)
-	#s=subprocess.Popen(fix,shell=True)
-	print fix
-        #s.wait()
-	#os.chdir("/mnt/home/ljcohen/MMETSP/")
-	return trinity_out
-	
-def transrate(trinitydir,transrate_dir,transrate_out,trinity_fasta,sample,trimdir,sra):
-	#transrate_command="""
-#transrate -o {} --assembly {}
-#""".format(transrate_out,trinity_fasta)
-	transrate_command="""
-transrate --assembly={}{}.Trinity.fixed.fa --threads=27 \
---left={}{}.trim_1P.fq \
---right={}{}.trim_2P.fq \
---output={}
-""".format(trinitydir,sample,trimdir,sra,trimdir,sra,transrate_out)
-	print transrate_command
-	commands = [transrate_command]
-        process_name = "transrate"
+def run_busco(busco_dir,trinity_fasta,sample,sra):
+	busco_command="""
+busco -m trans -in {} \
+--cpu 30 -l /mnt/research/ged/lisa/busco/eukaryota -o {}.euk
+""".format(trinity_fasta,sample)
+	print busco_command
+	commands = [busco_command]
+        process_name = "busco"
         module_name_list = ""
         filename = sra
-        clusterfunc.qsub_file(transrate_dir,process_name,module_name_list,filename,commands) 	
+        clusterfunc.qsub_file(busco_dir,process_name,module_name_list,filename,commands) 	
 
-def parse_transrate_stats(transrate_assemblies):
-        print transrate_assemblies
-	if os.stat(transrate_assemblies).st_size != 0:
-		data=pd.DataFrame.from_csv(transrate_assemblies,header=0,sep=',')
-        	return data
+def parse_busco_stats(busco_filename,sample):
+        print busco_filename
+	count=0
+	important_lines=[7,10,11,12]
+	busco_dict={}
+	busco_dict[sample]=[]
+	if os.stat(busco_filename).st_size != 0:
+        	with open(busco_filename) as buscofile :
+			for line in buscofile:
+				count+=1
+				line_data=line.split()
+				if count in important_lines:
+					busco_dict[sample].append(int(line_data[0]))
+	busco_data=pd.DataFrame.from_dict(busco_dict,orient='index')
+	busco_data.columns=["Complete","Fragmented","Missing","Total"]
+	busco_data['Complete_BUSCO_perc']=busco_data['Complete']/busco_data['Total']
+	return busco_data
 
 def build_DataFrame(data_frame,transrate_data):
-        #columns=["n_bases","gc","gc_skew","mean_orf_percent"]
+        #columns=["sample","Complete","Fragmented","Missing","Total"]
 	frames=[data_frame,transrate_data]
 	data_frame=pd.concat(frames)
 	return data_frame
@@ -92,23 +87,17 @@ def execute(data_frame,url_data,basedir):
 			sra=basename(urlparse(url).path)
 			newdir=org_seq_dir+sra+"/"
 			trimdir=newdir+"trim/"
-			trinitydir=newdir+"trinity/trinity_out/"
-			transrate_dir=newdir+"transrate/"
-			clusterfunc.check_dir(transrate_dir)
-			trinity_fasta=trinitydir+"Trinity.fasta"
-			transrate_out=transrate_dir+"transrate_out."+sample+"/"
-			if os.path.isfile(trinity_fasta):
-				#transrate(dammit_dir)
-		        	#print transrate_out
-				count +=1
-				#fixed_trinity=fix_fasta(trinity_fasta,trinitydir,sample)
-				#transrate(trinitydir,transrate_dir,transrate_out,trinity_fasta,sample,trimdir,sra)
-				transrate_assemblies=transrate_out+"assemblies.csv"
-				if os.path.isfile(transrate_assemblies):
-					data=parse_transrate_stats(transrate_assemblies)
-					data_frame=build_DataFrame(data_frame,data)
-				else:
-					print "Transrate did not complete:",transrate_assemblies
+			trinitydir=newdir+"trinity/"
+			busco_dir=newdir+"busco/qsub_files/"
+			clusterfunc.check_dir(busco_dir)
+			trinity_fasta=trinitydir+sample+".Trinity.fixed.fasta"
+			busco_file=busco_dir+"run_"+sample+".euk/short_summary_"+sample+".euk"
+			print busco_file
+			if os.path.isfile(busco_file):
+				count+=1
+				#run_busco(busco_dir,trinity_fasta,sample,sra)
+				data=parse_busco_stats(busco_file,sample)
+				data_frame=build_DataFrame(data_frame,data)
 			else:
 				print "Trinity failed:",trinity_fasta
 				trinity_fail.append(newdir)	
@@ -128,4 +117,4 @@ for datafile in datafiles:
         url_data=get_data(datafile)
         print url_data
         data_frame=execute(data_frame,url_data,basedir)
-data_frame.to_csv("transrate_scores.csv")                     
+data_frame.to_csv("busco_scores.csv")                     

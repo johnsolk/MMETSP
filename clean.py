@@ -54,6 +54,7 @@ def execute(url_data):
         	for url in url_list:
             		sra=basename(urlparse(url).path)
             		newdir=org_seq_dir+sra+"/"
+			sample="_".join(item)
 			filename=newdir+sra
 			print filename
 			
@@ -107,7 +108,9 @@ def execute(url_data):
 			trinity_out=trinitydir+"trinity_out/"
 			trinity_fasta=trinity_out+"Trinity.fasta"
 			new_trinity_fasta=trinitydir+sra+".Trinity.fasta"
+			trinity_fixed_fasta=trinity_out+sample+".Trinity.fixed.fa"
 			listoffiles=os.listdir(trinitydir)
+			new_trinity_fixed_fasta=trinitydir+sample+".Trinity.fixed.fasta"
 			filestodelete=[]
 			for filename in listoffiles:
 				if filename.endswith(".1"):
@@ -115,11 +118,15 @@ def execute(url_data):
 				if filename.endswith(".2"):
 					filestodelete.append(filename)
 			if os.path.isfile(trinity_fasta):
-				print "These files will be copied:",trinity_fasta
-				print "New trinity file location:",new_trinity_fasta
+				print "File to be copied:",trinity_fasta
+				print "New file location:",new_trinity_fasta
 				copyfile(trinity_fasta, new_trinity_fasta)	
-				print "These files will be deleted:",trinity_out
-				shutil.rmtree(trinity_out)
+				#print "These files will be deleted:",trinity_out
+				#shutil.rmtree(trinity_out)
+			if os.path.isfile(trinity_fixed_fasta):
+				print "File to be copied:",trinity_fixed_fasta
+				print "New file location",new_trinity_fixed_fasta 
+				copyfile(trinity_fixed_fasta,new_trinity_fixed_fasta)
 			#print "These files will be deleted:",filestodelete
 			#for i in filestodelete:
 			#	delete_file(i)

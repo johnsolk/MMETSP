@@ -1,3 +1,4 @@
+import fnmatch
 import os
 import os.path
 from os.path import basename
@@ -11,13 +12,14 @@ import glob
 # custom Lisa module
 import clusterfunc
 
+#1. Get data from spreadsheet
 
 def get_data(thefile):
     count=0
     url_data={}
     with open(thefile,"rU") as inputfile:
         headerline=next(inputfile).split(',')
-        #print headerline        
+	#print headerline        
         position_name=headerline.index("ScientificName")
         position_reads=headerline.index("Run")
         position_ftp=headerline.index("download_path")
@@ -39,53 +41,55 @@ def get_data(thefile):
                 url_data[name_read_tuple] = [ftp]
         return url_data
 
-def check_empty(empty_files,file,sra):
-	if os.stat(file).st_size == 0:
-        	print "File is empty:",file
-        	if sra not in empty_files:
-                	empty_files.append(sra)
-	return empty_files
 
-def check_trinity(trinity_fail,trinity_file,sra):
-	if os.path.isfile(trinity_file):
-        	print "Trinity completed successfully:",trinity_file
-        else:
-                print "Trinity needs to be run again:",filename
-                trinity_fail.append(sra)
-	return trinity_fail
+def get_sourmash_command(SRA,trinitydir):
+	filename=SRA+".left.fq"
+	full_filename=trinitydir+filename
+	if os.path.isfile(full_filename):
+		if os.stat(full_filename).st_size!=0:
+			#sourmash_command="""
+#head -4000000 {} > /mnt/scratch/ljcohen/mmetsp_tmp/{}.head
+#""".format(full_filename,filename)
+			sourmash_command="""
+sourmash compute --protein -k 18,21 -f /mnt/scratch/ljcohen/mmetsp_tmp/{}.head
+""".format(filename)
+			#s=subprocess.Popen(sourmash_command,shell=True)
+                        #s.wait()
+			commands=[sourmash_command]
+        		process_name="sourmash"
+        		module_name_list=[""]
+        		filename=SRA
+        		clusterfunc.qsub_file("/mnt/scratch/ljcohen/mmetsp_tmp/",process_name,module_name_list,filename,commands)	
+		else:
+			print "File is empty:",filename
 
-def execute(url_data):
-	trinity_fail=[]
-	empty_files=[]
+def execute(basedir,url_data):
 	for item in url_data.keys():
         	organism=item[0]
-        	seqtype=item[1]
         	org_seq_dir=basedir+organism+"/"
-		clusterfunc.check_dir(org_seq_dir)
         	url_list=url_data[item]
         	for url in url_list:
-            		sra=basename(urlparse(url).path)
-            		newdir=org_seq_dir+sra+"/"
-			filename=newdir+sra
-			## check if trinity exists
+            		SRA=basename(urlparse(url).path)
+            		newdir=org_seq_dir+SRA+"/"
 			trinitydir=newdir+"trinity/"
-			left=trinitydir+"left.fq"
-			right=trinitydir+"right.fq"
-			empty_files=check(empty_files,left,sra)
-			empty_files=check(empty_files,right,sra)
-			trinity_outputdir=trinitydir+"trinity_out/"
-			trinity_file=trinity_outputdir+"Trinity.fasta"
-			trinity_fail=check_trinity(trinity_fail,trinity_file,sra)
-			diginormdir=newdir+"diginorm/"
-			trimdir=newdir+"trim/"
-	print "List of empty files:"
-	print empty_files
-	print "Trinity needs to be run again:"
-	print trinity_fail
+			get_sourmash_command(SRA,trinitydir)
+			#s=subprocess.Popen(sourmash_command,shell=True)
+    			#s.wait()
+			#if os.path.isfile("*.sig"):
+			#	print os.path.listdir(trimdir)
+			#else:
+			#	print "sourmash not run yet"
+				
 
 
 basedir="/mnt/scratch/ljcohen/mmetsp/"
+# The following dictionary is formatted as
+# basedir:datafile
+#file_locations={"/mnt2/mmetsp/":"MMETSP_SRA_Run_Info_subset_d.csv",
+#		"/mnt3/mmetsp/":"MMETSP_SRA_Run_Info_subset_a.csv",
+#		"/mnt4/mmetsp/":"MMETSP_SRA_Run_Info_subset_b.csv"}
 datafile="SraRunInfo.csv"
-url_data=get_data(datafile)
-print url_data
-execute(url_data)
+mmetsp_data=get_data(datafile)
+print mmetsp_data
+execute(basedir,mmetsp_data)
+
