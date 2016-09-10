@@ -16,6 +16,16 @@ Automated scripts running the protocols:
 4. assembly.py, runs Trinity de novo transcriptome assembly software 
 5. salmon.py, runs salmon reference-free transcript quantification
 
+Additional scripts:
+1. dammit.py, annotation https://github.com/camillescott/dammit/tree/master/dammit
+2. busco.py, asseing assembly and annotation completeness with single-copy orthologs http://busco.ezlab.org/
+3. clusterfunc.py, cluster control module
+4. rapclust.py, clustering contigs https://github.com/COMBINE-lab/rapclust
+5. sourmash.py, MinHash signatures to cluster unassembled reads https://github.com/dib-lab/sourmash/tree/v0.9.4
+6. transdecoder.py, translate nucleotide contigs to amino acid contigs http://transdecoder.github.io/
+7. transrate.py, evaluate assembly with reads http://hibberdlab.com/transrate/
+8. transrate_reference.py, evaluate assembly with reference assembly http://hibberdlab.com/transrate/
+
 References:
 
 Keeling et al. 2014: http://journals.plos.org/plosbiology/article?id=10.1371/journal.pbio.1001889
