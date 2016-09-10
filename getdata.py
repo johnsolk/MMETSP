@@ -45,8 +45,16 @@ def get_data(thefile):
 
 def download(url,newdir,newfile):
     filestring=newdir+newfile
+<<<<<<< .merge_file_4kcXFL
     urlstring="wget -O "+newdir+newfile+" "+url
     print urlstring
+=======
+    if os.path.isfile(filestring):
+	print "file exists:",filestring
+    else:
+	urlstring="wget -O "+newdir+newfile+" "+url
+        print urlstring
+>>>>>>> .merge_file_eM2D9z
     #Note: only for Python 3
     #urllib.request.urlretrieve(url,filestring)
     #Use this for Python 2
@@ -67,7 +75,7 @@ def sra_extract(newdir,filename):
     	print "SRA has already been extracted", filename
     else:
     	sra_string="fastq-dump -v -O "+newdir+" --split-3 "+newdir+filename
-    	#print sra_string
+    	print sra_string
 	print "extracting SRA..."
     	s=subprocess.Popen(sra_string,shell=True,stdout=PIPE)
     	s.wait()
@@ -84,10 +92,11 @@ def fastqc_report(fastq_file_list,newdir,fastqcdir,filename):
     else:		
     	# creates command to generate fastqc reports from all files in list 
     	file_string=str(fastq_file_list)
-    	#print fastq_file_list
+    #print fastq_file_list
     	file_string=" ".join(fastq_file_list)
-    	#print file_string
+    #print file_string
     	fastqc_string="fastqc -o "+fastqcdir+" "+file_string
+<<<<<<< .merge_file_4kcXFL
     	print fastqc_string
     	print "fastqc reports generated for: "+str(fastq_file_list)
     	#s=subprocess.Popen(fastqc_string,shell=True)
@@ -119,6 +128,14 @@ def sym_link(newdir):
     		symlink_string="ln -fs "+newdir+i+" /mnt/mmetsp/"+i
 		print symlink_string
 	    
+=======
+    	print "fastqc reports being generated for: "+str(fastq_file_list)
+	fastqc_command=[fastqc_string]
+        process_name="fastqc"
+        module_name_list=""
+        filename=filename
+        clusterfunc.qsub_file(fastqcdir,process_name,module_name_list,filename,fastqc_command)
+>>>>>>> .merge_file_eM2D9z
 
 # this is the main function to execute
 
@@ -136,19 +153,27 @@ def execute(basedir,url_data):
             filename=basename(urlparse(url).path)
             print filename
             newdir=org_seq_dir+filename+"/"
+	    full_filename=newdir+filename
             clusterfunc.check_dir(newdir)
 	    fastqcdir=newdir+"fastqc/"
 	    clusterfunc.check_dir(fastqcdir)
             #check to see if filename exists in newdir
             if filename in os.listdir(newdir):
                print "sra exists:",filename
-            else:        
+               if os.stat(full_filename).st_size == 0:
+	             print "SRA file is empty:",filename
+		     os.remove(full_filename)
+	    else:        
                print "file will be downloaded:",filename
 	       download(url,newdir,filename)
             sra_extract(newdir,filename)
+<<<<<<< .merge_file_4kcXFL
             #fastqc(newdir,fastqcdir,filename)
             #subset_reads(newdir,subsetdir)
  	    #fastqc(subsetdir,subsetfastqcdir,filename)
+=======
+            fastqc(newdir,fastqcdir,filename)
+>>>>>>> .merge_file_eM2D9z
 
 def fastqc(newdir,fastqcdir,filename):
 	listoffiles=os.listdir(newdir)
@@ -159,6 +184,7 @@ def fastqc(newdir,fastqcdir,filename):
 			fastq_file_list.append(newdir+i)
 	fastqc_report(fastq_file_list,newdir,fastqcdir,filename)         
 
+<<<<<<< .merge_file_4kcXFL
 # use this in case you make a mistake and need to delete a bunch of files:
 def delete_files(newdir):
 	listoffiles=os.listdir(newdir)
@@ -172,6 +198,10 @@ datafiles=["MMETSP_SRA_Run_Info_subset2.csv",
 	"MMETSP_SRA_Run_Info_subset_d.csv","MMETSP_SRA_Run_Info_subset_a.csv",
 	"MMETSP_SRA_Run_Info_subset_b.csv"]
 basedir="/mnt_redo/mmetsp/"
+=======
+datafile="MMETSP_SRA_Run_Info_subset_msu7.csv"
+basedir="/mnt/scratch/ljcohen/mmetsp/"
+>>>>>>> .merge_file_eM2D9z
 clusterfunc.check_dir(basedir)
 for datafile in datafiles:
 	url_data=get_data(datafile)

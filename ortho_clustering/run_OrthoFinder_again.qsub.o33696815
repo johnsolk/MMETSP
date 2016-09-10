@@ -1,0 +1,36 @@
+
+OrthoFinder version 0.6.0 Copyright (C) 2014 David Emms
+
+    This program comes with ABSOLUTELY NO WARRANTY.
+    This is free software, and you are welcome to redistribute it under certain conditions.
+    For details please see the License.md that came with this software.
+
+Using previously calculated BLAST results in /mnt/scratch/ljcohen/pep/Results_Jun25/WorkingDirectory/
+27 threads for BLAST searches
+1 threads for OrthoFinder algorithm
+
+1. Checking required programs are installed
+-------------------------------------------
+Test can run "mcl -h" - ok
+
+2. Temporarily renaming sequences with unique, simple identifiers
+------------------------------------------------------------------
+Skipping
+
+3. Dividing up work for BLAST for parallel processing
+-----------------------------------------------------
+Skipping
+
+4. Running BLAST all-versus-all
+-------------------------------
+Skipping
+
+5. Running OrthoFinder algorithm
+--------------------------------
+2016-07-08 19:36:34 : Initial processing of each species
+/mnt/home/ljcohen/anaconda2/lib/python2.7/site-packages/scipy/optimize/minpack.py:604: OptimizeWarning: Covariance of the parameters could not be estimated
+  category=OptimizeWarning)
+=>> PBS: job killed: walltime 18005 exceeded limit 18000
+Unknown option: 1
+Unknown option: 1
+Usage: /var/spool/torque/mom_priv/epilogue [-hkbv]

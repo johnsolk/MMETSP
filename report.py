@@ -11,6 +11,7 @@ import glob
 # custom Lisa module
 import clusterfunc
 # Python plotting libraries
+<<<<<<< .merge_file_oAh5J2
 import numpy as np
 import matplotlib.mlab as mlab
 import matplotlib.pyplot as plt
@@ -18,6 +19,17 @@ import pandas as pd
 from scipy import stats, integrate
 import seaborn as sns
 #sns.set(color_codes=True)
+=======
+#import numpy as np
+#import matplotlib.mlab as mlab
+#import matplotlib.pyplot as plt
+#import pandas as pd
+#from scipy import stats, integrate
+#import seaborn as sns
+#sns.set(color_codes=True)
+
+
+>>>>>>> .merge_file_XBR5x5
 
 def get_data(thefile):
     mmetsp_data={}
@@ -109,8 +121,13 @@ def build_DataFrame(data_frame,transrate_data):
 	data_frame=pd.concat(frames)
 	return data_frame
 
+<<<<<<< .merge_file_oAh5J2
 def execute(url_data,basedir,mmetsp_assemblies):
+=======
+def execute(url_data,basedir):
+>>>>>>> .merge_file_XBR5x5
 	trinity_fail=[]
+	count = 0
 	# construct an empty pandas dataframe to add on each assembly.csv to
 	for item in mmetsp_data.keys():
 		#print item
@@ -130,6 +147,7 @@ def execute(url_data,basedir,mmetsp_assemblies):
 						reference_filename=filename
 			sra=item[1]
 			newdir=org_seq_dir+sra+"/"
+<<<<<<< .merge_file_oAh5J2
 			trinitydir=newdir+"trinity/trinity_out/"
 			dammit_dir=trinitydir+"dammit_dir/"
 			transrate_dir="/mnt/comparisons/"
@@ -145,12 +163,33 @@ def execute(url_data,basedir,mmetsp_assemblies):
 				fixed_mmetsp_ref=fix_fasta_reference(reference_filename,mmetsp_assemblies)
 				#transrate(transrate_dir,fixed_trinity,mmetsp_assemblies,fixed_mmetsp_ref)
 				transrate_reverse(reverse_transrate_dir,sample,fixed_trinity,mmetsp_assemblies_dir,fixed_mmetsp_ref)
+=======
+			trinitydir=newdir+"trinity/"
+			#dammit_dir=trinitydir+"dammit_dir/"
+			#transrate_dir=newdir+"transrate/"
+			#clusterfunc.check_dir(transrate_dir)
+			#trinity_fasta=dammit_dir+"Trinity.fasta.dammit.fasta"
+			trinity_fasta=trinitydir+"Trinity.fasta"
+			#transrate_out=transrate_dir+sample+"/"
+			if os.path.isfile(trinity_fasta):
+				#transrate(dammit_dir)
+		        	#print transrate_out
+				count +=1
+				#fixed_trinity=fix_fasta(trinity_fasta,trinitydir,sample)
+				#transrate(trinitydir,transrate_out,fixed_trinity)
+				#transrate_assemblies=transrate_out+"assemblies.csv"
+				#data=parse_transrate_stats(transrate_assemblies)
+				#data_frame=build_DataFrame(data_frame,data)
+>>>>>>> .merge_file_XBR5x5
 			else:
 				print "Trinity failed:",newdir
 				trinity_fail.append(newdir)	
+	print "This is the number of Trinity de novo transcriptome assemblies:"
+	print count
 	print "This is the number of times Trinity failed:"
 	print len(trinity_fail)
 	print trinity_fail
+<<<<<<< .merge_file_oAh5J2
 
 def get_extra_assemblies(extra_dir,data_frame):
 	listofassemblies=os.listdir(extra_dir)
@@ -169,6 +208,9 @@ def get_extra_assemblies(extra_dir,data_frame):
                 data_frame=build_DataFrame(data_frame,data)
 	return data_frame
 
+=======
+	#return data_frame
+>>>>>>> .merge_file_XBR5x5
 
 def get_extra_assemblies_transrate(extradir,transrate_dir,mmetsp_assemblies):
 	datafile="/home/ubuntu/MMETSP/MMETSP_SRA_Run_Info_subset2.csv"
@@ -219,6 +261,7 @@ def get_contigs_data(data_frame,transrate_dir):
 	return data_frame
 
 
+<<<<<<< .merge_file_oAh5J2
 
 def get_assemblies_data(data_frame,transrate_dir):
         listofdirs=os.listdir(transrate_dir)
@@ -312,3 +355,13 @@ for basedir in file_locations.keys():
 #if os.path.isfile("/home/ubuntu/MMETSP/MMETSP_transrate_reference_comparisons.csv"):
 #       print "File written: /home/ubuntu/MMETSP/MMETSP_transrate_reference_comparisons.csv"
 
+=======
+basedir = "/mnt/scratch/ljcohen/mmetsp/"	
+datafile="SraRunInfo.csv"
+url_data=get_data(datafile)
+#print url_data
+execute(url_data,basedir)
+#print data_frame
+#data_frame.to_csv("MMETSP_transrate_data.csv")
+#get_histogram(data_frame)
+>>>>>>> .merge_file_XBR5x5

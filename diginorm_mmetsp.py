@@ -38,75 +38,77 @@ def get_data(thefile):
                 url_data[name_read_tuple] = [ftp]
         return url_data
 
-def run_filter_abund(diginormdir):
-	#if glob.glob(diginormdir+"*keep.abundfilt*"):
-	#	print "filter-abund.py already run"
-	#else:
-		j="""
+
+def interleave_reads(trimdir,sra,interleavedir):
+    interleavefile=interleavedir+sra+".trimmed.interleaved.fq"
+    if os.path.isfile(interleavefile):
+        print "already interleaved"
+    else:
+        interleave_string="interleave-reads.py "+trimdir+sra+".trim_1P.fq "+trimdir+sra+".trim_2P.fq > "+interleavefile
+        print interleave_string
+	interleave_command=[interleave_string]
+        process_name="interleave"
+        module_name_list=["GNU/4.8.3","khmer/2.0"]
+        filename=sra
+        clusterfunc.qsub_file(interleavedir,process_name,module_name_list,filename,interleave_command)
+
+
+def run_filter_abund(diginormdir,sra):
+	keep_dir = diginormdir+"qsub_files/"
+	filter_string="""
 filter-abund.py -V -Z 18 {}norm.C20k20.ct {}*.keep
-""".format(diginormdir,diginormdir)
-		os.chdir(diginormdir)
-		with open("filter_abund.sh","w") as abundfile:
-			abundfile.write(j)
-		s=subprocess.Popen("sudo bash filter_abund.sh",shell=True)
-		s.wait()
-		os.chdir("/home/ubuntu/MMETSP/")
+""".format(diginormdir,keep_dir)
+	extract_paired_string=extract_paired()
+	commands=[filter_string,extract_paired_string]
+        process_name="filtabund"
+        module_name_list=["GNU/4.8.3","khmer/2.0"]
+        filename=sra
+        clusterfunc.qsub_file(diginormdir,process_name,module_name_list,filename,commands)
 
 def run_streaming_diginorm(trimdir,SRA,diginormdir):
 # from Jessica's streaming protocol:
 	diginormfile=diginormdir+SRA+".stream.diginorm.sh"
-	os.chdir(diginormdir)
+	#os.chdir(diginormdir)
 	stream_string="""#!/bin/bash
-(interleave-reads.py {}{}.Phred30.TruSeq_1P.fq {}{}.Phred30.TruSeq_2P.fq && zcat {}orphans.fq.gz)| \\
-trim-low-abund.py -V -k 20 -Z 18 -C 3 - -o - -M 4e9 --diginorm --diginorm-coverage=20 | \\
-(extract-paired-reads.py --gzip -p {}{}.paired.gz -s {}{}.single.gz)
+(interleave-reads.py {}{}.trim_1P.fq {}{}.trim_2P.fq && zcat {}orphans.fq.gz)| \\
+(trim-low-abund.py -V -k 20 -Z 18 -C 2 - -o - -M 4e9 --diginorm --diginorm-coverage=20) | \\
+(extract-paired-reads.py --gzip -p {}{}.paired.gz -s {}{}.single.gz) > /dev/null
 """.format(trimdir,SRA,trimdir,SRA,trimdir,diginormdir,SRA,diginormdir,SRA)
-	with open(diginormfile,"w") as diginorm_script:
-		diginorm_script.write(stream_string)
+	print stream_string
+	#with open(diginormfile,"w") as diginorm_script:
+	#	diginorm_script.write(stream_string)
 	#s=subprocess.Popen("sudo bash "+diginormfile,shell=True)
 	#s.wait()
-	print "file written:",diginormfile	
-	os.chdir("/home/ubuntu/MMETSP/")	
+	#print "file written:",diginormfile	
+	#os.chdir("/home/ubuntu/MMETSP/")
+	streaming_diginorm_command=[stream_string]
+        module_load_list=[]
+        process_name="diginorm_stream"
+        clusterfunc.qsub_file(diginormdir,process_name,module_load_list,SRA,streaming_diginorm_command)	
 
-def rename_files(diginormdir):
-	#if glob.glob(diginormdir+"*.abundfilt.pe"):
-	#	print "paired reads already extracted"
-	#else:
-		j="""
+def extract_paired():
+	extract_paired_string="""
 for file in *.abundfilt
 do
 	extract-paired-reads.py ${{file}}
 done
 """.format()
-		os.chdir(diginormdir)
-		with open("rename.sh","w") as renamefile:
-			renamefile.write(j)
-		#s=subprocess.Popen("cat rename.sh",shell=True)
-		#s.wait()
-		s=subprocess.Popen("sudo bash rename.sh",shell=True)
-		s.wait()
-		os.chdir("/home/ubuntu/MMETSP/")
+	return extract_paired_string
 
-def run_diginorm(diginormdir,interleavedir,trimdir):
-	# this will create and run a script from the working directory
-	# output *.keep files will be in the working directory
-	#if glob.glob(diginormdir+"*keep*"):
-	#	print "normalize-by-median.py already run"
-	#else:
-		j="""
+def run_diginorm(diginormdir,interleavedir,trimdir,sra):
+		normalize_median_string="""
 normalize-by-median.py -p -k 20 -C 20 -M 4e9 \\
---savegraph {}norm.C20k20.ct -u \\
-{}orphans.fq.gz \\
+--savegraph {}norm.C20k20.ct \\
+-u {}orphans.fq.gz \\
 {}*.fq
 """.format(diginormdir,trimdir,interleavedir)
-		os.chdir(diginormdir)
-		with open("diginorm.sh","w") as diginormfile:
-			diginormfile.write(j)
-		s=subprocess.Popen("sudo bash diginorm.sh",shell=True)
-		s.wait()
 		#s=subprocess.Popen("cat diginorm.sh",shell=True)
 		#s.wait()
-		os.chdir("/home/ubuntu/MMETSP/")
+		normalize_median_command=[normalize_median_string]
+        	process_name="diginorm"
+        	module_name_list=["GNU/4.8.3","khmer/2.0"]
+        	filename=sra
+        	clusterfunc.qsub_file(diginormdir,process_name,module_name_list,filename,normalize_median_command)
 
 def combine_orphaned(diginormdir):
 	#if glob.glob(diginormdir+"orphans.keep.abundfilt.fq.gz"):
@@ -165,14 +167,12 @@ def execute(basedir,url_data):
 			clusterfunc.check_dir(diginormdir)
 			trimdir=newdir+"trim/"
 			#run_streaming_diginorm(trimdir,SRA,diginormdir)
-			run_diginorm(diginormdir,interleavedir,trimdir)
-			run_filter_abund(diginormdir)
-			rename_files(diginormdir)
-			combine_orphaned(diginormdir)
-			rename_pe(diginormdir)	
+			#interleave_reads(trimdir,SRA,interleavedir)
+			#run_diginorm(diginormdir,interleavedir,trimdir,SRA)
+			run_filter_abund(diginormdir,SRA)
 
-basedir="/mnt/mmetsp/"
-datafile="MMETSP_SRA_Run_Info_subset_d.csv"
+basedir="/mnt/scratch/ljcohen/mmetsp/"
+datafile="MMETSP_SRA_Run_Info_subset_msu7.csv"
 url_data=get_data(datafile)
 execute(basedir,url_data)
 

@@ -39,6 +39,21 @@ def get_data(thefile):
                 url_data[name_read_tuple] = [ftp]
         return url_data
 
+def check_empty(empty_files,file,sra):
+	if os.stat(file).st_size == 0:
+        	print "File is empty:",file
+        	if sra not in empty_files:
+                	empty_files.append(sra)
+	return empty_files
+
+def check_trinity(trinity_fail,trinity_file,sra):
+	if os.path.isfile(trinity_file):
+        	print "Trinity completed successfully:",trinity_file
+        else:
+                print "Trinity needs to be run again:",filename
+                trinity_fail.append(sra)
+	return trinity_fail
+
 def execute(url_data):
 	trinity_fail=[]
 	empty_files=[]
@@ -56,21 +71,11 @@ def execute(url_data):
 			trinitydir=newdir+"trinity/"
 			left=trinitydir+"left.fq"
 			right=trinitydir+"right.fq"
-			if os.stat(left).st_size == 0:
-				print "File is empty:",left
-				if sra not in empty_files:
-					empty_files.append(sra)
-			if os.stat(right).st_size == 0:
-				print "File is empty:",right
-				if sra not in empty_files:
-					empty_files.append(sra)
+			empty_files=check(empty_files,left,sra)
+			empty_files=check(empty_files,right,sra)
 			trinity_outputdir=trinitydir+"trinity_out/"
 			trinity_file=trinity_outputdir+"Trinity.fasta"
-			if os.path.isfile(trinity_file):
-				print "Trinity completed successfully:",trinity_file
-			else:
-				print "Trinity needs to be run again:",filename
-				trinity_fail.append(sra)
+			trinity_fail=check_trinity(trinity_fail,trinity_file,sra)
 			diginormdir=newdir+"diginorm/"
 			trimdir=newdir+"trim/"
 	print "List of empty files:"
@@ -79,8 +84,8 @@ def execute(url_data):
 	print trinity_fail
 
 
-basedir="/mnt/mmetsp/"
-datafile="MMETSP_SRA_Run_Info_subset_b.csv"
+basedir="/mnt/scratch/ljcohen/mmetsp/"
+datafile="SraRunInfo.csv"
 url_data=get_data(datafile)
 print url_data
 execute(url_data)

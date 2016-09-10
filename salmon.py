@@ -45,6 +45,7 @@ def get_data(thefile):
 
 def salmon_index(salmondir,sra,trinity_fasta):
 	index=sra+"_index"
+<<<<<<< .merge_file_ylVy1d
 	os.chdir(salmondir)
 	if os.path.isfile(trinity_fasta):
 		print "file exists:",trinity_fasta
@@ -60,18 +61,40 @@ def quant_salmon(salmondir,index,sra,newdir):
 	os.chdir(salmondir)
 	file1=newdir+"trim/"+sra+".Phred30.TruSeq_1P.fq"
 	file2=newdir+"trim/"+sra+".Phred30.TruSeq_2P.fq"
+=======
+	salmon_index_string="salmon index --index "+index+" --transcripts "+trinity_fasta+" --type quasi"
+	return index,salmon_index_string
+
+def quant_salmon(salmondir,sra,newdir,trinity_fasta):
+	file1=newdir+"trim/"+sra+".trim_1P.fq"
+	file2=newdir+"trim/"+sra+".trim_2P.fq"
+>>>>>>> .merge_file_hxAl3W
 	if os.path.isfile(file1):
 		print "file exists:",file1
 	else:
 		print "missing:",file1
 	if os.path.isfile(file2):
 		print "file exists:",file2
+<<<<<<< .merge_file_ylVy1d
 	else:
 		print "missing:",file2
 	salmon_string="salmon quant -i "+index+" --libType IU -1 "+file1+" -2 "+file2+" -o "+salmondir+sra+".quant"
         s=subprocess.Popen(salmon_string,shell=True)
 	s.wait()
 	os.chdir("/home/ubuntu/MMETSP/")
+=======
+	index,salmon_index_string = salmon_index(salmondir,sra,trinity_fasta)
+	salmon_string="salmon quant -i "+index+" --libType IU -1 "+file1+" -2 "+file2+" -o "+salmondir+sra+".quant --dumpEq --auxDir aux"
+	commands = [salmon_index_string,salmon_string]
+	process_name = "salmon"
+	module_name_list = ""
+	filename = sra
+	clusterfunc.qsub_file(salmondir,process_name,module_name_list,filename,commands)	
+	
+def gather_counts():
+        gather_counts_string="python /home/ubuntu/MMETSP/gather-counts.py"
+	return gather_counts_string
+>>>>>>> .merge_file_hxAl3W
 	
 
 
@@ -122,6 +145,7 @@ def execute(url_data):
 			trinitydir=newdir+"trinity/trinity_out/"
 			salmondir=newdir+"salmon/"
 			clusterfunc.check_dir(salmondir)
+<<<<<<< .merge_file_ylVy1d
 			trinity_fasta=trinitydir+sra+".Trinity.fixed.fa"
 			#index=salmon_index(salmondir,sra,trinity_fasta)
 			#quant_salmon(salmondir,index,sra,newdir)
@@ -139,3 +163,15 @@ for basedir in file_locations.keys():
         mmetsp_data=get_data(datafile)
         print mmetsp_data
         execute(mmetsp_data)
+=======
+			trinity_fasta=trinitydir+"Trinity.fasta"
+			quant_salmon(salmondir,sra,newdir,trinity_fasta)
+
+basedir="/mnt/scratch/ljcohen/mmetsp/"
+datafiles=["MMETSP_SRA_Run_Info_subset_msu1.csv","MMETSP_SRA_Run_Info_subset_msu2.csv","MMETSP_SRA_Run_Info_subset_msu3.csv","MMETSP_SRA_Run_Info_subset_msu4.csv",
+	"MMETSP_SRA_Run_Info_subset_msu5.csv","MMETSP_SRA_Run_Info_subset_msu6.csv","MMETSP_SRA_Run_Info_subset_msu7.csv"]
+for datafile in datafiles:
+	url_data=get_data(datafile)
+	print url_data
+	execute(url_data)
+>>>>>>> .merge_file_hxAl3W
