@@ -155,6 +155,7 @@ def fastqc(newdir, fastqcdir, filename):
     fastqc_report(fastq_file_list, newdir, fastqcdir, filename)
 
 def main():
+    clusterfunc.set_DO_QSUB(False)
     datafile = "SraRunInfo.csv"
     basedir = "/mnt/scratch/ljcohen/mmetsp/"
     clusterfunc.check_dir(basedir)
