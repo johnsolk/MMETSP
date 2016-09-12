@@ -163,6 +163,5 @@ def main():
       print url_data
       execute(basedir, url_data)
 
-print __name__
-#if __name__ == "__main__":      
-#    main()
+if __name__ == "__main__":      
+    main()
