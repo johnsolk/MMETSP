@@ -52,8 +52,7 @@ def download(url, newdir, newfile):
     else:
         urlstring = "wget -O " + newdir + newfile + " " + url
         print urlstring
-    s = subprocess.Popen(urlstring, shell=True)
-    s.wait()
+    s = subprocess.check_call(urlstring.split(' '))
 
     print "Finished downloading from NCBI."
 
