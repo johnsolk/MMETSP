@@ -14,32 +14,28 @@ import clusterfunc
 # 1. Get data from spreadsheet
 
 
-def get_data(thefile):
-    count = 0
-    url_data = {}
-    with open(thefile, "rU") as inputfile:
+def get_data(filename, debug=False):
+    url_data = dict()
+    with open(filename, "rU") as inputfile:
         headerline = next(inputfile).split(',')
-        # print headerline
-        position_name = headerline.index("ScientificName")
-        position_reads = headerline.index("Run")
-        position_ftp = headerline.index("download_path")
+        if debug:
+            print headerline
+        name_index = headerline.index("ScientificName")
+        run_index = headerline.index("Run")
+        ftp_index = headerline.index("download_path")
         for line in inputfile:
             line_data = line.split(',')
-            name = "_".join(line_data[position_name].split())
-            read_type = line_data[position_reads]
-            ftp = line_data[position_ftp]
-            name_read_tuple = (name, read_type)
-            print name_read_tuple
-            # check to see if Scientific Name and run exist
-            if name_read_tuple in url_data.keys():
-                # check to see if ftp exists
-                if ftp in url_data[name_read_tuple]:
-                    print "url already exists:", ftp
-                else:
-                    url_data[name_read_tuple].append(ftp)
-            else:
-                url_data[name_read_tuple] = [ftp]
-        return url_data
+            name = "_".join(line_data[name_index].split())
+            run_acc = line_data[run_index]
+            ftp = line_data[ftp_index]
+            name_acc_tuple = (name, acc)
+            print name_acc_tuple
+
+            if name_acc_tuple not in url_data:
+                url_data[name_acc_tuple] = set()
+            url_data[name_acc_tuple].update(ftp)
+
+    return url_data
 
 # 2. Download data
 #(already checked if file exists)
