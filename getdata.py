@@ -52,7 +52,7 @@ def download(url, newdir, newfile):
     else:
         urlstring = "wget -O " + newdir + newfile + " " + url
         print urlstring
-    s = subprocess.check_call(urlstring.split(' '))
+    subprocess.check_call(urlstring.split(' '))
 
     print "Finished downloading from NCBI."
 
@@ -60,19 +60,13 @@ def download(url, newdir, newfile):
 
 
 def sra_extract(newdir, filename):
-    # if seqtype=="single":
-    #    sra_string="fastq-dump -v "+newdir+file
-    #    print sra_string
-    # elif seqtype=="paired":
-        # check whether .fastq exists in directory
     if glob.glob(newdir + "*.fastq"):
         print "SRA has already been extracted", filename
     else:
         sra_string = "fastq-dump -v -O " + newdir + " --split-3 " + newdir + filename
         print sra_string
         print "extracting SRA..."
-        s = subprocess.Popen(sra_string, shell=True, stdout=PIPE)
-        s.wait()
+        subprocess.check_call(sra_string.split(' '), stdout=PIPE)
         print "Finished SRA extraction."
 
 # 4. Generate fastqc from all fastq in directory
