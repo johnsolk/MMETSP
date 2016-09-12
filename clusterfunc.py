@@ -6,6 +6,12 @@ import os
 import subprocess
 from subprocess import Popen, PIPE
 
+DO_QSUB = False
+
+def set_DO_QSUB(val):
+    global DO_QSUB
+    DO_QSUB = val
+    print "DO_QSUB is set to:",DO_QSUB
 
 def check_dir(dirname):
     if os.path.isdir(dirname) == False:
@@ -29,6 +35,7 @@ def get_module_load_list(module_name_list):
 
 
 def qsub_file(basedir, process_name, module_name_list, filename, process_string):
+    global DO_QSUB
     working_dir = os.getcwd()
     qsub_dir, qsub_filename = get_qsub_filename(
         basedir, process_name, filename)
@@ -62,6 +69,7 @@ export OMP_NUM_THREADS=8
             "env | grep PBS # Print out values of the current jobs PBS environment variables\n")
     qsub_string = 'qsub -V ' + qsub_filename
     print qsub_string
-    s = subprocess.Popen(qsub_string, shell=True)
-    s.wait()
+    if DO_QSUB:
+        s = subprocess.Popen(qsub_string, shell=True)
+        s.wait()
     os.chdir(working_dir)
