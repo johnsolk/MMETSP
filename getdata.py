@@ -143,7 +143,7 @@ def fastqc(newdir, fastqcdir, filename):
             fastq_file_list.append(newdir + i)
     fastqc_report(fastq_file_list, newdir, fastqcdir, filename)
 
-datafile = "MMETSP_SRA_Run_Info_subset_msu7.csv"
+datafile = "SraRunInfo.csv"
 basedir = "/mnt/scratch/ljcohen/mmetsp/"
 clusterfunc.check_dir(basedir)
 for datafile in datafiles:

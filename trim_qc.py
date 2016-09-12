@@ -45,15 +45,6 @@ def get_data(thefile):
 
 
 def run_trimmomatic_TruSeq(trimdir, file1, file2, sra):
-<< << << < .merge_file_bYoSrk
-  	bash_filename = trimdir + sra + ".trim.TruSeq.sh"
-    # need a better check for whether this process has been run:
-    # if os.path.isfile(bash_filename):
-#	print "trim file already written",bash_filename
- #   else:
-	j = """#!/bin/bash
-java -Xmx10g -jar /home/ubuntu/Trimmomatic-0.33/trimmomatic-0.33.jar PE \\
-=======
 	bash_filename=trimdir+sra+".trim.TruSeq.sh"
 	clusterfunc.check_dir(trimdir+"qsub_files/")
 	listoffile = os.listdir(trimdir+"qsub_files/")
@@ -149,8 +140,6 @@ def run_move_files(trimdir,sra):
         filename=sra
         clusterfunc.qsub_file(trimdir,process_name,module_name_list,filename,commands)	
 
-<<<<<<< .merge_file_bYoSrk
-=======
 def check_files(trimdir,sra):
 	file1 = trimdir+sra+".trim_1P.fq"
 	file2 = trimdir+sra+".trim_2P.fq"
@@ -160,7 +149,6 @@ def check_files(trimdir,sra):
 		else:
 			print "Still waiting:",trimdir
 
->>>>>>> .merge_file_xj8fMp
 def execute(url_data,datadir):
     for item in url_data.keys():
 	organism=item[0]
@@ -170,41 +158,14 @@ def execute(url_data,datadir):
 		sra=basename(urlparse(url).path)
 		newdir=org_seq_dir+sra+"/"
 		trimdir=newdir+"trim/"
-<<<<<<< .merge_file_bYoSrk
-		# interleavedir=newdir+"interleave/"
-=======
->>>>>>> .merge_file_xj8fMp
+		interleavedir=newdir+"interleave/"
 		clusterfunc.check_dir(trimdir)
-		# interleavedir=newdir+"interleave/"
-		# clusterfunc.check_dir(interleavedir)
+		clusterfunc.check_dir(interleavedir)
 		file1=newdir+sra+"_1.fastq"
 		file2=newdir+sra+"_2.fastq"
 		if os.path.isfile(file1) and os.path.isfile(file2):
 			print file1
 			print file2
-<<<<<<< .merge_file_bYoSrk
-			# fastqc_report(datadir,fastqcdir)
-			# need to fix so the following steps run themselves:
-			run_trimmomatic_TruSeq(trimdir,file1,file2,sra)
-			# interleave_reads(trimdir,sra,interleavedir)
-                	# run_jellyfish(trimdir,sra)
-			# make_orphans(trimdir)
-		else:
-			print "Files do not exist:",file1,file2 	
-    # run fastqc on all files
-    # fastqc_report(trimdir,fastqcdir)	
-
-
-datafiles=["MMETSP_SRA_Run_Info_subset2.csv",
-        "MMETSP_SRA_Run_Info_subset_d.csv","MMETSP_SRA_Run_Info_subset_a.csv",
-        "MMETSP_SRA_Run_Info_subset_b.csv"]
-basedir="/mnt_redo/mmetsp/"
-clusterfunc.check_dir(basedir)
-for datafile in datafiles:
-        url_data=get_data(datafile)
-        print url_data
-        execute(url_data,basedir)
-=======
 		# run_trimmomatic_TruSeq(trimdir,file1,file2,sra)
 		run_move_files(trimdir,sra)
 		# check_files(trimdir,sra)
@@ -212,12 +173,8 @@ for datafile in datafiles:
 		#	print "Files do not exist:",file1,file2 	
 
 
-datafile="MMETSP_SRA_Run_Info_subset_msu7.csv"
+datafile="SraRunInfo.csv"
 datadir="/mnt/scratch/ljcohen/mmetsp/"
 url_data=get_data(datafile)
 print url_data
 execute(url_data,datadir)
-
->>>>>>> .merge_file_xj8fMp
-
-
