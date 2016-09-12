@@ -8,7 +8,7 @@ https://khmer-protocols.readthedocs.org/en/ctb/mrnaseq/
 
 The Marine Microbial Eukaryotic Transcriptome Sequencing Project (MMETSP) data set contains 678 cultured samples of 306 pelagic and endosymbiotic marine eukaryotic species representing more than 40 phyla (Keeling et al. 2014).
 
-Each script takes `SraRunInfo.csv` as input.
+Each script takes `SraRunInfo.csv` as input. This file can be obtained for any collection of SRA records from NCBI.
 
 Automated scripts running the protocols:
 
