@@ -35,6 +35,13 @@ def get_module_load_list(module_name_list):
 
 
 def qsub_file(basedir, process_name, module_name_list, filename, process_string):
+    # separate this function into several:
+    # make qsub file
+    # have different argument for system, e.g. PBS, SGE, SLURM, etc.
+    # submit qsub
+    # what if AWS? and no qsub?
+    # suggestion to end each function with a string
+    # rather than execute each command as a batch script
     global DO_QSUB
     working_dir = os.getcwd()
     qsub_dir, qsub_filename = get_qsub_filename(
