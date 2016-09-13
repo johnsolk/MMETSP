@@ -16,18 +16,18 @@ Automated scripts running the protocols:
 2. `trim_qc.py`, trim reads for quality, interleave reads
 3. `diginorm_mmetsp.py`, normalize-by-median and filter-abund from khmer, rename, combined orphans,
 4. `assembly.py`, runs Trinity de novo transcriptome assembly software 
-5. `salmon.py`, runs salmon reference-free transcript quantification
 
 Additional scripts:
 
 1. `dammit.py`, annotation https://github.com/camillescott/dammit/tree/master/dammit
-2. `busco.py`, asseing assembly and annotation completeness with single-copy orthologs http://busco.ezlab.org/
-3. `clusterfunc.py`, cluster control module
-4. `rapclust.py`, clustering contigs https://github.com/COMBINE-lab/rapclust
-5. `sourmash.py`, MinHash signatures to cluster unassembled reads https://github.com/dib-lab/sourmash/tree/v0.9.4
-6. `transdecoder.py`, translate nucleotide contigs to amino acid contigs http://transdecoder.github.io/
-7. `transrate.py`, evaluate assembly with reads http://hibberdlab.com/transrate/
-8. `transrate_reference.py`, evaluate assembly with reference assembly http://hibberdlab.com/transrate/
+2. `salmon.py`, runs salmon reference-free transcript quantification
+3. `rapclust.py`, clustering contigs https://github.com/COMBINE-lab/rapclust
+4. `busco.py`, asseing assembly and annotation completeness with single-copy orthologs http://busco.ezlab.org/
+5. `clusterfunc.py`, cluster control module
+6. `sourmash.py`, MinHash signatures to cluster unassembled reads https://github.com/dib-lab/sourmash/tree/v0.9.4
+7. `transdecoder.py`, translate nucleotide contigs to amino acid contigs http://transdecoder.github.io/
+8. `transrate.py`, evaluate assembly with reads http://hibberdlab.com/transrate/
+9. `transrate_reference.py`, evaluate assembly with reference assembly http://hibberdlab.com/transrate/
 
 References:
 
