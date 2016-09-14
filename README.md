@@ -20,9 +20,9 @@ Automated scripts running the protocols:
 Additional scripts:
 
 1. `dammit.py`, annotation https://github.com/camillescott/dammit/tree/master/dammit
-2. `salmon.py`, runs salmon reference-free transcript quantification
+2. `salmon.py`, runs salmon reference-free transcript quantification https://github.com/COMBINE-lab/salmon
 3. `rapclust.py`, clustering contigs https://github.com/COMBINE-lab/rapclust
-4. `busco.py`, asseing assembly and annotation completeness with single-copy orthologs http://busco.ezlab.org/
+4. `busco.py`, assessing assembly and annotation completeness with single-copy orthologs http://busco.ezlab.org/
 5. `clusterfunc.py`, cluster control module
 6. `sourmash.py`, MinHash signatures to cluster unassembled reads https://github.com/dib-lab/sourmash/tree/v0.9.4
 7. `transdecoder.py`, translate nucleotide contigs to amino acid contigs http://transdecoder.github.io/
