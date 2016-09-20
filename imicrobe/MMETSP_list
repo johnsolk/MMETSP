@@ -1,4 +1,4 @@
-MMETSP ID	Phylum	Class	Family	Genus	Species	Strain	Clonal *	Axenic *	PCRamp	Principle Investgator(s)
+SampleName	Phylum	Class	Family	Genus	Species	Strain	Clonal *	Axenic *	PCRamp	Principle Investgator(s)
 MMETSP0004	Ochrophyta	Synurophyceae	Ochromonadaceae	Ochromonas	sp.	CCMP1393	Unknown	No	No	 David Caron
 MMETSP0005	Ochrophyta	Synurophyceae	Ochromonadaceae	Ochromonas	sp.	CCMP1393	Unknown	No	No	 David Caron
 MMETSP0006	Haptophyta	Prymnesiophyceae	Prymenesiaceae	Prymnesium	parvum	Texoma1	Yes	Yes	No	 David Caron
