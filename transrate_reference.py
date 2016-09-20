@@ -215,8 +215,8 @@ def get_ref_transrate(transrate_dir):
 
 basedir = "/mnt/scratch/ljcohen/mmetsp/"
 mmetsp_assemblies_dir = "/mnt/research/ged/lisa/mmetsp/imicrobe/cds/"
-datafiles = ["MMETSP_SRA_Run_Info_subset_msu1.csv", "MMETSP_SRA_Run_Info_subset_msu2.csv", "MMETSP_SRA_Run_Info_subset_msu3.csv", "MMETSP_SRA_Run_Info_subset_msu4.csv",
-             "MMETSP_SRA_Run_Info_subset_msu5.csv", "MMETSP_SRA_Run_Info_subset_msu6.csv", "MMETSP_SRA_Run_Info_subset_msu7.csv"]
+datafiles = ["subsets/MMETSP_SRA_Run_Info_subset_msu1.csv", "subsets/MMETSP_SRA_Run_Info_subset_msu2.csv", "subsets/MMETSP_SRA_Run_Info_subset_msu3.csv", "subsets/MMETSP_SRA_Run_Info_subset_msu4.csv",
+             "subsets/MMETSP_SRA_Run_Info_subset_msu5.csv", "subsets/MMETSP_SRA_Run_Info_subset_msu6.csv", "subsets/MMETSP_SRA_Run_Info_subset_msu7.csv"]
 
 data_frame1 = pd.DataFrame()
 data_frame2 = pd.DataFrame()
@@ -225,5 +225,5 @@ for datafile in datafiles:
     print url_data
     data_frame1, data_frame2 = execute(
         data_frame1, data_frame2, url_data, basedir, mmetsp_assemblies_dir)
-data_frame1.to_csv("transrate_reference_scores_cds.csv")
-data_frame2.to_csv("transrate_reverse_scores_cds.csv")
+#data_frame1.to_csv("transrate_reference_scores_cds.csv")
+#data_frame2.to_csv("transrate_reverse_scores_cds.csv")

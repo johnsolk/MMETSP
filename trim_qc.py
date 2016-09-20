@@ -80,7 +80,6 @@ MINLEN: 25 & > trim.{}.log
 	else:
         	j="""
 java - jar / mnt / home / ljcohen / bin / Trimmomatic - 0.33 / trimmomatic - 0.33.jar PE \\
->> >>>> > .merge_file_xj8fMp
 -baseout {}.trim.fq \\
 {} {} \\
 ILLUMINACLIP: / mnt / home / ljcohen / bin / Trimmomatic - 0.33 / adapters / combined.fa: 2: 40: 15 \\
