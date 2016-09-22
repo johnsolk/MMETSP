@@ -43,73 +43,117 @@ def get_data(thefile):
                 mmetsp_data[name_read_tuple] = [mmetsp]
         return mmetsp_data
 
+def get_mmetsp_data(mmetsp_file):
+    mmetsp_data={}
+    with open(mmetsp_file,"rU") as inputfile:
+        headerline=next(inputfile).split(',')
+        #print headerline        
+        position_mmetsp_id = headerline.index("SAMPLE_NAME")
+        position_organism = headerline.index("ORGANISM")
+        position_strain = headerline.index("STRAIN")
+        for line in inputfile:
+            line_data=line.split(',')
+	    MMETSP_id = line_data[position_mmetsp_id]
+            if MMETSP_id.endswith("C"):
+                MMETSP_id = MMETSP_id[:-1]
+	    test_mmetsp = MMETSP_id.split("_")
+            if len(test_mmetsp) > 1:
+                MMETSP_id = test_mmetsp[0]		
+            name="_".join(line_data[position_organism].split())
+            strain = "-".join(line_data[position_strain].split())
+            name_id_tuple=(name,strain)
+            #print name_id_tuple
+            #check to see if Scientific Name and run exist
+            mmetsp_data[MMETSP_id] = name_id_tuple
+        return mmetsp_data
 
-def fix_fasta(trinity_fasta, trinity_dir, sample):
-        # os.chdir(trinity_dir)
-    trinity_out = trinity_dir + sample + ".Trinity.fixed.fa"
-    fix = """
-sed 's_|_-_g' {} > {}
-""".format(trinity_fasta, trinity_out)
-    # s=subprocess.Popen(fix,shell=True)
-    # print fix
-    # s.wait()
-    # os.chdir("/home/ubuntu/MMETSP/")
-    return trinity_out
-
-
-def fix_fasta_reference(mmetsp_assembly, mmetsp_assembly_dir):
-    mmetsp_assembly_out = mmetsp_assembly_dir + mmetsp_assembly + ".fixed.fa"
-    fix = """
-sed 's_|_-_g' {}{} > {}
-""".format(mmetsp_assembly_dir, mmetsp_assembly, mmetsp_assembly_out)
-    # print fix
-    # s=subprocess.Popen(fix,shell=True)
-    # s.wait()
-    return mmetsp_assembly_out
-
+def get_strain(different,mmetsp_id,organism,mmetsp_data):
+        alt = "blank"
+        if mmetsp_id in mmetsp_data:
+                name_info = mmetsp_data[mmetsp_id]
+                #print name_info]
+                strain = name_info[1]
+                if "'" in strain:
+                        strain = strain.replace("'","")
+                if "/" in strain:
+                        #print strain
+                        strain = strain.replace("/","-")
+                        #print strain
+                if ")" in strain:
+                        strain = strain.replace(")","-")
+                if "(" in strain:
+                        strain = strain.replace("(","-")
+                if "=" in strain:
+                        strain = strain.replace("=","-")
+                if ":" in strain:
+                        strain = strain.replace(":","-")
+                organism_mmetsp = name_info[0]
+                if organism != organism_mmetsp:
+                        organism_mmetsp_data = organism_mmetsp.split("_")
+                        organism_data = organism.split("_")
+                        #print organism_mmetsp_data
+                        #print organism_data
+                        if len(organism_mmetsp_data) >= 2:
+                                if len(organism_data) >= 2:
+                                        if organism != "uncultured_eukaryote":
+                                                #print organism_data[1][0:3]
+                                                #print organism_mmetsp_data[1]
+                                                if organism_mmetsp_data[0] != organism_mmetsp_data[1]:
+                                                        if "\x8e" in organism_mmetsp_data[1]:
+                                                                organism_mmetsp_data[1] = organism_mmetsp_data[1].replace("\x8e","")
+                                                        elif organism_mmetsp_data[1].lower().startswith(organism_data[1].lower()) == False:
+                                                                #print "Species are different - imicrobe:"+organism_mmetsp+" SRA:"+organism
+                                                                different_tuple = (organism_mmetsp,organism)
+                                                                different.append(different_tuple)
+                                                                alt = organism_mmetsp
+                                                        elif organism_mmetsp.startswith(organism[0:3]) == False:
+                                                                different_tuple = (organism_mmetsp,organism)
+                                                                different.append(different_tuple)
+                                                                #print "Different imicrobe: "+organism_mmetsp+" SRA: "+organism
+                                                                alt = organism_mmetsp
+                return strain,organism_mmetsp,different,alt
+        else:
+                print mmetsp_id
+		print mmetsp_data
+		print "MMETSP id not in mmetsp_data:",mmetsp_id
+	
 
 def transrate(transrate_dir, sample, trinity_fasta, mmetsp_assemblies_dir, filename):
     transrate_command = """
 transrate -o {}{} \\
 --assembly {} \\
---reference {} \\
+--reference {}{} \\
 --threads 8
-""".format(transrate_dir, sample, trinity_fasta, filename)
-    print transrate_command
+""".format(transrate_dir, sample, trinity_fasta, mmetsp_assemblies_dir,filename)
     commands = [transrate_command]
     process_name = "trans_ref"
     module_name_list = ""
     filename = sample
-    # clusterfunc.qsub_file(transrate_dir,process_name,module_name_list,filename,commands)
-
+    #clusterfunc.qsub_file(transrate_dir,process_name,module_name_list,filename,commands)
 
 def transrate_reverse(transrate_dir, sample, trinity_fasta, mmetsp_assemblies_dir, filename):
     transrate_command = """
 transrate -o {}{} \\
---assembly {} \\
+--assembly {}{} \\
 --reference {} \\
 --threads 8
-""".format(transrate_dir, sample, filename, trinity_fasta)
+""".format(transrate_dir, sample, mmetsp_assemblies_dir,filename,trinity_fasta)
     print "This is the reverse transrate command:"
-    print transrate_command
     commands = [transrate_command]
     process_name = "trans_ref_reverse"
     module_name_list = ""
     filename = sample
-    # clusterfunc.qsub_file(transrate_dir,process_name,module_name_list,filename,commands)
-
+    #clusterfunc.qsub_file(transrate_dir,process_name,module_name_list,filename,commands)
 
 def parse_transrate_stats(transrate_assemblies):
     data = pd.DataFrame.from_csv(transrate_assemblies, header=0, sep=',')
     return data
-
 
 def build_DataFrame(data_frame, transrate_data):
     # columns=["n_bases","gc","gc_skew","mean_orf_percent"]
     frames = [data_frame, transrate_data]
     data_frame = pd.concat(frames)
     return data_frame
-
 
 def get_contigs_data(data_frame, transrate_dir):
     listofdirs = os.listdir(transrate_dir)
@@ -127,66 +171,67 @@ def get_contigs_data(data_frame, transrate_dir):
                     print "File missing:", transrate_contigs
     return data_frame
 
-
-def execute(data_frame1, data_frame2, mmetsp_data, basedir, mmetsp_assemblies):
+def execute(mmetsp_data, data_frame1, data_frame2, url_data, basedir, mmetsp_assemblies):
     trinity_fail = []
+    different = []
+    alt = "blank"
     reference_filename = "blank"
+    assemblyfileslist = os.listdir(mmetsp_assemblies)
     # construct an empty pandas dataframe to add on each assembly.csv to
-    for item in mmetsp_data.keys():
-        # print item
-        organism = item[0]
+    for item in url_data.keys():
+        #print item
+        organism = item[0].replace("'","")
         sample = "_".join(item)
         org_seq_dir = basedir + organism + "/"
-        mmetsp_list = mmetsp_data[item]
+        mmetsp_list = url_data[item]
         for mmetsp in mmetsp_list:
             print mmetsp
-            assemblyfileslist = os.listdir(mmetsp_assemblies)
             for filename in assemblyfileslist:
-                if filename.startswith(mmetsp):
-                    if filename.endswith(".fixed.fa"):
-                        print "This is not the one you want."
-                    else:
-                        print "MMETSP assembly found:", filename
-                        reference_filename = filename
+		filename_data = filename.split(".")
+                if filename_data[0] == mmetsp:
+			if filename.endswith(".fa.fixed.fa"):
+                        	print "MMETSP assembly found:", filename
+                        	reference_filename = filename
             if reference_filename == "blank":
                 print "No MMETSP file found:", mmetsp
                 break
             else:
                 sra = item[1]
-                newdir = org_seq_dir + sra + "/"
+		
+		strain,organism_mmetsp,different,alt = get_strain(different,mmetsp,organism,mmetsp_data)
+                if alt == "blank":
+                	sample = organism+"_"+strain+"_"+sra+"_"+mmetsp
+               	else:
+                        sample = organism+"_"+strain+"_"+sra+"_"+mmetsp+"_alt_"+alt
+		newdir = org_seq_dir + sra + "/"
                 trinitydir = newdir + "trinity/"
                 transrate_dir = newdir + "transrate/"
-                transrate_reference_dir = newdir + "transrate_dib_v_ncgr_cds/"
+		transrate_reference_dir = newdir + "transrate_dib_v_ncgr_cds/"
                 clusterfunc.check_dir(transrate_reference_dir)
                 transrate_reverse_dir = newdir + "transrate_ncgr_cds_v_dib/"
                 clusterfunc.check_dir(transrate_reverse_dir)
-                trinity_fasta = trinitydir + sample + ".Trinity.fixed.fasta"
-                if os.path.isfile(trinity_fasta):
-                    print trinity_fasta
-                    fixed_mmetsp_ref = fix_fasta_reference(
-                        reference_filename, mmetsp_assemblies)
-                    transrate(transrate_reference_dir, sample, trinity_fasta,
-                              mmetsp_assemblies_dir, fixed_mmetsp_ref)
-                    transrate_reverse(
-                        transrate_reverse_dir, sample, trinity_fasta, mmetsp_assemblies_dir, fixed_mmetsp_ref)
-                else:
+                #trinity_fasta = trinitydir + sample + ".Trinity.fixed.fasta"
+                trinity_fasta = trinitydir + organism + "_" + sra + ".Trinity.fixed.fasta"
+		if os.path.isfile(trinity_fasta) == False:
                     print "Trinity failed:", newdir
                     trinity_fail.append(newdir)
-                transrate_assemblies_ref = transrate_reference_dir + sample + "/assemblies.csv"
-                transrate_reverse_assemblies = transrate_reverse_dir + sample + "/assemblies.csv"
-                print transrate_assemblies_ref
-                print transrate_reverse_assemblies
-                if os.path.isfile(transrate_assemblies_ref):
-                    data1 = parse_transrate_stats(transrate_assemblies_ref)
-                    data_frame1 = build_DataFrame(data_frame1, data1)
-                if os.path.isfile(transrate_reverse_assemblies):
-                    data2 = parse_transrate_stats(transrate_reverse_assemblies)
-                    data_frame2 = build_DataFrame(data_frame2, data2)
+		else:
+                	transrate_assemblies_ref = transrate_reference_dir + sample + "/assemblies.csv"
+                	transrate_reverse_assemblies = transrate_reverse_dir + sample + "/assemblies.csv"
+                	if os.path.isfile(transrate_assemblies_ref):
+                    		data1 = parse_transrate_stats(transrate_assemblies_ref)
+                    		data_frame1 = build_DataFrame(data_frame1, data1)
+			else:
+				transrate(transrate_reference_dir, sample, trinity_fasta, mmetsp_assemblies_dir, filename)				
+                	if os.path.isfile(transrate_reverse_assemblies):
+                    		data2 = parse_transrate_stats(transrate_reverse_assemblies)
+                    		data_frame2 = build_DataFrame(data_frame2, data2)
+			else:
+				transrate_reverse(transrate_reverse_dir, sample, trinity_fasta, mmetsp_assemblies_dir, filename)				
     print "This is the number of times Trinity failed:"
     print len(trinity_fail)
     print trinity_fail
     return data_frame1, data_frame2
-
 
 def get_assemblies_data(data_frame, transrate_dir):
     listofdirs = os.listdir(transrate_dir)
@@ -199,7 +244,6 @@ def get_assemblies_data(data_frame, transrate_dir):
         else:
             print "File missing:", transrate_assemblies
     return data_frame
-
 
 def get_ref_transrate(transrate_dir):
     listdirs = os.listdir(transrate_dir)
@@ -215,15 +259,19 @@ def get_ref_transrate(transrate_dir):
 
 basedir = "/mnt/scratch/ljcohen/mmetsp/"
 mmetsp_assemblies_dir = "/mnt/research/ged/lisa/mmetsp/imicrobe/cds/"
-datafiles = ["subsets/MMETSP_SRA_Run_Info_subset_msu1.csv", "subsets/MMETSP_SRA_Run_Info_subset_msu2.csv", "subsets/MMETSP_SRA_Run_Info_subset_msu3.csv", "subsets/MMETSP_SRA_Run_Info_subset_msu4.csv",
-             "subsets/MMETSP_SRA_Run_Info_subset_msu5.csv", "subsets/MMETSP_SRA_Run_Info_subset_msu6.csv", "subsets/MMETSP_SRA_Run_Info_subset_msu7.csv"]
+datafiles = ["SraRunInfo.csv"]
+mmetsp_file="/mnt/home/ljcohen/MMETSP/imicrobe/Callum_FINAL_biosample_ids.csv"
+mmetsp_data=get_mmetsp_data(mmetsp_file)
 
 data_frame1 = pd.DataFrame()
 data_frame2 = pd.DataFrame()
+
 for datafile in datafiles:
     url_data = get_data(datafile)
     print url_data
     data_frame1, data_frame2 = execute(
-        data_frame1, data_frame2, url_data, basedir, mmetsp_assemblies_dir)
-#data_frame1.to_csv("transrate_reference_scores_cds.csv")
-#data_frame2.to_csv("transrate_reverse_scores_cds.csv")
+        mmetsp_data, data_frame1, data_frame2, url_data, basedir, mmetsp_assemblies_dir)
+data_frame1.to_csv("transrate_reference_scores_cds.csv")
+data_frame2.to_csv("transrate_reverse_scores_cds.csv")
+print "Reference scores written: transrate_reference_scores_cds.csv"
+print "Reverse reference scores written: transrate_reverse_scores_cds.csv"

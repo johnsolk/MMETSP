@@ -13,24 +13,26 @@ import clusterfunc
 
 
 def get_data(thefile):
-    count = 0
-    url_data = {}
-    with open(thefile, "rU") as inputfile:
-        headerline = next(inputfile).split(',')
-        # print headerline
-        position_name = headerline.index("ScientificName")
-        position_reads = headerline.index("Run")
-        position_ftp = headerline.index("download_path")
+    count=0
+    url_data={}
+    with open(thefile,"rU") as inputfile:
+        headerline=next(inputfile).split(',')
+        #print headerline        
+        position_name=headerline.index("ScientificName")
+        position_reads=headerline.index("Run")
+        position_ftp=headerline.index("download_path")
+        position_MMETSP=headerline.index("SampleName")
         for line in inputfile:
-            line_data = line.split(',')
-            name = "_".join(line_data[position_name].split())
-            read_type = line_data[position_reads]
-            ftp = line_data[position_ftp]
-            name_read_tuple = (name, read_type)
-            print name_read_tuple
-            # check to see if Scientific Name and run exist
+            line_data=line.split(',')
+            MMETSP_id = line_data[position_MMETSP]
+            name="_".join(line_data[position_name].split())
+            read_type=line_data[position_reads]
+            ftp=line_data[position_ftp]
+            name_read_tuple=(name,read_type,MMETSP_id)
+            #print name_read_tuple
+            #check to see if Scientific Name and run exist
             if name_read_tuple in url_data.keys():
-                # check to see if ftp exists
+                #check to see if ftp exists
                 if ftp in url_data[name_read_tuple]:
                     print "url already exists:", ftp
                 else:
@@ -51,6 +53,10 @@ def check_empty(empty_files, file, sra):
 def check_trinity(assemblies,trinity_fail, trinity_file, sra):
     if os.path.isfile(trinity_file):
         print "Trinity completed successfully:", trinity_file
+	assemblydir = "/mnt/scratch/ljcohen/mmetsp_assemblies/"
+        #copy_string="cp "+trinity_fixed_fasta+" "+trinity_fasta_new
+        #copy_string="cp "+trinity_fasta_new+" "+assemblydir
+        #print copy_string	
 	assemblies.append(sra)
     else:
         print "Trinity needs to be run again:", trinity_file
@@ -105,7 +111,7 @@ def get_no_files(url_data):
     print len(no_files)
     print "Assemblies:"
     print len(assemblies)
-    return no_files
+    return trinity_fail,assemblies
 
 def download(url, newdir, newfile):
     urlstring = "wget -O " + newdir + newfile + " " + url
@@ -200,7 +206,7 @@ MINLEN:25 &> trim.{}.log
 			process_name="trim"
                         module_name_list=""
                         filename=sra
-                        clusterfunc.qsub_file(trimdir,process_name,module_name_list,filename,commands)
+                        #clusterfunc.qsub_file(trimdir,process_name,module_name_list,filename,commands)
         else:
                 j="""
 java -jar /mnt/home/ljcohen/bin/Trimmomatic-0.33/trimmomatic-0.33.jar PE \\
@@ -218,7 +224,7 @@ MINLEN:25 &> trim.{}.log
                 process_name="trim"
                 module_name_list=""
                 filename=sra
-                clusterfunc.qsub_file(trimdir,process_name,module_name_list,filename,commands)
+                #clusterfunc.qsub_file(trimdir,process_name,module_name_list,filename,commands)
 
 def make_orphans(trimdir,sra):
     # if os.path.isfile(trimdir+"orphans.fq.gz"):
@@ -251,16 +257,199 @@ def move_files(trimdir,sra):
         #               print "Files all here:",os.listdir(trimdir)
         return mv_string1,mv_string2
 
-def check_sra(url_data,no_files):
+def interleave_reads(trimdir, sra, interleavedir):
+    interleavefile = interleavedir + sra + ".trimmed.interleaved.fq"
+    if os.path.isfile(interleavefile):
+        print "already interleaved"
+    else:
+        interleave_string = "interleave-reads.py " + trimdir + sra + \
+            ".trim_1P.fq " + trimdir + sra + ".trim_2P.fq > " + interleavefile
+        print interleave_string
+        interleave_command = [interleave_string]
+        process_name = "interleave"
+        module_name_list = ["GNU/4.8.3", "khmer/2.0"]
+        filename = sra
+        clusterfunc.qsub_file(interleavedir, process_name,
+                              module_name_list, filename, interleave_command)
+
+def run_diginorm(diginormdir, interleavedir, trimdir, sra):
+    normalize_median_string = """
+normalize-by-median.py -p -k 20 -C 20 -M 4e9 \\
+--savegraph {}norm.C20k20.ct \\
+-u {}orphans.fq.gz \\
+{}*.fq
+""".format(diginormdir, trimdir, interleavedir)
+    normalize_median_command = [normalize_median_string]
+    process_name = "diginorm"
+    module_name_list = ["GNU/4.8.3", "khmer/2.0"]
+    filename = sra
+    clusterfunc.qsub_file(diginormdir, process_name,
+                          module_name_list, filename, normalize_median_command)
+
+def run_filter_abund(diginormdir, sra):
+    keep_dir = diginormdir + "qsub_files/"
+    filter_string = """
+filter-abund.py -V -Z 18 {}norm.C20k20.ct {}*.keep
+""".format(diginormdir, keep_dir)
+    extract_paired_string = extract_paired()
+    commands = [filter_string, extract_paired_string]
+    process_name = "filtabund"
+    module_name_list = ["GNU/4.8.3", "khmer/2.0"]
+    filename = sra
+    clusterfunc.qsub_file(diginormdir, process_name,
+                          module_name_list, filename, commands)
+
+def extract_paired():
+    extract_paired_string = """
+for file in *.abundfilt
+do
+        extract-paired-reads.py ${{file}}
+done
+""".format()
+    return extract_paired_string
+
+def combine_orphans(diginormdir):
+        diginorm_files_dir = diginormdir + "qsub_files/"
+        rename_orphans="""
+gzip -9c {}orphans.fq.gz.keep.abundfilt > {}orphans.keep.abundfilt.fq.gz
+for file in {}*.se
+do
+        gzip -9c ${{file}} >> {}orphans.keep.abundfilt.fq.gz
+done
+""".format(diginorm_files_dir,diginormdir,diginorm_files_dir,diginormdir)
+        return rename_orphans
+
+def rename_files(trinitydir,diginormdir,diginormfile,SRA):
+# takes diginormfile in,splits reads and put into newdir
+        rename_orphans = combine_orphans(diginormdir)
+        split_paired = "split-paired-reads.py -d "+diginormdir+" "+diginormfile
+        rename_string1 = "cat "+diginormdir+"*.1 > "+trinitydir+SRA+".left.fq"
+        rename_string2 = "cat "+diginormdir+"*.2 > "+trinitydir+SRA+".right.fq"
+        rename_string3 = "gunzip -c "+diginormdir+"orphans.keep.abundfilt.fq.gz >> "+trinitydir+SRA+".left.fq"
+        commands=[rename_orphans,split_paired,rename_string1,rename_string2,rename_string3]
+        process_name="rename"
+        module_name_list=["GNU/4.8.3","khmer/2.0"]
+        filename=SRA
+        clusterfunc.qsub_file(diginormdir,process_name,module_name_list,filename,commands)
+
+def run_trinity(trinitydir,SRA):
+        trinity_command="""
+set -x
+# stops execution if there is an error
+set -e
+if [ -f {}trinity_out/Trinity.fasta ]; then exit 0 ; fi
+#if [ -d {}trinity_out ]; then mv {}trinity_out_dir {}trinity_out_dir0 || true ; fi
+
+Trinity --left {}{}.left.fq \\
+--right {}{}.right.fq --output {}trinity_out --seqType fq --JM 20G --CPU 16
+
+""".format(trinitydir,trinitydir,trinitydir,trinitydir,trinitydir,SRA,trinitydir,SRA,trinitydir)
+        commands=[trinity_command]
+        process_name="trinity"
+        module_name_list=["trinity/20140413p1"]
+        filename=SRA
+        #clusterfunc.qsub_file(trinitydir,process_name,module_name_list,filename,commands)
+
+
+def fix_fasta(trinity_fasta,trinity_dir,sample):
+        os.chdir(trinity_dir)
+        trinity_out=trinity_dir+sample+".Trinity.fixed.fasta"
+        fix="""
+sed 's_|_-_g' {} > {}
+""".format(trinity_fasta,trinity_out)
+        #s=subprocess.Popen(fix,shell=True)
+        #print fix
+        #s.wait()
+        os.chdir("/mnt/home/ljcohen/MMETSP/")
+        return trinity_out
+
+def get_strain(different,mmetsp_id,organism,mmetsp_data):
+        alt = "blank"
+        if mmetsp_id in mmetsp_data:
+                name_info = mmetsp_data[mmetsp_id]
+                #print name_info]
+                strain = name_info[1]
+                if "'" in strain:
+                        strain = strain.replace("'","")
+                if "/" in strain:
+                        #print strain
+                        strain = strain.replace("/","-")
+                        #print strain
+                if ")" in strain:
+                        strain = strain.replace(")","-")
+                if "(" in strain:
+                        strain = strain.replace("(","-")
+                if "=" in strain:
+                        strain = strain.replace("=","-")
+                if ":" in strain:
+                        strain = strain.replace(":","-")
+                organism_mmetsp = name_info[0]
+                if organism != organism_mmetsp:
+                        organism_mmetsp_data = organism_mmetsp.split("_")
+                        organism_data = organism.split("_")
+                        #print organism_mmetsp_data
+                        #print organism_data
+                        if len(organism_mmetsp_data) >= 2:
+                                if len(organism_data) >= 2:
+                                        if organism != "uncultured_eukaryote":
+                                                #print organism_data[1][0:3]
+                                                #print organism_mmetsp_data[1]
+                                                if organism_mmetsp_data[0] != organism_mmetsp_data[1]:
+                                                        if "\x8e" in organism_mmetsp_data[1]:
+                                                                organism_mmetsp_data[1] = organism_mmetsp_data[1].replace("\x8e","")
+                                                        elif organism_mmetsp_data[1].lower().startswith(organism_data[1].lower()) == False:
+                                                                #print "Species are different - imicrobe:"+organism_mmetsp+" SRA:"+organism
+                                                                different_tuple = (organism_mmetsp,organism)
+                                                                different.append(different_tuple)
+                                                                alt = organism_mmetsp
+                                                        elif organism_mmetsp.startswith(organism[0:3]) == False:
+                                                                different_tuple = (organism_mmetsp,organism)
+                                                                different.append(different_tuple)
+                                                                #print "Different imicrobe: "+organism_mmetsp+" SRA: "+organism
+                                                                alt = organism_mmetsp
+                return strain,organism_mmetsp,different,alt
+        else:
+                print "MMETSP id not in mmetsp_data:",mmetsp_id
+
+def get_mmetsp_data(mmetsp_file):
+    mmetsp_data={}
+    with open(mmetsp_file,"rU") as inputfile:
+        headerline=next(inputfile).split(',')
+        #print headerline        
+        position_mmetsp_id = headerline.index("SAMPLE_NAME")
+        position_organism = headerline.index("ORGANISM")
+        position_strain = headerline.index("STRAIN")
+        for line in inputfile:
+            line_data=line.split(',')
+            MMETSP_id = line_data[position_mmetsp_id]
+            if MMETSP_id.endswith("C"):
+                MMETSP_id = MMETSP_id[:-1]
+            name="_".join(line_data[position_organism].split())
+            strain = "-".join(line_data[position_strain].split())
+            name_id_tuple=(name,strain)
+            #print name_id_tuple
+            #check to see if Scientific Name and run exist
+            mmetsp_data[MMETSP_id] = name_id_tuple
+        return mmetsp_data
+
+
+def check_sra(url_data,no_files,mmetsp_data):
+	different = []
 	for item in url_data:
-                organism = item[0].replace("'","")
+		organism = item[0].replace("'","")
                 seqtype = item[1]
-                org_seq_dir = basedir + organism + "/"
+                mmetsp_id = item[2].replace("'","")
+		strain,organism_mmetsp,different,alt = get_strain(different,mmetsp_id,organism,mmetsp_data)
+		org_seq_dir = basedir + organism + "/"
                 clusterfunc.check_dir(org_seq_dir)
                 url_list = url_data[item]
                 for url in url_list:
 			command_list = []
                         sra = basename(urlparse(url).path)
+			if alt == "blank":
+                                sample = organism+"_"+strain+"_"+sra+"_"+mmetsp_id
+                        else:
+                                sample = organism+"_"+strain+"_"+sra+"_"+mmetsp_id+"_alt_"+alt
                         newdir = org_seq_dir + sra + "/"
 			if sra in no_files:
 				if os.path.isdir(newdir):
@@ -295,16 +484,85 @@ def check_sra(url_data,no_files):
 							interleavedir=newdir+"interleave/"
                 					clusterfunc.check_dir(trimdir)
                 					clusterfunc.check_dir(interleavedir)
-                					file1=newdir+sra+"_1.fastq"
+							diginormdir = newdir+"diginormdir/"
+							clusterfunc.check_dir(diginormdir)
+							trinitydir = newdir + "trinity/"
+							clusterfunc.check_dir(trinitydir)
+							diginormfile=diginormdir+"qsub_files/"+sra+".trimmed.interleaved.fq.keep.abundfilt.pe"
+                					trinity_fasta = trinitydir+"trinity_out/"+"Trinity.fasta"
+							#trinity_fasta_new =trinitydir+sample+".Trinity.fixed.fasta"
+							trinity_fasta_new = trinitydir + organism + "_" + sra + ".Trinity.fixed.fasta"
+							file1=newdir+sra+"_1.fastq"
                 					file2=newdir+sra+"_2.fastq"
+							assemblydir = "/mnt/scratch/ljcohen/mmetsp_assemblies/"
 							if os.path.isfile(file1) and os.path.isfile(file2):
                         					print file1
                         					print file2
 								run_trimmomatic_TruSeq(trimdir,file1,file2,sra)
-							#run_move_files(trimdir,sra)
+							file1_trim = trimdir+sra+".trim_1P.fq"
+        						file2_trim = trimdir+sra+".trim_2P.fq"
+							if os.path.isfile(file1_trim) and os.path.isfile(file2):
+								#interleave_reads(trimdir, sra, interleavedir)
+								#run_diginorm(diginormdir,interleavedir,trimdir,sra)
+								#run_filter_abund(diginormdir,interleavedir,trimdir,sra)
+								#rename_files(trinitydir,diginormdir,diginormfile,sra)
+								if os.path.isfile(trinity_fasta) == False:
+									run_trinity(trinitydir,sra)
+								else:
+									print "Trinity completed!",trinity_fasta
+									trinity_fixed_fasta = fix_fasta(trinity_fasta,trinitydir,sra)
+									#copy_string="cp "+trinity_fixed_fasta+" "+trinity_fasta_new
+                                					copy_string="cp "+trinity_fasta_new+" "+assemblydir
+                                					print copy_string
+                                					#s=subprocess.Popen(copy_string,shell=True)
+                                					#s.wait()
+
+
+def check_assemblies(url_data,assemblies,mmetsp_data):
+        different = []
+        for item in url_data:
+                organism = item[0].replace("'","")
+                seqtype = item[1]
+                mmetsp_id = item[2].replace("'","")
+                strain,organism_mmetsp,different,alt = get_strain(different,mmetsp_id,organism,mmetsp_data)
+                org_seq_dir = basedir + organism + "/"
+                clusterfunc.check_dir(org_seq_dir)
+                url_list = url_data[item]
+                for url in url_list:
+                        command_list = []
+                        sra = basename(urlparse(url).path)
+                        if alt == "blank":
+                                sample = organism+"_"+strain+"_"+sra+"_"+mmetsp_id
+                        else:
+                                sample = organism+"_"+strain+"_"+sra+"_"+mmetsp_id+"_alt_"+alt
+                        newdir = org_seq_dir + sra + "/"
+                        if sra in assemblies:
+                        	trinitydir = newdir + "trinity/"
+                                #trinity_fasta = trinitydir+"trinity_out/"+"Trinity.fasta"
+                                trinity_fasta_new =trinitydir+sample+".Trinity.fixed.fasta"
+				#trinity_fixed_fasta = fix_fasta(trinity_fasta,trinitydir,sra)
+                                trinity_fasta_old = trinitydir + organism + "_" + sra + ".Trinity.fixed.fasta"
+                                assemblydir = "/mnt/scratch/ljcohen/mmetsp_assemblies/"
+                                if os.path.isfile(trinity_fasta_old) == True:
+                                        #trinity_fixed_fasta = fix_fasta(trinity_fasta,trinitydir,sra)
+                                        #copy_string="cp "+trinity_fasta_old+" "+trinity_fasta_new
+                                        copy_string="cp "+trinity_fasta_new+" "+assemblydir
+                                        print copy_string
+                                        #s=subprocess.Popen(copy_string,shell=True)
+                                        #s.wait()
+				else:
+					print "Trinity finished but don't have fixed version to copy."
+
 basedir = "/mnt/scratch/ljcohen/mmetsp/"
 datafile = "../SraRunInfo.csv"
+mmetsp_file="/mnt/home/ljcohen/MMETSP/imicrobe/Callum_FINAL_biosample_ids.csv"
+mmetsp_data=get_mmetsp_data(mmetsp_file)
 url_data = get_data(datafile)
 print url_data
-no_files = get_no_files(url_data)
-check_sra(url_data,no_files)
+no_files,assemblies = get_no_files(url_data)
+check_sra(url_data,no_files,mmetsp_data)
+print len(assemblies)
+check_assemblies(url_data,assemblies,mmetsp_data)
+rename_string = "for file in /mnt/scratch/ljcohen/mmetsp_assemblies/*; do mv $file ${file/.fixed.fasta/.fasta}; done"
+#s=subprocess.Popen(rename_string,shell=True)
+#s.wait()

@@ -69,7 +69,6 @@ filter-abund.py -V -Z 18 {}norm.C20k20.ct {}*.keep
     clusterfunc.qsub_file(diginormdir, process_name,
                           module_name_list, filename, commands)
 
-
 def run_streaming_diginorm(trimdir, SRA, diginormdir):
     # from Jessica's streaming protocol:
     diginormfile = diginormdir + SRA + ".stream.diginorm.sh"
@@ -92,7 +91,6 @@ def run_streaming_diginorm(trimdir, SRA, diginormdir):
     clusterfunc.qsub_file(diginormdir, process_name,
                           module_load_list, SRA, streaming_diginorm_command)
 
-
 def extract_paired():
     extract_paired_string = """
 for file in *.abundfilt
@@ -101,7 +99,6 @@ do
 done
 """.format()
     return extract_paired_string
-
 
 def run_diginorm(diginormdir, interleavedir, trimdir, sra):
     normalize_median_string = """
