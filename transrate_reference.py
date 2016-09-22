@@ -117,7 +117,6 @@ def get_strain(different,mmetsp_id,organism,mmetsp_data):
 		print mmetsp_data
 		print "MMETSP id not in mmetsp_data:",mmetsp_id
 	
-
 def transrate(transrate_dir, sample, trinity_fasta, mmetsp_assemblies_dir, filename):
     transrate_command = """
 transrate -o {}{} \\
@@ -126,7 +125,7 @@ transrate -o {}{} \\
 --threads 8
 """.format(transrate_dir, sample, trinity_fasta, mmetsp_assemblies_dir,filename)
     commands = [transrate_command]
-    process_name = "trans_ref"
+    process_name = "trans_ref_nt"
     module_name_list = ""
     filename = sample
     #clusterfunc.qsub_file(transrate_dir,process_name,module_name_list,filename,commands)
@@ -140,13 +139,15 @@ transrate -o {}{} \\
 """.format(transrate_dir, sample, mmetsp_assemblies_dir,filename,trinity_fasta)
     print "This is the reverse transrate command:"
     commands = [transrate_command]
-    process_name = "trans_ref_reverse"
+    process_name = "trans_ref_reverse_nt"
     module_name_list = ""
     filename = sample
     #clusterfunc.qsub_file(transrate_dir,process_name,module_name_list,filename,commands)
 
-def parse_transrate_stats(transrate_assemblies):
+def parse_transrate_stats(transrate_assemblies,sra,mmetsp):
     data = pd.DataFrame.from_csv(transrate_assemblies, header=0, sep=',')
+    data['SampleName'] = mmetsp
+    data['Run'] = sra
     return data
 
 def build_DataFrame(data_frame, transrate_data):
@@ -219,12 +220,12 @@ def execute(mmetsp_data, data_frame1, data_frame2, url_data, basedir, mmetsp_ass
                 	transrate_assemblies_ref = transrate_reference_dir + sample + "/assemblies.csv"
                 	transrate_reverse_assemblies = transrate_reverse_dir + sample + "/assemblies.csv"
                 	if os.path.isfile(transrate_assemblies_ref):
-                    		data1 = parse_transrate_stats(transrate_assemblies_ref)
+                    		data1 = parse_transrate_stats(transrate_assemblies_ref,sra,mmetsp)
                     		data_frame1 = build_DataFrame(data_frame1, data1)
 			else:
 				transrate(transrate_reference_dir, sample, trinity_fasta, mmetsp_assemblies_dir, filename)				
                 	if os.path.isfile(transrate_reverse_assemblies):
-                    		data2 = parse_transrate_stats(transrate_reverse_assemblies)
+                    		data2 = parse_transrate_stats(transrate_reverse_assemblies,sra,mmetsp)
                     		data_frame2 = build_DataFrame(data_frame2, data2)
 			else:
 				transrate_reverse(transrate_reverse_dir, sample, trinity_fasta, mmetsp_assemblies_dir, filename)				
@@ -273,5 +274,5 @@ for datafile in datafiles:
         mmetsp_data, data_frame1, data_frame2, url_data, basedir, mmetsp_assemblies_dir)
 data_frame1.to_csv("transrate_reference_scores_cds.csv")
 data_frame2.to_csv("transrate_reverse_scores_cds.csv")
-print "Reference scores written: transrate_reference_scores_cds.csv"
-print "Reverse reference scores written: transrate_reverse_scores_cds.csv"
+print "Reference scores written: transrate_reference_scores_nt.csv"
+print "Reverse reference scores written: transrate_reverse_scores_nt.csv"
