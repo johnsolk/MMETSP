@@ -207,9 +207,9 @@ def execute(mmetsp_data, data_frame1, data_frame2, url_data, basedir, mmetsp_ass
 		newdir = org_seq_dir + sra + "/"
                 trinitydir = newdir + "trinity/"
                 transrate_dir = newdir + "transrate/"
-		transrate_reference_dir = newdir + "transrate_dib_v_ncgr_cds/"
+		transrate_reference_dir = newdir + "transrate_dib_v_ncgr_nt/"
                 clusterfunc.check_dir(transrate_reference_dir)
-                transrate_reverse_dir = newdir + "transrate_ncgr_cds_v_dib/"
+                transrate_reverse_dir = newdir + "transrate_ncgr_nt_v_dib/"
                 clusterfunc.check_dir(transrate_reverse_dir)
                 #trinity_fasta = trinitydir + sample + ".Trinity.fixed.fasta"
                 trinity_fasta = trinitydir + organism + "_" + sra + ".Trinity.fixed.fasta"
@@ -262,7 +262,7 @@ def get_ref_transrate(transrate_dir):
             print "Does not exist:", newfile
 
 basedir = "/mnt/scratch/ljcohen/mmetsp/"
-mmetsp_assemblies_dir = "/mnt/research/ged/lisa/mmetsp/imicrobe/cds/"
+mmetsp_assemblies_dir = "/mnt/research/ged/lisa/mmetsp/imicrobe/nt/"
 datafiles = ["SraRunInfo.csv"]
 mmetsp_file="/mnt/home/ljcohen/MMETSP/imicrobe/Callum_FINAL_biosample_ids.csv"
 mmetsp_data=get_mmetsp_data(mmetsp_file)
@@ -275,7 +275,7 @@ for datafile in datafiles:
     print url_data
     data_frame1, data_frame2 = execute(
         mmetsp_data, data_frame1, data_frame2, url_data, basedir, mmetsp_assemblies_dir)
-data_frame1.to_csv("transrate_reference_scores_cds.csv")
-data_frame2.to_csv("transrate_reverse_scores_cds.csv")
+data_frame1.to_csv("transrate_reference_scores_nt.csv")
+data_frame2.to_csv("transrate_reverse_scores_nt.csv")
 print "Reference scores written: transrate_reference_scores_nt.csv"
 print "Reverse reference scores written: transrate_reverse_scores_nt.csv"
