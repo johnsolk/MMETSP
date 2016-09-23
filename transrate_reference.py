@@ -223,15 +223,15 @@ def execute(mmetsp_data, data_frame1, data_frame2, url_data, basedir, mmetsp_ass
                     		data1 = parse_transrate_stats(transrate_assemblies_ref,sra,mmetsp)
                     		data_frame1 = build_DataFrame(data_frame1, data1)
 			else:
-			
-				transrate(transrate_reference_dir, sample, trinity_fasta, mmetsp_assemblies_dir, reference_filename)				
+				print "Failed."
+				#transrate(transrate_reference_dir, sample, trinity_fasta, mmetsp_assemblies_dir, reference_filename)				
                 	
 			if os.path.isfile(transrate_reverse_assemblies):
                     		data2 = parse_transrate_stats(transrate_reverse_assemblies,sra,mmetsp)
                     		data_frame2 = build_DataFrame(data_frame2, data2)
 			else:
-			
-				transrate_reverse(transrate_reverse_dir, sample, trinity_fasta, mmetsp_assemblies_dir, reference_filename)				
+				print "Reverse failed."
+				#transrate_reverse(transrate_reverse_dir, sample, trinity_fasta, mmetsp_assemblies_dir, reference_filename)				
     print "This is the number of times Trinity failed:"
     print len(trinity_fail)
     print trinity_fail
