@@ -12,7 +12,6 @@ import glob
 import clusterfunc
 import pandas as pd
 
-
 def get_data(thefile):
     count = 0
     url_data = {}
@@ -48,23 +47,23 @@ busco -m trans -in {} \
     process_name = "busco"
     module_name_list = ""
     filename = sra
-    clusterfunc.qsub_file(busco_dir, process_name,
-                          module_name_list, filename, commands)
+    #clusterfunc.qsub_file(busco_dir, process_name,
+     #                     module_name_list, filename, commands)
 
 
 def parse_busco_stats(busco_filename, sample):
-    print busco_filename
     count = 0
     important_lines = [7, 10, 11, 12]
     busco_dict = {}
     busco_dict[sample] = []
-    if os.stat(busco_filename).st_size != 0:
-        with open(busco_filename) as buscofile:
-            for line in buscofile:
-                count += 1
-                line_data = line.split()
-                if count in important_lines:
-                    busco_dict[sample].append(int(line_data[0]))
+    if os.path.isfile(busco_filename):
+    	if os.stat(busco_filename).st_size != 0:
+        	with open(busco_filename) as buscofile:
+            		for line in buscofile:
+                		count += 1
+                		line_data = line.split()
+                		if count in important_lines:
+                    			busco_dict[sample].append(int(line_data[0]))
     busco_data = pd.DataFrame.from_dict(busco_dict, orient='index')
     busco_data.columns = ["Complete", "Fragmented", "Missing", "Total"]
     busco_data['Complete_BUSCO_perc'] = busco_data[
@@ -84,30 +83,36 @@ def execute(data_frame, url_data, basedir):
     count = 0
     # construct an empty pandas dataframe to add on each assembly.csv to
     for item in url_data.keys():
-        # print item
-        organism = item[0]
-        sample = "_".join(item)
+        print item
+        organism = item[0].replace("'","")
+	print organism
+        sample = "_".join(item).replace("'","")
         org_seq_dir = basedir + organism + "/"
+	print org_seq_dir
         url_list = url_data[item]
         for url in url_list:
             sra = basename(urlparse(url).path)
             newdir = org_seq_dir + sra + "/"
             trimdir = newdir + "trim/"
             trinitydir = newdir + "trinity/"
-            busco_dir = newdir + "busco/qsub_files/"
+	    busco_dir = newdir + "busco/"
+            busco_out_dir = newdir + "busco/qsub_files/"
             clusterfunc.check_dir(busco_dir)
-            trinity_fasta = trinitydir + sample + ".Trinity.fixed.fasta"
-            busco_file = busco_dir + "run_" + sample + \
+            clusterfunc.check_dir(busco_out_dir)
+	    #trinity_fasta = trinitydir + sample + ".Trinity.fixed.fasta"
+            trinity_fasta = trinitydir + organism + "_" + sra + ".Trinity.fixed.fasta"
+	    busco_file = busco_out_dir + "run_" + sample + \
                 ".euk/short_summary_" + sample + ".euk"
-            print busco_file
             if os.path.isfile(busco_file):
+	    #if os.path.isfile(trinity_fasta):
                 count += 1
-                # run_busco(busco_dir,trinity_fasta,sample,sra)
+                #run_busco(busco_dir,trinity_fasta,sample,sra)
                 data = parse_busco_stats(busco_file, sample)
                 data_frame = build_DataFrame(data_frame, data)
             else:
-                print "Trinity failed:", trinity_fasta
-                trinity_fail.append(newdir)
+                #print "Trinity failed:", trinity_fasta
+                #trinity_fail.append(newdir)
+		print "BUSCO has not finished:", busco_file
     print "This is the number of Trinity de novo transcriptome assemblies:"
     print count
     print "This is the number of times Trinity failed:"
@@ -116,12 +121,9 @@ def execute(data_frame, url_data, basedir):
     return data_frame
 
 basedir = "/mnt/scratch/ljcohen/mmetsp/"
-datafiles = ["MMETSP_SRA_Run_Info_subset_msu1.csv", "MMETSP_SRA_Run_Info_subset_msu2.csv", "MMETSP_SRA_Run_Info_subset_msu3.csv", "MMETSP_SRA_Run_Info_subset_msu4.csv",
-             "MMETSP_SRA_Run_Info_subset_msu5.csv", "MMETSP_SRA_Run_Info_subset_msu6.csv", "MMETSP_SRA_Run_Info_subset_msu7.csv"]
-
 data_frame = pd.DataFrame()
-for datafile in datafiles:
-    url_data = get_data(datafile)
-    print url_data
-    data_frame = execute(data_frame, url_data, basedir)
+datafile = "SraRunInfo.csv"    
+url_data = get_data(datafile)
+print url_data
+data_frame = execute(data_frame, url_data, basedir)
 data_frame.to_csv("busco_scores.csv")

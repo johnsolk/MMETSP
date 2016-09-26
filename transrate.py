@@ -52,23 +52,24 @@ sed 's_|_-_g' {} > {}
 
 
 def transrate(trinitydir, transrate_dir, transrate_out, trinity_fasta, sample, trimdir, sra):
-    # transrate_command="""
-    # transrate -o {} --assembly {}
-    #""".format(transrate_out,trinity_fasta)
-    transrate_command = """
-transrate --assembly={}{}.Trinity.fixed.fa --threads=27 \
+    trim_1P = trimdir + sra + ".trim_1P.fq"
+    trim_2P = trimdir + sra + ".trim_2P.fq"
+    if os.path.isfile(trim_1P) and os.path.isfile(trim_2P):
+    	transrate_command = """
+transrate --assembly={} --threads=27 \
 --left={}{}.trim_1P.fq \
 --right={}{}.trim_2P.fq \
 --output={}
-""".format(trinitydir, sample, trimdir, sra, trimdir, sra, transrate_out)
-    print transrate_command
-    commands = [transrate_command]
-    process_name = "transrate"
-    module_name_list = ""
-    filename = sra
-    clusterfunc.qsub_file(transrate_dir, process_name,
-                          module_name_list, filename, commands)
-
+""".format(trinity_fasta, trimdir, sra, trimdir, sra, transrate_out)
+    	print transrate_command
+    	commands = [transrate_command]
+    	process_name = "transrate"
+   	module_name_list = ""
+    	filename = sra
+    	#clusterfunc.qsub_file(transrate_dir, process_name,
+    #                      module_name_list, filename, commands)
+    else:
+	print "trimfiles not present:",trim_1P,trim_2P
 
 def parse_transrate_stats(transrate_assemblies):
     print transrate_assemblies
@@ -76,13 +77,11 @@ def parse_transrate_stats(transrate_assemblies):
         data = pd.DataFrame.from_csv(transrate_assemblies, header=0, sep=',')
         return data
 
-
 def build_DataFrame(data_frame, transrate_data):
     # columns=["n_bases","gc","gc_skew","mean_orf_percent"]
     frames = [data_frame, transrate_data]
     data_frame = pd.concat(frames)
     return data_frame
-
 
 def execute(data_frame, url_data, basedir):
     trinity_fail = []
@@ -90,31 +89,32 @@ def execute(data_frame, url_data, basedir):
     # construct an empty pandas dataframe to add on each assembly.csv to
     for item in url_data.keys():
         # print item
-        organism = item[0]
-        sample = "_".join(item)
+        organism = item[0].replace("'","")
+        sample = "_".join(item).replace("'","")
         org_seq_dir = basedir + organism + "/"
         url_list = url_data[item]
         for url in url_list:
             sra = basename(urlparse(url).path)
             newdir = org_seq_dir + sra + "/"
             trimdir = newdir + "trim/"
-            trinitydir = newdir + "trinity/trinity_out/"
-            transrate_dir = newdir + "transrate/"
+            #trinitydir = newdir + "trinity/trinity_out/"
+            trinitydir = newdir + "trinity/"
+	    transrate_dir = newdir + "transrate/"
             clusterfunc.check_dir(transrate_dir)
-            trinity_fasta = trinitydir + "Trinity.fasta"
+            trinity_fasta = trinitydir + organism + "_" + sra + ".Trinity.fixed.fasta"
             transrate_out = transrate_dir + "transrate_out." + sample + "/"
+	    transrate_assemblies = transrate_out + "assemblies.csv"
             if os.path.isfile(trinity_fasta):
-                # transrate(dammit_dir)
                 # print transrate_out
-                count += 1
-                # fixed_trinity=fix_fasta(trinity_fasta,trinitydir,sample)
-                # transrate(trinitydir,transrate_dir,transrate_out,trinity_fasta,sample,trimdir,sra)
-                transrate_assemblies = transrate_out + "assemblies.csv"
+                count += 1 
+		# fixed_trinity=fix_fasta(trinity_fasta,trinitydir,sample)
                 if os.path.isfile(transrate_assemblies):
                     data = parse_transrate_stats(transrate_assemblies)
                     data_frame = build_DataFrame(data_frame, data)
                 else:
-                    print "Transrate did not complete:", transrate_assemblies
+                    print "Transrate still needs to run:", transrate_assemblies
+		    transrate(trinitydir,transrate_dir,transrate_out,trinity_fasta,sample,trimdir,sra)
+                    transrate_assemblies = transrate_out + "assemblies.csv"
             else:
                 print "Trinity failed:", trinity_fasta
                 trinity_fail.append(newdir)
@@ -126,12 +126,9 @@ def execute(data_frame, url_data, basedir):
     return data_frame
 
 basedir = "/mnt/scratch/ljcohen/mmetsp/"
-datafiles = ["MMETSP_SRA_Run_Info_subset_msu1.csv", "MMETSP_SRA_Run_Info_subset_msu2.csv", "MMETSP_SRA_Run_Info_subset_msu3.csv", "MMETSP_SRA_Run_Info_subset_msu4.csv",
-             "MMETSP_SRA_Run_Info_subset_msu5.csv", "MMETSP_SRA_Run_Info_subset_msu6.csv", "MMETSP_SRA_Run_Info_subset_msu7.csv"]
-
+datafile = "SraRunInfo.csv"
 data_frame = pd.DataFrame()
-for datafile in datafiles:
-    url_data = get_data(datafile)
-    print url_data
-    data_frame = execute(data_frame, url_data, basedir)
+url_data = get_data(datafile)
+print url_data
+data_frame = execute(data_frame, url_data, basedir)
 data_frame.to_csv("transrate_scores.csv")
