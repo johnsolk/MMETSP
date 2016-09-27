@@ -44,7 +44,7 @@ def get_data(thefile):
 # run trimmomatic
 
 
-def run_trimmomatic_TruSeq(trimdir, file1, file2, sra):
+def run_trimmomatic_TruSeq(missing,trimdir, file1, file2, sra):
 	bash_filename=trimdir+sra+".trim.TruSeq.sh"
 	clusterfunc.check_dir(trimdir+"qsub_files/")
 	listoffile = os.listdir(trimdir+"qsub_files/")
@@ -61,39 +61,41 @@ def run_trimmomatic_TruSeq(trimdir, file1, file2, sra):
 		if len(trim_complete)!=0:
 			print "Already trimmed:",matching
 		else:
+			missing.append(trimdir)
 			j="""
-java - jar / mnt / home / ljcohen / bin / Trimmomatic - 0.33 / trimmomatic - 0.33.jar PE \\
-- baseout {}.trim.fq \\
+java -jar /mnt/home/ljcohen/bin/Trimmomatic-0.33/trimmomatic-0.33.jar PE \\
+-baseout {}.trim.fq \\
 {} {} \\
-ILLUMINACLIP: / mnt / home / ljcohen / bin / Trimmomatic - 0.33 / adapters / combined.fa: 2: 40: 15 \\
-SLIDINGWINDOW: 4: 2 \\
-LEADING: 2 \\
-TRAILING: 2 \\
-MINLEN: 25 & > trim.{}.log
+ILLUMINACLIP:/mnt/home/ljcohen/bin/Trimmomatic-0.33/adapters/combined.fa:2:40:15 \\
+SLIDINGWINDOW:4:2 \\
+LEADING:2 \\
+TRAILING:2 \\
+MINLEN:25 &> trim.{}.log
 """.format(sra,file1,file2,sra)
 			orphan_string=make_orphans(trimdir,sra)
 			commands = [j,orphan_string]
         		process_name="trim"
         		module_name_list=""
         		filename=sra
-        		clusterfunc.qsub_file(trimdir,process_name,module_name_list,filename,commands)
+        		#clusterfunc.qsub_file(trimdir,process_name,module_name_list,filename,commands)
 	else:
         	j="""
-java - jar / mnt / home / ljcohen / bin / Trimmomatic - 0.33 / trimmomatic - 0.33.jar PE \\
+java -jar /mnt/home/ljcohen/bin/Trimmomatic-0.33/trimmomatic-0.33.jar PE \\
 -baseout {}.trim.fq \\
 {} {} \\
-ILLUMINACLIP: / mnt / home / ljcohen / bin / Trimmomatic - 0.33 / adapters / combined.fa: 2: 40: 15 \\
-SLIDINGWINDOW: 4: 2 \\
-LEADING: 2 \\
-TRAILING: 2 \\
-MINLEN: 25 & > trim.{}.log
+ILLUMINACLIP:/mnt/home/ljcohen/bin/Trimmomatic-0.33/adapters/combined.fa:2:40:15 \\
+SLIDINGWINDOW:4:2 \\
+LEADING:2 \\
+TRAILING:2 \\
+MINLEN:25 &> trim.{}.log
 """.format(sra,file1,file2,sra)
                 orphan_string=make_orphans(trimdir,sra)
                 commands = [j,orphan_string]
                 process_name="trim"
                 module_name_list=""
                 filename=sra
-                clusterfunc.qsub_file(trimdir,process_name,module_name_list,filename,commands)
+                #clusterfunc.qsub_file(trimdir,process_name,module_name_list,filename,commands)
+	return missing
 
 def make_orphans(trimdir,sra):
     # if os.path.isfile(trimdir+"orphans.fq.gz"):
@@ -106,7 +108,7 @@ def make_orphans(trimdir,sra):
 	file2 = trimdir+"qsub_files/"+sra+".trim_2U.fq"
 	orphanlist=file1 + " " + file2
     	orphan_string="gzip -9c "+orphanlist+" > "+trimdir+"orphans.fq.gz"
-    	print orphan_string
+    	#print orphan_string
     	# s=subprocess.Popen(orphan_string,shell=True)
     	# s.wait()
 	return orphan_string
@@ -137,7 +139,7 @@ def run_move_files(trimdir,sra):
         process_name="move"
         module_name_list=""
         filename=sra
-        clusterfunc.qsub_file(trimdir,process_name,module_name_list,filename,commands)	
+        #clusterfunc.qsub_file(trimdir,process_name,module_name_list,filename,commands)	
 
 def check_files(trimdir,sra):
 	file1 = trimdir+sra+".trim_1P.fq"
@@ -149,8 +151,9 @@ def check_files(trimdir,sra):
 			print "Still waiting:",trimdir
 
 def execute(url_data,datadir):
+    missing = []
     for item in url_data.keys():
-	organism=item[0]
+	organism=item[0].replace("'","")
 	org_seq_dir=datadir+organism+"/"
 	url_list=url=url_data[item]
 	for url in url_list:
@@ -162,15 +165,16 @@ def execute(url_data,datadir):
 		clusterfunc.check_dir(interleavedir)
 		file1=newdir+sra+"_1.fastq"
 		file2=newdir+sra+"_2.fastq"
-		if os.path.isfile(file1) and os.path.isfile(file2):
-			print file1
-			print file2
-		# run_trimmomatic_TruSeq(trimdir,file1,file2,sra)
-		run_move_files(trimdir,sra)
+		#if os.path.isfile(file1) and os.path.isfile(file2):
+		#	print file1
+		#	print file2
+		run_trimmomatic_TruSeq(missing,trimdir,file1,file2,sra)
+		#run_move_files(trimdir,sra)
 		# check_files(trimdir,sra)
 		# else:
 		#	print "Files do not exist:",file1,file2 	
-
+    print "Missing trimmed:",len(missing)
+    print missing
 
 datafile="SraRunInfo.csv"
 datadir="/mnt/scratch/ljcohen/mmetsp/"

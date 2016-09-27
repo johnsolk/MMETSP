@@ -61,6 +61,7 @@ def trim_table(sample_dictionary):
 
 def execute(url_data):
 	sample_dictionary = {}
+	missing = []
         for item in url_data:
                 organism = item[0].replace("'","")
                 seqtype = item[1]
@@ -72,14 +73,27 @@ def execute(url_data):
                         sra = basename(urlparse(url).path)
                         newdir = org_seq_dir + sra + "/"
 			trimdir = newdir + "trim/qsub_files/"
-			trim_out_file = trimdir + "trim." + sra + ".log"
-			if os.path.isfile(trim_out_file):
-				print trim_out_file
-				sample_dictionary=get_sample_dictionary(sample_dictionary,trim_out_file,sra)
-			else:
-				print "No trim out log available:",trim_out_file
-	print sample_dictionary
+			listoffile = os.listdir(trimdir)
+			#print listoffile
+			trim_file = trimdir+"trim."+sra+".log"
+        		#print trim_file
+        		matching = [s for s in listoffile if "trim."+sra+".log" in s]
+        		matching_string = "TrimmomaticPE: Completed successfully"
+        		if os.path.isfile(trim_file):
+                		with open(trim_file) as f:
+                        		content = f.readlines()
+        		if len(matching)!=0:
+                		trim_complete = [m for m in content if matching_string in m]
+                		if len(trim_complete)!=0:
+                        		print "Already trimmed:",matching
+					sample_dictionary=get_sample_dictionary(sample_dictionary,trim_file,sra)
+                		else:
+                        		missing.append(trimdir)
+					print "Missing:",trimdir
+	#print sample_dictionary
 	trim_table(sample_dictionary)
+	print "Missing trimmed:",len(missing)
+	print missing
 
 basedir = "/mnt/scratch/ljcohen/mmetsp/"
 datafile = "../SraRunInfo.csv"
