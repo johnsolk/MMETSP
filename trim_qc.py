@@ -44,7 +44,7 @@ def get_data(thefile):
 # run trimmomatic
 
 
-def run_trimmomatic_TruSeq(missing,trimdir, file1, file2, sra):
+def run_trimmomatic_TruSeq(missing, trimmed, remaining, trimdir, file1, file2, sra):
 	bash_filename=trimdir+sra+".trim.TruSeq.sh"
 	clusterfunc.check_dir(trimdir+"qsub_files/")
 	listoffile = os.listdir(trimdir+"qsub_files/")
@@ -60,6 +60,7 @@ def run_trimmomatic_TruSeq(missing,trimdir, file1, file2, sra):
 		trim_complete = [m for m in content if matching_string in m]
 		if len(trim_complete)!=0:
 			print "Already trimmed:",matching
+			trimmed.append(sra)
 		else:
 			missing.append(trimdir)
 			j="""
@@ -77,9 +78,10 @@ MINLEN:25 &> trim.{}.log
         		process_name="trim"
         		module_name_list=""
         		filename=sra
-        		#clusterfunc.qsub_file(trimdir,process_name,module_name_list,filename,commands)
+        		clusterfunc.qsub_file(trimdir,process_name,module_name_list,filename,commands)
 	else:
-        	j="""
+		remaining.append(trimdir)
+		j="""
 java -jar /mnt/home/ljcohen/bin/Trimmomatic-0.33/trimmomatic-0.33.jar PE \\
 -baseout {}.trim.fq \\
 {} {} \\
@@ -94,8 +96,8 @@ MINLEN:25 &> trim.{}.log
                 process_name="trim"
                 module_name_list=""
                 filename=sra
-                #clusterfunc.qsub_file(trimdir,process_name,module_name_list,filename,commands)
-	return missing
+                clusterfunc.qsub_file(trimdir,process_name,module_name_list,filename,commands)
+	return missing,trimmed,remaining
 
 def make_orphans(trimdir,sra):
     # if os.path.isfile(trimdir+"orphans.fq.gz"):
@@ -152,6 +154,8 @@ def check_files(trimdir,sra):
 
 def execute(url_data,datadir):
     missing = []
+    trimmed = []
+    remaining = []
     for item in url_data.keys():
 	organism=item[0].replace("'","")
 	org_seq_dir=datadir+organism+"/"
@@ -168,13 +172,16 @@ def execute(url_data,datadir):
 		#if os.path.isfile(file1) and os.path.isfile(file2):
 		#	print file1
 		#	print file2
-		run_trimmomatic_TruSeq(missing,trimdir,file1,file2,sra)
+		missing,trimmed,remaining= run_trimmomatic_TruSeq(missing,trimmed,remaining,trimdir,file1,file2,sra)
 		#run_move_files(trimdir,sra)
 		# check_files(trimdir,sra)
 		# else:
 		#	print "Files do not exist:",file1,file2 	
     print "Missing trimmed:",len(missing)
     print missing
+    print "Trimmed:",len(trimmed)
+    print "remaining:",len(remaining)
+    print remaining
 
 datafile="SraRunInfo.csv"
 datadir="/mnt/scratch/ljcohen/mmetsp/"

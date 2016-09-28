@@ -1,0 +1,1339 @@
+('Erythrolobus_australicus', 'SRR1300443')
+('Erythrolobus_madagascarensis', 'SRR1300444')
+('Fabrea_salina', 'SRR1300445')
+('Minutocellus_polymorphus', 'SRR1300446')
+('Dictyocha_speculum', 'SRR1300447')
+('Licmophora_paradoxa', 'SRR1300448')
+('Staurosira', 'SRR1300449')
+('Leptocylindrus_danicus', 'SRR1300450')
+('Asterionellopsis_glacialis', 'SRR1300451')
+('Pseudo-nitzschia_heimii', 'SRR1300452')
+('Bathycoccus_prasinos', 'SRR1300453')
+('Micromonas', 'SRR1300454')
+('Micromonas_pusilla', 'SRR1300455')
+('Micromonas_pusilla', 'SRR1300456')
+('Micromonas_pusilla', 'SRR1300457')
+('Micromonas_pusilla', 'SRR1300458')
+('Moneuplotes_crassus', 'SRR1300459')
+('Pseudokeronopsis', 'SRR1300460')
+('Climacostomum_virens', 'SRR1300461')
+('Skeletonema_marinoi', 'SRR1300462')
+('Chaetoceros_sp.', 'SRR1300463')
+('Pseudo-nitzschia_delicatissima', 'SRR1300464')
+('Prorocentrum_lima', 'SRR1300465')
+('Prorocentrum_micans', 'SRR1300466')
+('Pyrocystis_lunula', 'SRR1300467')
+('Lessardia_elongata', 'SRR1300468')
+('Gyrodinium_dominans', 'SRR1300469')
+('Symbiodinium_sp.', 'SRR1300470')
+('Symbiodinium_sp.', 'SRR1300471')
+('Oxyrrhis_marina', 'SRR1300472')
+('Oxyrrhis_marina', 'SRR1300473')
+('Oxyrrhis_marina', 'SRR1300474')
+('Elphidium_margaritaceum', 'SRR1300475')
+('Thalassiosira_weissflogii', 'SRR1300476')
+('Thalassiosira_weissflogii', 'SRR1300477')
+('Thalassiosira_weissflogii', 'SRR1300478')
+('Thalassiosira_weissflogii', 'SRR1300479')
+('Thalassiosira_weissflogii', 'SRR1300480')
+('Thalassiosira_weissflogii', 'SRR1300481')
+('Thalassiosira_weissflogii', 'SRR1300482')
+('Thalassiosira_weissflogii', 'SRR1300483')
+('Thalassiosira_weissflogii', 'SRR1300484')
+('Thalassiosira_weissflogii', 'SRR1300485')
+('Thalassiosira_weissflogii', 'SRR1300486')
+('Thalassiosira_weissflogii', 'SRR1300487')
+('Thalassiosira_weissflogii', 'SRR1300488')
+('Thalassiosira_weissflogii', 'SRR1300489')
+('Thalassiosira_weissflogii', 'SRR1300490')
+('Thalassiosira_weissflogii', 'SRR1300491')
+('Triceratium_dubium', 'SRR1300492')
+('uncultured_eukaryote', 'SRR1300494')
+('uncultured_eukaryote', 'SRR1300495')
+('uncultured_eukaryote', 'SRR1300496')
+('Partenskyella_glossopodia', 'SRR1300497')
+('Bolidomonas', 'SRR1300498')
+('uncultured_eukaryote', 'SRR1300499')
+('Pinguiococcus_pyrenoidosus', 'SRR1300500')
+('Sarcinochrysis', 'SRR1300501')
+('Pelagodinium_beii', 'SRR1300503')
+('uncultured_eukaryote', 'SRR1300504')
+('Bathycoccus_prasinos', 'SRR1300505')
+('uncultured_eukaryote', 'SRR1300506')
+('Pavlova_lutheri', 'SRR1300507')
+('Exanthemachrysis_gayraliae', 'SRR1300508')
+('Pycnococcus_provasolii', 'SRR1300509')
+('Chaetoceros_brevis', 'SRR1300510')
+('Alexandrium_andersonii', 'SRR1300512')
+('Eucampia_antarctica', 'SRR1300514')
+('Pterosperma', 'SRR1300516')
+('Gonyaulax_spinifera', 'SRR1300518')
+('Polarella_glacialis', 'SRR1300519')
+('Heterocapsa_arctica', 'SRR1300520')
+('Craspedostauros_australis', 'SRR1300521')
+('Entomoneis_sp.', 'SRR1300522')
+('Phaeocystis_antarctica', 'SRR1300523')
+('Pyramimonas_sp.', 'SRR1300524')
+('uncultured_eukaryote', 'SRR1300525')
+('Chaetoceros_dichaeta', 'SRR1300526')
+('Attheya_septentrionalis', 'SRR1300527')
+('Madagascaria_erythrocladioides', 'SRR1300528')
+('uncultured_eukaryote', 'SRR1300529')
+('Vitrella_brassicaformis', 'SRR1300530')
+('Synchroma_pusillum', 'SRR1300531')
+('Pavlova_gyrans', 'SRR1300532')
+('uncultured_eukaryote', 'SRR1300533')
+('Mantoniella', 'SRR1300534')
+('Minutocellus_polymorphus', 'SRR1300535')
+('Brandtodinium_nutricula', 'SRR1300537')
+('uncultured_eukaryote', 'SRR1300538')
+('uncultured_eukaryote', 'SRR1300539')
+('Phaeocystis_cordata', 'SRR1300540')
+('Pycnococcus_provasolii', 'SRR1300541')
+('Pycnococcus_provasolii', 'SRR1300542')
+('Stichococcus', 'SRR1300543')
+('Imantonia', 'SRR1300544')
+('uncultured_eukaryote', 'SRR1300545')
+('Thalassionema_nitzschioides', 'SRR1328074')
+('Thalassionema_nitzschioides', 'SRR1328075')
+('Anophryoides_haemophila', 'SRR1328076')
+('Anophryoides_haemophila', 'SRR1328077')
+('Ostreococcus_mediterraneus', 'SRR1300342')
+('Symbiodinium_sp.', 'SRR1300343')
+('Symbiodinium_sp.', 'SRR1300344')
+('Symbiodinium_sp.', 'SRR1300345')
+('Isochrysis_sp.', 'SRR1300346')
+('Pleurochrysis_carterae', 'SRR1300347')
+('Pleurochrysis_carterae', 'SRR1300348')
+('Pleurochrysis_carterae', 'SRR1300349')
+('Hemiselmis_andersenii', 'SRR1300350')
+('Hemiselmis_andersenii', 'SRR1300351')
+('Hemiselmis_andersenii', 'SRR1300352')
+('Rhodomonas_salina', 'SRR1300353')
+('Hanusia_phi', 'SRR1300354')
+('Proteomonas_sulcata', 'SRR1300355')
+('Cryptomonas_curvata', 'SRR1300356')
+('Bigelowiella_natans', 'SRR1300357')
+('Bigelowiella_natans', 'SRR1300358')
+('Bigelowiella_natans', 'SRR1300359')
+('uncultured_eukaryote', 'SRR1300360')
+('Prasinoderma_singularis', 'SRR1300361')
+('Pycnococcus_provasolii', 'SRR1300362')
+('Bolidomonas_pacifica', 'SRR1300363')
+('Bolidomonas', 'SRR1300364')
+('Florenciella_parvula', 'SRR1300365')
+('Florenciella', 'SRR1300366')
+('Micromonas_pusilla', 'SRR1300367')
+('Pelagomonas_calceolata', 'SRR1300368')
+('uncultured_eukaryote', 'SRR1300369')
+('Scyphosphaera_apsteinii', 'SRR1300370')
+('Calcidiscus_leptoporus', 'SRR1300371')
+('Chrysoculter_rhomboideus', 'SRR1300372')
+('Chaetoceros_cf._neogracile', 'SRR1300373')
+('uncultured_eukaryote', 'SRR1300374')
+('Isochrysis_sp.', 'SRR1300375')
+('Isochrysis_sp.', 'SRR1300376')
+('Fibrocapsa_japonica', 'SRR1300377')
+('Pyramimonas_obovata', 'SRR1300378')
+('Chlamydomonas', 'SRR1300379')
+('Phaeocystis', 'SRR1300380')
+('Rhizochromulina_marina', 'SRR1300381')
+('Synedropsis_cf._recta', 'SRR1300382')
+('Ochromonas', 'SRR1300383')
+('uncultured_eukaryote', 'SRR1300384')
+('Chrysocystis_fragilis', 'SRR1300385')
+('Timspurckia_oligopyrenoides', 'SRR1300387')
+('Chrysoreinhardia', 'SRR1300388')
+('Picochlorum', 'SRR1300389')
+('Cyclotella_meneghiniana', 'SRR1300390')
+('Detonula_confervacea', 'SRR1300391')
+('Thalassiosira', 'SRR1300392')
+('Pseudo-nitzschia_pungens', 'SRR1300393')
+('Pseudo-nitzschia_pungens', 'SRR1300394')
+('Aulacoseira_subarctica', 'SRR1300395')
+('Amphiprora_paludosa', 'SRR1300396')
+('Coscinodiscus_wailesii', 'SRR1300397')
+('Thalassiosira_punctigera', 'SRR1300398')
+('Pseudopedinella_elastica', 'SRR1300399')
+('Schizochytrium_aggregatum', 'SRR1300400')
+('Aplanochytrium_stocchinoi', 'SRR1300401')
+('Hemiselmis_tepida', 'SRR1300402')
+('Hemiselmis_virescens', 'SRR1300403')
+('Hemiselmis_rufescens', 'SRR1300404')
+('Bigelowiella_natans', 'SRR1300405')
+('Bigelowiella_longifila', 'SRR1300406')
+('Skeletonema_marinoi', 'SRR1300407')
+('Stauroneis_constricta', 'SRR1300408')
+('Skeletonema_marinoi', 'SRR1300409')
+('Schizochytrium_aggregatum', 'SRR1300410')
+('Schizochytrium_aggregatum', 'SRR1300411')
+('Schizochytrium_aggregatum', 'SRR1300412')
+('Aplanochytrium_stocchinoi', 'SRR1300413')
+('Aplanochytrium_stocchinoi', 'SRR1300414')
+('Haptolina_brevifila', 'SRR1300415')
+('Spumella_elongata', 'SRR1300416')
+('Cafeteria', 'SRR1300417')
+('Paraphysomonas_vestita', 'SRR1300418')
+('Neobodo_designis', 'SRR1300419')
+('Micromonas', 'SRR1300420')
+('Micromonas', 'SRR1300421')
+('Pycnococcus', 'SRR1300422')
+('Isochrysis', 'SRR1300423')
+('Gephyrocapsa_oceanica', 'SRR1300424')
+('Gephyrocapsa_oceanica', 'SRR1300425')
+('Gephyrocapsa_oceanica', 'SRR1300426')
+('Gephyrocapsa_oceanica', 'SRR1300427')
+('Polyblepharides_amylifera', 'SRR1300428')
+('Rhodopseudomonas', 'SRR1300429')
+('Symbiodinium_sp.', 'SRR1300430')
+('Symbiodinium_sp.', 'SRR1300431')
+('Symbiodinium_sp.', 'SRR1300432')
+('Symbiodinium_sp.', 'SRR1300433')
+('Ammonia_sp.', 'SRR1300434')
+('Ditylum_brightwellii', 'SRR1300435')
+('Thalassiosira_rotula', 'SRR1300436')
+('Micromonas', 'SRR1300437')
+('Micromonas', 'SRR1300438')
+('Isochrysis', 'SRR1300439')
+('Rhodopseudomonas', 'SRR1300440')
+('Micromonas', 'SRR1300441')
+('Micromonas', 'SRR1300442')
+('Chattonella_subsalsa', 'SRR1300239')
+('Chattonella_subsalsa', 'SRR1300240')
+('uncultured_eukaryote', 'SRR1300241')
+('uncultured_eukaryote', 'SRR1300242')
+('uncultured_eukaryote', 'SRR1300243')
+('uncultured_eukaryote', 'SRR1300244')
+('uncultured_eukaryote', 'SRR1300245')
+('uncultured_eukaryote', 'SRR1300246')
+('uncultured_eukaryote', 'SRR1300247')
+('Ostreococcus_mediterraneus', 'SRR1300248')
+('Ostreococcus_mediterraneus', 'SRR1300249')
+('Bathycoccus_prasinos', 'SRR1300250')
+('Ostreococcus_mediterraneus', 'SRR1300251')
+('Ostreococcus_mediterraneus', 'SRR1300252')
+('Ostreococcus_mediterraneus', 'SRR1300253')
+("Ostreococcus_'lucimarinus'", 'SRR1300254')
+('Lingulodinium_polyedrum', 'SRR1300255')
+('Lingulodinium_polyedrum', 'SRR1300256')
+('Lingulodinium_polyedrum', 'SRR1300257')
+('Lingulodinium_polyedrum', 'SRR1300258')
+('Skeletonema_marinoi', 'SRR1300259')
+('Skeletonema_marinoi', 'SRR1300260')
+('uncultured_eukaryote', 'SRR1300261')
+('uncultured_eukaryote', 'SRR1300262')
+('Symbiodinium_sp.', 'SRR1300263')
+('Symbiodinium_sp.', 'SRR1300264')
+('Symbiodinium_sp.', 'SRR1300265')
+('Symbiodinium_sp.', 'SRR1300266')
+('Symbiodinium_sp.', 'SRR1300267')
+('Isochrysis_sp.', 'SRR1300268')
+('Pavlova', 'SRR1300269')
+('Pavlova', 'SRR1300270')
+('Minutocellus_polymorphus', 'SRR1300271')
+('Ditylum_brightwellii', 'SRR1300272')
+('Ditylum_brightwellii', 'SRR1300273')
+('Thalassiosira', 'SRR1300274')
+('uncultured_eukaryote', 'SRR1300275')
+('uncultured_eukaryote', 'SRR1300276')
+('uncultured_eukaryote', 'SRR1300277')
+('Aureococcus_anophagefferens', 'SRR1300278')
+('Aureococcus_anophagefferens', 'SRR1300279')
+('Aureococcus_anophagefferens', 'SRR1300280')
+('Aureococcus_anophagefferens', 'SRR1300281')
+('Emiliania_huxleyi', 'SRR1300282')
+('Emiliania_huxleyi', 'SRR1300283')
+('Emiliania_huxleyi', 'SRR1300284')
+('Emiliania_huxleyi', 'SRR1300285')
+('Emiliania_huxleyi', 'SRR1300286')
+('Emiliania_huxleyi', 'SRR1300287')
+('Emiliania_huxleyi', 'SRR1300288')
+('Emiliania_huxleyi', 'SRR1300289')
+('Aurantiochytrium_limacinum', 'SRR1300290')
+('Ditylum_brightwellii', 'SRR1300291')
+('Ditylum_brightwellii', 'SRR1300292')
+('Ditylum_brightwellii', 'SRR1300293')
+('Ditylum_brightwellii', 'SRR1300294')
+('Micromonas', 'SRR1300295')
+('Gloeochaete_wittrockiana', 'SRR1300296')
+('Dunaliella_tertiolecta', 'SRR1300297')
+('Dunaliella_tertiolecta', 'SRR1300298')
+('Pavlova', 'SRR1300299')
+('Neoceratium_fusus', 'SRR1300300')
+('Neoceratium_fusus', 'SRR1300301')
+('Symbiodinium_kawagutii', 'SRR1300302')
+('Symbiodinium_kawagutii', 'SRR1300303')
+('Symbiodinium_kawagutii', 'SRR1300304')
+('Symbiodinium_kawagutii', 'SRR1300305')
+('Azadinium_spinosum', 'SRR1300306')
+('Azadinium_spinosum', 'SRR1300307')
+('Azadinium_spinosum', 'SRR1300308')
+('Ditylum_brightwellii', 'SRR1300309')
+('Chromulina_nebulosa', 'SRR1300310')
+('Haptolina_ericina', 'SRR1300311')
+('Pseudopedinella_elastica', 'SRR1300312')
+('Phaeocystis_antarctica', 'SRR1300313')
+('Rhodomonas_abbreviata', 'SRR1300314')
+('Geminigera', 'SRR1300315')
+('Paraphysomonas_bandaiensis', 'SRR1300316')
+('Ochromonas', 'SRR1300317')
+('Mantoniella_antarctica', 'SRR1300318')
+('Picocystis_salinarum', 'SRR1300322')
+('Picochlorum_oklahomense', 'SRR1300323')
+('Mallomonas', 'SRR1300324')
+('Karlodinium_veneficum', 'SRR1300325')
+('Karlodinium_veneficum', 'SRR1300326')
+('Karlodinium_veneficum', 'SRR1300327')
+('uncultured_eukaryote', 'SRR1300328')
+('uncultured_eukaryote', 'SRR1300329')
+('uncultured_eukaryote', 'SRR1300330')
+('Isochrysis_galbana', 'SRR1300331')
+('Isochrysis_galbana', 'SRR1300332')
+('Aplanochytrium', 'SRR1300333')
+('Aplanochytrium', 'SRR1300334')
+('Aurantiochytrium_limacinum', 'SRR1300335')
+('Aurantiochytrium_limacinum', 'SRR1300336')
+('Aurantiochytrium_limacinum', 'SRR1300337')
+('uncultured_eukaryote', 'SRR1300338')
+('uncultured_eukaryote', 'SRR1300339')
+('uncultured_eukaryote', 'SRR1300340')
+('uncultured_eukaryote', 'SRR1300341')
+('Euplotes_focardii', 'SRR1296928')
+('Noctiluca_scintillans', 'SRR1296929')
+('Mayorella', 'SRR1296930')
+('Thalassiosira_weissflogii', 'SRR1296931')
+('Thalassiosira_weissflogii', 'SRR1296932')
+('Thalassiosira_weissflogii', 'SRR1296933')
+('Thalassiosira_weissflogii', 'SRR1296934')
+('Litonotus_pictus', 'SRR1296935')
+('Schmidingerella_taraikaensis', 'SRR1296936')
+('Asterionellopsis_glacialis', 'SRR1296937')
+('Chaetoceros_curvisetus', 'SRR1296938')
+('Chaetoceros_curvisetus', 'SRR1296939')
+('Stereomyxa_ramosa', 'SRR1296940')
+('Durinskia_baltica', 'SRR1296941')
+('Kryptoperidinium_foliaceum', 'SRR1296942')
+('Alexandrium_margalefii', 'SRR1296943')
+('Pelagococcus_subviridis', 'SRR1296944')
+('Pelagococcus_subviridis', 'SRR1296945')
+('Pelagococcus_subviridis', 'SRR1296946')
+('Gymnochlora', 'SRR1296947')
+('Lotharella_globosa', 'SRR1296948')
+('Lotharella_globosa', 'SRR1296949')
+('Norrisiella_sphaerica', 'SRR1296950')
+('Strombidium_inclinatum', 'SRR1296951')
+('Karenia_brevis', 'SRR1296952')
+('Thalassiosira_minuscula', 'SRR1296953')
+('Thalassiosira_minuscula', 'SRR1296954')
+('Thalassiosira_minuscula', 'SRR1296955')
+('Thalassiosira_minuscula', 'SRR1296956')
+('Grammatophora_oceanica', 'SRR1296957')
+('Thraustochytrium_sp.', 'SRR1296958')
+('Thalassiosira_antarctica', 'SRR1296959')
+('Crypthecodinium_cohnii', 'SRR1296960')
+('Crypthecodinium_cohnii', 'SRR1296961')
+('Thalassiosira_antarctica', 'SRR1296962')
+('Asterionellopsis_glacialis', 'SRR1296963')
+('Dactyliosolen_fragilissimus', 'SRR1296964')
+('Thalassiosira_antarctica', 'SRR1296965')
+('Fragilariopsis_kerguelensis', 'SRR1296966')
+('Fragilariopsis_kerguelensis', 'SRR1296967')
+('Debaryomyces_hansenii', 'SRR1296968')
+('Debaryomyces_hansenii', 'SRR1296969')
+('Debaryomyces_hansenii', 'SRR1296970')
+('Debaryomyces_hansenii', 'SRR1296971')
+('Scrippsiella_hangoei', 'SRR1296972')
+('Prymnesium_parvum', 'SRR1296973')
+('Chaetoceros_affinis', 'SRR1296974')
+('Chaetoceros_affinis', 'SRR1296975')
+('Uronema', 'SRR1296976')
+('Asterionellopsis_glacialis', 'SRR1296977')
+('Heterocapsa_triquetra', 'SRR1296978')
+('Alveolata', 'SRR1296979')
+('Chromera_velia', 'SRR1296980')
+('Gloeochaete_wittrockiana', 'SRR1296981')
+('Compsopogon_caeruleus', 'SRR1296982')
+('Porphyridium_aerugineum', 'SRR1296983')
+('Rhodella_maculata', 'SRR1296984')
+('Rhodosorus_marinus', 'SRR1296985')
+('Thalassiosira_gravida', 'SRR1296986')
+('Thalassiosira_gravida', 'SRR1296987')
+('Thalassiosira_rotula', 'SRR1296988')
+('Thalassiosira_rotula', 'SRR1296989')
+('Thalassiosira_rotula', 'SRR1296990')
+('Chlamydomonas_euryale', 'SRR1296991')
+('Thalassiosira_gravida', 'SRR1296992')
+('Chaetoceros_curvisetus', 'SRR1296993')
+('Skeletonema_grethae', 'SRR1296994')
+('Skeletonema_japonicum', 'SRR1296995')
+('uncultured_eukaryote', 'SRR1296996')
+('Oxyrrhis_marina', 'SRR1300211')
+('Lankesteria_abbotti', 'SRR1300212')
+('Alexandrium_minutum', 'SRR1300213')
+('Alexandrium_fundyense', 'SRR1300214')
+('Minchinia_chitonis', 'SRR1300215')
+('Cafeteria_roenbergensis', 'SRR1300216')
+('Vaucheria_litorea', 'SRR1300217')
+('Vaucheria_litorea', 'SRR1300218')
+('Perkinsus_chesapeaki', 'SRR1300219')
+('Perkinsus_chesapeaki', 'SRR1300220')
+('Alexandrium_tamarense', 'SRR1300221')
+('Alexandrium_tamarense', 'SRR1300222')
+('Prymnesium_parvum', 'SRR1300223')
+('Prasinococcus_capsulatus', 'SRR1300224')
+('Thalassiosira_oceanica', 'SRR1300225')
+('Thalassiosira_oceanica', 'SRR1300226')
+('Thalassiosira_oceanica', 'SRR1300227')
+('Thoracosphaera_heimii', 'SRR1300228')
+('Emiliania_huxleyi', 'SRR1300229')
+('Emiliania_huxleyi', 'SRR1300230')
+('Emiliania_huxleyi', 'SRR1300231')
+('Emiliania_huxleyi', 'SRR1300232')
+('Emiliania_huxleyi', 'SRR1300233')
+('Emiliania_huxleyi', 'SRR1300234')
+('Emiliania_huxleyi', 'SRR1300235')
+('Emiliania_huxleyi', 'SRR1300236')
+('Chattonella_subsalsa', 'SRR1300237')
+('Chattonella_subsalsa', 'SRR1300238')
+('Oxyrrhis_marina', 'SRR1300319')
+('Oxyrrhis_marina', 'SRR1300320')
+('Cyanoptyche_gloeocystis', 'SRR1300321')
+('Amphiprora', 'SRR1296828')
+('Tryblionella_compressa', 'SRR1296829')
+('Tryblionella_compressa', 'SRR1296830')
+('Tryblionella_compressa', 'SRR1296831')
+('Tryblionella_compressa', 'SRR1296832')
+('Chaetoceros_neogracile', 'SRR1296833')
+('Chaetoceros_neogracile', 'SRR1296834')
+('Chaetoceros_neogracile', 'SRR1296835')
+('Chaetoceros_neogracile', 'SRR1296836')
+('uncultured_eukaryote', 'SRR1296837')
+('uncultured_eukaryote', 'SRR1296838')
+('Durinskia_baltica', 'SRR1296839')
+('Kryptoperidinium_foliaceum', 'SRR1296840')
+('Kryptoperidinium_foliaceum', 'SRR1296841')
+('Kryptoperidinium_foliaceum', 'SRR1296842')
+('uncultured_eukaryote', 'SRR1296843')
+('Acanthoeca', 'SRR1296844')
+('Goniomonas_pacifica', 'SRR1296845')
+('Thraustochytrium_sp.', 'SRR1296846')
+('Pseudo-nitzschia_australis', 'SRR1296847')
+('Pseudo-nitzschia_australis', 'SRR1296848')
+('Pseudo-nitzschia_australis', 'SRR1296849')
+('Pseudo-nitzschia_australis', 'SRR1296850')
+('Karenia_brevis', 'SRR1296851')
+('Karenia_brevis', 'SRR1296852')
+('Karenia_brevis', 'SRR1296853')
+('Karenia_brevis', 'SRR1296854')
+('Skeletonema_dohrnii', 'SRR1296855')
+('Heterosigma_akashiwo', 'SRR1296856')
+('Heterosigma_akashiwo', 'SRR1296857')
+('Heterosigma_akashiwo', 'SRR1296858')
+('Heterosigma_akashiwo', 'SRR1296859')
+('Dolichomastix_tenuilepis', 'SRR1296860')
+('Crustomastix_stigmatica', 'SRR1296861')
+('Prasinoderma_coloniale', 'SRR1296862')
+('Ochromonas', 'SRR1296863')
+('Dinobryon', 'SRR1296864')
+('Dinobryon', 'SRR1296865')
+('Eutreptiella_gymnastica', 'SRR1296866')
+('Stephanopyxis_turris', 'SRR1296867')
+('Lotharella_globosa', 'SRR1296868')
+('Amorphochlora_amoebiformis', 'SRR1296869')
+('Hemiselmis_andersenii', 'SRR1296870')
+('Bigelowiella_natans', 'SRR1296871')
+('Chroomonas_cf._mesostigmatica', 'SRR1296872')
+('Strombidium_rassoulzadegani', 'SRR1296873')
+('Rhodomonas_lens', 'SRR1296874')
+('Tetraselmis_chuii', 'SRR1296875')
+('Polytomella_parva', 'SRR1296876')
+('Thalassiosira_rotula', 'SRR1296877')
+('Thalassiosira_weissflogii', 'SRR1296878')
+('Thalassiosira_weissflogii', 'SRR1296879')
+('Thalassiosira_weissflogii', 'SRR1296880')
+('Thalassiosira_weissflogii', 'SRR1296881')
+('Odontella_sinensis', 'SRR1296882')
+('Coccolithus_braarudii', 'SRR1296883')
+('Paramoeba_atlantica', 'SRR1296884')
+('Paramoeba_aestuarina', 'SRR1296885')
+('Vexillifera', 'SRR1296886')
+('Rosalina', 'SRR1296887')
+('Amphora_coffeiformis', 'SRR1296888')
+('Crypthecodinium_cohnii', 'SRR1296889')
+('Crypthecodinium_cohnii', 'SRR1296890')
+('Chaetoceros_sp.', 'SRR1296891')
+('Amphidinium_massartii', 'SRR1296892')
+('Gambierdiscus_australes', 'SRR1296893')
+('Stygamoeba_regulata', 'SRR1296894')
+('Alexandrium_monilatum', 'SRR1296895')
+('Alexandrium_monilatum', 'SRR1296896')
+('Alexandrium_monilatum', 'SRR1296897')
+('Alexandrium_monilatum', 'SRR1296898')
+('Schmidingerella_taraikaensis', 'SRR1296899')
+('Oxyrrhis_marina', 'SRR1296900')
+('Oxyrrhis_marina', 'SRR1296901')
+('Condylostoma_magnum', 'SRR1296902')
+('Oxyrrhis_marina', 'SRR1296903')
+('Isochrysis_galbana', 'SRR1296904')
+('Platyophrya_macrostoma', 'SRR1296905')
+('Euplotes_harpa', 'SRR1296906')
+('Oxyrrhis_marina', 'SRR1296907')
+('Pseudokeronopsis', 'SRR1296908')
+('Fragilariopsis_kerguelensis', 'SRR1296909')
+('Fragilariopsis_kerguelensis', 'SRR1296910')
+('Fragilariopsis_kerguelensis', 'SRR1296911')
+('Fragilariopsis_kerguelensis', 'SRR1296912')
+('Heterosigma_akashiwo', 'SRR1296913')
+('Heterosigma_akashiwo', 'SRR1296914')
+('Heterosigma_akashiwo', 'SRR1296915')
+('Heterosigma_akashiwo', 'SRR1296916')
+('Prymnesium_parvum', 'SRR1296917')
+('Chaetoceros_debilis', 'SRR1296918')
+('Chaetoceros_debilis', 'SRR1296919')
+('Thalassiothrix_antarctica', 'SRR1296920')
+('Thalassiothrix_antarctica', 'SRR1296921')
+('Thalassionema_nitzschioides', 'SRR1296922')
+('Thalassionema_nitzschioides', 'SRR1296923')
+('Corethron_pennatum', 'SRR1296924')
+('Corethron_pennatum', 'SRR1296925')
+('Proboscia_alata', 'SRR1296926')
+('Proboscia_alata', 'SRR1296927')
+('Paraphysomonas_imperforata', 'SRR1296728')
+('Paraphysomonas_imperforata', 'SRR1296729')
+('Tetraselmis_striata', 'SRR1296730')
+('Tetraselmis_striata', 'SRR1296731')
+('Tetraselmis_striata', 'SRR1296732')
+('Tetraselmis_striata', 'SRR1296733')
+('Sorites_sp.', 'SRR1296734')
+('Chlorarachnion_reptans', 'SRR1296735')
+('Pyramimonas_parkeae', 'SRR1296736')
+('Pyramimonas_parkeae', 'SRR1296737')
+('Protoceratium_reticulatum', 'SRR1296738')
+('Prymnesium_polylepis', 'SRR1296739')
+('Chrysochromulina_rotalis', 'SRR1296740')
+('Togula_jolla', 'SRR1296741')
+('Percolomonas_cosmopolitus', 'SRR1296742')
+('Karenia_brevis', 'SRR1296743')
+('Karenia_brevis', 'SRR1296744')
+('Pseudo-nitzschia_fraudulenta', 'SRR1296745')
+('Pseudo-nitzschia_fraudulenta', 'SRR1296746')
+('Pseudo-nitzschia_fraudulenta', 'SRR1296747')
+('Karenia_brevis', 'SRR1296748')
+('Karenia_brevis', 'SRR1296749')
+('Karenia_brevis', 'SRR1296750')
+('Polarella_glacialis', 'SRR1296751')
+('Prorocentrum_minimum', 'SRR1296752')
+('Prorocentrum_minimum', 'SRR1296753')
+('Prorocentrum_minimum', 'SRR1296754')
+('Thalassiosira_rotula', 'SRR1296755')
+('Percolomonas_cosmopolitus', 'SRR1296756')
+('Amphidinium_carterae', 'SRR1296757')
+('Amphidinium_carterae', 'SRR1296758')
+('Scrippsiella_trochoidea', 'SRR1296759')
+('Scrippsiella_trochoidea', 'SRR1296760')
+('Scrippsiella_trochoidea', 'SRR1296761')
+('Vannella_sp._CB-2014', 'SRR1296762')
+('Vannella', 'SRR1296763')
+('Mesodinium_pulex', 'SRR1296764')
+('Alexandrium_tamarense', 'SRR1296765')
+('Alexandrium_tamarense', 'SRR1296766')
+('Ochromonas', 'SRR1296767')
+('Eutreptiella_gymnastica', 'SRR1296768')
+('Prymnesium_parvum', 'SRR1296769')
+('Strombidinopsis', 'SRR1296770')
+('Tiarina_fusa', 'SRR1296771')
+('Trichosphaerium', 'SRR1296772')
+('Filamoeba_nolandi', 'SRR1296773')
+('Pessonella', 'SRR1296774')
+('Heterosigma_akashiwo', 'SRR1296775')
+('Heterosigma_akashiwo', 'SRR1296776')
+('Heterosigma_akashiwo', 'SRR1296777')
+('Pelagomonas_calceolata', 'SRR1296778')
+('Pelagomonas_calceolata', 'SRR1296779')
+('Pelagomonas_calceolata', 'SRR1296780')
+('Pelagomonas_calceolata', 'SRR1296781')
+('Sexangularia_sp._CB-2014', 'SRR1296782')
+('Euplotes_focardii', 'SRR1296783')
+('Prorocentrum_minimum', 'SRR1296784')
+('Prorocentrum_minimum', 'SRR1296785')
+('Scrippsiella_hangoei', 'SRR1296786')
+('Prorocentrum_minimum', 'SRR1296787')
+('Prorocentrum_minimum', 'SRR1296788')
+('Prymnesium_polylepis', 'SRR1296789')
+('Prymnesium_polylepis', 'SRR1296790')
+('Prymnesium_polylepis', 'SRR1296791')
+('Prymnesium_polylepis', 'SRR1296792')
+('Scrippsiella_hangoei', 'SRR1296793')
+('Scrippsiella_hangoei', 'SRR1296794')
+('Skeletonema_dohrnii', 'SRR1296795')
+('Scrippsiella_hangoei', 'SRR1296796')
+('Heterosigma_akashiwo', 'SRR1296797')
+('Heterosigma_akashiwo', 'SRR1296798')
+('Heterosigma_akashiwo', 'SRR1296799')
+('Skeletonema_menzellii', 'SRR1296800')
+('Skeletonema_menzellii', 'SRR1296801')
+('Eutreptiella_gymnastica', 'SRR1296802')
+('Pelagococcus_subviridis', 'SRR1296803')
+('Extubocellulus_spinifer', 'SRR1296804')
+('Extubocellulus_spinifer', 'SRR1296805')
+('Extubocellulus_spinifer', 'SRR1296806')
+('Extubocellulus_spinifer', 'SRR1296807')
+('Asterionellopsis_glacialis', 'SRR1296808')
+('Asterionellopsis_glacialis', 'SRR1296809')
+('Heterocapsa_rotundata', 'SRR1296810')
+('Aristerostoma', 'SRR1296811')
+('Favella_ehrenbergii', 'SRR1296812')
+('Strombidinopsis_acuminata', 'SRR1296813')
+('Lotharella_sp._CCMP622', 'SRR1296814')
+('Aureoumbra_lagunensis', 'SRR1296815')
+('Aureoumbra_lagunensis', 'SRR1296816')
+('Aureoumbra_lagunensis', 'SRR1296817')
+('Aureoumbra_lagunensis', 'SRR1296818')
+('Fragilariopsis_kerguelensis', 'SRR1296819')
+('Fragilariopsis_kerguelensis', 'SRR1296820')
+('Thalassiosira_antarctica', 'SRR1296821')
+('Rhodella_maculata', 'SRR1296822')
+('Protocruzia_adherens', 'SRR1296823')
+('Proboscia_inermis', 'SRR1296824')
+('Amphiprora', 'SRR1296825')
+('Amphiprora', 'SRR1296826')
+('Amphiprora', 'SRR1296827')
+('Perkinsus_marinus', 'SRR1294398')
+('Perkinsus_marinus', 'SRR1294399')
+('Scrippsiella_hangoei', 'SRR1294400')
+('Corethron_hystrix', 'SRR1294401')
+('Rhodosorus_marinus', 'SRR1294402')
+('Skeletonema_costatum', 'SRR1294403')
+('Nitzschia', 'SRR1294404')
+('Odontella_aurita', 'SRR1294405')
+('Cylindrotheca_closterium', 'SRR1294406')
+('Cryptomonas_paramecium', 'SRR1294407')
+('Eutreptiella_gymnastica', 'SRR1294408')
+('Guillardia_theta', 'SRR1294409')
+('Palpitomonas_bilix', 'SRR1294410')
+('Prymnesium_parvum', 'SRR1294411')
+('Prymnesium_parvum', 'SRR1294412')
+('Acanthoeca', 'SRR1294413')
+('Ditylum_brightwellii', 'SRR1294414')
+('Ditylum_brightwellii', 'SRR1294415')
+('Ditylum_brightwellii', 'SRR1294416')
+('Ditylum_brightwellii', 'SRR1294417')
+('Ditylum_brightwellii', 'SRR1294418')
+('Nephroselmis_pyriformis', 'SRR1294419')
+('Picocystis_salinarum', 'SRR1294420')
+('Phaeomonas_parva', 'SRR1294421')
+('Helicotheca_tamesis', 'SRR1294422')
+('uncultured_eukaryote', 'SRR1294423')
+('Thalassiosira_oceanica', 'SRR1294424')
+('Aplanochytrium', 'SRR1294425')
+('Aplanochytrium', 'SRR1294426')
+('Dunaliella_tertiolecta', 'SRR1294427')
+('Florenciella', 'SRR1294428')
+('Florenciella', 'SRR1294429')
+('Florenciella', 'SRR1294430')
+('Florenciella', 'SRR1294431')
+('Florenciella', 'SRR1294432')
+('Anophryoides_haemophila', 'SRR1294433')
+('Anophryoides_haemophila', 'SRR1294434')
+('Anophryoides_haemophila', 'SRR1294435')
+('Anophryoides_haemophila', 'SRR1294436')
+('Florenciella_parvula', 'SRR1294437')
+('Chrysoreinhardia', 'SRR1294438')
+('Peridinium_aciculiferum', 'SRR1294439')
+('Peridinium_aciculiferum', 'SRR1294440')
+('Aplanochytrium_stocchinoi', 'SRR1294441')
+('Aplanochytrium_stocchinoi', 'SRR1294442')
+('Aplanochytrium_stocchinoi', 'SRR1294443')
+('Aplanochytrium_stocchinoi', 'SRR1294444')
+('Chaetoceros_affinis', 'SRR1294445')
+('Chaetoceros_affinis', 'SRR1294446')
+('Chaetoceros_affinis', 'SRR1294447')
+('Chaetoceros_affinis', 'SRR1294448')
+('Chaetoceros_affinis', 'SRR1294449')
+('Chaetoceros_affinis', 'SRR1294450')
+('Chaetoceros_affinis', 'SRR1294451')
+('Chaetoceros_affinis', 'SRR1294452')
+('Chaetoceros_affinis', 'SRR1294453')
+('Chaetoceros_curvisetus', 'SRR1294454')
+('Chaetoceros_curvisetus', 'SRR1294455')
+('Chaetoceros_curvisetus', 'SRR1294456')
+('Chaetoceros_curvisetus', 'SRR1294457')
+('Chlamydomonas_leiostraca', 'SRR1294458')
+('Chlamydomonas_chlamydogama', 'SRR1294459')
+('Blepharisma_japonicum', 'SRR1294460')
+('Akashiwo_sanguinea', 'SRR1294461')
+('Akashiwo_sanguinea', 'SRR1294462')
+('Akashiwo_sanguinea', 'SRR1294463')
+('Akashiwo_sanguinea', 'SRR1294464')
+('Thalassiosira_weissflogii', 'SRR1294465')
+('Thalassiosira_weissflogii', 'SRR1294466')
+('Micromonas', 'SRR1296697')
+('Tetraselmis_astigmatica', 'SRR1296698')
+('Geminigera_cryophila', 'SRR1296699')
+('Myrionecta_rubra', 'SRR1296700')
+('Dinophysis_acuminata', 'SRR1296701')
+('Pyrodinium_bahamense', 'SRR1296702')
+('Amoebophrya_sp.', 'SRR1296703')
+('Alexandrium_catenella', 'SRR1296704')
+('Gymnodinium_catenatum', 'SRR1296705')
+('Striatella_unipunctata', 'SRR1296706')
+('Rhizosolenia_setigera', 'SRR1296707')
+('Thalassionema_frauenfeldii', 'SRR1296708')
+('Bolidomonas_pacifica', 'SRR1296709')
+('Prymnesium_parvum', 'SRR1296710')
+('Goniomonas', 'SRR1296711')
+('Karenia_brevis', 'SRR1296712')
+('Amphora_coffeiformis', 'SRR1296713')
+('Karenia_brevis', 'SRR1296714')
+('Amphora_coffeiformis', 'SRR1296715')
+('Skeletonema_marinoi', 'SRR1296716')
+('Skeletonema_marinoi', 'SRR1296717')
+('Astrosyne_radiata', 'SRR1296718')
+('Cyclophora_tenuis', 'SRR1296719')
+('Pseudo-nitzschia_arenysensis', 'SRR1296720')
+('Pseudo-nitzschia_delicatissima', 'SRR1296721')
+('Leptocylindrus_aporus', 'SRR1296722')
+('Leptocylindrus_danicus', 'SRR1296723')
+('Goniomonas_pacifica', 'SRR1296724')
+('Pteridomonas_danica', 'SRR1296725')
+('Pteridomonas_danica', 'SRR1296726')
+('uncultured_eukaryote', 'SRR1296727')
+('Bicosoecida_sp._CB-2014', 'SRR1294380')
+('Bicosoecida_sp._CB-2014', 'SRR1294381')
+('Bicosoecida_sp._CB-2014', 'SRR1294382')
+('Bicosoecida_sp._CB-2014', 'SRR1294383')
+('Dinobryon', 'SRR1294384')
+('Alexandrium_fundyense', 'SRR1294385')
+('Alexandrium_fundyense', 'SRR1294386')
+('Alexandrium_fundyense', 'SRR1294387')
+('Alexandrium_fundyense', 'SRR1294388')
+('Alexandrium_fundyense', 'SRR1294389')
+('Alexandrium_fundyense', 'SRR1294390')
+('Amphidinium_carterae', 'SRR1294391')
+('Amphidinium_carterae', 'SRR1294392')
+('Amphidinium_carterae', 'SRR1294393')
+('Amphidinium_carterae', 'SRR1294394')
+('Pseudo-nitzschia_fraudulenta', 'SRR1294395')
+('Perkinsus_marinus', 'SRR1294396')
+('Perkinsus_marinus', 'SRR1294397')
+{('Fragilariopsis_kerguelensis', 'SRR1296820'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296820'], ('Pleurochrysis_carterae', 'SRR1300349'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300349'], ('Amphora_coffeiformis', 'SRR1296715'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296715'], ('Peridinium_aciculiferum', 'SRR1294439'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1294439'], ('Thalassiosira_weissflogii', 'SRR1300482'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300482'], ("Ostreococcus_'lucimarinus'", 'SRR1300254'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300254'], ('Pelagococcus_subviridis', 'SRR1296945'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296945'], ('Karenia_brevis', 'SRR1296851'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296851'], ('Lingulodinium_polyedrum', 'SRR1300256'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300256'], ('Chaetoceros_affinis', 'SRR1294450'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1294450'], ('Symbiodinium_sp.', 'SRR1300432'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300432'], ('Bolidomonas_pacifica', 'SRR1300363'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300363'], ('Chrysoreinhardia', 'SRR1294438'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1294438'], ('Crypthecodinium_cohnii', 'SRR1296960'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296960'], ('Prymnesium_parvum', 'SRR1296973'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296973'], ('Aplanochytrium', 'SRR1294425'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1294425'], ('Prorocentrum_minimum', 'SRR1296787'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296787'], ('Isochrysis_galbana', 'SRR1300331'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300331'], ('Gloeochaete_wittrockiana', 'SRR1296981'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296981'], ('uncultured_eukaryote', 'SRR1300245'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300245'], ('Cryptomonas_curvata', 'SRR1300356'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300356'], ('Thalassionema_nitzschioides', 'SRR1328075'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1328075'], ('Polytomella_parva', 'SRR1296876'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296876'], ('Litonotus_pictus', 'SRR1296935'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296935'], ('Gephyrocapsa_oceanica', 'SRR1300425'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300425'], ('Pterosperma', 'SRR1300516'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300516'], ('Oxyrrhis_marina', 'SRR1296901'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296901'], ('Lankesteria_abbotti', 'SRR1300212'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300212'], ('Exanthemachrysis_gayraliae', 'SRR1300508'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300508'], ('Aureoumbra_lagunensis', 'SRR1296816'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296816'], ('Prorocentrum_micans', 'SRR1300466'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300466'], ('Pinguiococcus_pyrenoidosus', 'SRR1300500'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300500'], ('Akashiwo_sanguinea', 'SRR1294461'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1294461'], ('Skeletonema_marinoi', 'SRR1300259'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300259'], ('Pseudo-nitzschia_delicatissima', 'SRR1300464'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300464'], ('Tetraselmis_striata', 'SRR1296732'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296732'], ('Dunaliella_tertiolecta', 'SRR1300297'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300297'], ('Heterosigma_akashiwo', 'SRR1296857'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296857'], ('Geminigera', 'SRR1300315'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300315'], ('Skeletonema_marinoi', 'SRR1300409'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300409'], ('Florenciella', 'SRR1294431'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1294431'], ('Karlodinium_veneficum', 'SRR1300327'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300327'], ('Perkinsus_marinus', 'SRR1294397'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1294397'], ('Symbiodinium_sp.', 'SRR1300267'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300267'], ('Micromonas_pusilla', 'SRR1300457'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300457'], ('Chaetoceros_sp.', 'SRR1296891'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296891'], ('Skeletonema_marinoi', 'SRR1296717'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296717'], ('Anophryoides_haemophila', 'SRR1294436'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1294436'], ('Karenia_brevis', 'SRR1296952'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296952'], ('Minutocellus_polymorphus', 'SRR1300535'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300535'], ('uncultured_eukaryote', 'SRR1296996'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296996'], ('uncultured_eukaryote', 'SRR1300529'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300529'], ('Pseudo-nitzschia_pungens', 'SRR1300394'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300394'], ('Chrysoculter_rhomboideus', 'SRR1300372'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300372'], ('Heterosigma_akashiwo', 'SRR1296916'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296916'], ('Pseudokeronopsis', 'SRR1300460'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300460'], ('Alexandrium_monilatum', 'SRR1296896'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296896'], ('Ditylum_brightwellii', 'SRR1300273'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300273'], ('Schizochytrium_aggregatum', 'SRR1300410'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300410'], ('Micromonas', 'SRR1296697'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296697'], ('Thalassiosira_oceanica', 'SRR1300225'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300225'], ('Alexandrium_andersonii', 'SRR1300512'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300512'], ('Isochrysis', 'SRR1300423'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300423'], ('Moneuplotes_crassus', 'SRR1300459'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300459'], ('Thalassiosira_weissflogii', 'SRR1296880'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296880'], ('Corethron_pennatum', 'SRR1296925'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296925'], ('Thalassiosira_punctigera', 'SRR1300398'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300398'], ('Goniomonas', 'SRR1296711'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296711'], ('Thalassiosira_weissflogii', 'SRR1296934'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296934'], ('Chrysoreinhardia', 'SRR1300388'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300388'], ('Ochromonas', 'SRR1296767'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296767'], ('Erythrolobus_madagascarensis', 'SRR1300444'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300444'], ('Alexandrium_fundyense', 'SRR1294389'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1294389'], ('Proteomonas_sulcata', 'SRR1300355'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300355'], ('Durinskia_baltica', 'SRR1296941'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296941'], ('Micromonas', 'SRR1300441'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300441'], ('Asterionellopsis_glacialis', 'SRR1296977'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296977'], ('Karenia_brevis', 'SRR1296749'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296749'], ('Emiliania_huxleyi', 'SRR1300232'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300232'], ('Ditylum_brightwellii', 'SRR1300309'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300309'], ('Ochromonas', 'SRR1300317'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300317'], ('Micromonas', 'SRR1300454'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300454'], ('Vaucheria_litorea', 'SRR1300217'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300217'], ('Karenia_brevis', 'SRR1296748'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296748'], ('uncultured_eukaryote', 'SRR1300504'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300504'], ('Pteridomonas_danica', 'SRR1296725'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296725'], ('Prorocentrum_minimum', 'SRR1296754'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296754'], ('Peridinium_aciculiferum', 'SRR1294440'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1294440'], ('Chaetoceros_neogracile', 'SRR1296835'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296835'], ('Chattonella_subsalsa', 'SRR1300238'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300238'], ('Odontella_aurita', 'SRR1294405'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1294405'], ('Pseudo-nitzschia_australis', 'SRR1296847'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296847'], ('Lessardia_elongata', 'SRR1300468'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300468'], ('Oxyrrhis_marina', 'SRR1300319'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300319'], ('Heterosigma_akashiwo', 'SRR1296859'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296859'], ('Amphidinium_carterae', 'SRR1294392'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1294392'], ('Picocystis_salinarum', 'SRR1300322'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300322'], ('Hemiselmis_andersenii', 'SRR1296870'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296870'], ('uncultured_eukaryote', 'SRR1300494'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300494'], ('Aurantiochytrium_limacinum', 'SRR1300335'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300335'], ('Pelagomonas_calceolata', 'SRR1296779'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296779'], ('Aureoumbra_lagunensis', 'SRR1296815'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296815'], ('Dunaliella_tertiolecta', 'SRR1294427'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1294427'], ('Aureoumbra_lagunensis', 'SRR1296818'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296818'], ('Thalassiosira_rotula', 'SRR1296989'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296989'], ('Bicosoecida_sp._CB-2014', 'SRR1294382'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1294382'], ('Bigelowiella_natans', 'SRR1296871'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296871'], ('Alexandrium_monilatum', 'SRR1296898'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296898'], ('Prymnesium_polylepis', 'SRR1296790'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296790'], ('Aplanochytrium_stocchinoi', 'SRR1294444'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1294444'], ('Prasinoderma_singularis', 'SRR1300361'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300361'], ('Stereomyxa_ramosa', 'SRR1296940'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296940'], ('Alexandrium_tamarense', 'SRR1296766'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296766'], ('Hemiselmis_andersenii', 'SRR1300352'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300352'], ('Mallomonas', 'SRR1300324'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300324'], ('Hemiselmis_rufescens', 'SRR1300404'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300404'], ('Dolichomastix_tenuilepis', 'SRR1296860'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296860'], ('Bathycoccus_prasinos', 'SRR1300505'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300505'], ('Protoceratium_reticulatum', 'SRR1296738'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296738'], ('Skeletonema_grethae', 'SRR1296994'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296994'], ('Thalassiosira_weissflogii', 'SRR1300480'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300480'], ('Akashiwo_sanguinea', 'SRR1294464'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1294464'], ('Isochrysis_sp.', 'SRR1300346'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300346'], ('Karenia_brevis', 'SRR1296853'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296853'], ('Erythrolobus_australicus', 'SRR1300443'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300443'], ('Isochrysis_sp.', 'SRR1300375'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300375'], ('Chaetoceros_neogracile', 'SRR1296836'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296836'], ('Chattonella_subsalsa', 'SRR1300240'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300240'], ('Fragilariopsis_kerguelensis', 'SRR1296909'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296909'], ('Phaeocystis_antarctica', 'SRR1300523'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300523'], ('Acanthoeca', 'SRR1294413'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1294413'], ('Strombidinopsis_acuminata', 'SRR1296813'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296813'], ('Alexandrium_tamarense', 'SRR1300221'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300221'], ('Norrisiella_sphaerica', 'SRR1296950'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296950'], ('Fragilariopsis_kerguelensis', 'SRR1296966'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296966'], ('Eutreptiella_gymnastica', 'SRR1296866'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296866'], ('uncultured_eukaryote', 'SRR1300247'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300247'], ('Crypthecodinium_cohnii', 'SRR1296889'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296889'], ('Micromonas_pusilla', 'SRR1300458'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300458'], ('Lotharella_sp._CCMP622', 'SRR1296814'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296814'], ('Heterosigma_akashiwo', 'SRR1296856'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296856'], ('Asterionellopsis_glacialis', 'SRR1296963'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296963'], ('Thalassiosira_gravida', 'SRR1296992'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296992'], ('Hanusia_phi', 'SRR1300354'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300354'], ('Thalassiosira_weissflogii', 'SRR1300478'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300478'], ('Bigelowiella_natans', 'SRR1300358'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300358'], ('Heterocapsa_rotundata', 'SRR1296810'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296810'], ('Prorocentrum_minimum', 'SRR1296785'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296785'], ('Alveolata', 'SRR1296979'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296979'], ('Pelagomonas_calceolata', 'SRR1300368'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300368'], ('Thalassiosira_weissflogii', 'SRR1300489'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300489'], ('Akashiwo_sanguinea', 'SRR1294463'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1294463'], ('Scrippsiella_hangoei', 'SRR1296794'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296794'], ('Debaryomyces_hansenii', 'SRR1296968'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296968'], ('Proboscia_alata', 'SRR1296926'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296926'], ('Nephroselmis_pyriformis', 'SRR1294419'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1294419'], ('Kryptoperidinium_foliaceum', 'SRR1296942'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296942'], ('Perkinsus_marinus', 'SRR1294396'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1294396'], ('Ditylum_brightwellii', 'SRR1300292'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300292'], ('Detonula_confervacea', 'SRR1300391'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300391'], ('Myrionecta_rubra', 'SRR1296700'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296700'], ('Tiarina_fusa', 'SRR1296771'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296771'], ('Chaetoceros_debilis', 'SRR1296918'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296918'], ('Ostreococcus_mediterraneus', 'SRR1300249'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300249'], ('Azadinium_spinosum', 'SRR1300307'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300307'], ('Paramoeba_atlantica', 'SRR1296884'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296884'], ('Cyclophora_tenuis', 'SRR1296719'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296719'], ('Ostreococcus_mediterraneus', 'SRR1300253'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300253'], ('Haptolina_brevifila', 'SRR1300415'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300415'], ('Chlamydomonas', 'SRR1300379'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300379'], ('Heterosigma_akashiwo', 'SRR1296797'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296797'], ('uncultured_eukaryote', 'SRR1296837'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296837'], ('Pycnococcus_provasolii', 'SRR1300509'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300509'], ('Pavlova', 'SRR1300299'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300299'], ('Picochlorum_oklahomense', 'SRR1300323'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300323'], ('Bigelowiella_natans', 'SRR1300357'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300357'], ('Lotharella_globosa', 'SRR1296948'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296948'], ('uncultured_eukaryote', 'SRR1300539'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300539'], ('Aureococcus_anophagefferens', 'SRR1300281'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300281'], ('Heterosigma_akashiwo', 'SRR1296914'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296914'], ('Schizochytrium_aggregatum', 'SRR1300412'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300412'], ('Pycnococcus', 'SRR1300422'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300422'], ('Synchroma_pusillum', 'SRR1300531'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300531'], ('Pleurochrysis_carterae', 'SRR1300347'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300347'], ('Gloeochaete_wittrockiana', 'SRR1300296'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300296'], ('Thalassiosira_oceanica', 'SRR1300227'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300227'], ('Emiliania_huxleyi', 'SRR1300286'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300286'], ('Amoebophrya_sp.', 'SRR1296703'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296703'], ('Thraustochytrium_sp.', 'SRR1296958'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296958'], ('Rhodella_maculata', 'SRR1296822'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296822'], ('Dinobryon', 'SRR1294384'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1294384'], ('Paraphysomonas_imperforata', 'SRR1296729'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296729'], ('Gymnochlora', 'SRR1296947'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296947'], ('Paramoeba_aestuarina', 'SRR1296885'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296885'], ('Thalassiosira_weissflogii', 'SRR1296932'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296932'], ('Neobodo_designis', 'SRR1300419'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300419'], ('Mantoniella', 'SRR1300534'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300534'], ('uncultured_eukaryote', 'SRR1296838'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296838'], ('Thalassiosira_gravida', 'SRR1296986'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296986'], ('Rhodosorus_marinus', 'SRR1296985'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296985'], ('uncultured_eukaryote', 'SRR1300275'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300275'], ('Aplanochytrium_stocchinoi', 'SRR1294443'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1294443'], ('Licmophora_paradoxa', 'SRR1300448'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300448'], ('Helicotheca_tamesis', 'SRR1294422'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1294422'], ('Emiliania_huxleyi', 'SRR1300230'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300230'], ('Oxyrrhis_marina', 'SRR1300211'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300211'], ('Symbiodinium_sp.', 'SRR1300344'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300344'], ('Prorocentrum_minimum', 'SRR1296752'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296752'], ('Ditylum_brightwellii', 'SRR1294416'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1294416'], ('Aureococcus_anophagefferens', 'SRR1300279'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300279'], ('Pseudo-nitzschia_australis', 'SRR1296849'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296849'], ('Strombidinopsis', 'SRR1296770'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296770'], ('Pelagococcus_subviridis', 'SRR1296946'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296946'], ('Karenia_brevis', 'SRR1296854'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296854'], ('Debaryomyces_hansenii', 'SRR1296971'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296971'], ('uncultured_eukaryote', 'SRR1300496'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300496'], ('Symbiodinium_sp.', 'SRR1300431'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300431'], ('Vexillifera', 'SRR1296886'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296886'], ('uncultured_eukaryote', 'SRR1300341'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300341'], ('Symbiodinium_sp.', 'SRR1300470'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300470'], ('Thalassiosira_weissflogii', 'SRR1294466'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1294466'], ('Rhodella_maculata', 'SRR1296984'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296984'], ('Scrippsiella_hangoei', 'SRR1296786'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296786'], ('Madagascaria_erythrocladioides', 'SRR1300528'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300528'], ('Prymnesium_polylepis', 'SRR1296792'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296792'], ('Anophryoides_haemophila', 'SRR1294433'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1294433'], ('Gephyrocapsa_oceanica', 'SRR1300426'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300426'], ('Porphyridium_aerugineum', 'SRR1296983'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296983'], ('Haptolina_ericina', 'SRR1300311'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300311'], ('Gonyaulax_spinifera', 'SRR1300518'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300518'], ('Schizochytrium_aggregatum', 'SRR1300400'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300400'], ('Leptocylindrus_danicus', 'SRR1296723'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296723'], ('Nitzschia', 'SRR1294404'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1294404'], ('Eutreptiella_gymnastica', 'SRR1296768'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296768'], ('Thalassiosira_weissflogii', 'SRR1300486'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300486'], ('Amphora_coffeiformis', 'SRR1296888'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296888'], ('Calcidiscus_leptoporus', 'SRR1300371'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300371'], ('Emiliania_huxleyi', 'SRR1300288'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300288'], ('Scrippsiella_hangoei', 'SRR1294400'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1294400'], ('Ditylum_brightwellii', 'SRR1300435'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300435'], ('Aplanochytrium', 'SRR1300334'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300334'], ('Striatella_unipunctata', 'SRR1296706'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296706'], ('Aulacoseira_subarctica', 'SRR1300395'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300395'], ('Aplanochytrium_stocchinoi', 'SRR1300413'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300413'], ('Anophryoides_haemophila', 'SRR1328076'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1328076'], ('Florenciella', 'SRR1294432'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1294432'], ('Tryblionella_compressa', 'SRR1296830'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296830'], ('Symbiodinium_kawagutii', 'SRR1300303'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300303'], ('Ammonia_sp.', 'SRR1300434'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300434'], ('Chlamydomonas_leiostraca', 'SRR1294458'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1294458'], ('Lotharella_globosa', 'SRR1296868'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296868'], ('Symbiodinium_sp.', 'SRR1300264'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300264'], ('uncultured_eukaryote', 'SRR1300241'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300241'], ('Anophryoides_haemophila', 'SRR1294434'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1294434'], ('Thalassiosira_weissflogii', 'SRR1296879'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296879'], ('Heterosigma_akashiwo', 'SRR1296798'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296798'], ('Thalassiosira', 'SRR1300392'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300392'], ('Isochrysis_galbana', 'SRR1296904'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296904'], ('Thalassiosira_weissflogii', 'SRR1300476'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300476'], ('Amphiprora', 'SRR1296825'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296825'], ('uncultured_eukaryote', 'SRR1300338'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300338'], ('Oxyrrhis_marina', 'SRR1300320'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300320'], ('Polarella_glacialis', 'SRR1300519'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300519'], ('Amphidinium_massartii', 'SRR1296892'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296892'], ('Fragilariopsis_kerguelensis', 'SRR1296819'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296819'], ('Pyramimonas_parkeae', 'SRR1296737'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296737'], ('Aplanochytrium_stocchinoi', 'SRR1300414'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300414'], ('Amphiprora', 'SRR1296828'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296828'], ('Aplanochytrium_stocchinoi', 'SRR1300401'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300401'], ('Vannella', 'SRR1296763'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296763'], ('Blepharisma_japonicum', 'SRR1294460'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1294460'], ('Extubocellulus_spinifer', 'SRR1296807'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296807'], ('Guillardia_theta', 'SRR1294409'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1294409'], ('Symbiodinium_sp.', 'SRR1300263'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300263'], ('Chaetoceros_affinis', 'SRR1296974'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296974'], ('Ostreococcus_mediterraneus', 'SRR1300251'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300251'], ('Kryptoperidinium_foliaceum', 'SRR1296841'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296841'], ('Thalassiothrix_antarctica', 'SRR1296920'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296920'], ('Bathycoccus_prasinos', 'SRR1300453'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300453'], ('uncultured_eukaryote', 'SRR1294423'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1294423'], ('Tryblionella_compressa', 'SRR1296832'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296832'], ('Schmidingerella_taraikaensis', 'SRR1296899'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296899'], ('Pseudo-nitzschia_delicatissima', 'SRR1296721'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296721'], ('Heterocapsa_triquetra', 'SRR1296978'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296978'], ('Cyanoptyche_gloeocystis', 'SRR1300321'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300321'], ('Polarella_glacialis', 'SRR1296751'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296751'], ('Platyophrya_macrostoma', 'SRR1296905'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296905'], ('Prorocentrum_minimum', 'SRR1296788'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296788'], ('Chaetoceros_affinis', 'SRR1294452'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1294452'], ('Asterionellopsis_glacialis', 'SRR1300451'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300451'], ('Thalassiosira_weissflogii', 'SRR1300490'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300490'], ('Emiliania_huxleyi', 'SRR1300284'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300284'], ('Strombidium_rassoulzadegani', 'SRR1296873'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296873'], ('Prymnesium_parvum', 'SRR1294411'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1294411'], ('Cylindrotheca_closterium', 'SRR1294406'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1294406'], ('Alexandrium_fundyense', 'SRR1294390'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1294390'], ('Thalassiosira_rotula', 'SRR1300436'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300436'], ('Thalassiosira_weissflogii', 'SRR1300487'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300487'], ('Asterionellopsis_glacialis', 'SRR1296808'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296808'], ('Alexandrium_monilatum', 'SRR1296895'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296895'], ('uncultured_eukaryote', 'SRR1300277'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300277'], ('Aplanochytrium_stocchinoi', 'SRR1294441'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1294441'], ('Symbiodinium_kawagutii', 'SRR1300304'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300304'], ('Prorocentrum_lima', 'SRR1300465'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300465'], ('Bathycoccus_prasinos', 'SRR1300250'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300250'], ('Attheya_septentrionalis', 'SRR1300527'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300527'], ('Emiliania_huxleyi', 'SRR1300236'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300236'], ('Ostreococcus_mediterraneus', 'SRR1300342'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300342'], ('Hemiselmis_andersenii', 'SRR1300351'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300351'], ('Amphiprora', 'SRR1296827'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296827'], ('Craspedostauros_australis', 'SRR1300521'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300521'], ('Scyphosphaera_apsteinii', 'SRR1300370'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300370'], ('Alexandrium_minutum', 'SRR1300213'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300213'], ('Oxyrrhis_marina', 'SRR1300473'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300473'], ('Tetraselmis_striata', 'SRR1296731'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296731'], ('Dactyliosolen_fragilissimus', 'SRR1296964'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296964'], ('Pleurochrysis_carterae', 'SRR1300348'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300348'], ('Ochromonas', 'SRR1296863'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296863'], ('Mantoniella_antarctica', 'SRR1300318'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300318'], ('Staurosira', 'SRR1300449'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300449'], ('Thalassiosira_antarctica', 'SRR1296959'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296959'], ('Scrippsiella_trochoidea', 'SRR1296760'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296760'], ('Rhodomonas_salina', 'SRR1300353'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300353'], ('Pelagococcus_subviridis', 'SRR1296944'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296944'], ('Amphidinium_carterae', 'SRR1294393'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1294393'], ('Lingulodinium_polyedrum', 'SRR1300257'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300257'], ('Eutreptiella_gymnastica', 'SRR1294408'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1294408'], ('Heterosigma_akashiwo', 'SRR1296775'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296775'], ('Imantonia', 'SRR1300544'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300544'], ('Symbiodinium_sp.', 'SRR1300433'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300433'], ('Amorphochlora_amoebiformis', 'SRR1296869'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296869'], ('Alexandrium_fundyense', 'SRR1294386'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1294386'], ('Ochromonas', 'SRR1300383'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300383'], ('Prorocentrum_minimum', 'SRR1296784'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296784'], ('Prymnesium_parvum', 'SRR1296917'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296917'], ('Neoceratium_fusus', 'SRR1300301'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300301'], ('Ditylum_brightwellii', 'SRR1294418'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1294418'], ('Pyrodinium_bahamense', 'SRR1296702'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296702'], ('uncultured_eukaryote', 'SRR1300244'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300244'], ('Odontella_sinensis', 'SRR1296882'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296882'], ('Chaetoceros_curvisetus', 'SRR1296993'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296993'], ('Gephyrocapsa_oceanica', 'SRR1300424'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300424'], ('Protocruzia_adherens', 'SRR1296823'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296823'], ('Oxyrrhis_marina', 'SRR1296900'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296900'], ('Perkinsus_marinus', 'SRR1294399'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1294399'], ('Isochrysis', 'SRR1300439'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300439'], ('Florenciella_parvula', 'SRR1294437'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1294437'], ('Florenciella', 'SRR1300366'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300366'], ('Phaeocystis_antarctica', 'SRR1300313'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300313'], ('Minutocellus_polymorphus', 'SRR1300271'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300271'], ('Mayorella', 'SRR1296930'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296930'], ('Uronema', 'SRR1296976'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296976'], ('Chaetoceros_affinis', 'SRR1294448'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1294448'], ('Micromonas', 'SRR1300421'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300421'], ('Climacostomum_virens', 'SRR1300461'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300461'], ('Anophryoides_haemophila', 'SRR1328077'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1328077'], ('uncultured_eukaryote', 'SRR1296843'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296843'], ('uncultured_eukaryote', 'SRR1300328'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300328'], ('Florenciella', 'SRR1294430'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1294430'], ('Symbiodinium_kawagutii', 'SRR1300305'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300305'], ('Pyramimonas_sp.', 'SRR1300524'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300524'], ('Skeletonema_japonicum', 'SRR1296995'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296995'], ('Dictyocha_speculum', 'SRR1300447'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300447'], ('Symbiodinium_sp.', 'SRR1300266'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300266'], ('uncultured_eukaryote', 'SRR1300243'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300243'], ('uncultured_eukaryote', 'SRR1300369'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300369'], ('Florenciella', 'SRR1294429'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1294429'], ('Pyramimonas_obovata', 'SRR1300378'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300378'], ('Minutocellus_polymorphus', 'SRR1300446'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300446'], ('Scrippsiella_hangoei', 'SRR1296796'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296796'], ('Hemiselmis_tepida', 'SRR1300402'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300402'], ('Percolomonas_cosmopolitus', 'SRR1296742'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296742'], ('Thalassionema_frauenfeldii', 'SRR1296708'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296708'], ('Dinobryon', 'SRR1296865'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296865'], ('Sexangularia_sp._CB-2014', 'SRR1296782'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296782'], ('Schizochytrium_aggregatum', 'SRR1300411'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300411'], ('Bigelowiella_natans', 'SRR1300405'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300405'], ('Pseudo-nitzschia_arenysensis', 'SRR1296720'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296720'], ('Thalassiosira_antarctica', 'SRR1296962'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296962'], ('Skeletonema_costatum', 'SRR1294403'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1294403'], ('Spumella_elongata', 'SRR1300416'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300416'], ('Gambierdiscus_australes', 'SRR1296893'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296893'], ('Thalassiosira_rotula', 'SRR1296755'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296755'], ('Thalassiosira_weissflogii', 'SRR1296881'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296881'], ('Thalassiosira_rotula', 'SRR1296990'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296990'], ('Elphidium_margaritaceum', 'SRR1300475'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300475'], ('Amphidinium_carterae', 'SRR1296758'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296758'], ('Ditylum_brightwellii', 'SRR1294414'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1294414'], ('Corethron_hystrix', 'SRR1294401'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1294401'], ('Pseudo-nitzschia_fraudulenta', 'SRR1294395'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1294395'], ('Grammatophora_oceanica', 'SRR1296957'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296957'], ('Emiliania_huxleyi', 'SRR1300233'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300233'], ('Chaetoceros_affinis', 'SRR1294446'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1294446'], ('Alexandrium_monilatum', 'SRR1296897'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296897'], ('Pseudo-nitzschia_fraudulenta', 'SRR1296747'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296747'], ('uncultured_eukaryote', 'SRR1300525'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300525'], ('Chaetoceros_neogracile', 'SRR1296834'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296834'], ('Chattonella_subsalsa', 'SRR1300237'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300237'], ('Stauroneis_constricta', 'SRR1300408'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300408'], ('Amphora_coffeiformis', 'SRR1296713'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296713'], ('Emiliania_huxleyi', 'SRR1300282'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300282'], ('Heterosigma_akashiwo', 'SRR1296858'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296858'], ('Pessonella', 'SRR1296774'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296774'], ('Rhodomonas_lens', 'SRR1296874'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296874'], ('uncultured_eukaryote', 'SRR1300495'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300495'], ('Aurantiochytrium_limacinum', 'SRR1300336'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300336'], ('Alexandrium_tamarense', 'SRR1300222'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300222'], ('Goniomonas_pacifica', 'SRR1296845'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296845'], ('Chaetoceros_curvisetus', 'SRR1296938'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296938'], ('Picochlorum', 'SRR1300389'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300389'], ('Extubocellulus_spinifer', 'SRR1296804'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296804'], ('Bicosoecida_sp._CB-2014', 'SRR1294381'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1294381'], ('Tetraselmis_astigmatica', 'SRR1296698'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296698'], ('Thalassionema_nitzschioides', 'SRR1296922'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296922'], ('Schmidingerella_taraikaensis', 'SRR1296936'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296936'], ('Bolidomonas_pacifica', 'SRR1296709'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296709'], ('Euplotes_focardii', 'SRR1296928'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296928'], ('Chaetoceros_affinis', 'SRR1294451'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1294451'], ('Emiliania_huxleyi', 'SRR1300234'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300234'], ('Thalassiosira_rotula', 'SRR1296877'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296877'], ('Oxyrrhis_marina', 'SRR1296907'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296907'], ('Pelagomonas_calceolata', 'SRR1296781'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296781'], ('Chaetoceros_neogracile', 'SRR1296833'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296833'], ('Karenia_brevis', 'SRR1296712'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296712'], ('Heterocapsa_arctica', 'SRR1300520'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300520'], ('Thalassiosira_weissflogii', 'SRR1300481'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300481'], ('uncultured_eukaryote', 'SRR1300261'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300261'], ('Chaetoceros_curvisetus', 'SRR1294456'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1294456'], ('Micromonas', 'SRR1300437'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300437'], ('Tetraselmis_striata', 'SRR1296733'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296733'], ('Lingulodinium_polyedrum', 'SRR1300255'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300255'], ('Heterosigma_akashiwo', 'SRR1296777'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296777'], ('Isochrysis_sp.', 'SRR1300376'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300376'], ('Pelagomonas_calceolata', 'SRR1296778'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296778'], ('Crypthecodinium_cohnii', 'SRR1296961'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296961'], ('Tetraselmis_chuii', 'SRR1296875'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296875'], ('Skeletonema_marinoi', 'SRR1300407'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300407'], ('Polyblepharides_amylifera', 'SRR1300428'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300428'], ('Gyrodinium_dominans', 'SRR1300469'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300469'], ('Alexandrium_fundyense', 'SRR1294388'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1294388'], ('Scrippsiella_hangoei', 'SRR1296793'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296793'], ('Isochrysis_galbana', 'SRR1300332'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300332'], ('Vannella_sp._CB-2014', 'SRR1296762'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296762'], ('uncultured_eukaryote', 'SRR1300246'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300246'], ('Thalassionema_nitzschioides', 'SRR1328074'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1328074'], ('Chlamydomonas_euryale', 'SRR1296991'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296991'], ('Cafeteria_roenbergensis', 'SRR1300216'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300216'], ('uncultured_eukaryote', 'SRR1300545'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300545'], ('Micromonas', 'SRR1300442'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300442'], ('Fragilariopsis_kerguelensis', 'SRR1296912'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296912'], ('Isochrysis_sp.', 'SRR1300268'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300268'], ('Vaucheria_litorea', 'SRR1300218'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300218'], ('Pseudopedinella_elastica', 'SRR1300312'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300312'], ('Aureoumbra_lagunensis', 'SRR1296817'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296817'], ('Akashiwo_sanguinea', 'SRR1294462'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1294462'], ('Proboscia_alata', 'SRR1296927'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296927'], ('Thalassiosira_antarctica', 'SRR1296965'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296965'], ('Ditylum_brightwellii', 'SRR1300293'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300293'], ('Cyclotella_meneghiniana', 'SRR1300390'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300390'], ('uncultured_eukaryote', 'SRR1300360'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300360'], ('Prymnesium_parvum', 'SRR1296710'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296710'], ('Dunaliella_tertiolecta', 'SRR1300298'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300298'], ('Rhodopseudomonas', 'SRR1300429'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300429'], ('Pycnococcus_provasolii', 'SRR1300362'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300362'], ('uncultured_eukaryote', 'SRR1300499'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300499'], ('Karlodinium_veneficum', 'SRR1300326'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300326'], ('Ostreococcus_mediterraneus', 'SRR1300248'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300248'], ('Astrosyne_radiata', 'SRR1296718'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296718'], ('Sorites_sp.', 'SRR1296734'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296734'], ('Micromonas_pusilla', 'SRR1300456'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300456'], ('Bolidomonas', 'SRR1300364'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300364'], ('Tryblionella_compressa', 'SRR1296831'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296831'], ('Triceratium_dubium', 'SRR1300492'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300492'], ('Bigelowiella_longifila', 'SRR1300406'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300406'], ('Micromonas', 'SRR1300438'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300438'], ('uncultured_eukaryote', 'SRR1300538'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300538'], ('Heterosigma_akashiwo', 'SRR1296915'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296915'], ('Pycnococcus_provasolii', 'SRR1300541'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300541'], ('Ditylum_brightwellii', 'SRR1300272'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300272'], ('Sarcinochrysis', 'SRR1300501'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300501'], ('Stygamoeba_regulata', 'SRR1296894'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296894'], ('Rhodopseudomonas', 'SRR1300440'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300440'], ('Ditylum_brightwellii', 'SRR1300294'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300294'], ('Chaetoceros_affinis', 'SRR1294447'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1294447'], ('Amphidinium_carterae', 'SRR1296757'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296757'], ('Thalassiosira_oceanica', 'SRR1300226'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300226'], ('Chrysochromulina_rotalis', 'SRR1296740'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296740'], ('Chaetoceros_curvisetus', 'SRR1294454'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1294454'], ('Karenia_brevis', 'SRR1296750'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296750'], ('Amphidinium_carterae', 'SRR1294391'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1294391'], ('Prymnesium_parvum', 'SRR1300223'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300223'], ('Anophryoides_haemophila', 'SRR1294435'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1294435'], ('Paraphysomonas_imperforata', 'SRR1296728'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296728'], ('Corethron_pennatum', 'SRR1296924'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296924'], ('Thalassiosira_weissflogii', 'SRR1296933'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296933'], ('Favella_ehrenbergii', 'SRR1296812'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296812'], ('Noctiluca_scintillans', 'SRR1296929'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296929'], ('Thalassiosira_gravida', 'SRR1296987'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296987'], ('Aplanochytrium_stocchinoi', 'SRR1294442'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1294442'], ('Karenia_brevis', 'SRR1296714'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296714'], ('Fibrocapsa_japonica', 'SRR1300377'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300377'], ('Pavlova_gyrans', 'SRR1300532'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300532'], ('Emiliania_huxleyi', 'SRR1300231'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300231'], ('Prasinoderma_coloniale', 'SRR1296862'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296862'], ('Fragilariopsis_kerguelensis', 'SRR1296910'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296910'], ('Symbiodinium_sp.', 'SRR1300345'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300345'], ('Pseudo-nitzschia_fraudulenta', 'SRR1296745'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296745'], ('Oxyrrhis_marina', 'SRR1300474'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300474'], ('Paraphysomonas_vestita', 'SRR1300418'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300418'], ('Chattonella_subsalsa', 'SRR1300239'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300239'], ('Aureococcus_anophagefferens', 'SRR1300278'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300278'], ('Micromonas', 'SRR1300295'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300295'], ('Pseudo-nitzschia_australis', 'SRR1296848'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296848'], ('Coscinodiscus_wailesii', 'SRR1300397'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300397'], ('Euplotes_focardii', 'SRR1296783'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296783'], ('Fragilariopsis_kerguelensis', 'SRR1296911'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296911'], ('Eutreptiella_gymnastica', 'SRR1296802'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296802'], ('Goniomonas_pacifica', 'SRR1296724'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296724'], ('Chaetoceros_curvisetus', 'SRR1294457'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1294457'], ('Thalassiosira_weissflogii', 'SRR1300483'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300483'], ('Alexandrium_fundyense', 'SRR1294385'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1294385'], ('Symbiodinium_sp.', 'SRR1300471'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300471'], ('Thalassiosira_rotula', 'SRR1296988'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296988'], ('Bicosoecida_sp._CB-2014', 'SRR1294383'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1294383'], ('Azadinium_spinosum', 'SRR1300308'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300308'], ('Prymnesium_polylepis', 'SRR1296791'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296791'], ('Brandtodinium_nutricula', 'SRR1300537'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300537'], ('uncultured_eukaryote', 'SRR1300330'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300330'], ('Thalassiosira_minuscula', 'SRR1296956'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296956'], ('Tryblionella_compressa', 'SRR1296829'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296829'], ('Thraustochytrium_sp.', 'SRR1296846'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296846'], ('Palpitomonas_bilix', 'SRR1294410'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1294410'], ('Picocystis_salinarum', 'SRR1294420'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1294420'], ('Synedropsis_cf._recta', 'SRR1300382'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300382'], ('Pavlova', 'SRR1300270'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300270'], ('Mesodinium_pulex', 'SRR1296764'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296764'], ('Vitrella_brassicaformis', 'SRR1300530'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300530'], ('Karenia_brevis', 'SRR1296852'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296852'], ('Emiliania_huxleyi', 'SRR1300283'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300283'], ('Chaetoceros_affinis', 'SRR1294453'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1294453'], ('Paraphysomonas_bandaiensis', 'SRR1300316'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300316'], ('Aplanochytrium', 'SRR1294426'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1294426'], ('Symbiodinium_kawagutii', 'SRR1300302'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300302'], ('Fragilariopsis_kerguelensis', 'SRR1296967'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296967'], ('Skeletonema_menzellii', 'SRR1296800'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296800'], ('Rosalina', 'SRR1296887'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296887'], ('uncultured_eukaryote', 'SRR1300533'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300533'], ('Entomoneis_sp.', 'SRR1300522'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300522'], ('Kryptoperidinium_foliaceum', 'SRR1296840'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296840'], ('Thalassiosira_weissflogii', 'SRR1296878'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296878'], ('Heterosigma_akashiwo', 'SRR1296799'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296799'], ('Skeletonema_dohrnii', 'SRR1296795'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296795'], ('Thalassiosira', 'SRR1300274'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300274'], ('Thalassiosira_weissflogii', 'SRR1300479'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300479'], ('Euplotes_harpa', 'SRR1296906'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296906'], ('Bigelowiella_natans', 'SRR1300359'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300359'], ('Chaetoceros_cf._neogracile', 'SRR1300373'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300373'], ('Amphiprora_paludosa', 'SRR1300396'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300396'], ('Ditylum_brightwellii', 'SRR1294417'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1294417'], ('Rhizosolenia_setigera', 'SRR1296707'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296707'], ('Thalassiosira_weissflogii', 'SRR1300488'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300488'], ('Asterionellopsis_glacialis', 'SRR1296937'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296937'], ('Chaetoceros_dichaeta', 'SRR1300526'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300526'], ('Debaryomyces_hansenii', 'SRR1296969'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296969'], ('Pyramimonas_parkeae', 'SRR1296736'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296736'], ('Ditylum_brightwellii', 'SRR1300291'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300291'], ('Acanthoeca', 'SRR1296844'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296844'], ('Chaetoceros_debilis', 'SRR1296919'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296919'], ('Dinophysis_acuminata', 'SRR1296701'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296701'], ('Thalassiosira_weissflogii', 'SRR1300484'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300484'], ('Trichosphaerium', 'SRR1296772'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296772'], ('Pelagococcus_subviridis', 'SRR1296803'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296803'], ('Azadinium_spinosum', 'SRR1300306'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300306'], ('Togula_jolla', 'SRR1296741'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296741'], ('Chrysocystis_fragilis', 'SRR1300385'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300385'], ('Chaetoceros_affinis', 'SRR1296975'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296975'], ('Ostreococcus_mediterraneus', 'SRR1300252'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300252'], ('Thalassiosira_weissflogii', 'SRR1294465'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1294465'], ('Pyrocystis_lunula', 'SRR1300467'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300467'], ('Condylostoma_magnum', 'SRR1296902'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296902'], ('Thalassiothrix_antarctica', 'SRR1296921'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296921'], ('Alexandrium_catenella', 'SRR1296704'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296704'], ('Alexandrium_fundyense', 'SRR1300214'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300214'], ('Skeletonema_marinoi', 'SRR1300260'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300260'], ('Lotharella_globosa', 'SRR1296949'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296949'], ('Chromulina_nebulosa', 'SRR1300310'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300310'], ('Pseudo-nitzschia_pungens', 'SRR1300393'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300393'], ('Aureococcus_anophagefferens', 'SRR1300280'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300280'], ('Heterosigma_akashiwo', 'SRR1296913'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296913'], ('Crypthecodinium_cohnii', 'SRR1296890'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296890'], ('Prymnesium_parvum', 'SRR1294412'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1294412'], ('Perkinsus_chesapeaki', 'SRR1300220'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300220'], ('Chaetoceros_affinis', 'SRR1294445'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1294445'], ('Extubocellulus_spinifer', 'SRR1296805'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296805'], ('Emiliania_huxleyi', 'SRR1300287'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300287'], ('Pseudopedinella_elastica', 'SRR1300399'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300399'], ('Prymnesium_polylepis', 'SRR1296739'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296739'], ('Thoracosphaera_heimii', 'SRR1300228'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300228'], ('Emiliania_huxleyi', 'SRR1300229'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300229'], ('Proboscia_inermis', 'SRR1296824'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296824'], ('Florenciella', 'SRR1294428'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1294428'], ('Thalassiosira_weissflogii', 'SRR1296931'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296931'], ('Durinskia_baltica', 'SRR1296839'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296839'], ('Prymnesium_polylepis', 'SRR1296789'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296789'], ('Thalassiosira_minuscula', 'SRR1296955'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296955'], ('Cafeteria', 'SRR1300417'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300417'], ('Aristerostoma', 'SRR1296811'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296811'], ('uncultured_eukaryote', 'SRR1296727'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296727'], ('Symbiodinium_sp.', 'SRR1300343'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300343'], ('Pteridomonas_danica', 'SRR1296726'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296726'], ('Thalassiosira_minuscula', 'SRR1296953'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296953'], ('Prorocentrum_minimum', 'SRR1296753'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296753'], ('Perkinsus_chesapeaki', 'SRR1300219'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300219'], ('Oxyrrhis_marina', 'SRR1300472'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300472'], ('Chaetoceros_brevis', 'SRR1300510'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300510'], ('Prymnesium_parvum', 'SRR1296769'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296769'], ('uncultured_eukaryote', 'SRR1300262'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300262'], ('Scrippsiella_trochoidea', 'SRR1296761'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296761'], ('Fabrea_salina', 'SRR1300445'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300445'], ('Chaetoceros_curvisetus', 'SRR1294455'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1294455'], ('Rhodosorus_marinus', 'SRR1294402'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1294402'], ('Lingulodinium_polyedrum', 'SRR1300258'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300258'], ('Debaryomyces_hansenii', 'SRR1296970'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296970'], ('Phaeomonas_parva', 'SRR1294421'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1294421'], ('Symbiodinium_sp.', 'SRR1300430'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300430'], ('Stichococcus', 'SRR1300543'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300543'], ('Skeletonema_marinoi', 'SRR1296716'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296716'], ('uncultured_eukaryote', 'SRR1300340'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300340'], ('Alexandrium_fundyense', 'SRR1294387'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1294387'], ('Bolidomonas', 'SRR1300498'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300498'], ('Strombidium_inclinatum', 'SRR1296951'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296951'], ('Neoceratium_fusus', 'SRR1300300'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300300'], ('Aurantiochytrium_limacinum', 'SRR1300290'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300290'], ('uncultured_eukaryote', 'SRR1300384'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300384'], ('Geminigera_cryophila', 'SRR1296699'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296699'], ('Alexandrium_tamarense', 'SRR1296765'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296765'], ('Gephyrocapsa_oceanica', 'SRR1300427'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300427'], ('Karenia_brevis', 'SRR1296743'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296743'], ('Oxyrrhis_marina', 'SRR1296903'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296903'], ('Perkinsus_marinus', 'SRR1294398'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1294398'], ('Chlorarachnion_reptans', 'SRR1296735'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296735'], ('Amphidinium_carterae', 'SRR1294394'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1294394'], ('Skeletonema_marinoi', 'SRR1300462'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300462'], ('Pavlova', 'SRR1300269'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300269'], ('Thalassiosira_minuscula', 'SRR1296954'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296954'], ('Partenskyella_glossopodia', 'SRR1300497'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300497'], ('Rhizochromulina_marina', 'SRR1300381'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300381'], ('Thalassiosira_weissflogii', 'SRR1300485'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300485'], ('Scrippsiella_hangoei', 'SRR1296972'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296972'], ('Emiliania_huxleyi', 'SRR1300289'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300289'], ('Thalassiosira_antarctica', 'SRR1296821'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296821'], ('Hemiselmis_virescens', 'SRR1300403'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300403'], ('Chaetoceros_affinis', 'SRR1294449'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1294449'], ('Aplanochytrium', 'SRR1300333'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300333'], ('Compsopogon_caeruleus', 'SRR1296982'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296982'], ('Scrippsiella_trochoidea', 'SRR1296759'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296759'], ('uncultured_eukaryote', 'SRR1300329'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300329'], ('Pseudo-nitzschia_australis', 'SRR1296850'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296850'], ('Karlodinium_veneficum', 'SRR1300325'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300325'], ('Leptocylindrus_danicus', 'SRR1300450'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300450'], ('Bicosoecida_sp._CB-2014', 'SRR1294380'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1294380'], ('Chlamydomonas_chlamydogama', 'SRR1294459'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1294459'], ('Symbiodinium_sp.', 'SRR1300265'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300265'], ('uncultured_eukaryote', 'SRR1300242'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300242'], ('Micromonas_pusilla', 'SRR1300455'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300455'], ('Skeletonema_dohrnii', 'SRR1296855'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296855'], ('Micromonas_pusilla', 'SRR1300367'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300367'], ('Thalassiosira_weissflogii', 'SRR1300477'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300477'], ('uncultured_eukaryote', 'SRR1300339'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300339'], ('Chroomonas_cf._mesostigmatica', 'SRR1296872'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296872'], ('Gymnodinium_catenatum', 'SRR1296705'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296705'], ('Pycnococcus_provasolii', 'SRR1300542'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300542'], ('Dinobryon', 'SRR1296864'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296864'], ('Coccolithus_braarudii', 'SRR1296883'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296883'], ('Phaeocystis_cordata', 'SRR1300540'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300540'], ('Pseudokeronopsis', 'SRR1296908'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296908'], ('Pavlova_lutheri', 'SRR1300507'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300507'], ('Chromera_velia', 'SRR1296980'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296980'], ('Extubocellulus_spinifer', 'SRR1296806'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296806'], ('Florenciella_parvula', 'SRR1300365'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300365'], ('uncultured_eukaryote', 'SRR1300374'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300374'], ('Filamoeba_nolandi', 'SRR1296773'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296773'], ('Kryptoperidinium_foliaceum', 'SRR1296842'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296842'], ('Ditylum_brightwellii', 'SRR1294415'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1294415'], ('Eucampia_antarctica', 'SRR1300514'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300514'], ('Leptocylindrus_aporus', 'SRR1296722'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296722'], ('Minchinia_chitonis', 'SRR1300215'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300215'], ('Crustomastix_stigmatica', 'SRR1296861'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296861'], ('Skeletonema_menzellii', 'SRR1296801'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296801'], ('Amphiprora', 'SRR1296826'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296826'], ('Pseudo-nitzschia_fraudulenta', 'SRR1296746'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296746'], ('uncultured_eukaryote', 'SRR1300506'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300506'], ('Tetraselmis_striata', 'SRR1296730'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296730'], ('Pseudo-nitzschia_heimii', 'SRR1300452'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300452'], ('Thalassiosira_weissflogii', 'SRR1300491'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300491'], ('Emiliania_huxleyi', 'SRR1300285'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300285'], ('Thalassiosira_oceanica', 'SRR1294424'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1294424'], ('Prasinococcus_capsulatus', 'SRR1300224'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300224'], ('Heterosigma_akashiwo', 'SRR1296776'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296776'], ('Aurantiochytrium_limacinum', 'SRR1300337'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300337'], ('Percolomonas_cosmopolitus', 'SRR1296756'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296756'], ('Pelagodinium_beii', 'SRR1300503'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300503'], ('Timspurckia_oligopyrenoides', 'SRR1300387'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300387'], ('Chaetoceros_curvisetus', 'SRR1296939'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296939'], ('Alexandrium_margalefii', 'SRR1296943'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296943'], ('Chaetoceros_sp.', 'SRR1300463'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300463'], ('Stephanopyxis_turris', 'SRR1296867'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296867'], ('Asterionellopsis_glacialis', 'SRR1296809'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296809'], ('Thalassionema_nitzschioides', 'SRR1296923'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296923'], ('uncultured_eukaryote', 'SRR1300276'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300276'], ('Rhodomonas_abbreviata', 'SRR1300314'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300314'], ('Micromonas', 'SRR1300420'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300420'], ('Karenia_brevis', 'SRR1296744'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296744'], ('Emiliania_huxleyi', 'SRR1300235'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300235'], ('Cryptomonas_paramecium', 'SRR1294407'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1294407'], ('Hemiselmis_andersenii', 'SRR1300350'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300350'], ('Phaeocystis', 'SRR1300380'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1300380'], ('Pelagomonas_calceolata', 'SRR1296780'): ['http://sra-download.ncbi.nlm.nih.gov/srapub/SRR1296780']}
+Already trimmed: ['trim.SRR1296820.log']
+Already trimmed: ['trim.SRR1300349.log']
+Already trimmed: ['trim.SRR1296715.log']
+Already trimmed: ['trim.SRR1294439.log']
+Already trimmed: ['trim.SRR1300482.log']
+Already trimmed: ['trim.SRR1296945.log']
+Already trimmed: ['trim.SRR1296851.log']
+Already trimmed: ['trim.SRR1294450.log']
+Already trimmed: ['trim.SRR1300432.log']
+Already trimmed: ['trim.SRR1300363.log']
+Already trimmed: ['trim.SRR1294438.log']
+Already trimmed: ['trim.SRR1296960.log']
+Already trimmed: ['trim.SRR1296973.log']
+Already trimmed: ['trim.SRR1294425.log']
+Already trimmed: ['trim.SRR1296787.log']
+Already trimmed: ['trim.SRR1296981.log']
+Already trimmed: ['trim.SRR1300245.log']
+Already trimmed: ['trim.SRR1300356.log']
+Already trimmed: ['trim.SRR1328075.log']
+Already trimmed: ['trim.SRR1296876.log']
+Already trimmed: ['trim.SRR1300425.log']
+Already trimmed: ['trim.SRR1300516.log']
+Already trimmed: ['trim.SRR1296901.log']
+Already trimmed: ['trim.SRR1300212.log']
+Already trimmed: ['trim.SRR1300508.log']
+Already trimmed: ['trim.SRR1296816.log']
+Already trimmed: ['trim.SRR1300466.log']
+Already trimmed: ['trim.SRR1300500.log']
+Already trimmed: ['trim.SRR1294461.log']
+Already trimmed: ['trim.SRR1300464.log']
+Already trimmed: ['trim.SRR1296732.log']
+Already trimmed: ['trim.SRR1296857.log']
+Already trimmed: ['trim.SRR1300409.log']
+Already trimmed: ['trim.SRR1294431.log']
+Already trimmed: ['trim.SRR1294397.log']
+Already trimmed: ['trim.SRR1300457.log']
+Already trimmed: ['trim.SRR1296891.log']
+Already trimmed: ['trim.SRR1296717.log']
+Already trimmed: ['trim.SRR1294436.log']
+Already trimmed: ['trim.SRR1296952.log']
+Already trimmed: ['trim.SRR1300535.log']
+Already trimmed: ['trim.SRR1296996.log']
+Already trimmed: ['trim.SRR1300529.log']
+Already trimmed: ['trim.SRR1300394.log']
+Already trimmed: ['trim.SRR1300372.log']
+Already trimmed: ['trim.SRR1296916.log']
+Already trimmed: ['trim.SRR1300460.log']
+Already trimmed: ['trim.SRR1296896.log']
+Already trimmed: ['trim.SRR1300410.log']
+Already trimmed: ['trim.SRR1296697.log']
+Already trimmed: ['trim.SRR1300225.log']
+Already trimmed: ['trim.SRR1300512.log']
+Already trimmed: ['trim.SRR1300423.log']
+Already trimmed: ['trim.SRR1300459.log']
+Already trimmed: ['trim.SRR1296880.log']
+Already trimmed: ['trim.SRR1296925.log']
+Already trimmed: ['trim.SRR1300398.log']
+Already trimmed: ['trim.SRR1296711.log']
+Already trimmed: ['trim.SRR1300388.log']
+Already trimmed: ['trim.SRR1296767.log']
+Already trimmed: ['trim.SRR1300444.log']
+Already trimmed: ['trim.SRR1294389.log']
+Already trimmed: ['trim.SRR1300355.log']
+Already trimmed: ['trim.SRR1296941.log']
+Already trimmed: ['trim.SRR1300441.log']
+Already trimmed: ['trim.SRR1296977.log']
+Already trimmed: ['trim.SRR1296749.log']
+Already trimmed: ['trim.SRR1300232.log']
+Already trimmed: ['trim.SRR1300454.log']
+Already trimmed: ['trim.SRR1300217.log']
+Already trimmed: ['trim.SRR1296748.log']
+Already trimmed: ['trim.SRR1300504.log']
+Already trimmed: ['trim.SRR1296725.log']
+Already trimmed: ['trim.SRR1296754.log']
+Already trimmed: ['trim.SRR1294440.log']
+Already trimmed: ['trim.SRR1296835.log']
+Already trimmed: ['trim.SRR1300238.log']
+Already trimmed: ['trim.SRR1294405.log']
+Already trimmed: ['trim.SRR1296847.log']
+Already trimmed: ['trim.SRR1300468.log']
+Already trimmed: ['trim.SRR1300319.log']
+Already trimmed: ['trim.SRR1296859.log']
+Already trimmed: ['trim.SRR1294392.log']
+Already trimmed: ['trim.SRR1296870.log']
+Already trimmed: ['trim.SRR1300494.log']
+Already trimmed: ['trim.SRR1296779.log']
+Already trimmed: ['trim.SRR1296815.log']
+Already trimmed: ['trim.SRR1294427.log']
+Already trimmed: ['trim.SRR1296818.log']
+Already trimmed: ['trim.SRR1296989.log']
+Already trimmed: ['trim.SRR1294382.log']
+Already trimmed: ['trim.SRR1296871.log']
+Already trimmed: ['trim.SRR1296898.log']
+Already trimmed: ['trim.SRR1296790.log']
+Already trimmed: ['trim.SRR1294444.log']
+Already trimmed: ['trim.SRR1300361.log']
+Already trimmed: ['trim.SRR1296766.log']
+Already trimmed: ['trim.SRR1300352.log']
+Already trimmed: ['trim.SRR1300404.log']
+Already trimmed: ['trim.SRR1296860.log']
+Already trimmed: ['trim.SRR1300505.log']
+Already trimmed: ['trim.SRR1296738.log']
+Already trimmed: ['trim.SRR1296994.log']
+Already trimmed: ['trim.SRR1300480.log']
+Already trimmed: ['trim.SRR1294464.log']
+Already trimmed: ['trim.SRR1300346.log']
+Already trimmed: ['trim.SRR1296853.log']
+Already trimmed: ['trim.SRR1300443.log']
+Already trimmed: ['trim.SRR1300375.log']
+Already trimmed: ['trim.SRR1296836.log']
+Already trimmed: ['trim.SRR1300240.log']
+Already trimmed: ['trim.SRR1296909.log']
+Already trimmed: ['trim.SRR1300523.log']
+Already trimmed: ['trim.SRR1294413.log']
+Already trimmed: ['trim.SRR1296813.log']
+Already trimmed: ['trim.SRR1300221.log']
+Already trimmed: ['trim.SRR1296950.log']
+Already trimmed: ['trim.SRR1296966.log']
+Already trimmed: ['trim.SRR1296866.log']
+Already trimmed: ['trim.SRR1296889.log']
+Already trimmed: ['trim.SRR1300458.log']
+Already trimmed: ['trim.SRR1296814.log']
+Already trimmed: ['trim.SRR1296856.log']
+Already trimmed: ['trim.SRR1296963.log']
+Already trimmed: ['trim.SRR1296992.log']
+Already trimmed: ['trim.SRR1300354.log']
+Already trimmed: ['trim.SRR1300478.log']
+Already trimmed: ['trim.SRR1300358.log']
+Already trimmed: ['trim.SRR1296810.log']
+Already trimmed: ['trim.SRR1296785.log']
+Already trimmed: ['trim.SRR1296979.log']
+Already trimmed: ['trim.SRR1300368.log']
+Already trimmed: ['trim.SRR1300489.log']
+Already trimmed: ['trim.SRR1294463.log']
+Already trimmed: ['trim.SRR1296794.log']
+Already trimmed: ['trim.SRR1296926.log']
+Already trimmed: ['trim.SRR1294419.log']
+Already trimmed: ['trim.SRR1296942.log']
+Already trimmed: ['trim.SRR1294396.log']
+Already trimmed: ['trim.SRR1300391.log']
+Already trimmed: ['trim.SRR1296700.log']
+Already trimmed: ['trim.SRR1296771.log']
+Already trimmed: ['trim.SRR1296918.log']
+Already trimmed: ['trim.SRR1296884.log']
+Already trimmed: ['trim.SRR1296719.log']
+Already trimmed: ['trim.SRR1300415.log']
+Already trimmed: ['trim.SRR1300379.log']
+Already trimmed: ['trim.SRR1296797.log']
+Already trimmed: ['trim.SRR1296837.log']
+Already trimmed: ['trim.SRR1300509.log']
+Already trimmed: ['trim.SRR1300357.log']
+Already trimmed: ['trim.SRR1296948.log']
+Already trimmed: ['trim.SRR1300539.log']
+Already trimmed: ['trim.SRR1296914.log']
+Already trimmed: ['trim.SRR1300412.log']
+Already trimmed: ['trim.SRR1300422.log']
+Already trimmed: ['trim.SRR1300531.log']
+Already trimmed: ['trim.SRR1300347.log']
+Already trimmed: ['trim.SRR1300227.log']
+Already trimmed: ['trim.SRR1296703.log']
+Already trimmed: ['trim.SRR1296958.log']
+Already trimmed: ['trim.SRR1296822.log']
+Already trimmed: ['trim.SRR1294384.log']
+Already trimmed: ['trim.SRR1296729.log']
+Already trimmed: ['trim.SRR1296947.log']
+Already trimmed: ['trim.SRR1296885.log']
+Already trimmed: ['trim.SRR1300419.log']
+Already trimmed: ['trim.SRR1300534.log']
+Already trimmed: ['trim.SRR1296838.log']
+Already trimmed: ['trim.SRR1296986.log']
+Already trimmed: ['trim.SRR1296985.log']
+Already trimmed: ['trim.SRR1294443.log']
+Already trimmed: ['trim.SRR1300448.log']
+Already trimmed: ['trim.SRR1294422.log']
+Already trimmed: ['trim.SRR1300230.log']
+Already trimmed: ['trim.SRR1300211.log']
+Already trimmed: ['trim.SRR1300344.log']
+Already trimmed: ['trim.SRR1296752.log']
+Already trimmed: ['trim.SRR1294416.log']
+Already trimmed: ['trim.SRR1296849.log']
+Already trimmed: ['trim.SRR1296770.log']
+Already trimmed: ['trim.SRR1296946.log']
+Already trimmed: ['trim.SRR1296854.log']
+Already trimmed: ['trim.SRR1296971.log']
+Already trimmed: ['trim.SRR1300496.log']
+Already trimmed: ['trim.SRR1300431.log']
+Already trimmed: ['trim.SRR1296886.log']
+Already trimmed: ['trim.SRR1300470.log']
+Already trimmed: ['trim.SRR1294466.log']
+Already trimmed: ['trim.SRR1296984.log']
+Already trimmed: ['trim.SRR1296786.log']
+Already trimmed: ['trim.SRR1300528.log']
+Already trimmed: ['trim.SRR1296792.log']
+Already trimmed: ['trim.SRR1294433.log']
+Already trimmed: ['trim.SRR1300426.log']
+Already trimmed: ['trim.SRR1296983.log']
+Already trimmed: ['trim.SRR1300518.log']
+Already trimmed: ['trim.SRR1300400.log']
+Already trimmed: ['trim.SRR1296723.log']
+Already trimmed: ['trim.SRR1294404.log']
+Already trimmed: ['trim.SRR1296768.log']
+Already trimmed: ['trim.SRR1300486.log']
+Already trimmed: ['trim.SRR1296888.log']
+Already trimmed: ['trim.SRR1300371.log']
+Already trimmed: ['trim.SRR1294400.log']
+Already trimmed: ['trim.SRR1300435.log']
+Already trimmed: ['trim.SRR1296706.log']
+Already trimmed: ['trim.SRR1300395.log']
+Already trimmed: ['trim.SRR1300413.log']
+Already trimmed: ['trim.SRR1328076.log']
+Already trimmed: ['trim.SRR1294432.log']
+Already trimmed: ['trim.SRR1296830.log']
+Already trimmed: ['trim.SRR1300434.log']
+Already trimmed: ['trim.SRR1294458.log']
+Already trimmed: ['trim.SRR1296868.log']
+Already trimmed: ['trim.SRR1300241.log']
+Already trimmed: ['trim.SRR1294434.log']
+Already trimmed: ['trim.SRR1296879.log']
+Already trimmed: ['trim.SRR1296798.log']
+Already trimmed: ['trim.SRR1300392.log']
+Already trimmed: ['trim.SRR1296904.log']
+Already trimmed: ['trim.SRR1300476.log']
+Already trimmed: ['trim.SRR1296825.log']
+Already trimmed: ['trim.SRR1300320.log']
+Already trimmed: ['trim.SRR1300519.log']
+Already trimmed: ['trim.SRR1296892.log']
+Already trimmed: ['trim.SRR1296819.log']
+Already trimmed: ['trim.SRR1296737.log']
+Already trimmed: ['trim.SRR1300414.log']
+Already trimmed: ['trim.SRR1296828.log']
+Already trimmed: ['trim.SRR1300401.log']
+Already trimmed: ['trim.SRR1296763.log']
+Already trimmed: ['trim.SRR1294460.log']
+Already trimmed: ['trim.SRR1296807.log']
+Already trimmed: ['trim.SRR1294409.log']
+Already trimmed: ['trim.SRR1296974.log']
+Already trimmed: ['trim.SRR1296841.log']
+Already trimmed: ['trim.SRR1296920.log']
+Already trimmed: ['trim.SRR1300453.log']
+Already trimmed: ['trim.SRR1294423.log']
+Already trimmed: ['trim.SRR1296832.log']
+Already trimmed: ['trim.SRR1296899.log']
+Already trimmed: ['trim.SRR1296721.log']
+Already trimmed: ['trim.SRR1296978.log']
+Already trimmed: ['trim.SRR1300321.log']
+Already trimmed: ['trim.SRR1296751.log']
+Already trimmed: ['trim.SRR1296905.log']
+Already trimmed: ['trim.SRR1296788.log']
+Already trimmed: ['trim.SRR1294452.log']
+Already trimmed: ['trim.SRR1300451.log']
+Already trimmed: ['trim.SRR1300490.log']
+Already trimmed: ['trim.SRR1296873.log']
+Already trimmed: ['trim.SRR1294411.log']
+Already trimmed: ['trim.SRR1294406.log']
+Already trimmed: ['trim.SRR1294390.log']
+Already trimmed: ['trim.SRR1300436.log']
+Already trimmed: ['trim.SRR1300487.log']
+Already trimmed: ['trim.SRR1296808.log']
+Already trimmed: ['trim.SRR1296895.log']
+Already trimmed: ['trim.SRR1294441.log']
+Already trimmed: ['trim.SRR1300465.log']
+Already trimmed: ['trim.SRR1300527.log']
+Already trimmed: ['trim.SRR1300236.log']
+Already trimmed: ['trim.SRR1300342.log']
+Already trimmed: ['trim.SRR1300351.log']
+Already trimmed: ['trim.SRR1296827.log']
+Already trimmed: ['trim.SRR1300521.log']
+Already trimmed: ['trim.SRR1300370.log']
+Already trimmed: ['trim.SRR1300213.log']
+Already trimmed: ['trim.SRR1300473.log']
+Already trimmed: ['trim.SRR1296731.log']
+Already trimmed: ['trim.SRR1296964.log']
+Already trimmed: ['trim.SRR1300348.log']
+Already trimmed: ['trim.SRR1296863.log']
+Already trimmed: ['trim.SRR1300449.log']
+Already trimmed: ['trim.SRR1296959.log']
+Already trimmed: ['trim.SRR1296760.log']
+Already trimmed: ['trim.SRR1300353.log']
+Already trimmed: ['trim.SRR1296944.log']
+Already trimmed: ['trim.SRR1294393.log']
+Already trimmed: ['trim.SRR1294408.log']
+Already trimmed: ['trim.SRR1296775.log']
+Already trimmed: ['trim.SRR1300544.log']
+Already trimmed: ['trim.SRR1300433.log']
+Already trimmed: ['trim.SRR1296869.log']
+Already trimmed: ['trim.SRR1294386.log']
+Already trimmed: ['trim.SRR1300383.log']
+Already trimmed: ['trim.SRR1296784.log']
+Already trimmed: ['trim.SRR1296917.log']
+Already trimmed: ['trim.SRR1294418.log']
+Already trimmed: ['trim.SRR1296702.log']
+Already trimmed: ['trim.SRR1300244.log']
+Already trimmed: ['trim.SRR1296882.log']
+Already trimmed: ['trim.SRR1296993.log']
+Already trimmed: ['trim.SRR1300424.log']
+Already trimmed: ['trim.SRR1296823.log']
+Already trimmed: ['trim.SRR1296900.log']
+Already trimmed: ['trim.SRR1294399.log']
+Already trimmed: ['trim.SRR1300439.log']
+Already trimmed: ['trim.SRR1294437.log']
+Already trimmed: ['trim.SRR1300366.log']
+Already trimmed: ['trim.SRR1296976.log']
+Already trimmed: ['trim.SRR1294448.log']
+Already trimmed: ['trim.SRR1300421.log']
+Already trimmed: ['trim.SRR1300461.log']
+Already trimmed: ['trim.SRR1328077.log']
+Already trimmed: ['trim.SRR1296843.log']
+Already trimmed: ['trim.SRR1294430.log']
+Already trimmed: ['trim.SRR1300524.log']
+Already trimmed: ['trim.SRR1296995.log']
+Already trimmed: ['trim.SRR1300447.log']
+Already trimmed: ['trim.SRR1300243.log']
+Already trimmed: ['trim.SRR1300369.log']
+Already trimmed: ['trim.SRR1294429.log']
+Already trimmed: ['trim.SRR1300378.log']
+Already trimmed: ['trim.SRR1300446.log']
+Already trimmed: ['trim.SRR1296796.log']
+Already trimmed: ['trim.SRR1300402.log']
+Already trimmed: ['trim.SRR1296742.log']
+Already trimmed: ['trim.SRR1296708.log']
+Already trimmed: ['trim.SRR1296865.log']
+Already trimmed: ['trim.SRR1296782.log']
+Already trimmed: ['trim.SRR1300411.log']
+Already trimmed: ['trim.SRR1300405.log']
+Already trimmed: ['trim.SRR1296720.log']
+Already trimmed: ['trim.SRR1296962.log']
+Already trimmed: ['trim.SRR1294403.log']
+Already trimmed: ['trim.SRR1300416.log']
+Already trimmed: ['trim.SRR1296893.log']
+Already trimmed: ['trim.SRR1296755.log']
+Already trimmed: ['trim.SRR1296881.log']
+Already trimmed: ['trim.SRR1296990.log']
+Already trimmed: ['trim.SRR1300475.log']
+Already trimmed: ['trim.SRR1296758.log']
+Already trimmed: ['trim.SRR1294414.log']
+Already trimmed: ['trim.SRR1294401.log']
+Already trimmed: ['trim.SRR1294395.log']
+Already trimmed: ['trim.SRR1296957.log']
+Already trimmed: ['trim.SRR1300233.log']
+Already trimmed: ['trim.SRR1294446.log']
+Already trimmed: ['trim.SRR1296897.log']
+Already trimmed: ['trim.SRR1296747.log']
+Already trimmed: ['trim.SRR1300525.log']
+Already trimmed: ['trim.SRR1296834.log']
+Already trimmed: ['trim.SRR1300237.log']
+Already trimmed: ['trim.SRR1300408.log']
+Already trimmed: ['trim.SRR1296713.log']
+Already trimmed: ['trim.SRR1296858.log']
+Already trimmed: ['trim.SRR1296774.log']
+Already trimmed: ['trim.SRR1296874.log']
+Already trimmed: ['trim.SRR1300495.log']
+Already trimmed: ['trim.SRR1300222.log']
+Already trimmed: ['trim.SRR1296845.log']
+Already trimmed: ['trim.SRR1300389.log']
+Already trimmed: ['trim.SRR1296804.log']
+Already trimmed: ['trim.SRR1294381.log']
+Already trimmed: ['trim.SRR1296698.log']
+Already trimmed: ['trim.SRR1296922.log']
+Already trimmed: ['trim.SRR1296936.log']
+Already trimmed: ['trim.SRR1296709.log']
+Already trimmed: ['trim.SRR1294451.log']
+Already trimmed: ['trim.SRR1300234.log']
+Already trimmed: ['trim.SRR1296877.log']
+Already trimmed: ['trim.SRR1296907.log']
+Already trimmed: ['trim.SRR1296781.log']
+Already trimmed: ['trim.SRR1296833.log']
+Already trimmed: ['trim.SRR1296712.log']
+Already trimmed: ['trim.SRR1300520.log']
+Already trimmed: ['trim.SRR1300481.log']
+Already trimmed: ['trim.SRR1294456.log']
+Already trimmed: ['trim.SRR1300437.log']
+Already trimmed: ['trim.SRR1296733.log']
+Already trimmed: ['trim.SRR1296777.log']
+Already trimmed: ['trim.SRR1300376.log']
+Already trimmed: ['trim.SRR1296778.log']
+Already trimmed: ['trim.SRR1296961.log']
+Already trimmed: ['trim.SRR1296875.log']
+Already trimmed: ['trim.SRR1300407.log']
+Already trimmed: ['trim.SRR1300428.log']
+Already trimmed: ['trim.SRR1300469.log']
+Already trimmed: ['trim.SRR1294388.log']
+Already trimmed: ['trim.SRR1296793.log']
+Already trimmed: ['trim.SRR1296762.log']
+Already trimmed: ['trim.SRR1300246.log']
+Already trimmed: ['trim.SRR1328074.log']
+Already trimmed: ['trim.SRR1296991.log']
+Already trimmed: ['trim.SRR1300216.log']
+Already trimmed: ['trim.SRR1300545.log']
+Already trimmed: ['trim.SRR1300442.log']
+Already trimmed: ['trim.SRR1296912.log']
+Already trimmed: ['trim.SRR1300218.log']
+Already trimmed: ['trim.SRR1296817.log']
+Already trimmed: ['trim.SRR1294462.log']
+Already trimmed: ['trim.SRR1296927.log']
+Already trimmed: ['trim.SRR1296965.log']
+Already trimmed: ['trim.SRR1300390.log']
+Already trimmed: ['trim.SRR1300360.log']
+Already trimmed: ['trim.SRR1296710.log']
+Already trimmed: ['trim.SRR1300429.log']
+Already trimmed: ['trim.SRR1300362.log']
+Already trimmed: ['trim.SRR1300499.log']
+Already trimmed: ['trim.SRR1296718.log']
+Already trimmed: ['trim.SRR1296734.log']
+Already trimmed: ['trim.SRR1300456.log']
+Already trimmed: ['trim.SRR1300364.log']
+Already trimmed: ['trim.SRR1296831.log']
+Already trimmed: ['trim.SRR1300492.log']
+Already trimmed: ['trim.SRR1300406.log']
+Already trimmed: ['trim.SRR1300438.log']
+Already trimmed: ['trim.SRR1300538.log']
+Already trimmed: ['trim.SRR1296915.log']
+Already trimmed: ['trim.SRR1300541.log']
+Already trimmed: ['trim.SRR1300501.log']
+Already trimmed: ['trim.SRR1296894.log']
+Already trimmed: ['trim.SRR1300440.log']
+Already trimmed: ['trim.SRR1294447.log']
+Already trimmed: ['trim.SRR1296757.log']
+Already trimmed: ['trim.SRR1300226.log']
+Already trimmed: ['trim.SRR1296740.log']
+Already trimmed: ['trim.SRR1294454.log']
+Already trimmed: ['trim.SRR1296750.log']
+Already trimmed: ['trim.SRR1294391.log']
+Already trimmed: ['trim.SRR1300223.log']
+Already trimmed: ['trim.SRR1294435.log']
+Already trimmed: ['trim.SRR1296728.log']
+Already trimmed: ['trim.SRR1296924.log']
+Already trimmed: ['trim.SRR1296812.log']
+Already trimmed: ['trim.SRR1296987.log']
+Already trimmed: ['trim.SRR1294442.log']
+Already trimmed: ['trim.SRR1296714.log']
+Already trimmed: ['trim.SRR1300377.log']
+Already trimmed: ['trim.SRR1300532.log']
+Already trimmed: ['trim.SRR1300231.log']
+Already trimmed: ['trim.SRR1296862.log']
+Already trimmed: ['trim.SRR1296910.log']
+Already trimmed: ['trim.SRR1300345.log']
+Already trimmed: ['trim.SRR1296745.log']
+Already trimmed: ['trim.SRR1300474.log']
+Already trimmed: ['trim.SRR1300418.log']
+Already trimmed: ['trim.SRR1300239.log']
+Already trimmed: ['trim.SRR1296848.log']
+Already trimmed: ['trim.SRR1300397.log']
+Already trimmed: ['trim.SRR1296783.log']
+Already trimmed: ['trim.SRR1296911.log']
+Already trimmed: ['trim.SRR1296802.log']
+Already trimmed: ['trim.SRR1296724.log']
+Already trimmed: ['trim.SRR1294457.log']
+Already trimmed: ['trim.SRR1300483.log']
+Already trimmed: ['trim.SRR1294385.log']
+Already trimmed: ['trim.SRR1300471.log']
+Already trimmed: ['trim.SRR1296988.log']
+Already trimmed: ['trim.SRR1294383.log']
+Already trimmed: ['trim.SRR1296791.log']
+Already trimmed: ['trim.SRR1300537.log']
+Already trimmed: ['trim.SRR1296956.log']
+Already trimmed: ['trim.SRR1296829.log']
+Already trimmed: ['trim.SRR1296846.log']
+Already trimmed: ['trim.SRR1294410.log']
+Already trimmed: ['trim.SRR1294420.log']
+Already trimmed: ['trim.SRR1300382.log']
+Already trimmed: ['trim.SRR1296764.log']
+Already trimmed: ['trim.SRR1300530.log']
+Already trimmed: ['trim.SRR1296852.log']
+Already trimmed: ['trim.SRR1294453.log']
+Already trimmed: ['trim.SRR1294426.log']
+Already trimmed: ['trim.SRR1296967.log']
+Already trimmed: ['trim.SRR1296800.log']
+Already trimmed: ['trim.SRR1296887.log']
+Already trimmed: ['trim.SRR1300533.log']
+Already trimmed: ['trim.SRR1300522.log']
+Already trimmed: ['trim.SRR1296840.log']
+Already trimmed: ['trim.SRR1296878.log']
+Already trimmed: ['trim.SRR1296799.log']
+Already trimmed: ['trim.SRR1296795.log']
+Already trimmed: ['trim.SRR1300479.log']
+Already trimmed: ['trim.SRR1296906.log']
+Already trimmed: ['trim.SRR1300359.log']
+Already trimmed: ['trim.SRR1300373.log']
+Already trimmed: ['trim.SRR1300396.log']
+Already trimmed: ['trim.SRR1294417.log']
+Already trimmed: ['trim.SRR1296707.log']
+Already trimmed: ['trim.SRR1300488.log']
+Already trimmed: ['trim.SRR1296937.log']
+Already trimmed: ['trim.SRR1300526.log']
+Already trimmed: ['trim.SRR1296969.log']
+Already trimmed: ['trim.SRR1296736.log']
+Already trimmed: ['trim.SRR1296844.log']
+Already trimmed: ['trim.SRR1296919.log']
+Already trimmed: ['trim.SRR1296701.log']
+Already trimmed: ['trim.SRR1300484.log']
+Already trimmed: ['trim.SRR1296772.log']
+Already trimmed: ['trim.SRR1296803.log']
+Already trimmed: ['trim.SRR1296741.log']
+Already trimmed: ['trim.SRR1300385.log']
+Already trimmed: ['trim.SRR1296975.log']
+Already trimmed: ['trim.SRR1294465.log']
+Already trimmed: ['trim.SRR1300467.log']
+Already trimmed: ['trim.SRR1296902.log']
+Already trimmed: ['trim.SRR1296921.log']
+Already trimmed: ['trim.SRR1296704.log']
+Already trimmed: ['trim.SRR1300214.log']
+Already trimmed: ['trim.SRR1296949.log']
+Already trimmed: ['trim.SRR1300393.log']
+Already trimmed: ['trim.SRR1296913.log']
+Already trimmed: ['trim.SRR1296890.log']
+Already trimmed: ['trim.SRR1294412.log']
+Already trimmed: ['trim.SRR1300220.log']
+Already trimmed: ['trim.SRR1294445.log']
+Already trimmed: ['trim.SRR1296805.log']
+Already trimmed: ['trim.SRR1300399.log']
+Already trimmed: ['trim.SRR1296739.log']
+Already trimmed: ['trim.SRR1300228.log']
+Already trimmed: ['trim.SRR1300229.log']
+Already trimmed: ['trim.SRR1296824.log']
+Already trimmed: ['trim.SRR1294428.log']
+Already trimmed: ['trim.SRR1296839.log']
+Already trimmed: ['trim.SRR1296789.log']
+Already trimmed: ['trim.SRR1296955.log']
+Already trimmed: ['trim.SRR1300417.log']
+Already trimmed: ['trim.SRR1296811.log']
+Already trimmed: ['trim.SRR1296727.log']
+Already trimmed: ['trim.SRR1300343.log']
+Already trimmed: ['trim.SRR1296726.log']
+Already trimmed: ['trim.SRR1296953.log']
+Already trimmed: ['trim.SRR1296753.log']
+Already trimmed: ['trim.SRR1300219.log']
+Already trimmed: ['trim.SRR1300472.log']
+Already trimmed: ['trim.SRR1300510.log']
+Already trimmed: ['trim.SRR1296769.log']
+Already trimmed: ['trim.SRR1296761.log']
+Already trimmed: ['trim.SRR1300445.log']
+Already trimmed: ['trim.SRR1294455.log']
+Already trimmed: ['trim.SRR1294402.log']
+Already trimmed: ['trim.SRR1296970.log']
+Already trimmed: ['trim.SRR1294421.log']
+Already trimmed: ['trim.SRR1300430.log']
+Already trimmed: ['trim.SRR1300543.log']
+Already trimmed: ['trim.SRR1296716.log']
+Already trimmed: ['trim.SRR1294387.log']
+Already trimmed: ['trim.SRR1300498.log']
+Already trimmed: ['trim.SRR1296951.log']
+Already trimmed: ['trim.SRR1300384.log']
+Already trimmed: ['trim.SRR1296699.log']
+Already trimmed: ['trim.SRR1296765.log']
+Already trimmed: ['trim.SRR1300427.log']
+Already trimmed: ['trim.SRR1296743.log']
+Already trimmed: ['trim.SRR1296903.log']
+Already trimmed: ['trim.SRR1294398.log']
+Already trimmed: ['trim.SRR1296735.log']
+Already trimmed: ['trim.SRR1294394.log']
+Already trimmed: ['trim.SRR1300462.log']
+Already trimmed: ['trim.SRR1296954.log']
+Already trimmed: ['trim.SRR1300497.log']
+Already trimmed: ['trim.SRR1300381.log']
+Already trimmed: ['trim.SRR1300485.log']
+Already trimmed: ['trim.SRR1296972.log']
+Already trimmed: ['trim.SRR1296821.log']
+Already trimmed: ['trim.SRR1300403.log']
+Already trimmed: ['trim.SRR1294449.log']
+Already trimmed: ['trim.SRR1296982.log']
+Already trimmed: ['trim.SRR1296759.log']
+Already trimmed: ['trim.SRR1296850.log']
+Already trimmed: ['trim.SRR1300450.log']
+Already trimmed: ['trim.SRR1294380.log']
+Already trimmed: ['trim.SRR1294459.log']
+Already trimmed: ['trim.SRR1300242.log']
+Already trimmed: ['trim.SRR1300455.log']
+Already trimmed: ['trim.SRR1296855.log']
+Already trimmed: ['trim.SRR1300367.log']
+Already trimmed: ['trim.SRR1300477.log']
+Already trimmed: ['trim.SRR1296872.log']
+Already trimmed: ['trim.SRR1296705.log']
+Already trimmed: ['trim.SRR1300542.log']
+Already trimmed: ['trim.SRR1296864.log']
+Already trimmed: ['trim.SRR1296883.log']
+Already trimmed: ['trim.SRR1300540.log']
+Already trimmed: ['trim.SRR1296908.log']
+Already trimmed: ['trim.SRR1300507.log']
+Already trimmed: ['trim.SRR1296980.log']
+Already trimmed: ['trim.SRR1296806.log']
+Already trimmed: ['trim.SRR1300365.log']
+Already trimmed: ['trim.SRR1300374.log']
+Already trimmed: ['trim.SRR1296773.log']
+Already trimmed: ['trim.SRR1296842.log']
+Already trimmed: ['trim.SRR1294415.log']
+Already trimmed: ['trim.SRR1300514.log']
+Already trimmed: ['trim.SRR1296722.log']
+Already trimmed: ['trim.SRR1300215.log']
+Already trimmed: ['trim.SRR1296861.log']
+Already trimmed: ['trim.SRR1296801.log']
+Already trimmed: ['trim.SRR1296826.log']
+Already trimmed: ['trim.SRR1296746.log']
+Already trimmed: ['trim.SRR1300506.log']
+Already trimmed: ['trim.SRR1296730.log']
+Already trimmed: ['trim.SRR1300452.log']
+Already trimmed: ['trim.SRR1300491.log']
+Already trimmed: ['trim.SRR1294424.log']
+Already trimmed: ['trim.SRR1300224.log']
+Already trimmed: ['trim.SRR1296776.log']
+Already trimmed: ['trim.SRR1296756.log']
+Already trimmed: ['trim.SRR1300503.log']
+Already trimmed: ['trim.SRR1300387.log']
+Already trimmed: ['trim.SRR1296939.log']
+Already trimmed: ['trim.SRR1296943.log']
+Already trimmed: ['trim.SRR1300463.log']
+Already trimmed: ['trim.SRR1296867.log']
+Already trimmed: ['trim.SRR1296809.log']
+Already trimmed: ['trim.SRR1296923.log']
+Already trimmed: ['trim.SRR1300420.log']
+Already trimmed: ['trim.SRR1296744.log']
+Already trimmed: ['trim.SRR1300235.log']
+Already trimmed: ['trim.SRR1294407.log']
+Already trimmed: ['trim.SRR1300350.log']
+Already trimmed: ['trim.SRR1300380.log']
+Already trimmed: ['trim.SRR1296780.log']
+Missing trimmed: 3
+['/mnt/scratch/ljcohen/mmetsp/Stereomyxa_ramosa/SRR1296940/trim/', '/mnt/scratch/ljcohen/mmetsp/Debaryomyces_hansenii/SRR1296968/trim/', '/mnt/scratch/ljcohen/mmetsp/Chaetoceros_curvisetus/SRR1296938/trim/']
+Trimmed: 615
+remaining: 100
+['/mnt/scratch/ljcohen/mmetsp/Ostreococcus_lucimarinus/SRR1300254/trim/', '/mnt/scratch/ljcohen/mmetsp/Lingulodinium_polyedrum/SRR1300256/trim/', '/mnt/scratch/ljcohen/mmetsp/Isochrysis_galbana/SRR1300331/trim/', '/mnt/scratch/ljcohen/mmetsp/Litonotus_pictus/SRR1296935/trim/', '/mnt/scratch/ljcohen/mmetsp/Skeletonema_marinoi/SRR1300259/trim/', '/mnt/scratch/ljcohen/mmetsp/Dunaliella_tertiolecta/SRR1300297/trim/', '/mnt/scratch/ljcohen/mmetsp/Geminigera/SRR1300315/trim/', '/mnt/scratch/ljcohen/mmetsp/Karlodinium_veneficum/SRR1300327/trim/', '/mnt/scratch/ljcohen/mmetsp/Symbiodinium_sp./SRR1300267/trim/', '/mnt/scratch/ljcohen/mmetsp/Ditylum_brightwellii/SRR1300273/trim/', '/mnt/scratch/ljcohen/mmetsp/Thalassiosira_weissflogii/SRR1296934/trim/', '/mnt/scratch/ljcohen/mmetsp/Ditylum_brightwellii/SRR1300309/trim/', '/mnt/scratch/ljcohen/mmetsp/Ochromonas/SRR1300317/trim/', '/mnt/scratch/ljcohen/mmetsp/Picocystis_salinarum/SRR1300322/trim/', '/mnt/scratch/ljcohen/mmetsp/Aurantiochytrium_limacinum/SRR1300335/trim/', '/mnt/scratch/ljcohen/mmetsp/Mallomonas/SRR1300324/trim/', '/mnt/scratch/ljcohen/mmetsp/uncultured_eukaryote/SRR1300247/trim/', '/mnt/scratch/ljcohen/mmetsp/Ditylum_brightwellii/SRR1300292/trim/', '/mnt/scratch/ljcohen/mmetsp/Ostreococcus_mediterraneus/SRR1300249/trim/', '/mnt/scratch/ljcohen/mmetsp/Azadinium_spinosum/SRR1300307/trim/', '/mnt/scratch/ljcohen/mmetsp/Ostreococcus_mediterraneus/SRR1300253/trim/', '/mnt/scratch/ljcohen/mmetsp/Pavlova/SRR1300299/trim/', '/mnt/scratch/ljcohen/mmetsp/Picochlorum_oklahomense/SRR1300323/trim/', '/mnt/scratch/ljcohen/mmetsp/Aureococcus_anophagefferens/SRR1300281/trim/', '/mnt/scratch/ljcohen/mmetsp/Gloeochaete_wittrockiana/SRR1300296/trim/', '/mnt/scratch/ljcohen/mmetsp/Emiliania_huxleyi/SRR1300286/trim/', '/mnt/scratch/ljcohen/mmetsp/Thalassiosira_weissflogii/SRR1296932/trim/', '/mnt/scratch/ljcohen/mmetsp/uncultured_eukaryote/SRR1300275/trim/', '/mnt/scratch/ljcohen/mmetsp/Aureococcus_anophagefferens/SRR1300279/trim/', '/mnt/scratch/ljcohen/mmetsp/uncultured_eukaryote/SRR1300341/trim/', '/mnt/scratch/ljcohen/mmetsp/Haptolina_ericina/SRR1300311/trim/', '/mnt/scratch/ljcohen/mmetsp/Emiliania_huxleyi/SRR1300288/trim/', '/mnt/scratch/ljcohen/mmetsp/Aplanochytrium/SRR1300334/trim/', '/mnt/scratch/ljcohen/mmetsp/Symbiodinium_kawagutii/SRR1300303/trim/', '/mnt/scratch/ljcohen/mmetsp/Symbiodinium_sp./SRR1300264/trim/', '/mnt/scratch/ljcohen/mmetsp/uncultured_eukaryote/SRR1300338/trim/', '/mnt/scratch/ljcohen/mmetsp/Symbiodinium_sp./SRR1300263/trim/', '/mnt/scratch/ljcohen/mmetsp/Ostreococcus_mediterraneus/SRR1300251/trim/', '/mnt/scratch/ljcohen/mmetsp/Emiliania_huxleyi/SRR1300284/trim/', '/mnt/scratch/ljcohen/mmetsp/uncultured_eukaryote/SRR1300277/trim/', '/mnt/scratch/ljcohen/mmetsp/Symbiodinium_kawagutii/SRR1300304/trim/', '/mnt/scratch/ljcohen/mmetsp/Bathycoccus_prasinos/SRR1300250/trim/', '/mnt/scratch/ljcohen/mmetsp/Mantoniella_antarctica/SRR1300318/trim/', '/mnt/scratch/ljcohen/mmetsp/Lingulodinium_polyedrum/SRR1300257/trim/', '/mnt/scratch/ljcohen/mmetsp/Neoceratium_fusus/SRR1300301/trim/', '/mnt/scratch/ljcohen/mmetsp/Phaeocystis_antarctica/SRR1300313/trim/', '/mnt/scratch/ljcohen/mmetsp/Minutocellus_polymorphus/SRR1300271/trim/', '/mnt/scratch/ljcohen/mmetsp/Mayorella/SRR1296930/trim/', '/mnt/scratch/ljcohen/mmetsp/uncultured_eukaryote/SRR1300328/trim/', '/mnt/scratch/ljcohen/mmetsp/Symbiodinium_kawagutii/SRR1300305/trim/', '/mnt/scratch/ljcohen/mmetsp/Symbiodinium_sp./SRR1300266/trim/', '/mnt/scratch/ljcohen/mmetsp/Emiliania_huxleyi/SRR1300282/trim/', '/mnt/scratch/ljcohen/mmetsp/Aurantiochytrium_limacinum/SRR1300336/trim/', '/mnt/scratch/ljcohen/mmetsp/Euplotes_focardii/SRR1296928/trim/', '/mnt/scratch/ljcohen/mmetsp/uncultured_eukaryote/SRR1300261/trim/', '/mnt/scratch/ljcohen/mmetsp/Lingulodinium_polyedrum/SRR1300255/trim/', '/mnt/scratch/ljcohen/mmetsp/Isochrysis_galbana/SRR1300332/trim/', '/mnt/scratch/ljcohen/mmetsp/Isochrysis_sp./SRR1300268/trim/', '/mnt/scratch/ljcohen/mmetsp/Pseudopedinella_elastica/SRR1300312/trim/', '/mnt/scratch/ljcohen/mmetsp/Ditylum_brightwellii/SRR1300293/trim/', '/mnt/scratch/ljcohen/mmetsp/Dunaliella_tertiolecta/SRR1300298/trim/', '/mnt/scratch/ljcohen/mmetsp/Karlodinium_veneficum/SRR1300326/trim/', '/mnt/scratch/ljcohen/mmetsp/Ostreococcus_mediterraneus/SRR1300248/trim/', '/mnt/scratch/ljcohen/mmetsp/Ditylum_brightwellii/SRR1300272/trim/', '/mnt/scratch/ljcohen/mmetsp/Ditylum_brightwellii/SRR1300294/trim/', '/mnt/scratch/ljcohen/mmetsp/Thalassiosira_weissflogii/SRR1296933/trim/', '/mnt/scratch/ljcohen/mmetsp/Noctiluca_scintillans/SRR1296929/trim/', '/mnt/scratch/ljcohen/mmetsp/Aureococcus_anophagefferens/SRR1300278/trim/', '/mnt/scratch/ljcohen/mmetsp/Micromonas/SRR1300295/trim/', '/mnt/scratch/ljcohen/mmetsp/Azadinium_spinosum/SRR1300308/trim/', '/mnt/scratch/ljcohen/mmetsp/uncultured_eukaryote/SRR1300330/trim/', '/mnt/scratch/ljcohen/mmetsp/Pavlova/SRR1300270/trim/', '/mnt/scratch/ljcohen/mmetsp/Emiliania_huxleyi/SRR1300283/trim/', '/mnt/scratch/ljcohen/mmetsp/Paraphysomonas_bandaiensis/SRR1300316/trim/', '/mnt/scratch/ljcohen/mmetsp/Symbiodinium_kawagutii/SRR1300302/trim/', '/mnt/scratch/ljcohen/mmetsp/Thalassiosira/SRR1300274/trim/', '/mnt/scratch/ljcohen/mmetsp/Ditylum_brightwellii/SRR1300291/trim/', '/mnt/scratch/ljcohen/mmetsp/Azadinium_spinosum/SRR1300306/trim/', '/mnt/scratch/ljcohen/mmetsp/Ostreococcus_mediterraneus/SRR1300252/trim/', '/mnt/scratch/ljcohen/mmetsp/Skeletonema_marinoi/SRR1300260/trim/', '/mnt/scratch/ljcohen/mmetsp/Chromulina_nebulosa/SRR1300310/trim/', '/mnt/scratch/ljcohen/mmetsp/Aureococcus_anophagefferens/SRR1300280/trim/', '/mnt/scratch/ljcohen/mmetsp/Emiliania_huxleyi/SRR1300287/trim/', '/mnt/scratch/ljcohen/mmetsp/Thalassiosira_weissflogii/SRR1296931/trim/', '/mnt/scratch/ljcohen/mmetsp/uncultured_eukaryote/SRR1300262/trim/', '/mnt/scratch/ljcohen/mmetsp/Lingulodinium_polyedrum/SRR1300258/trim/', '/mnt/scratch/ljcohen/mmetsp/uncultured_eukaryote/SRR1300340/trim/', '/mnt/scratch/ljcohen/mmetsp/Neoceratium_fusus/SRR1300300/trim/', '/mnt/scratch/ljcohen/mmetsp/Aurantiochytrium_limacinum/SRR1300290/trim/', '/mnt/scratch/ljcohen/mmetsp/Pavlova/SRR1300269/trim/', '/mnt/scratch/ljcohen/mmetsp/Emiliania_huxleyi/SRR1300289/trim/', '/mnt/scratch/ljcohen/mmetsp/Aplanochytrium/SRR1300333/trim/', '/mnt/scratch/ljcohen/mmetsp/uncultured_eukaryote/SRR1300329/trim/', '/mnt/scratch/ljcohen/mmetsp/Karlodinium_veneficum/SRR1300325/trim/', '/mnt/scratch/ljcohen/mmetsp/Symbiodinium_sp./SRR1300265/trim/', '/mnt/scratch/ljcohen/mmetsp/uncultured_eukaryote/SRR1300339/trim/', '/mnt/scratch/ljcohen/mmetsp/Emiliania_huxleyi/SRR1300285/trim/', '/mnt/scratch/ljcohen/mmetsp/Aurantiochytrium_limacinum/SRR1300337/trim/', '/mnt/scratch/ljcohen/mmetsp/uncultured_eukaryote/SRR1300276/trim/', '/mnt/scratch/ljcohen/mmetsp/Rhodomonas_abbreviata/SRR1300314/trim/']
