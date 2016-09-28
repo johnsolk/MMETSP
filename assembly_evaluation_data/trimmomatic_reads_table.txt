@@ -1,4 +1,4 @@
-Sample	Input Reads	Surviving Reads	Percent Surviving
+Run	Input Reads	Surviving Reads	Percent Surviving
 SRR1300371	22202199	22179510	99.90
 SRR1300370	20264809	20244656	99.90
 SRR1300373	14943164	14928287	99.90
