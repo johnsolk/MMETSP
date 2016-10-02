@@ -128,6 +128,7 @@ transrate -o {}{} \\
     process_name = "trans_ref_nt"
     module_name_list = ""
     filename = sample
+    print transrate_command
     #clusterfunc.qsub_file(transrate_dir,process_name,module_name_list,filename,commands)
 
 def transrate_reverse(transrate_dir, sample, trinity_fasta, mmetsp_assemblies_dir, filename):
@@ -142,6 +143,7 @@ transrate -o {}{} \\
     process_name = "trans_ref_reverse_nt"
     module_name_list = ""
     filename = sample
+    print transrate_command
     #clusterfunc.qsub_file(transrate_dir,process_name,module_name_list,filename,commands)
 
 def parse_transrate_stats(transrate_assemblies,sra,mmetsp):
@@ -213,20 +215,20 @@ def execute(mmetsp_data, data_frame1, data_frame2, url_data, basedir, mmetsp_ass
 		else:
 		    transrate_assemblies_ref = transrate_reference_dir + sample + "/assemblies.csv"
                     transrate_reverse_assemblies = transrate_reverse_dir + sample + "/assemblies.csv"
-                    if os.path.isfile(transrate_assemblies_ref):
-			       #check_delete_files(transrate_assemblies_ref)
-                                data1 = parse_transrate_stats(transrate_assemblies_ref,sra,mmetsp)
-                                data_frame1 = build_DataFrame(data_frame1, data1)
-                    else:
-                                print "Failed."
-                                transrate(transrate_reference_dir, sample, trinity_fasta, mmetsp_assemblies_dir, reference_filename)                                   
-                    if os.path.isfile(transrate_reverse_assemblies):
+                    #if os.path.isfile(transrate_assemblies_ref):
+		#	       #check_delete_files(transrate_assemblies_ref)
+                #                data1 = parse_transrate_stats(transrate_assemblies_ref,sra,mmetsp)
+                #                data_frame1 = build_DataFrame(data_frame1, data1)
+                #    else:
+                #                print "Failed."
+                    transrate(transrate_reference_dir, sample, trinity_fasta, mmetsp_assemblies_dir, reference_filename)                                   
+                    #if os.path.isfile(transrate_reverse_assemblies):
 		    		#check_delete_files(transrate_reverse_assemblies)                
-	               		data2 = parse_transrate_stats(transrate_reverse_assemblies,sra,mmetsp)
-                                data_frame2 = build_DataFrame(data_frame2, data2)
-                    else:
-                                print "Reverse failed."
-                                transrate_reverse(transrate_reverse_dir, sample, trinity_fasta, mmetsp_assemblies_dir, reference_filename)   
+	            #   		data2 = parse_transrate_stats(transrate_reverse_assemblies,sra,mmetsp)
+                    #            data_frame2 = build_DataFrame(data_frame2, data2)
+                    #else:
+                    #            print "Reverse failed."
+                    transrate_reverse(transrate_reverse_dir, sample, trinity_fasta, mmetsp_assemblies_dir, reference_filename)   
 	    else:
                 print "Missing:",reference_filename
 		MMETSP_url = mmetsp[:-1]
@@ -244,21 +246,6 @@ def execute(mmetsp_data, data_frame1, data_frame2, url_data, basedir, mmetsp_ass
 		#u = subprocess.Popen(fix_command, shell=True, stdout=PIPE)
                 #u.wait()
 		
-                #	transrate_assemblies_ref = transrate_reference_dir + sample + "/assemblies.csv"
-                	#transrate_reverse_assemblies = transrate_reverse_dir + sample + "/assemblies.csv"
-                #	if os.path.isfile(transrate_assemblies_ref):
-                #    		data1 = parse_transrate_stats(transrate_assemblies_ref,sra,mmetsp)
-                #    		data_frame1 = build_DataFrame(data_frame1, data1)
-		#	else:
-		#		print "Failed."
-		#		transrate(transrate_reference_dir, sample, trinity_fasta, mmetsp_assemblies_dir, reference_filename)				
-                #	
-		#	if os.path.isfile(transrate_reverse_assemblies):
-                #    		#data2 = parse_transrate_stats(transrate_reverse_assemblies,sra,mmetsp)
-                #    		#data_frame2 = build_DataFrame(data_frame2, data2)
-		#	else:
-		#		print "Reverse failed."
-				#transrate_reverse(transrate_reverse_dir, sample, trinity_fasta, mmetsp_assemblies_dir, reference_filename)				
     print "This is the number of times Trinity failed:"
     print len(trinity_fail)
     print trinity_fail
@@ -315,7 +302,7 @@ for datafile in datafiles:
     print url_data
     data_frame1, data_frame2 = execute(
         mmetsp_data, data_frame1, data_frame2, url_data, basedir, mmetsp_assemblies_dir)
-data_frame1.to_csv("assembly_evaluation_data/transrate_reference_scores_nt.csv")
-data_frame2.to_csv("assembly_evaluation_data/transrate_reverse_scores_nt.csv")
-print "Reference scores written: transrate_reference_scores_nt.csv"
-print "Reverse reference scores written: transrate_reverse_scores_nt.csv"
+#data_frame1.to_csv("assembly_evaluation_data/transrate_reference_scores_nt.csv")
+#data_frame2.to_csv("assembly_evaluation_data/transrate_reverse_scores_nt.csv")
+#print "Reference scores written: transrate_reference_scores_nt.csv"
+#print "Reverse reference scores written: transrate_reverse_scores_nt.csv"
