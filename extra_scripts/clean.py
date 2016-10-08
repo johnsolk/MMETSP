@@ -46,6 +46,13 @@ def delete_file(filename):
     print "File removed:", filename
 
 
+def send_to_cluster(basedir,commands,name):
+    process_name = "delete"
+    module_name_list = ""
+    filename = name
+    clusterfunc.qsub_file(basedir, process_name, module_name_list, filename, commands)
+
+
 def execute(basedir, url_data):
     for item in url_data.keys():
         organism = item[0]
@@ -108,10 +115,10 @@ def execute(basedir, url_data):
 # to delete extra files
 ##
 
-    #trinitydir = newdir + "trinity/"
+    trinitydir = newdir + "trinity/"
     #os.chdir(trinitydir)
-    #trinity_out = trinitydir + "trinity_out/"
-    #trinity_fasta = trinity_out + "Trinity.fasta"
+    trinity_out = trinitydir + "trinity_out/"
+    trinity_fasta = trinity_out + "Trinity.fasta"
     #new_trinity_fasta = trinitydir + sra + ".Trinity.fasta"
     #trinity_fixed_fasta = trinity_out + sample + ".Trinity.fixed.fa"
     #listoffiles = os.listdir(trinitydir)
@@ -137,8 +144,8 @@ def execute(basedir, url_data):
     #	delete_file(i)
 
 
-basedir = "/mnt/scratch/ljcohen/mmetsp/"
-datafile = "../SraRunInfo.csv"
+basedir = "/mnt/scratch/ljcohen/mmetsp_sra/"
+datafile = "../SraRunInfo_719.csv"
 url_data = get_data(datafile)
 print url_data
 execute(basedir,url_data)

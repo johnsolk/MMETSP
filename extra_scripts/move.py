@@ -47,7 +47,6 @@ def check_empty(empty_files, file, sra):
             empty_files.append(sra)
     return empty_files
 
-
 def check_trinity(assemblies,trinity_fail, trinity_file, sra):
     if os.path.isfile(trinity_file):
         print "Trinity completed successfully:", trinity_file
@@ -57,24 +56,15 @@ def check_trinity(assemblies,trinity_fail, trinity_file, sra):
         trinity_fail.append(sra)
     return trinity_fail,assemblies
 
+def send_to_cluster(basedir,commands,name):
+    process_name = "copy"
+    module_name_list = ""
+    filename = name
+    clusterfunc.qsub_file(basedir, process_name, module_name_list, filename, commands)
 
-def send_to_cluster(newdir,command_list,sra,names):
-	commands = []
-	for string in command_list:
-		commands.append(string)
-    		process_name = names
-    		module_name_list = ""
-    		filename = sra
-    		clusterfunc.qsub_file(newdir, process_name,
-                          module_name_list, filename, commands)
-
-def copy_files(trimdir,sra):
-        tmp_trimdir = trimdir + "qsub_files/"
-        file1 = tmp_trimdir+sra+".trim_1P.fq"
-        file2 = tmp_trimdir+sra+".trim_2P.fq"
-        mv_string1 = "cp "+file1+" "+trimdir
-        mv_string2 = "cp "+file2+" "+trimdir
-        return mv_string1,mv_string2
+def copy_fastq_filesdir(newdir,file1):
+        cp_string = "cp "+file1+" "+newdir
+        return cp_string
 
 def move_files(url_data,basedir,newdir):
 	for item in url_data:
@@ -83,11 +73,26 @@ def move_files(url_data,basedir,newdir):
                 mmetsp = item[2]
 		if mmetsp.endswith("_2"):
 			mmetsp = mmetsp.split("_")[0]
-		org_seq_dir = basedir + organism + "/"
+		org_seq_dir = basedir + organism + "/" + sra + "/"
 		mmetsp_dir = newdir + mmetsp + "/"
 	        print mmetsp_dir
 		clusterfunc.check_dir(mmetsp_dir)
-
+		file1_old = org_seq_dir + "trinity/" + sra + ".left.fq"
+		file2_old = org_seq_dir + "trinity/" + sra + ".right.fq"
+		file1_new = mmetsp_dir + sra + ".left.fq"
+		file2_new = mmetsp_dir + sra + ".right.fq"
+		if os.path.isfile(file1_new):
+			if os.path.isfile(file2_new):
+				print file1_new
+				print file2_new
+		else:			
+			cp_string1 = copy_fastq_filesdir(mmetsp_dir,file1_old)
+			cp_string2 = copy_fastq_filesdir(mmetsp_dir,file2_old)
+			commands = [cp_string1,cp_string2]
+			id = sra + "_" + mmetsp
+			send_to_cluster(basedir,commands,id)
+			print cp_string1
+			print cp_string2
 basedir = "/mnt/scratch/ljcohen/mmetsp_sra/"
 newdir = "/mnt/scratch/ljcohen/mmetsp/"
 clusterfunc.check_dir(newdir)
