@@ -60,7 +60,7 @@ def send_to_cluster(basedir,commands,name):
     process_name = "copy"
     module_name_list = ""
     filename = name
-    clusterfunc.qsub_file(basedir, process_name, module_name_list, filename, commands)
+    #clusterfunc.qsub_file(basedir, process_name, module_name_list, filename, commands)
 
 def copy_fastq_filesdir(newdir,file1):
         cp_string = "cp "+file1+" "+newdir
@@ -93,6 +93,58 @@ def move_files(url_data,basedir,newdir):
 			send_to_cluster(basedir,commands,id)
 			print cp_string1
 			print cp_string2
+
+def run_trinity(trinitydir, left, right, SRA):
+    trinity_command = """
+set -x
+# stops execution if there is an error
+set -e
+if [ -f {}trinity_out/Trinity.fasta ]; then exit 0 ; fi
+#if [ -d {}trinity_out ]; then mv {}trinity_out_dir {}trinity_out_dir0 || true ; fi
+Trinity --left {} \\
+--right {} --output {}trinity_out --seqType fq --JM 20G --CPU 16
+""".format(trinitydir, trinitydir, trinitydir, trinitydir, left, right, trinitydir)
+    commands = [trinity_command]
+    process_name = "trinity"
+    module_name_list = ["trinity/20140413p1"]
+    filename = SRA
+    clusterfunc.qsub_file(trinitydir, process_name,
+                          module_name_list, filename, commands)
+
+def get_trinity(url_data,newdir,basedir):
+	count = []
+	missing = []
+	for item in url_data:
+		organism = item[0].replace("'","")
+		sra = item[1]
+		mmetsp = item[2]
+		if mmetsp.endswith("_2"):
+			mmetsp = mmetsp.split("_")[0]
+		mmetsp_dir = newdir + mmetsp + "/"
+		org_seq_dir = basedir + organism + "/" + sra + "/"
+		file1 = mmetsp_dir + sra + ".left.fq"
+		file2 = mmetsp_dir + sra + ".right.fq"
+		trinity_fasta = org_seq_dir + "trinity/" + sra + ".Trinity.fasta" 
+		trinity_fasta = org_seq_dir + "trinity/" + organism + "_" + sra + ".Trinity.fixed.fasta"
+		#if os.path.isfile(file1) and os.path.isfile(file2):
+	#		print file1
+	#		print file2
+	#		run_trinity(mmetsp_dir,file1,file2,mmetsp)
+	#	else:
+	#		print "missing:",file1
+		if os.path.isfile(trinity_fasta):
+			print trinity_fasta
+			count.append(trinity_fasta)
+			cp_string = "cp " + trinity_fasta + " " + mmetsp_dir
+			print cp_string
+			s = subprocess.Popen(cp_string, shell = True)
+                        s.wait()
+		else:
+			print "Missing:",trinity_fasta 
+			missing.append(trinity_fasta)
+	print len(count)
+	print missing
+
 basedir = "/mnt/scratch/ljcohen/mmetsp_sra/"
 newdir = "/mnt/scratch/ljcohen/mmetsp/"
 clusterfunc.check_dir(newdir)
@@ -100,4 +152,5 @@ datafile = "../SraRunInfo_719.csv"
 url_data = get_data(datafile)
 print url_data
 print len(url_data)
-move_files(url_data,basedir,newdir)
+#move_files(url_data,basedir,newdir)
+get_trinity(url_data,newdir,basedir)
