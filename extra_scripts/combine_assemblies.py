@@ -163,9 +163,10 @@ def run_Trinity(mmetsp_dir,mmetsp,data_frame1,data_frame2):
 				#transrate(transratedir, mmetsp, fixed_fasta, mmetsp_dir, old_assembly)
 				#transrate_reverse(transratedir, mmetsp, fixed_fasta, mmetsp_dir, old_assembly)
 				sra = old_assembly.split("_")[-1].split(".")[0]
-    				sample = "reverse_" + mmetsp + "_" + sra
+				sample = mmetsp + "_" + sra
+    				reverse_sample = "reverse_" + mmetsp + "_" + sra
 				transrate_assemblies_ref = transratedir + sample + "/assemblies.csv"
-        			transrate_reverse_assemblies = transratedir + sample + "/assemblies.csv"
+        			transrate_reverse_assemblies = transratedir + reverse_sample + "/assemblies.csv"
 				if os.path.isfile(transrate_assemblies_ref):
 					data1 = parse_transrate_stats(transrate_assemblies_ref,sra,mmetsp)
 					data_frame1 = build_DataFrame(data_frame1,data1)
