@@ -139,7 +139,7 @@ def build_DataFrame(data_frame, transrate_data):
     data_frame = pd.concat(frames)
     return data_frame
 
-def run_Trinity(mmetsp_dir,mmetsp,data_frame1,data_frame2):
+def run_Trinity(ncgr_dir,mmetsp_dir,mmetsp,data_frame1,data_frame2):
 	trinitydir = mmetsp_dir + "trinity/"
 	clusterfunc.check_dir(trinitydir)
 	diginormdir = mmetsp_dir + "diginorm/"
@@ -158,28 +158,46 @@ def run_Trinity(mmetsp_dir,mmetsp,data_frame1,data_frame2):
 			fixed_fasta = fix_fasta(trinity_fasta, mmetsp_dir,mmetsp) 
 			#print cp_string
 			old_assemblies = sorted([s for s in os.listdir(mmetsp_dir) if s.endswith(".fixed.fasta") and s.split("_")[-1].startswith("SRR")])
-			print old_assemblies 
-			for old_assembly in old_assemblies:
+			#print old_assemblies 
+			#for old_assembly in old_assemblies:
 				#transrate(transratedir, mmetsp, fixed_fasta, mmetsp_dir, old_assembly)
 				#transrate_reverse(transratedir, mmetsp, fixed_fasta, mmetsp_dir, old_assembly)
-				sra = old_assembly.split("_")[-1].split(".")[0]
-				sample = mmetsp + "_" + sra
-    				reverse_sample = "reverse_" + mmetsp + "_" + sra
-				transrate_assemblies_ref = transratedir + sample + "/assemblies.csv"
-        			transrate_reverse_assemblies = transratedir + reverse_sample + "/assemblies.csv"
-				if os.path.isfile(transrate_assemblies_ref):
-					data1 = parse_transrate_stats(transrate_assemblies_ref,sra,mmetsp)
-					data_frame1 = build_DataFrame(data_frame1,data1)
-				else:
-					"Transrate failed:",transrate_assemblies_ref
-				if os.path.isfile(transrate_reverse_assemblies):
-					data2 = parse_transrate_stats(transrate_reverse_assemblies,sra,mmetsp)
-					data_frame2 = build_DataFrame(data_frame2,data2)
+			#	sra = old_assembly.split("_")[-1].split(".")[0]
+			#	sample = mmetsp + "_" + sra
+    			#	reverse_sample = "reverse_" + mmetsp + "_" + sra
+			#	transrate_assemblies_ref = transratedir + sample + "/assemblies.csv"
+        		#	transrate_reverse_assemblies = transratedir + reverse_sample + "/assemblies.csv"
+				#if os.path.isfile(transrate_assemblies_ref):
+				#	data1 = parse_transrate_stats(transrate_assemblies_ref,sra,mmetsp)
+				#	data_frame1 = build_DataFrame(data_frame1,data1)
+				#else:
+				#	"Transrate failed:",transrate_assemblies_ref
+				#if os.path.isfile(transrate_reverse_assemblies):
+				#	data2 = parse_transrate_stats(transrate_reverse_assemblies,sra,mmetsp)
+				#	data_frame2 = build_DataFrame(data_frame2,data2)
 
-				else:
-					print "Reverse failed:",transrate_reverse_assemblies
+				#else:
+				#	print "Reverse failed:",transrate_reverse_assemblies
 				#s = subprocess.Popen(cp_string, shell = True)
 				#s.wait()
+			ncgr_assembly = mmetsp + ".nt.fa.fixed.fa"
+			sample = mmetsp + "_" + mmetsp
+			reverse_sample = "reverse_" + mmetsp + "_" + mmetsp
+			transrate(transratedir, mmetsp, fixed_fasta, ncgr_dir, ncgr_assembly)
+                        transrate_reverse(transratedir, mmetsp, fixed_fasta, ncgr_dir, ncgr_assembly)
+
+			transrate_assemblies_ref = transratedir + sample + "/assemblies.csv"
+                        transrate_reverse_assemblies = transratedir + reverse_sample + "/assemblies.csv"
+ 			if os.path.isfile(transrate_assemblies_ref):
+                        	data1 = parse_transrate_stats(transrate_assemblies_ref,mmetsp,mmetsp)
+                                data_frame1 = build_DataFrame(data_frame1,data1)
+                        else:
+                                print "Transrate failed:",transrate_assemblies_ref
+                        if os.path.isfile(transrate_reverse_assemblies):
+                                data2 = parse_transrate_stats(transrate_reverse_assemblies,mmetsp,mmetsp)
+                                data_frame2 = build_DataFrame(data_frame2,data2)
+			else:
+				print "Transrate failed:",transrate_reverse_assemblies
 		else:
 			get_trinity(trinitydir, left, right, mmetsp)
 			#cp_string1 = "cp " + right + " " + mmetsp_dir 
@@ -241,7 +259,7 @@ transrate -o {}{} \\
     #clusterfunc.qsub_file(transrate_dir,process_name,module_name_list,filename,commands)
 
 
-def get_duplicates(newdir,data_frame1,data_frame2):
+def get_duplicates(ncgr_dir,newdir,data_frame1,data_frame2):
 	id_list = os.listdir(newdir)
 	for mmetsp in id_list:
 		mmetsp_dir = newdir + mmetsp + "/"
@@ -249,17 +267,18 @@ def get_duplicates(newdir,data_frame1,data_frame2):
 		if len(fastq_list) > 2:
 			print fastq_list
 			#run_diginorm(fastq_list,mmetsp_dir,mmetsp)	
-			data_frame1,data_frame2 = run_Trinity(mmetsp_dir,mmetsp,data_frame1,data_frame2)
+			data_frame1,data_frame2 = run_Trinity(ncgr_dir,mmetsp_dir,mmetsp,data_frame1,data_frame2)
 	return data_frame1,data_frame2
 
 newdir = "/mnt/scratch/ljcohen/mmetsp/"
+ncgr_dir = "/mnt/research/ged/lisa/mmetsp/imicrobe/nt/"
 clusterfunc.check_dir(newdir)
 datafile = "../SraRunInfo_719.csv"
 #move_files(url_data,basedir,newdir)
 data_frame1 = pd.DataFrame()
 data_frame2 = pd.DataFrame()
-data_frame1,data_frame2 = get_duplicates(newdir,data_frame1,data_frame2)
-data_frame1.to_csv("../assembly_evaluation_data/combined_transrate_reference.csv")
-data_frame2.to_csv("../assembly_evaluation_data/combined_transrate_reverse.csv")
-print "Reference scores written: ../combined_transrate_reference.csv"
-print "Reverse reference scores written: ../combined_transrate_reverse.csv"
+data_frame1,data_frame2 = get_duplicates(ncgr_dir,newdir,data_frame1,data_frame2)
+data_frame1.to_csv("../assembly_evaluation_data/ncgr_combined_transrate_reference.csv")
+data_frame2.to_csv("../assembly_evaluation_data/ncgr_combined_transrate_reverse.csv")
+print "Reference scores written: ../ncgr_combined_transrate_reference.csv"
+print "Reverse reference scores written: ../ncgr_combined_transrate_reverse.csv"
