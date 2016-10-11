@@ -145,5 +145,3 @@ count = 0
 data_frame1,data_frame2 = execute(data_frame1,data_frame2,ncgr_dir,trinity_fail, count, basedir)
 data_frame1.to_csv("assembly_evaluation_data/trinity2014_trinity2.2.0_transrate_reference.csv")
 data_frame2.to_csv("assembly_evaluation_data/trinity2014_trinity2.2.0_transrate_reverse.csv")
-#print "Reference scores written: ../ncgr_trinity2.2.0_transrate_reference.csv"
-#print "Reverse reference scores written: ../ncgr_trinity2.2.0_transrate_reverse.csv"

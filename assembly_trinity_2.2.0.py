@@ -74,7 +74,7 @@ def run_trinity(trinitydir,left,right,mmetsp):
 set -x
 # stops execution if there is an error
 set -e
-if [ -f {}trinity_out/Trinity.fasta ]; then exit 0 ; fi
+if [ -f {}trinity_out_2.2.0.Trinity.fasta ]; then exit 0 ; fi
 #if [ -d {}trinity_out ]; then mv {}trinity_out_dir {}trinity_out_dir0 || true ; fi
 
 Trinity --left {} \\
@@ -87,21 +87,6 @@ Trinity --left {} \\
     filename = mmetsp
     clusterfunc.qsub_file(trinitydir, process_name,
                           module_name_list, filename, commands)
-
-
-def check_trinity(seqdir, SRA, count):
-    trinity_dir = seqdir + "trinity/"
-    trinity_file = trinity_dir + "trinity_out/Trinity.fasta"
-    if os.path.isfile(trinity_file) == False:
-        if os.path.isdir(trinity_dir) == False:
-            print "Still need to run.", trinity_dir
-            run_trinity(trinity_dir, SRA)
-            count += 1
-        else:
-            print "Incomplete:", trinity_dir
-            run_trinity(trinity_dir, SRA)
-            count += 1
-    return count
 
 
 def fix_fasta(trinity_fasta, trinity_dir, sample):
@@ -122,7 +107,7 @@ def execute(trinity_fail, count, basedir):
 		mmetspdir = basedir + mmetsp + "/"
             	trinitydir = basedir + mmetsp + "/" + "trinity/"
 		trinity_files = os.listdir(mmetspdir)
-            	trinity_fasta=trinitydir+"trinity_out_2.2.0/"+"Trinity.fasta"
+            	trinity_fasta=trinitydir+"trinity_out_2.2.0.Trinity.fasta"
             	#trinity_fasta = trinitydir + sample + ".Trinity.fixed.fasta"
             	clusterfunc.check_dir(trinitydir)
             	if os.path.isfile(trinity_fasta) == False:
