@@ -1,3 +1,5 @@
+# review comments
+
 import os
 import os.path
 from os.path import basename
@@ -10,11 +12,16 @@ import shutil
 import glob
 # custom Lisa module
 import clusterfunc
+# in argparse, execute:
+# clusterfunc.set_DO_QSUB(True) when debug flag is set
 
 # 1. Get data from spreadsheet
 
+# in other files, use this as a module, then use "from getdata import get_data"
+# consider changing your naming conventions
 
 def get_data(thefile):
+    # use csv module in the for loop
     count = 0
     url_data = {}
     with open(thefile, "rU") as inputfile:
@@ -30,15 +37,10 @@ def get_data(thefile):
             ftp = line_data[position_ftp]
             name_read_tuple = (name, read_type)
             print name_read_tuple
-            # check to see if Scientific Name and run exist
-            if name_read_tuple in url_data.keys():
-                # check to see if ftp exists
-                if ftp in url_data[name_read_tuple]:
-                    print "url already exists:", ftp
-                else:
-                    url_data[name_read_tuple].append(ftp)
-            else:
-                url_data[name_read_tuple] = [ftp]
+            # check if name_read_tuple exist, if not then add empty set and add ftp
+            value = url_data.get(name_read_tuple, set())
+            value.add(ftp)
+            url_data[name_read_tuple] = value
         return url_data
 
 # 2. Download data
@@ -66,6 +68,12 @@ def sra_extract(newdir, filename):
     #    print sra_string
     # elif seqtype=="paired":
         # check whether .fastq exists in directory
+    
+    
+    # never use this type of concatenation with path names
+    # use glob.glob(os.path.join(newdir,"*.fastq))
+    # predict filename more specifically
+    # check md5sum?
     if glob.glob(newdir + "*.fastq"):
         print "SRA has already been extracted", filename
     else:
@@ -87,7 +95,10 @@ def fastqc_report(fastq_file_list, newdir, fastqcdir, filename):
         print "fastqc already complete:", filename
     else:
         # creates command to generate fastqc reports from all files in list
+        
+        # find out if this is necessary
         file_string = str(fastq_file_list)
+        
     # print fastq_file_list
         file_string = " ".join(fastq_file_list)
     # print file_string
@@ -143,10 +154,15 @@ def fastqc(newdir, fastqcdir, filename):
             fastq_file_list.append(newdir + i)
     fastqc_report(fastq_file_list, newdir, fastqcdir, filename)
 
-datafile = "SraRunInfo.csv"
-basedir = "/mnt/scratch/ljcohen/mmetsp/"
-clusterfunc.check_dir(basedir)
-for datafile in datafiles:
-    url_data = get_data(datafile)
-    print url_data
-    execute(basedir, url_data)
+def main():
+    clusterfunc.set_DO_QSUB(False)
+    datafile = "SraRunInfo.csv"
+    basedir = "/mnt/scratch/ljcohen/mmetsp/"
+    clusterfunc.check_dir(basedir)
+    for datafile in datafiles:
+      url_data = get_data(datafile)
+      print url_data
+      execute(basedir, url_data)
+
+if __name__ == "__main__":      
+    main()
