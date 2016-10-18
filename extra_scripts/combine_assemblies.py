@@ -29,6 +29,52 @@ Trinity --left {} \\
     clusterfunc.qsub_file(trinitydir, process_name,
                           module_name_list, filename, commands)
 
+def get_strain(different,mmetsp_id,organism,mmetsp_data):
+        alt = "blank"
+        if mmetsp_id in mmetsp_data:
+                name_info = mmetsp_data[mmetsp_id]
+                #print name_info]
+                strain = name_info[1]
+                if "'" in strain:
+                        strain = strain.replace("'","")
+                if "/" in strain:
+                        #print strain
+                        strain = strain.replace("/","-")
+                        #print strain
+                if ")" in strain:
+                        strain = strain.replace(")","-")
+                if "(" in strain:
+                        strain = strain.replace("(","-")
+                if "=" in strain:
+                        strain = strain.replace("=","-")
+                if ":" in strain:
+                        strain = strain.replace(":","-")
+                organism_mmetsp = name_info[0]
+                if organism != organism_mmetsp:
+                        organism_mmetsp_data = organism_mmetsp.split("_")
+                        organism_data = organism.split("_")
+                        #print organism_mmetsp_data
+                        #print organism_data
+                        if len(organism_mmetsp_data) >= 2:
+                                if len(organism_data) >= 2:
+                                        if organism != "uncultured_eukaryote":
+                                                #print organism_data[1][0:3]
+                                                #print organism_mmetsp_data[1]
+                                                if organism_mmetsp_data[0] != organism_mmetsp_data[1]:
+                                                        if "\x8e" in organism_mmetsp_data[1]:
+                                                                organism_mmetsp_data[1] = organism_mmetsp_data[1].replace("\x8e","")
+                                                        elif organism_mmetsp_data[1].lower().startswith(organism_data[1].lower()) == False:
+                                                                #print "Species are different - imicrobe:"+organism_mmetsp+" SRA:"+organism
+                                                                different_tuple = (organism_mmetsp,organism)
+                                                                different.append(different_tuple)
+                                                                alt = organism_mmetsp
+                                                        elif organism_mmetsp.startswith(organism[0:3]) == False:
+                                                                different_tuple = (organism_mmetsp,organism)
+                                                                different.append(different_tuple)
+                                                                #print "Different imicrobe: "+organism_mmetsp+" SRA: "+organism
+                                                                alt = organism_mmetsp
+                return strain,organism_mmetsp,different,alt
+
 def combine_orphans(diginormdir,mmetsp):
 	diginorm_files_dir = diginormdir + "qsub_files/"
     	rename_orphans = """
@@ -258,8 +304,96 @@ transrate -o {}{} \\
     #s.wait()
     #clusterfunc.qsub_file(transrate_dir,process_name,module_name_list,filename,commands)
 
+def get_mmetsp_data(mmetsp_file):
+    mmetsp_data={}
+    with open(mmetsp_file,"rU") as inputfile:
+        headerline=next(inputfile).split(',')
+        #print headerline        
+        position_mmetsp_id = headerline.index("SAMPLE_NAME")
+        position_organism = headerline.index("ORGANISM")
+        position_strain = headerline.index("STRAIN")
+        for line in inputfile:
+            line_data=line.split(',')
+	    MMETSP_id = line_data[position_mmetsp_id]
+            if MMETSP_id.endswith("C"):
+                MMETSP_id = MMETSP_id[:-1]
+	    test_mmetsp = MMETSP_id.split("_")
+            if len(test_mmetsp) > 1:
+                MMETSP_id = test_mmetsp[0]		
+            name="_".join(line_data[position_organism].split())
+            strain = "-".join(line_data[position_strain].split())
+            name_id_tuple=(name,strain)
+            #print name_id_tuple
+            #check to see if Scientific Name and run exist
+            mmetsp_data[MMETSP_id] = name_id_tuple
+        return mmetsp_data
 
-def get_duplicates(ncgr_dir,newdir,data_frame1,data_frame2):
+def get_data(thefile):
+    mmetsp_data = {}
+    with open(thefile, "rU") as inputfile:
+        headerline = next(inputfile).split(',')
+        # print headerline
+        position_name = headerline.index("ScientificName")
+        position_reads = headerline.index("Run")
+        position_mmetsp = headerline.index("SampleName")
+        for line in inputfile:
+            line_data = line.split(',')
+            name = "_".join(line_data[position_name].split())
+            read_type = line_data[position_reads]
+            mmetsp = line_data[position_mmetsp]
+            test_mmetsp = mmetsp.split("_")
+            if len(test_mmetsp) > 1:
+                mmetsp = test_mmetsp[0]
+            name_read_tuple = (name, read_type)
+            # print name_read_tuple
+            # check to see if Scientific Name and run exist
+            if name_read_tuple in mmetsp_data.keys():
+                # check to see if ftp exists
+                if mmetsp in mmetsp_data[name_read_tuple]:
+                    print "mmetsp ID already exists:", mmetsp
+                else:
+                    mmetsp_data[name_read_tuple].append(mmetsp)
+            else:
+                mmetsp_data[name_read_tuple] = [mmetsp]
+        return mmetsp_data
+
+def get_transrate_old(mmetsp_data,url_data,mmetsp_sra,data_frame1,data_frame2,mmetsp,ncgr_dir):
+	# need org_seq_dir
+	# need sra
+	different = []
+	alt = "blank"
+	item = mmetsp_data[mmetsp]
+	for organism_item in url_data:
+		if mmetsp in url_data[organism_item]:
+			organism = organism_item[0].replace("'","")
+        		sra = organism_item[1]
+			org_seq_dir = mmetsp_sra + organism + "/" + sra + "/"
+			print org_seq_dir
+	transratedir = org_seq_dir + "transrate_dib_v_ncgr_nt/"
+	reversetransratedir = org_seq_dir + "transrate_ncgr_nt_v_dib/"
+        strain,organism_mmetsp,different,alt = get_strain(different,mmetsp,organism,mmetsp_data)
+        if alt == "blank":
+        	sample = organism+"_"+strain+"_"+sra+"_"+mmetsp
+		print sample
+        else:
+                sample = organism+"_"+strain+"_"+sra+"_"+mmetsp+"_alt_"+alt
+		print sample        
+	transrate_assemblies_ref = transratedir + sample + "/assemblies.csv"
+        transrate_reverse_assemblies = reversetransratedir + sample + "/assemblies.csv"
+	if os.path.isfile(transrate_assemblies_ref):
+        	data1 = parse_transrate_stats(transrate_assemblies_ref,mmetsp,mmetsp)
+                data_frame1 = build_DataFrame(data_frame1,data1)
+        else:
+                print "Transrate failed:",transrate_assemblies_ref
+        if os.path.isfile(transrate_reverse_assemblies):
+                data2 = parse_transrate_stats(transrate_reverse_assemblies,mmetsp,mmetsp)
+                data_frame2 = build_DataFrame(data_frame2,data2)
+        else:
+		print "Transrate failed:",transrate_reverse_assemblies
+	return data_frame1,data_frame2
+			
+
+def get_duplicates(mmetsp_data,url_data,mmetsp_sra,ncgr_dir,newdir,data_frame1,data_frame2):
 	id_list = os.listdir(newdir)
 	for mmetsp in id_list:
 		mmetsp_dir = newdir + mmetsp + "/"
@@ -268,17 +402,30 @@ def get_duplicates(ncgr_dir,newdir,data_frame1,data_frame2):
 			print fastq_list
 			#run_diginorm(fastq_list,mmetsp_dir,mmetsp)	
 			data_frame1,data_frame2 = run_Trinity(ncgr_dir,mmetsp_dir,mmetsp,data_frame1,data_frame2)
+		else:
+			data_frame1,data_frame2 = get_transrate_old(mmetsp_data,url_data,mmetsp_sra,data_frame1,data_frame2,mmetsp,ncgr_dir)
 	return data_frame1,data_frame2
 
+mmetsp_sra = "/mnt/scratch/ljcohen/mmetsp_sra/"
 newdir = "/mnt/scratch/ljcohen/mmetsp/"
 ncgr_dir = "/mnt/research/ged/lisa/mmetsp/imicrobe/nt/"
 clusterfunc.check_dir(newdir)
 datafile = "../SraRunInfo_719.csv"
+url_data = get_data(datafile)
+print url_data
+mmetsp_data_file = "/mnt/home/ljcohen/MMETSP/imicrobe/Callum_FINAL_biosample_ids.csv"
+mmetsp_data = get_mmetsp_data(mmetsp_data_file)
+print mmetsp_data
 #move_files(url_data,basedir,newdir)
 data_frame1 = pd.DataFrame()
 data_frame2 = pd.DataFrame()
-data_frame1,data_frame2 = get_duplicates(ncgr_dir,newdir,data_frame1,data_frame2)
-data_frame1.to_csv("../assembly_evaluation_data/ncgr_combined_transrate_reference.csv")
-data_frame2.to_csv("../assembly_evaluation_data/ncgr_combined_transrate_reverse.csv")
-print "Reference scores written: ../ncgr_combined_transrate_reference.csv"
-print "Reverse reference scores written: ../ncgr_combined_transrate_reverse.csv"
+data_frame1,data_frame2 = get_duplicates(mmetsp_data,url_data,mmetsp_sra,ncgr_dir,newdir,data_frame1,data_frame2)
+#data_frame1.to_csv("../assembly_evaluation_data/ncgr_combined_transrate_reference.csv")
+#data_frame2.to_csv("../assembly_evaluation_data/ncgr_combined_transrate_reverse.csv")
+#print "Reference scores written: ../ncgr_combined_transrate_reference.csv"
+#print "Reverse reference scores written: ../ncgr_combined_transrate_reverse.csv"
+data_frame1.to_csv("../assembly_evaluation_data/ncgr_combined_transrate_reference_all.csv")
+data_frame2.to_csv("../assembly_evaluation_data/ncgr_combined_transrate_reverse_all.csv")
+print "Reference scores written: ../ncgr_combined_transrate_reference_all.csv"
+print "Reverse reference scores written: ../ncgr_combined_transrate_reverse_all.csv"
+
