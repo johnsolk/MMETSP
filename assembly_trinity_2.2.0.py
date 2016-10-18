@@ -75,12 +75,12 @@ set -x
 # stops execution if there is an error
 set -e
 if [ -f {}trinity_out_2.2.0.Trinity.fasta ]; then exit 0 ; fi
-#if [ -d {}trinity_out ]; then mv {}trinity_out_dir {}trinity_out_dir0 || true ; fi
 
 Trinity --left {} \\
---right {} --output {}trinity_out_2.2.0 --full_cleanup --seqType fq --max_memory 20G --CPU 16
+--right {} --output /tmp/{}.trinity_out_2.2.0 --full_cleanup --seqType fq --max_memory 20G --CPU 16
 
-""".format(trinitydir, trinitydir, trinitydir, trinitydir, left, right, trinitydir)
+cp /tmp/{}.trinity_out_2.2.0.Trinity.fasta /mnt/home/ljcohen/mmetsp_assemblies_trinity2.2.0/
+""".format(trinitydir, left, right, mmetsp, mmetsp)
     commands = [trinity_command]
     process_name = "trinity_2.2.0"
     module_name_list = ["trinity/2.2.0"]

@@ -105,7 +105,10 @@ def execute(data_frame1,data_frame2,ncgr_dir,trinity_fail, count, basedir):
                 	print "Trinity completed successfully.", trinity_fasta
                 	count += 1
                 	old_assemblies = glob.glob(assemblydir+"*"+mmetsp+"*")
-			full_assembly = old_assemblies[0]
+			if len(old_assemblies) >= 1:
+				full_assembly = old_assemblies[0]
+			else:
+				print glob.glob(assemblydir + "*" + mmetsp + "*")
 			#copy_string = "cp " + trinity_fasta + " " + assemblydir
                 	#print copy_string
                 	#s = subprocess.Popen(copy_string, shell=True)
