@@ -80,7 +80,8 @@ Trinity --left {} \\
 --right {} --output /tmp/{}.trinity_out_2.2.0 --full_cleanup --seqType fq --max_memory 20G --CPU 16
 
 cp /tmp/{}.trinity_out_2.2.0.Trinity.fasta /mnt/home/ljcohen/mmetsp_assemblies_trinity2.2.0/
-""".format(trinitydir, left, right, mmetsp, mmetsp)
+rm -rf /tmp/{}.trinity_out_2.2.0*
+""".format(trinitydir, left, right, mmetsp, mmetsp,mmetsp)
     commands = [trinity_command]
     process_name = "trinity_2.2.0"
     module_name_list = ["trinity/2.2.0"]
@@ -104,36 +105,46 @@ sed 's_|_-_g' {} > {}
 def execute(trinity_fail, count, basedir):
 	id_list = os.listdir(basedir)
         for mmetsp in id_list:
-		mmetspdir = basedir + mmetsp + "/"
-            	trinitydir = basedir + mmetsp + "/" + "trinity/"
-		trinity_files = os.listdir(mmetspdir)
-            	trinity_fasta=trinitydir+"trinity_out_2.2.0.Trinity.fasta"
-            	#trinity_fasta = trinitydir + sample + ".Trinity.fixed.fasta"
-            	clusterfunc.check_dir(trinitydir)
-            	if os.path.isfile(trinity_fasta) == False:
-			right = [s for s in trinity_files if s.endswith(".right.fq")][0]
-        		left = [s for s in trinity_files if s.endswith(".left.fq")][0]
-			right = mmetspdir + right
-			left = mmetspdir + left
-			if os.path.isfile(left) and os.path.isfile(right):
-				run_trinity(trinitydir,left,right,mmetsp)
-                		#print "Trinity failed:", trinity_fasta
-                		#trinity_fail.append(trinitydir)
-            		else:
-				print "No files:",left
-		else:
-                	print "Trinity completed successfully.", trinity_fasta
-                	count += 1
-                	assemblydir = "/mnt/scratch/ljcohen/mmetsp_assemblies/"
-                	copy_string = "cp " + trinity_fasta + " " + assemblydir
-                	print copy_string
-                	#s = subprocess.Popen(copy_string, shell=True)
-                	#s.wait()
-                	# trinity_out=fix_fasta(trinity_fasta,trinitydir,sample)
-                	# print "Needs to be fixed:",trinity_fasta
-                	# print trinity_out
-                	#"Re-run diginorm:",diginormfile
-            		#count = check_trinity(newdir,SRA,count)
+		if mmetsp != "qsub_files":
+			mmetspdir = basedir + mmetsp + "/"
+            		trinitydir = basedir + mmetsp + "/" + "trinity/"
+			trinity_files = os.listdir(mmetspdir)
+            		trinity_fasta=trinitydir+"trinity_out_2.2.0.Trinity.fasta"
+            		#trinity_fasta = trinitydir + sample + ".Trinity.fixed.fasta"
+            		clusterfunc.check_dir(trinitydir)
+            		if os.path.isfile(trinity_fasta) == False:
+				if os.path.isfile("/mnt/home/ljcohen/mmetsp_assemblies_trinity2.2.0/"+mmetsp+".trinity_out_2.2.0.Trinity.fasta"):
+					print "Trinity finished."
+					count +=1
+				else:
+					print mmetspdir
+					right = [s for s in trinity_files if s.endswith(".right.fq")][0]
+                        		left = [s for s in trinity_files if s.endswith(".left.fq")][0]
+                        		right = mmetspdir + right
+                        		left = mmetspdir + left
+                        		if os.path.isfile(left) and os.path.isfile(right):
+						right = [s for s in trinity_files if s.endswith(".right.fq")][0]
+                        			left = [s for s in trinity_files if s.endswith(".left.fq")][0]
+                        			right = mmetspdir + right
+                       	 			left = mmetspdir + left
+						run_trinity(trinitydir,left,right,mmetsp)
+                				#print "Trinity failed:", trinity_fasta
+                				#trinity_fail.append(trinitydir)
+            				else:
+						print "No files:",left
+			else:
+                		print "Trinity completed successfully.", trinity_fasta
+                		count += 1
+                		assemblydir = "/mnt/scratch/ljcohen/mmetsp_assemblies/"
+                		copy_string = "cp " + trinity_fasta + " " + assemblydir
+                		print copy_string
+                		#s = subprocess.Popen(copy_string, shell=True)
+                		#s.wait()
+                		# trinity_out=fix_fasta(trinity_fasta,trinitydir,sample)
+                		# print "Needs to be fixed:",trinity_fasta
+                		# print trinity_out
+                		#"Re-run diginorm:",diginormfile
+            			#count = check_trinity(newdir,SRA,count)
     	print "Number of Trinity de novo transcriptome assemblies:"
     	print count
    	print "Number of times Trinity failed:"

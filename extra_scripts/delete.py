@@ -53,38 +53,40 @@ def send_to_cluster(basedir,commands,name):
     clusterfunc.qsub_file(basedir, process_name, module_name_list, filename, commands)
 
 
-def execute(basedir, url_data):
-	for item in url_data.keys():
-        	organism = item[0].replace("'","")
-        	seqtype = item[1]
-       	 	org_seq_dir = basedir + organism + "/"
-        	clusterfunc.check_dir(org_seq_dir)
-        	url_list = url_data[item]
-        	for url in url_list:
-            		sra = basename(urlparse(url).path)
-            		newdir = org_seq_dir + sra + "/"
-            		sample = "_".join(item)
-            		filename = newdir + sra
-    			trinitydir = newdir + "trinity/"
-    			trinity_out = trinitydir + "trinity_out/"
-    			trinity_fasta = trinity_out + "Trinity.fasta"
-    			new_trinity_fasta = trinitydir + sra + ".Trinity.fasta"
-			if os.path.isdir(trinity_out):
-				if len(glob.glob(trinitydir+"*.fasta")) == 0:
-					#print "File to be copied:", trinity_fasta
-        				#print "New file location:", new_trinity_fasta
-					cp_string = "cp "+trinity_fasta+" "+new_trinity_fasta
+def execute(basedir,count):
+	listofdirs = os.listdir(basedir)
+	for mmetsp  in listofdirs:
+		newdir = basedir  + mmetsp + "/"
+    		trinitydir = newdir + "trinity/"
+    		trinity_out = trinitydir + "trinity_out_2.2.0/"
+    		# trinity 2014 version
+		#trinity_fasta = trinity_out + "Trinity.fasta"
+    		# trinity_2.2.0
+		trinity_fasta = trinitydir + "trinity_out_2.2.0.Trinity.fasta"
+		if os.path.isdir(trinity_out):
+			if os.path.isfile(trinity_fasta):
+				if os.stat(trinity_fasta).st_size == 0:
 					print cp_string
+					print "File is empty:", trinity_fasta
 				else:
-					#print "File exists."
-					#print glob.glob(trinitydir+"*.fasta")
+					print "Directory will be deleted:",trinity_out
 					delete_trinity_dir = ["rm -rf "+trinity_out]
-					send_to_cluster(basedir,delete_trinity_dir,sra)
+					send_to_cluster(basedir,delete_trinity_dir,mmetsp)
+					count += 1
 			else:
-				print "Deleted."
-				
-basedir = "/mnt/scratch/ljcohen/mmetsp_sra/"
+				"Trinity fasta does not exist yet."
+		else:
+			print "Doesn't exist:",trinity_out
+	
+	print "Deleted:"
+	print count
+	
+
+
+basedir = "/mnt/scratch/ljcohen/mmetsp/"				
+#basedir = "/mnt/scratch/ljcohen/mmetsp_sra/"
 datafile = "../SraRunInfo_719.csv"
-url_data = get_data(datafile)
-print url_data
-execute(basedir,url_data)
+#url_data = get_data(datafile)
+#print url_data
+count = 0
+execute(basedir,count)
