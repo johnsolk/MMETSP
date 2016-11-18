@@ -135,11 +135,11 @@ def execute(trinity_fail, count, basedir):
 			else:
                 		print "Trinity completed successfully.", trinity_fasta
                 		count += 1
-                		assemblydir = "/mnt/scratch/ljcohen/mmetsp_assemblies/"
-                		copy_string = "cp " + trinity_fasta + " " + assemblydir
+                		assemblydir = "/mnt/home/ljcohen/mmetsp_assemblies_trinity2.2.0/"
+                		copy_string = "cp " + trinity_fasta + " " + assemblydir + mmetsp + ".trinity_out_2.2.0.Trinity.fasta" 
                 		print copy_string
-                		#s = subprocess.Popen(copy_string, shell=True)
-                		#s.wait()
+                		s = subprocess.Popen(copy_string, shell=True)
+                		s.wait()
                 		# trinity_out=fix_fasta(trinity_fasta,trinitydir,sample)
                 		# print "Needs to be fixed:",trinity_fasta
                 		# print trinity_out

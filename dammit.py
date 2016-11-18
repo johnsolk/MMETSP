@@ -1,78 +1,38 @@
 import os
 import os.path
 from os.path import basename
-from urllib import urlopen
-from urlparse import urlparse
 import subprocess
 from subprocess import Popen, PIPE
 import urllib
 import shutil
 import glob
 # custom Lisa module
-import clusterfunc
+import clusterfunc_py3
 
 
-def get_data(thefile):
-    count = 0
-    url_data = {}
-    with open(thefile, "rU") as inputfile:
-        headerline = next(inputfile).split(',')
-        # print headerline
-        position_name = headerline.index("ScientificName")
-        position_reads = headerline.index("Run")
-        position_ftp = headerline.index("download_path")
-        for line in inputfile:
-            line_data = line.split(',')
-            name = "_".join(line_data[position_name].split())
-            read_type = line_data[position_reads]
-            ftp = line_data[position_ftp]
-            name_read_tuple = (name, read_type)
-            print name_read_tuple
-            # check to see if Scientific Name and run exist
-            if name_read_tuple in url_data.keys():
-                # check to see if ftp exists
-                if ftp in url_data[name_read_tuple]:
-                    print "url already exists:", ftp
-                else:
-                    url_data[name_read_tuple].append(ftp)
-            else:
-                url_data[name_read_tuple] = [ftp]
-        return url_data
-
-
-def dammit_string(basedir, dammitdir, SRA, trinity_fasta):
+def get_dammit_string(trinity_fasta):
     j = """
-dammit annotate {} --busco-group eukaryota --database-dir /mnt/dammit_databases --n_threads 8
+dammit annotate {} --busco-group eukaryota --n_threads 14
 """.format(trinity_fasta)
-    dammitfile = dammitdir + SRA + ".dammit.sh"
-    os.chdir(dammitdir)
-    with open(dammitfile, "w") as dammitfilewrite:
-        dammitfilewrite.write(j)
-    print "File written:", dammitfile
-    s = subprocess.Popen("sudo bash " + dammitfile, shell=True)
-    s.wait()
-    os.chdir(basedir)
+    return j
 
+def run_dammit(dammit_string,dammitdir,mmetsp):
+    dammit_command = [dammit_string]
+    process_name = "dammit"
+    module_name_list = []
+    filename = mmetsp
+    clusterfunc_py3.qsub_file(dammit_dir, process_name, module_name_list, filename, dammit_command)
 
-def execute(url_data, basedir):
-    for item in url_data.keys():
-        organism = item[0]
-        org_seq_dir = basedir + organism + "/"
-        url_list = url_data[item]
-        for url in url_list:
-            sra = basename(urlparse(url).path)
-            newdir = org_seq_dir + sra + "/"
-            trinitydir = newdir + "trinity/trinity_out/"
-            dammitdir = newdir + "dammit_dir/"
-            clusterfunc.check_dir(dammitdir)
-            trinity_fasta = trinitydir + "Trinity.fasta"
-            print trinity_fasta
-            if os.path.isfile(trinity_fasta):
-                print "File exists:", trinity_fasta
-                dammit_string(basedir, dammitdir, sra, trinity_fasta)
+def execute(assemblies, basedir, dammit_dir):
+    for assembly in assemblies:
+        mmetsp = assembly.split(".")[0]
+        print(mmetsp)
+        trinity_fasta = basedir+assembly
+        print(trinity_fasta)
+        dammit_string = get_dammit_string(trinity_fasta)
+        run_dammit(dammit_string, dammit_dir, mmetsp)
 
-basedir = "/mnt/mmetsp/"
-datafile = "MMETSP_SRA_Run_Info_subset2.csv"
-url_data = get_data(datafile)
-print url_data
-execute(url_data, basedir)
+basedir = "/mnt/home/ljcohen/mmetsp_assemblies_trinity2.2.0/"
+dammit_dir = "/mnt/home/ljcohen/mmetsp_dammit/"
+assemblies = os.listdir(basedir)
+execute(assemblies, basedir,dammit_dir)

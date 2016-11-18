@@ -55,7 +55,7 @@ def send_to_cluster(basedir,commands,name):
 
 def execute(basedir, url_data):
     for item in url_data.keys():
-        organism = item[0]
+        organism = item[0].replace("'","")
         seqtype = item[1]
         org_seq_dir = basedir + organism + "/"
         clusterfunc.check_dir(org_seq_dir)
@@ -72,8 +72,6 @@ def execute(basedir, url_data):
 
             if os.path.isfile(filename):
                 delete_file(filename)
-            else:
-                print "Already deleted:", filename
 
             ##
             # run this to delte original raw reads after trim_qc.py
@@ -84,51 +82,49 @@ def execute(basedir, url_data):
             if os.path.isfile(filename+"_2.fastq"):
         		delete_file(filename+"_2.fastq")
 
-    #diginormdir = newdir + "diginorm/"
-    #os.chdir(diginormdir)
-    #diginorm_delete_files = ["norm.C20k20.ct"]
-    # diginorm_delete_files=["norm.C20k20.ct","orphans.fq.gz.keep.abundfilt"]
-    #for filename in glob.glob("*.keep"):
-    #    diginorm_delete_files.append(filename)
-    #for filename in glob.glob("*.abundfilt"):
-    #    diginorm_delete_files.append(filename)
-    #for filename in glob.glob("*.abundfilt.pe"):
-    #    diginorm_delete_files.append(filename)
-    #for filename in glob.glob("*.abundfilt.se"):
-    #    diginorm_delete_files.append(filename)
-    #print diginorm_delete_files
-# diginormdir=newdir+"diginorm/"
-# os.chdir(diginormdir)
-# diginorm_delete_files=["norm.C20k20.ct","orphans.keep.abundfilt.fq.gz"]
-# for filename in glob.glob("*.keep"):
-#	diginorm_delete_files.append(filename)
-# for filename in glob.glob("*.abundfilt"):
-#	diginorm_delete_files.append(filename)
-# for filename in glob.glob("*.abundfilt.pe*"):
-#	diginorm_delete_files.append(filename)
-# for filename in glob.glob("*.abundfilt.se"):
-#	diginorm_delete_files.append(filename)
-# print diginorm_delete_files
+    	    diginormdir = newdir + "diginorm/"
+	    working_dir = os.getcwd()
+	    if os.path.isdir(diginormdir) == False:
+		diginormdir = newdir + "diginormdir/"
+	    os.chdir(diginormdir)
+    	    diginorm_delete_files=["norm.C20k20.ct","orphans.fq.gz.keep.abundfilt"]
+    	    for filename in glob.glob("qsub_files/*.keep"):
+        	diginorm_delete_files.append(filename)
+    	    for filename in glob.glob("qsub_files/*.abundfilt"):
+        	diginorm_delete_files.append(filename)
+    	    for filename in glob.glob("qsub_files/*.abundfilt.pe"):
+        	diginorm_delete_files.append(filename)
+    	    for filename in glob.glob("qsub_files/*.abundfilt.se"):
+        	diginorm_delete_files.append(filename)
+    	    print diginorm_delete_files
+    	    diginormdir=newdir+"diginorm/"
+     	    for j in diginorm_delete_files:
+		if os.path.isfile(j):
+			delete_file(j)
+	    os.chdir(working_dir)
 
 ##
 # run this after assembly.py
 # to delete extra files
 ##
 
-    trinitydir = newdir + "trinity/"
-    #os.chdir(trinitydir)
-    trinity_out = trinitydir + "trinity_out/"
-    trinity_fasta = trinity_out + "Trinity.fasta"
-    #new_trinity_fasta = trinitydir + sra + ".Trinity.fasta"
-    #trinity_fixed_fasta = trinity_out + sample + ".Trinity.fixed.fa"
-    #listoffiles = os.listdir(trinitydir)
-    #new_trinity_fixed_fasta = trinitydir + sample + ".Trinity.fixed.fasta"
-    #filestodelete = []
-    #for filename in listoffiles:
-    #    if filename.endswith(".1"):
-    #        filestodelete.append(filename)
-    #    if filename.endswith(".2"):
-    #        filestodelete.append(filename)
+    	    trinitydir = newdir + "trinity/"
+    	    #os.chdir(trinitydir)
+    	    trinity_out = trinitydir + "trinity_out/"
+    	    if os.path.isdir(trinity_out):
+		shutil.rmtree(trinity_out)
+                print "Deleted:",trinity_out	
+	    trinity_fasta = trinity_out + "Trinity.fasta"
+    	    #new_trinity_fasta = trinitydir + sra + ".Trinity.fasta"
+            #trinity_fixed_fasta = trinity_out + sample + ".Trinity.fixed.fa"
+            listoffiles = os.listdir(trinitydir)
+            #new_trinity_fixed_fasta = trinitydir + sample + ".Trinity.fixed.fasta"
+            filestodelete = []
+            for filename in listoffiles:
+        	if filename.endswith(".1"):
+            		filestodelete.append(filename)
+        	if filename.endswith(".2"):
+            		filestodelete.append(filename)
     #if os.path.isfile(trinity_fasta):
     #    print "File to be copied:", trinity_fasta
     #    print "New file location:", new_trinity_fasta
@@ -139,7 +135,7 @@ def execute(basedir, url_data):
     #    print "File to be copied:", trinity_fixed_fasta
     #    print "New file location", new_trinity_fixed_fasta
     #    copyfile(trinity_fixed_fasta, new_trinity_fixed_fasta)
-    # print "These files will be deleted:",filestodelete
+    	    print "These files will be deleted:",filestodelete
     # for i in filestodelete:
     #	delete_file(i)
 

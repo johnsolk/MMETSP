@@ -10,7 +10,7 @@ from subprocess import Popen, PIPE
 def check_dir(dirname):
     if os.path.isdir(dirname) == False:
         os.mkdir(dirname)
-        print "Directory created:", dirname
+        print("Directory created:"), dirname
 
 
 def get_qsub_filename(basedir, process_name, filename):
@@ -48,17 +48,17 @@ cd ${{PBS_O_WORKDIR}}
         qsub.write(f)
         for module_string in module_load:
             qsub.write(module_string + "\n")
-            # print module_string
+            # print(module_string)
         for string in process_string:
             qsub.write(string + "\n")
-            print string
+            print(string)
         qsub.write("qstat -f ${PBS_JOBID}\n")
         qsub.write(
             "cat ${PBS_NODEFILE} # Output Contents of the PBS NODEFILE\n")
         qsub.write(
             "env | grep PBS # Print out values of the current jobs PBS environment variables\n")
     qsub_string = 'qsub -V ' + qsub_filename
-    print qsub_string
+    print(qsub_string)
     #s = subprocess.Popen(qsub_string, shell=True)
     #s.wait()
     os.chdir(working_dir)
