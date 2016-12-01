@@ -35,7 +35,7 @@ def qsub_file(basedir, process_name, module_name_list, filename, process_string)
     os.chdir(qsub_dir)
     module_load = get_module_load_list(module_name_list)
     f = """#!/bin/bash
-#PBS -l walltime=8:00:00,nodes=1:ppn=16
+#PBS -l walltime=12:00:00,nodes=1:ppn=16
 #PBS -l mem=72gb
 #PBS -j oe
 #PBS -A ged
