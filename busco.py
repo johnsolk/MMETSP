@@ -12,48 +12,24 @@ import glob
 import clusterfunc
 import pandas as pd
 
-def get_data(thefile):
-    count = 0
-    url_data = {}
-    with open(thefile, "rU") as inputfile:
-        headerline = next(inputfile).split(',')
-        # print headerline
-        position_name = headerline.index("ScientificName")
-        position_reads = headerline.index("Run")
-        position_ftp = headerline.index("download_path")
-        for line in inputfile:
-            line_data = line.split(',')
-            name = "_".join(line_data[position_name].split())
-            read_type = line_data[position_reads]
-            ftp = line_data[position_ftp]
-            name_read_tuple = (name, read_type)
-            if name_read_tuple in url_data.keys():
-                if ftp in url_data[name_read_tuple]:
-                    print "url already exists:", ftp
-                else:
-                    url_data[name_read_tuple].append(ftp)
-            else:
-                url_data[name_read_tuple] = [ftp]
-        return url_data
-
-
-def run_busco(busco_dir, trinity_fasta, sample, sra):
+def run_busco(busco_dir,sample):
     busco_command = """
-busco -m trans -in {} \
---cpu 30 -l /mnt/research/ged/lisa/busco/eukaryota -o {}.euk
-""".format(trinity_fasta, sample)
+python /mnt/home/ljcohen/bin/busco/BUSCO.py \
+-i /mnt/home/ljcohen/mmetsp_assemblies_trinity2.2.0/{}.trinity_out_2.2.0.Trinity.fasta \
+-o {} -l /mnt/home/ljcohen/bin/busco/eukaryota_odb9 \
+-m tran --cpu 8
+""".format(sample,sample)
     print busco_command
     commands = [busco_command]
     process_name = "busco"
     module_name_list = ""
-    filename = sra
-    #clusterfunc.qsub_file(busco_dir, process_name,
-     #                     module_name_list, filename, commands)
+    filename = sample
+    #clusterfunc.qsub_file(busco_dir, process_name,module_name_list, filename, commands)
 
 
 def parse_busco_stats(busco_filename, sample):
     count = 0
-    important_lines = [7, 10, 11, 12]
+    important_lines = [10, 13, 14, 15]
     busco_dict = {}
     busco_dict[sample] = []
     if os.path.isfile(busco_filename):
@@ -61,7 +37,9 @@ def parse_busco_stats(busco_filename, sample):
         	with open(busco_filename) as buscofile:
             		for line in buscofile:
                 		count += 1
+				print count
                 		line_data = line.split()
+				print line_data
                 		if count in important_lines:
                     			busco_dict[sample].append(int(line_data[0]))
     busco_data = pd.DataFrame.from_dict(busco_dict, orient='index')
@@ -78,52 +56,26 @@ def build_DataFrame(data_frame, transrate_data):
     return data_frame
 
 
-def execute(data_frame, url_data, basedir):
-    trinity_fail = []
+def execute(fasta_files,basedir,busco_dir,data_frame):
     count = 0
     # construct an empty pandas dataframe to add on each assembly.csv to
-    for item in url_data.keys():
-        print item
-        organism = item[0].replace("'","")
-	print organism
-        sample = "_".join(item).replace("'","")
-        org_seq_dir = basedir + organism + "/"
-	print org_seq_dir
-        url_list = url_data[item]
-        for url in url_list:
-            sra = basename(urlparse(url).path)
-            newdir = org_seq_dir + sra + "/"
-            trimdir = newdir + "trim/"
-            trinitydir = newdir + "trinity/"
-	    busco_dir = newdir + "busco/"
-            busco_out_dir = newdir + "busco/qsub_files/"
-            clusterfunc.check_dir(busco_dir)
-            clusterfunc.check_dir(busco_out_dir)
-	    #trinity_fasta = trinitydir + sample + ".Trinity.fixed.fasta"
-            trinity_fasta = trinitydir + organism + "_" + sra + ".Trinity.fixed.fasta"
-	    busco_file = busco_out_dir + "run_" + sample + \
-                ".euk/short_summary_" + sample + ".euk"
-            if os.path.isfile(busco_file):
-	    #if os.path.isfile(trinity_fasta):
+    for filename in fasta_files:
+        sample= filename.split(".")[0]
+	print sample
+	busco_file = busco_dir + "qsub_files/run_" + sample + "/short_summary_" + sample + ".txt"
+        if os.path.isfile(busco_file):
                 count += 1
                 #run_busco(busco_dir,trinity_fasta,sample,sra)
                 data = parse_busco_stats(busco_file, sample)
                 data_frame = build_DataFrame(data_frame, data)
-            else:
-                #print "Trinity failed:", trinity_fasta
-                #trinity_fail.append(newdir)
-		print "BUSCO has not finished:", busco_file
-    print "This is the number of Trinity de novo transcriptome assemblies:"
-    print count
-    print "This is the number of times Trinity failed:"
-    print len(trinity_fail)
-    print trinity_fail
+        else:
+                run_busco(busco_dir,sample) 
     return data_frame
 
-basedir = "/mnt/scratch/ljcohen/mmetsp/"
+basedir = "/mnt/home/ljcohen/mmetsp_assemblies_trinity2.2.0/"
+busco_dir = "/mnt/home/ljcohen/mmetsp_busco/"
 data_frame = pd.DataFrame()
-datafile = "SraRunInfo.csv"    
-url_data = get_data(datafile)
-print url_data
-data_frame = execute(data_frame, url_data, basedir)
+fasta_files = os.listdir(basedir)
+data_frame = execute(fasta_files,basedir,busco_dir,data_frame)
+print "File written: ~/MMETSP/assembly_evaluation_data/protist_trinity2.2.0_busco_scores.csv"
 data_frame.to_csv("busco_scores.csv")
