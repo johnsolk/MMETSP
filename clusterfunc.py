@@ -35,13 +35,12 @@ def qsub_file(basedir, process_name, module_name_list, filename, process_string)
     os.chdir(qsub_dir)
     module_load = get_module_load_list(module_name_list)
     f = """#!/bin/bash
-#PBS -l walltime=81:00:00,nodes=1:ppn=4
-#PBS -l mem=20gb
+#PBS -l walltime=12:00:00,nodes=1:ppn=16
+#PBS -l mem=50gb
 #PBS -j oe
 #PBS -A ged
 #PBS -M ljcohen@msu.edu
 #PBS -m ae
-#PBS -W umask=027
 cd ${{PBS_O_WORKDIR}}
 """.format()
     with open(qsub_filename, "w") as qsub:

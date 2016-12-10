@@ -77,7 +77,7 @@ def run_filter_abund(diginormdir, sra):
     filter_string = """
 filter-abund.py -V -Z 18 {}norm.C20k20.ct {}*.keep
 """.format(diginormdir, keep_dir)
-    extract_paired_string = extract_paired()
+    extract_paired_string = extract_paired(diginormdir)
     commands = [filter_string, extract_paired_string]
     process_name = "filtabund"
     module_name_list = ["GNU/4.8.3", "khmer/2.0"]
@@ -85,13 +85,14 @@ filter-abund.py -V -Z 18 {}norm.C20k20.ct {}*.keep
     clusterfunc.qsub_file(diginormdir, process_name,
                           module_name_list, filename, commands)
 
-def extract_paired():
+def extract_paired(mmetsp_dir):
     extract_paired_string = """
+cd {}qsub_files/
 for file in *.abundfilt
 do
 	extract-paired-reads.py ${{file}}
 done
-""".format()
+""".format(mmetsp_dir)
     return extract_paired_string
 
 def run_diginorm(mmetsp_dir,mmetsp):
@@ -144,24 +145,14 @@ do
 	gzip ${{newfile}}
 done
 """.format(diginormdir)
-    os.chdir(diginormdir)
-    with open("rename.sh", "w") as renamefile:
-        renamefile.write(j)
-    #s=subprocess.Popen("cat rename.sh",shell=True)
-    # s.wait()
-    print "renaming pe files now..."
-    s = subprocess.Popen("sudo bash rename.sh", shell=True)
-    s.wait()
-    os.chdir("/home/ubuntu/MMETSP/")
-
 
 def execute(basedir, listofdirs):
     for item in listofdirs:
 	mmetsp_dir = basedir+item+"/"
     	#interleave_reads(mmetsp_dir,item)
         run_diginorm(mmetsp_dir,item)
-        #run_filter_abund(diginormdir, SRA)
+        #run_filter_abund(mmetsp_dir, item)
 
-basedir = "/mnt/scratch/ljcohen/special_flowers/"
+basedir = "/mnt/home/ljcohen/special_flowers/"
 listofdirs = os.listdir(basedir)
 execute(basedir, listofdirs)

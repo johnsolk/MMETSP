@@ -37,9 +37,7 @@ def parse_busco_stats(busco_filename, sample):
         	with open(busco_filename) as buscofile:
             		for line in buscofile:
                 		count += 1
-				print count
                 		line_data = line.split()
-				print line_data
                 		if count in important_lines:
                     			busco_dict[sample].append(int(line_data[0]))
     busco_data = pd.DataFrame.from_dict(busco_dict, orient='index')
@@ -77,5 +75,5 @@ busco_dir = "/mnt/home/ljcohen/mmetsp_busco/"
 data_frame = pd.DataFrame()
 fasta_files = os.listdir(basedir)
 data_frame = execute(fasta_files,basedir,busco_dir,data_frame)
-print "File written: ~/MMETSP/assembly_evaluation_data/protist_trinity2.2.0_busco_scores.csv"
+print "File written: busco_scores.csv"
 data_frame.to_csv("busco_scores.csv")
