@@ -53,7 +53,7 @@ def transrate(trinitydir, transrate_dir, transrate_out, trinity_fasta, sample, t
     trim_2P = trimdir + sra + ".trim_2P.fq"
     if os.path.isfile(trim_1P) and os.path.isfile(trim_2P):
         transrate_command = """
-transrate --assembly={} --threads=14 \
+transrate --assembly={} --threads=8 \
 --left={}{}.trim_1P.fq \
 --right={}{}.trim_2P.fq \
 --output={}
@@ -63,7 +63,7 @@ transrate --assembly={} --threads=14 \
         process_name="transrate"
         module_name_list = ""
         filename = mmetsp
-        clusterfunc_py3.qsub_file(transrate_dir, process_name,module_name_list, filename, commands)
+        #clusterfunc_py3.qsub_file(transrate_dir, process_name,module_name_list, filename, commands)
     else:
         print("trimfiles not present:",trim_1P,trim_2P)
 
@@ -80,6 +80,7 @@ def build_DataFrame(data_frame, transrate_data):
     return data_frame
 
 def execute(data_frame, mmetsp_data, basedir,assembly_dir,assemblies,transrate_dir):
+    finished = []
     # construct an empty pandas dataframe to add on each assembly.csv to
     special_flowers = ["MMETSP0693","MMETSP1019","MMETSP0923","MMETSP0008","MMETSP1002","MMETSP1325","MMETSP1018","MMETSP1346","MMETSP0088","MMETSP0092","MMETSP0717","MMETSP0223","MMETSP0115","MMETSP0196","MMETSP0197","MMETSP0398","MMETSP0399","MMETSP0922"]
     for item in mmetsp_data.keys():
@@ -104,6 +105,8 @@ def execute(data_frame, mmetsp_data, basedir,assembly_dir,assemblies,transrate_d
                 transrate_out = transrate_dir + "transrate_out." + sample + "/"
                 transrate_assemblies = transrate_out + "assemblies.csv"
                 if os.path.isfile(transrate_assemblies):
+                    print("Transrate finished.",transrate_assemblies)
+                    finished.append(mmetsp)
                     data = parse_transrate_stats(transrate_assemblies)
                     data_frame = build_DataFrame(data_frame, data)
                 else:
@@ -112,7 +115,7 @@ def execute(data_frame, mmetsp_data, basedir,assembly_dir,assemblies,transrate_d
                     transrate_assemblies = transrate_out + "assemblies.csv"
         else:
             print("Special flower:",mmetsp)
-    return data_frame
+    return data_frame,finished
 
 assemblydir = "/mnt/home/ljcohen/mmetsp_assemblies_trinity2.2.0/"
 transrate_dir = "/mnt/scratch/ljcohen/mmetsp_transrate_trinity2.2.0/"
@@ -122,5 +125,6 @@ data_frame = pd.DataFrame()
 mmetsp_data = get_data(datafile)
 print(mmetsp_data)
 assemblies = os.listdir(assemblydir)
-data_frame = execute(data_frame, mmetsp_data, basedir, assemblydir,assemblies,transrate_dir)
+data_frame,finished = execute(data_frame, mmetsp_data, basedir, assemblydir,assemblies,transrate_dir)
+print("Finished:",len(finished))
 #data_frame.to_csv("transrate_scores.csv")

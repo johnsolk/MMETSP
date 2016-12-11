@@ -20,8 +20,8 @@ def check_dammit_dirs(dammit_dirs,basedir):
 
 
 def copy_files(complete,basedir):
-	fasta_dir = "/mnt/home/ljcohen/dammit_annotations/imicrobe_fasta/"
-	gff_dir = "/mnt/home/ljcohen/dammit_annotations/imicrobe_gff/"
+	fasta_dir = "/mnt/research/ged/lisa/dammit_annotations/fasta/"
+	gff_dir = "/mnt/research/ged/lisa/dammit_annotations/gff/"
 	for j in complete:
 		mmetsp = j.split(".")[0]
 		dammit_dir = basedir + j
@@ -36,7 +36,7 @@ def copy_files(complete,basedir):
 		t = subprocess.Popen(copy_string2, shell=True)
 		t.wait()
 
-basedir = "/mnt/home/ljcohen/imicrobe_dammit/qsub_files/"
+basedir = "/mnt/home/ljcohen/mmetsp_dammit/qsub_files/"
 files = sorted(os.listdir(basedir))
 dammit_dirs = []
 for filename in files:

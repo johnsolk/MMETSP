@@ -150,8 +150,8 @@ def execute(basedir, listofdirs):
     for item in listofdirs:
 	mmetsp_dir = basedir+item+"/"
     	#interleave_reads(mmetsp_dir,item)
-        run_diginorm(mmetsp_dir,item)
-        #run_filter_abund(mmetsp_dir, item)
+        #run_diginorm(mmetsp_dir,item)
+        run_filter_abund(mmetsp_dir, item)
 
 basedir = "/mnt/home/ljcohen/special_flowers/"
 listofdirs = os.listdir(basedir)
