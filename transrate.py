@@ -56,8 +56,10 @@ def transrate(trinitydir, transrate_dir, transrate_out, trinity_fasta, sample, t
 transrate --assembly={} --threads=8 \
 --left={}{}.trim_1P.fq \
 --right={}{}.trim_2P.fq \
---output={}
-""".format(trinity_fasta, trimdir, sra, trimdir, sra, transrate_out)
+--output=/tmp/transrate_out.{}
+cp /tmp/transrate_out.{}/assemblies.csv /mnt/home/ljcohen/mmetsp_transrate_scores/{}.assemblies.csv
+rm -rf /tmp/transrate_out.{}
+""".format(trinity_fasta, trimdir, sra, trimdir, sra, sample,sample,mmetsp,sample)
         print(transrate_command)
         commands = [transrate_command]
         process_name="transrate"
@@ -103,7 +105,7 @@ def execute(data_frame, mmetsp_data, basedir,assembly_dir,assemblies,transrate_d
                 #clusterfunc.check_dir(transrate_dir)
                 trinity_fasta = assembly_dir + mmetsp_assembly[0]
                 transrate_out = transrate_dir + "transrate_out." + sample + "/"
-                transrate_assemblies = transrate_out + "assemblies.csv"
+                transrate_assemblies = "/mnt/home/ljcohen/mmetsp_transrate_scores/" + mmetsp+ ".assemblies.csv"
                 if os.path.isfile(transrate_assemblies):
                     print("Transrate finished.",transrate_assemblies)
                     finished.append(mmetsp)
@@ -118,7 +120,7 @@ def execute(data_frame, mmetsp_data, basedir,assembly_dir,assemblies,transrate_d
     return data_frame,finished
 
 assemblydir = "/mnt/home/ljcohen/mmetsp_assemblies_trinity2.2.0/"
-transrate_dir = "/mnt/scratch/ljcohen/mmetsp_transrate_trinity2.2.0/"
+transrate_dir = "/mnt/home/ljcohen/mmetsp_transrate_scores/"
 basedir = "/mnt/scratch/ljcohen/mmetsp_sra/"
 datafile = "SraRunInfo.csv"
 data_frame = pd.DataFrame()
@@ -127,4 +129,5 @@ print(mmetsp_data)
 assemblies = os.listdir(assemblydir)
 data_frame,finished = execute(data_frame, mmetsp_data, basedir, assemblydir,assemblies,transrate_dir)
 print("Finished:",len(finished))
-#data_frame.to_csv("transrate_scores.csv")
+print("Data written to file: transrate_scores.csv")
+data_frame.to_csv("transrate_scores.csv")
