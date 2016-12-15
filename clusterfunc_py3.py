@@ -34,6 +34,10 @@ def qsub_file(basedir, process_name, module_name_list, filename, process_string)
         basedir, process_name, filename)
     os.chdir(qsub_dir)
     module_load = get_module_load_list(module_name_list)
+# directive to use Laconia
+# #PBS -l feature=intel16
+#export MKL_NUM_THREADS=8
+#export OMP_NUM_THREADS=8
     f = """#!/bin/bash
 #PBS -l walltime=12:00:00,nodes=1:ppn=8
 #PBS -l mem=32gb
@@ -56,6 +60,6 @@ cd ${{PBS_O_WORKDIR}}
             "env | grep PBS # Print out values of the current jobs PBS environment variables\n")
     qsub_string = 'qsub -V ' + qsub_filename
     print(qsub_string)
-    s = subprocess.Popen(qsub_string, shell=True)
-    s.wait()
+    #s = subprocess.Popen(qsub_string, shell=True)
+    #s.wait()
     os.chdir(working_dir)
