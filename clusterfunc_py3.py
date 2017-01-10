@@ -39,10 +39,12 @@ def qsub_file(basedir, process_name, module_name_list, filename, process_string)
 #export MKL_NUM_THREADS=8
 #export OMP_NUM_THREADS=8
     f = """#!/bin/bash
-#PBS -l walltime=12:00:00,nodes=1:ppn=8
+#PBS -l walltime=4:00:00,nodes=1:ppn=8
 #PBS -l mem=32gb
+#PBS -l feature=intel16
 #PBS -j oe
-#PBS -A ged
+#export MKL_NUM_THREADS=8
+#export OMP_NUM_THREADS=8
 cd ${{PBS_O_WORKDIR}}
 """.format()
     with open(qsub_filename, "w") as qsub:
@@ -60,6 +62,6 @@ cd ${{PBS_O_WORKDIR}}
             "env | grep PBS # Print out values of the current jobs PBS environment variables\n")
     qsub_string = 'qsub -V ' + qsub_filename
     print(qsub_string)
-    #s = subprocess.Popen(qsub_string, shell=True)
-    #s.wait()
+    s = subprocess.Popen(qsub_string, shell=True)
+    s.wait()
     os.chdir(working_dir)

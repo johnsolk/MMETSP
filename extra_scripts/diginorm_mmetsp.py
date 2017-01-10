@@ -1,15 +1,10 @@
 import os
 import os.path
 from os.path import basename
-from urllib import urlopen
-from urlparse import urlparse
 import subprocess
 from subprocess import Popen, PIPE
-import urllib
-import shutil
-import glob
 # custom Lisa module
-import clusterfunc
+import clusterfunc_py3
 
 def run_streaming_diginorm(trimdir, SRA, diginormdir):
     # from Jessica's streaming protocol:
@@ -20,7 +15,7 @@ def run_streaming_diginorm(trimdir, SRA, diginormdir):
 (trim-low-abund.py -V -k 20 -Z 18 -C 2 - -o - -M 4e9 --diginorm --diginorm-coverage=20) | \\
 (extract-paired-reads.py --gzip -p {}{}.paired.gz -s {}{}.single.gz) > /dev/null
 """.format(trimdir, SRA, trimdir, SRA, trimdir, diginormdir, SRA, diginormdir, SRA)
-    print stream_string
+    print(stream_string)
     # with open(diginormfile,"w") as diginorm_script:
     #   diginorm_script.write(stream_string)
     #s=subprocess.Popen("sudo bash "+diginormfile,shell=True)
@@ -30,7 +25,7 @@ def run_streaming_diginorm(trimdir, SRA, diginormdir):
     streaming_diginorm_command = [stream_string]
     module_load_list = []
     process_name = "diginorm_stream"
-    clusterfunc.qsub_file(diginormdir, process_name,
+    clusterfunc_py3.qsub_file(diginormdir, process_name,
                           module_load_list, SRA, streaming_diginorm_command)
 
 
@@ -48,12 +43,12 @@ do
 	(interleave-reads.py ${{base}}.fq ${{base2}}.fq | gzip > $output)
 done
 """.format(mmetsp_dir)
-    print interleave_string
+    print(interleave_string)
     interleave_command = [interleave_string]
     process_name = "interleave"
     module_name_list = ["GNU/4.8.3", "khmer/2.0"]
     filename = mmetsp
-    clusterfunc.qsub_file(mmetsp_dir, process_name,
+    clusterfunc_py3.qsub_file(mmetsp_dir, process_name,
                               module_name_list, filename, interleave_command)
 
 
@@ -68,7 +63,7 @@ normalize-by-median.py -p -k 20 -C 20 -M 4e9 \\
     process_name = "diginorm"
     module_name_list = ["GNU/4.8.3", "khmer/2.0"]
     filename = sra
-    clusterfunc.qsub_file(diginormdir, process_name,
+    clusterfunc_py3.qsub_file(diginormdir, process_name,
                           module_name_list, filename, normalize_median_command)
 
 
@@ -82,7 +77,7 @@ filter-abund.py -V -Z 18 {}norm.C20k20.ct {}*.keep
     process_name = "filtabund"
     module_name_list = ["GNU/4.8.3", "khmer/2.0"]
     filename = sra
-    clusterfunc.qsub_file(diginormdir, process_name,
+    clusterfunc_py3.qsub_file(diginormdir, process_name,
                           module_name_list, filename, commands)
 
 def extract_paired(mmetsp_dir):
@@ -108,50 +103,67 @@ normalize-by-median.py -p -k 20 -C 20 -M 4e9 \\
     process_name = "diginorm"
     module_name_list = ["GNU/4.8.3", "khmer/2.0"]
     filename = mmetsp
-    clusterfunc.qsub_file(mmetsp_dir, process_name,
+    clusterfunc_py3.qsub_file(mmetsp_dir, process_name,
                           module_name_list, filename, normalize_median_command)
 
-
-def combine_orphaned(diginormdir):
-    # if glob.glob(diginormdir+"orphans.keep.abundfilt.fq.gz"):
-    #		print "orphan reads already combined"
-    #	else:
+def combine_orphaned(mmetsp_dir,item):
     j = """
-gzip -9c {}orphans.fq.gz.keep.abundfilt > {}orphans.keep.abundfilt.fq.gz
-for file in {}*.se
+cd {}qsub_files
+rm -rf orphans.keep.abundfilt.fq.gz
+gzip -9c orphans.fq.gz.keep.abundfilt > orphans.keep.abundfilt.fq.gz
+for file in *.se
 do
 	gzip -9c ${{file}} >> orphans.keep.abundfilt.fq.gz
 done
-""".format(diginormdir, diginormdir, diginormdir, diginormdir)
-    os.chdir(diginormdir)
-    print "combinding orphans now..."
-    with open("combine_orphaned.sh", "w") as combinedfile:
-        combinedfile.write(j)
-    #s=subprocess.Popen("cat combine_orphaned.sh",shell=True)
-    # s.wait()
-    print "Combining *.se orphans now..."
-    s = subprocess.Popen("sudo bash combine_orphaned.sh", shell=True)
-    s.wait()
-    print "Orphans combined."
-    os.chdir("/home/ubuntu/MMETSP/")
+""".format(mmetsp_dir)
+    return j
 
-
-def rename_pe(diginormdir):
+def rename_pe(mmetsp_dir,item):
     j = """
-for file in {}*trimmed.interleaved.fq.keep.abundfilt.pe
+for file in *trim.interleaved.fq.keep.abundfilt.pe
 do
 	newfile=${{file%%.fq.keep.abundfilt.pe}}.keep.abundfilt.fq
-	mv ${{file}} ${{newfile}}
+	cp ${{file}} ${{newfile}}
 	gzip ${{newfile}}
 done
-""".format(diginormdir)
+""".format()
+    return j
+
+def split_reads(mmetsp_dir,item):
+    split_command="""
+for file in *.trim.interleaved.keep.abundfilt.fq.gz
+do
+   split-paired-reads.py ${{file}}
+done
+""".format(mmetsp_dir)
+    return split_command
+
+def combine(mmetsp_dir,item):
+    j="""
+cat *.1 > {}{}.left.fq
+cat *.2 > {}{}.right.fq
+gunzip -c *orphans.keep.abundfilt.fq.gz >> {}{}.left.fq
+""".format(mmetsp_dir,item,mmetsp_dir,item,mmetsp_dir,item)
+    return j
+
+def consolidate(mmetsp_dir,item):
+    combine_orphaned_string = combine_orphaned(mmetsp_dir,item)
+    rename_pe_string = rename_pe(mmetsp_dir,item)
+    split_reads_string = split_reads(mmetsp_dir,item)
+    combine_string = combine(mmetsp_dir,item)
+    consolidate_commands=[combine_orphaned_string,rename_pe_string,split_reads_string,combine_string]
+    process_name="consolidate"
+    module_name_list = ["GNU/4.8.3", "khmer/2.0"]
+    clusterfunc_py3.qsub_file(mmetsp_dir,process_name,module_name_list,item,consolidate_commands)
 
 def execute(basedir, listofdirs):
     for item in listofdirs:
-	mmetsp_dir = basedir+item+"/"
+        print(item)
+        mmetsp_dir = basedir+item+"/"
     	#interleave_reads(mmetsp_dir,item)
         #run_diginorm(mmetsp_dir,item)
-        run_filter_abund(mmetsp_dir, item)
+        #run_filter_abund(mmetsp_dir, item)
+        consolidate(mmetsp_dir,item)
 
 basedir = "/mnt/home/ljcohen/special_flowers/"
 listofdirs = os.listdir(basedir)

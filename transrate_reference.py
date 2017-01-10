@@ -14,12 +14,12 @@ import pandas as pd
 	
 def transrate(transrate_dir, sample, trinity_fasta, mmetsp_assemblies_dir, filename):
     transrate_command = """
-transrate -o /tmp/{} \\
+transrate -o /tmp/{}_forw \\
 --assembly {} \\
 --reference {} \\
 --threads 8
-cp /tmp/{}/assemblies.csv {}{}.assemblies.csv
-rm -rf /tmp/{}*
+cp /tmp/{}_forw/assemblies.csv {}{}.assemblies.csv
+rm -rf /tmp/{}_forw*
 """.format(sample, trinity_fasta, filename,sample,transrate_dir,sample,sample)
     commands = [transrate_command]
     process_name = "trans_ref"
@@ -30,12 +30,12 @@ rm -rf /tmp/{}*
 
 def transrate_reverse(transrate_dir, sample, trinity_fasta, mmetsp_assemblies_dir, filename):
     transrate_command = """
-transrate -o /tmp/{} \\
+transrate -o /tmp/{}_rev \\
 --assembly {} \\
 --reference {} \\
 --threads 8
-cp /tmp/{}/assemblies.csv {}{}.assemblies.csv
-rm -rf /tmp/{}*
+cp /tmp/{}_rev/assemblies.csv {}{}.assemblies.csv
+rm -rf /tmp/{}_rev*
 """.format(sample, filename,trinity_fasta,sample,transrate_dir,sample,sample)
     #print("This is the reverse transrate command:")
     commands = [transrate_command]
@@ -95,8 +95,8 @@ def execute(data_frame1, data_frame2, mmetsp_assemblies_dir,mmetsp_2014_assembli
                 if os.path.isfile(trinity_fasta):
                     #print("MMETSP assembly found:", trinity_fasta)
                     comparisons.append(trinity_fasta)
-                    transrate_assemblies_ref = output_dir1 + mmetsp + "/assemblies.csv"
-                    transrate_reverse_assemblies = output_dir2 + mmetsp + "/assemblies.csv"
+                    transrate_assemblies_ref = output_dir1 + mmetsp + ".assemblies.csv"
+                    transrate_reverse_assemblies = output_dir2 + mmetsp + ".assemblies.csv"
                     if os.path.isfile(transrate_assemblies_ref):
                         data1 = parse_transrate_stats(transrate_assemblies_ref,mmetsp,mmetsp)
                         data_frame1 = build_DataFrame(data_frame1, data1)
@@ -148,19 +148,22 @@ def get_ref_transrate(transrate_dir):
 #mmetsp_assemblies_dir = "/mnt/research/ged/lisa/mmetsp/imicrobe/nt/"
 #mmetsp_assemblies_dir = "/mnt/research/ged/lisa/mmetsp/imicrobe/cds/"
 
-mmetsp_2014_assemblies_dir = "/mnt/research/ged/data/mmetsp/figshare_renamed/"
+#mmetsp_2014_assemblies_dir = "/mnt/research/ged/data/mmetsp/figshare_renamed/"
 mmetsp_assemblies_dir = "/mnt/home/ljcohen/mmetsp_assemblies_trinity2.2.0_renamed/"
+mmetsp_2014_assemblies_dir = "/mnt/research/ged/lisa/mmetsp/imicrobe/cds/"
 
-#output_dir = "/mnt/home/ljcohen/mmetsp_transrate_reference_dib-trinity2.2.0_v_ncgr/"
-#output_dir = "/mnt/home/ljcohen/mmetsp_transrate_reference_ncgr_v_dib-trinity2.2.0/"
-output_dir1 = "/mnt/home/ljcohen/mmetsp_transrate_reference_dib-trinity2.2.0_v_dib-trinity2014/"
-output_dir2 = "/mnt/home/ljcohen/mmetsp_transrate_reference_dib-trinity2014_v_trinity2.2.0/"
+
+
+output_dir1 = "/mnt/home/ljcohen/mmetsp_transrate_reference_dib-trinity2.2.0_v_ncgr/"
+output_dir2 = "/mnt/home/ljcohen/mmetsp_transrate_reference_ncgr_v_dib-trinity2.2.0/"
+#output_dir1 = "/mnt/home/ljcohen/mmetsp_transrate_reference_dib-trinity2.2.0_v_dib-trinity2014/"
+#output_dir2 = "/mnt/home/ljcohen/mmetsp_transrate_reference_dib-trinity2014_v_trinity2.2.0/"
 
 data_frame1 = pd.DataFrame()
 data_frame2 = pd.DataFrame()
 
 data_frame1, data_frame2 = execute(data_frame1, data_frame2, mmetsp_assemblies_dir,mmetsp_2014_assemblies_dir,output_dir1,output_dir2)
-#data_frame1.to_csv("assembly_evaluation_data/transrate_reference_scores_nt.csv")
-#data_frame2.to_csv("assembly_evaluation_data/transrate_reverse_scores_nt.csv")
-#print "Reference scores written: transrate_reference_scores_nt.csv"
-#print "Reverse reference scores written: transrate_reverse_scores_nt.csv"
+#data_frame1.to_csv("assembly_evaluation_data/transrate_reference_trinity2.2.0_v_trinity2014.csv")
+#data_frame2.to_csv("assembly_evaluation_data/transrate_reverse_trinity2014_v_trinity2.2.0.csv")
+#print("Reference scores written.")
+#print("Reverse reference scores written.")
