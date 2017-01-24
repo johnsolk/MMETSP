@@ -1,6 +1,8 @@
 # MMETSP
 
-For final version of scripts and output data, please see: https://github.com/dib-lab/dib-MMETSP
+Final version of scripts and output data, please see: https://github.com/dib-lab/dib-MMETSP
+
+## Info:
 
 This is a work-in-progress repository, automating the khmer protocols over a large-scale RNAseq data set:
 
