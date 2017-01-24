@@ -33,13 +33,13 @@ def qsub_file(basedir, process_name, module_name_list, filename, process_string)
     qsub_dir, qsub_filename = get_qsub_filename(
         basedir, process_name, filename)
     os.chdir(qsub_dir)
-    module_load = get_module_load_list(module_name_list)
+    module_list = get_module_load_list(module_name_list)
 # directive to use Laconia
 # #PBS -l feature=intel16
 #export MKL_NUM_THREADS=8
 #export OMP_NUM_THREADS=8
     f = """#!/bin/bash
-#PBS -l walltime=4:00:00,nodes=1:ppn=8
+#PBS -l walltime=2:00:00,nodes=1:ppn=8
 #PBS -l mem=32gb
 #PBS -l feature=intel16
 #PBS -j oe
@@ -49,12 +49,10 @@ cd ${{PBS_O_WORKDIR}}
 """.format()
     with open(qsub_filename, "w") as qsub:
         qsub.write(f)
-        for module_string in module_load:
+        for module_string in module_list:
             qsub.write(module_string + "\n")
-            # print(module_string)
         for string in process_string:
             qsub.write(string + "\n")
-            print(string)
         qsub.write("qstat -f ${PBS_JOBID}\n")
         qsub.write(
             "cat ${PBS_NODEFILE} # Output Contents of the PBS NODEFILE\n")
