@@ -71,10 +71,11 @@ rm -rf /tmp/transrate_out.{}
         print("trimfiles not present:",trim_1P,trim_2P)
     return submitted
 
-def parse_transrate_stats(transrate_assemblies):
+def parse_transrate_stats(transrate_assemblies,mmetsp):
     print(transrate_assemblies)
     if os.stat(transrate_assemblies).st_size != 0:
         data = pd.DataFrame.from_csv(transrate_assemblies, header=0, sep=',')
+        data['SampleName'] = mmetsp
         return data
 
 def build_DataFrame(data_frame, transrate_data):
@@ -113,7 +114,7 @@ def execute(data_frame, mmetsp_data, basedir,assembly_dir,assemblies,transrate_d
                 if os.path.isfile(transrate_assemblies):
                     print("Transrate finished.",transrate_assemblies)
                     finished.append(mmetsp)
-                    data = parse_transrate_stats(transrate_assemblies)
+                    data = parse_transrate_stats(transrate_assemblies,mmetsp)
                     data_frame = build_DataFrame(data_frame, data)
                 else:
                     print("Running transrate...")
@@ -136,4 +137,4 @@ print("Finished:",len(finished))
 print("Submitted:",len(submitted))
 print("Total MMETSP id:",len(mmetsp_data.keys()))
 print("Data written to file: transrate_scores.csv")
-data_frame.to_csv("transrate_scores.csv")
+data_frame.to_csv("assembly_evaluation_data/transrate_scores_trinity-2.2.0.csv")
