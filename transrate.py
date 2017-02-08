@@ -57,9 +57,9 @@ transrate --assembly={} --threads=8 \
 --left={}{}.trim_1P.fq \
 --right={}{}.trim_2P.fq \
 --output=/tmp/transrate_out.{}
-cp /tmp/transrate_out.{}/assemblies.csv /mnt/research/ged/lisa/mmetsp/mmetsp_transrate_scores/{}.assemblies.csv
+cp /tmp/transrate_out.{}/assemblies.csv {}{}.assemblies.csv
 rm -rf /tmp/transrate_out.{}
-""".format(trinity_fasta, trimdir, sra, trimdir, sra, sample,sample,mmetsp,sample)
+""".format(trinity_fasta, trimdir, sra, trimdir, sra, sample,sample,transrate_dir,mmetsp,sample)
         print(transrate_command)
         commands = [transrate_command]
         process_name="transrate"
@@ -110,7 +110,7 @@ def execute(data_frame, mmetsp_data, basedir,assembly_dir,assemblies,transrate_d
                 #clusterfunc.check_dir(transrate_dir)
                 trinity_fasta = assembly_dir + mmetsp_assembly[0]
                 transrate_out = transrate_dir + "transrate_out." + sample + "/"
-                transrate_assemblies = "/mnt/research/ged/lisa/mmetsp/mmetsp_transrate_scores/" + mmetsp+ ".assemblies.csv"
+                transrate_assemblies = transrate_dir + mmetsp+ ".assemblies.csv"
                 if os.path.isfile(transrate_assemblies):
                     print("Transrate finished.",transrate_assemblies)
                     finished.append(mmetsp)
@@ -124,8 +124,10 @@ def execute(data_frame, mmetsp_data, basedir,assembly_dir,assemblies,transrate_d
             print("Special flower:",mmetsp)
     return data_frame,finished,submitted
 
-assemblydir = "/mnt/home/ljcohen/mmetsp_assemblies_trinity2.2.0/"
-transrate_dir = "/mnt/research/ged/lisa/mmetsp/mmetsp_transrate_scores/"
+#assemblydir = "/mnt/home/ljcohen/mmetsp_assemblies_trinity2.2.0/"
+#transrate_dir = "/mnt/research/ged/lisa/mmetsp/mmetsp_transrate_scores/"
+assemblydir = "/mnt/research/ged/lisa/mmetsp/imicrobe/cds/"
+transrate_dir = "/mnt/research/ged/lisa/mmetsp/imicrobe/transrate_scores/"
 basedir = "/mnt/scratch/ljcohen/mmetsp_sra/"
 datafile = "SraRunInfo_719.csv"
 data_frame = pd.DataFrame()
@@ -136,5 +138,5 @@ data_frame,finished,submitted= execute(data_frame, mmetsp_data, basedir, assembl
 print("Finished:",len(finished))
 print("Submitted:",len(submitted))
 print("Total MMETSP id:",len(mmetsp_data.keys()))
-print("Data written to file: transrate_scores.csv")
-data_frame.to_csv("assembly_evaluation_data/transrate_scores_trinity-2.2.0.csv")
+print("Data written to file: assembly_evaluation_data/transrate_scores_imicrobe_cds.csv")
+data_frame.to_csv("assembly_evaluation_data/transrate_scores_imicrobe_cds.csv")

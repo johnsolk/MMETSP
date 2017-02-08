@@ -39,7 +39,7 @@ def qsub_file(basedir, process_name, module_name_list, filename, process_string)
 #export MKL_NUM_THREADS=8
 #export OMP_NUM_THREADS=8
     f = """#!/bin/bash
-#PBS -l walltime=2:00:00,nodes=1:ppn=8
+#PBS -l walltime=8:00:00,nodes=1:ppn=8
 #PBS -l mem=32gb
 #PBS -l feature=intel16
 #PBS -j oe
