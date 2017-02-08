@@ -1,3 +1,4 @@
+setwd("~/Documents/UCDavis/dib/MMETSP/git/MMETSP")
 imicrobe<-read.csv("imicrobe/Callum_FINAL_biosample_ids.csv")
 ncbi<-read.csv("SraRunInfo.csv")
 MMETSP_id_NCBI<-ncbi$SampleName
