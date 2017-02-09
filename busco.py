@@ -21,7 +21,7 @@ python /mnt/home/ljcohen/bin/busco/BUSCO.py \
     process_name = "busco_protist"
     module_name_list = ""
     filename = sample
-    clusterfunc_py3.qsub_file(busco_dir, process_name,module_name_list, filename, commands)
+    #clusterfunc_py3.qsub_file(busco_dir, process_name,module_name_list, filename, commands)
 
 
 def parse_busco_stats(busco_filename, sample):
@@ -33,10 +33,12 @@ def parse_busco_stats(busco_filename, sample):
     	if os.stat(busco_filename).st_size != 0:
         	with open(busco_filename) as buscofile:
             		for line in buscofile:
-                		count += 1
-                		line_data = line.split()
-                		if count in important_lines:
-                    			busco_dict[sample].append(int(line_data[0]))
+                                count += 1
+                                #print(count)
+                                line_data = line.split()
+                                #print(line_data)
+                                if count in important_lines:
+                                    busco_dict[sample].append(int(line_data[0]))
     busco_data = pd.DataFrame.from_dict(busco_dict, orient='index')
     busco_data.columns = ["Complete", "Fragmented", "Missing", "Total"]
     busco_data['Complete_BUSCO_perc'] = busco_data[
@@ -44,9 +46,9 @@ def parse_busco_stats(busco_filename, sample):
     return busco_data
 
 
-def build_DataFrame(data_frame, transrate_data):
+def build_DataFrame(data_frame, busco_data):
     # columns=["sample","Complete","Fragmented","Missing","Total"]
-    frames = [data_frame, transrate_data]
+    frames = [data_frame, busco_data]
     data_frame = pd.concat(frames)
     return data_frame
 
@@ -58,7 +60,8 @@ def execute(fasta_files,basedir,busco_dir,data_frame):
         if filename.startswith("MMETSP"):
             sample= filename.split(".")[0]
             print(sample)
-            busco_file = busco_dir + "qsub_files/run_" + sample + "/short_summary_" + sample + ".txt"
+            #busco_file = busco_dir + "qsub_files/run_" + sample + "/short_summary_" + sample + ".txt"
+            busco_file = "/mnt/home/ljcohen/imicrobe_busco/eukaryota/run_"+ sample + "/short_summary_" + sample + ".txt"
             if os.path.isfile(busco_file):
                 count += 1
                 #run_busco(busco_dir,trinity_fasta,sample,sra)
