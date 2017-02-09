@@ -49,8 +49,8 @@ def get_syrah_reads(trimdir, sra, mmetsp,sourmash_dir_syrah):
     trim_2P = trimdir + sra + ".trim_2P.fq"
     if os.path.isfile(trim_1P) and os.path.isfile(trim_2P):
         syrah_command = """
-cat {} | /mnt/home/ljcohen/bin/syrah/syrah | sourmash compute -k 21 compute - -o {}{}.trim_1P.syrah.sig
-cat {} | /mnt/home/ljcohen/bin/syrah/syrah | sourmash compute -k 21 compute - -o {}{}.trim_2P.syrah.sig
+cat {} | /mnt/home/ljcohen/bin/syrah/syrah | sourmash compute -k 21 - -o {}{}.trim_1P.syrah.sig
+cat {} | /mnt/home/ljcohen/bin/syrah/syrah | sourmash compute -k 21 - -o {}{}.trim_2P.syrah.sig
 """.format(trim_1P,sourmash_dir_syrah,mmetsp,trim_2P,sourmash_dir_syrah,mmetsp)     
         print(syrah_command)
     else:
@@ -96,7 +96,7 @@ assemblydir = "/mnt/home/ljcohen/mmetsp_assemblies_trinity2.2.0/"
 datafile = "SraRunInfo_719.csv"
 basedir = "/mnt/scratch/ljcohen/mmetsp_sra/"
 sourmash_dir = "/mnt/scratch/ljcohen/mmetsp_sourmash/"
-sourmash_dir_syrah = sourmash_dir + "syrah/"
+sourmash_dir_syrah = "/mnt/home/ljcohen/mmetsp_sourmash/syrah/"
 mmetsp_data = get_data(datafile)
 print(mmetsp_data)
 assemblies = os.listdir(assemblydir)

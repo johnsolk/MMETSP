@@ -1,30 +1,27 @@
 import os
 import os.path
 from os.path import basename
-from urllib import urlopen
-from urlparse import urlparse
 import subprocess
 from subprocess import Popen, PIPE
-import urllib
-import shutil
-import glob
 # custom Lisa module
-import clusterfunc
+import clusterfunc_py3
 import pandas as pd
 
-def run_busco(busco_dir,sample):
+def run_busco(busco_dir,sample,basedir,filename):
+    #protists_ensembl
+    #eukaryota_odb9
     busco_command = """
 python /mnt/home/ljcohen/bin/busco/BUSCO.py \
--i /mnt/home/ljcohen/mmetsp_assemblies_trinity2.2.0/{}.trinity_out_2.2.0.Trinity.fasta \
--o {} -l /mnt/home/ljcohen/bin/busco/eukaryota_odb9 \
+-i {}{} \
+-o {} -l /mnt/home/ljcohen/bin/busco/protists_ensembl \
 -m tran --cpu 8
-""".format(sample,sample)
-    print busco_command
+""".format(basedir,filename,sample)
+    print(busco_command)
     commands = [busco_command]
-    process_name = "busco"
+    process_name = "busco_protist"
     module_name_list = ""
     filename = sample
-    #clusterfunc.qsub_file(busco_dir, process_name,module_name_list, filename, commands)
+    clusterfunc_py3.qsub_file(busco_dir, process_name,module_name_list, filename, commands)
 
 
 def parse_busco_stats(busco_filename, sample):
@@ -58,22 +55,24 @@ def execute(fasta_files,basedir,busco_dir,data_frame):
     count = 0
     # construct an empty pandas dataframe to add on each assembly.csv to
     for filename in fasta_files:
-        sample= filename.split(".")[0]
-	print sample
-	busco_file = busco_dir + "qsub_files/run_" + sample + "/short_summary_" + sample + ".txt"
-        if os.path.isfile(busco_file):
+        if filename.startswith("MMETSP"):
+            sample= filename.split(".")[0]
+            print(sample)
+            busco_file = busco_dir + "qsub_files/run_" + sample + "/short_summary_" + sample + ".txt"
+            if os.path.isfile(busco_file):
                 count += 1
                 #run_busco(busco_dir,trinity_fasta,sample,sra)
                 data = parse_busco_stats(busco_file, sample)
                 data_frame = build_DataFrame(data_frame, data)
-        else:
-                run_busco(busco_dir,sample) 
+            else:
+                run_busco(busco_dir,sample,basedir,filename) 
     return data_frame
 
-basedir = "/mnt/home/ljcohen/mmetsp_assemblies_trinity2.2.0/"
-busco_dir = "/mnt/home/ljcohen/mmetsp_busco/"
+basedir = "/mnt/research/ged/lisa/mmetsp/imicrobe/cds/"
+#basedir = "/mnt/home/ljcohen/mmetsp_assemblies_trinity2.2.0/"
+busco_dir = "/mnt/home/ljcohen/imicrobe_busco/"
 data_frame = pd.DataFrame()
 fasta_files = os.listdir(basedir)
 data_frame = execute(fasta_files,basedir,busco_dir,data_frame)
-print "File written: busco_scores.csv"
+print("File written: busco_scores.csv")
 data_frame.to_csv("busco_scores.csv")
