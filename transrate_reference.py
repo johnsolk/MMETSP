@@ -42,7 +42,7 @@ rm -rf /tmp/{}_rev*
     process_name = "trans_ref_reverse"
     module_name_list = ""
     filename = sample
-    #print(transrate_command)
+    print(transrate_command)
     clusterfunc_py3.qsub_file(mmetsp_assemblies_dir,process_name,module_name_list,filename,commands)
 
 def parse_transrate_stats(transrate_assemblies,sra,mmetsp):
@@ -80,42 +80,45 @@ def execute(data_frame1, data_frame2, mmetsp_assemblies_dir,mmetsp_2014_assembli
     comparisons = []
     special_flowers = ["MMETSP0693","MMETSP1019","MMETSP0923","MMETSP0008","MMETSP1002","MMETSP1325","MMETSP1018","MMETSP1346","MMETSP0088","MMETSP0092","MMETSP0717","MMETSP0223","MMETSP0115","MMETSP0196","MMETSP0197","MMETSP0398","MMETSP0399","MMETSP0922"]
     for item in assemblies1:
-        mmetsp = item.split(".")[0]
-        if mmetsp not in special_flowers:
-            print(mmetsp)
-            reverse_assembly = [s for s in assemblies2 if mmetsp in s.split("_") or s.split("_")[-1].startswith(mmetsp)]
-            if len(reverse_assembly)==0:
-                print("Assembly not present:",mmetsp,mmetsp_2014_assemblies_dir)
-            else:
-                #print(reverse_assembly)
-                reverse_trinity_fasta = mmetsp_2014_assemblies_dir + reverse_assembly[0]
-                trinity_fasta = mmetsp_assemblies_dir + item
-                #reference_filename = mmetsp_assemblies+mmetsp+".nt.fa.fixed.fa"
-                #reference_filename = mmetsp_assemblies+mmetsp+".cds.fa.fixed.fa" 
-                if os.path.isfile(trinity_fasta):
-                    #print("MMETSP assembly found:", trinity_fasta)
-                    comparisons.append(trinity_fasta)
-                    transrate_assemblies_ref = output_dir1 + mmetsp + ".assemblies.csv"
-                    transrate_reverse_assemblies = output_dir2 + mmetsp + ".assemblies.csv"
-                    if os.path.isfile(transrate_assemblies_ref):
-                        data1 = parse_transrate_stats(transrate_assemblies_ref,mmetsp,mmetsp)
-                        data_frame1 = build_DataFrame(data_frame1, data1)
-                    else:
-                        print("Running...")
-                        transrate(output_dir1, mmetsp, trinity_fasta, mmetsp_2014_assemblies_dir, reverse_trinity_fasta)
-                    if os.path.isfile(transrate_reverse_assemblies):
-                        data2 = parse_transrate_stats(transrate_reverse_assemblies,mmetsp,mmetsp)
-                        data_frame2 = build_DataFrame(data_frame2, data2)
-                    else:
-                        print("Running reverse...")
-                        transrate_reverse(output_dir2, mmetsp, trinity_fasta, mmetsp_2014_assemblies_dir, reverse_trinity_fasta)
+        if item.startswith("MMETSP"):
+            mmetsp = item.split(".")[0]
+            if mmetsp not in special_flowers:
+                print(mmetsp)
+                reverse_assembly = [s for s in assemblies2 if mmetsp in s.split("_") or s.split("_")[-1].startswith(mmetsp)]
+                if len(reverse_assembly)==0:
+                    print("Assembly not present:",mmetsp,mmetsp_2014_assemblies_dir)
                 else:
-                    print("Missing:",reference_filename)
-        else:
-            print("Special flower:",mmetsp)
-            #fix_command = "sed 's_|_-_g' "+mmetsp_assemblies+mmetsp+".nt.fa > "+mmetsp_assemblies+mmetsp+".nt.fa.fixed.fa"
-            #print fix_command
-            #u = subprocess.Popen(fix_command, shell=True, stdout=PIPE)
+                    #print(reverse_assembly)
+                    reverse_trinity_fasta = mmetsp_2014_assemblies_dir + reverse_assembly[0]
+                    trinity_fasta = mmetsp_assemblies_dir + item
+                    #reference_filename = mmetsp_assemblies+mmetsp+".nt.fa.fixed.fa"
+                    #reference_filename = mmetsp_assemblies+mmetsp+".cds.fa.fixed.fa" 
+                    if os.path.isfile(trinity_fasta):
+                        #print("MMETSP assembly found:", trinity_fasta)
+                        comparisons.append(trinity_fasta)
+                        transrate_assemblies_ref = output_dir1 + mmetsp + ".assemblies.csv"
+                        transrate_reverse_assemblies = output_dir2 + mmetsp + ".assemblies.csv"
+                        if os.path.isfile(transrate_assemblies_ref):
+                            print("Finished:",transrate_assemblies_ref)
+                            data1 = parse_transrate_stats(transrate_assemblies_ref,mmetsp,mmetsp)
+                            data_frame1 = build_DataFrame(data_frame1, data1)
+                        else:
+                            print("Running...")
+                            transrate(output_dir1, mmetsp, trinity_fasta, mmetsp_2014_assemblies_dir, reverse_trinity_fasta)
+                        if os.path.isfile(transrate_reverse_assemblies):
+                            print("Finished:",transrate_reverse_assemblies)
+                            data2 = parse_transrate_stats(transrate_reverse_assemblies,mmetsp,mmetsp)
+                            data_frame2 = build_DataFrame(data_frame2, data2)
+                        else:
+                            print("Running reverse...")
+                            transrate_reverse(output_dir2, mmetsp, trinity_fasta, mmetsp_2014_assemblies_dir, reverse_trinity_fasta)
+                    else:
+                        print("Missing:",reference_filename)
+            else:
+                print("Special flower:",mmetsp)
+                #fix_command = "sed 's_|_-_g' "+mmetsp_assemblies+mmetsp+".nt.fa > "+mmetsp_assemblies+mmetsp+".nt.fa.fixed.fa"
+                 #print fix_command
+                 #u = subprocess.Popen(fix_command, shell=True, stdout=PIPE)
             #u.wait()
     print("Comparisons:",len(comparisons))
     return data_frame1,data_frame2
@@ -148,14 +151,19 @@ def get_ref_transrate(transrate_dir):
 #mmetsp_assemblies_dir = "/mnt/research/ged/lisa/mmetsp/imicrobe/nt/"
 #mmetsp_assemblies_dir = "/mnt/research/ged/lisa/mmetsp/imicrobe/cds/"
 
-#mmetsp_2014_assemblies_dir = "/mnt/research/ged/data/mmetsp/figshare_renamed/"
-mmetsp_assemblies_dir = "/mnt/home/ljcohen/mmetsp_assemblies_trinity2.2.0_renamed/"
-mmetsp_2014_assemblies_dir = "/mnt/research/ged/lisa/mmetsp/imicrobe/cds/"
+mmetsp_2014_assemblies_dir = "/mnt/home/ljcohen/mmetsp_assemblies_trinity2.3.2/"
+mmetsp_assemblies_dir = "/mnt/home/ljcohen/mmetsp_assemblies_trinity2.2.0_zenodo/"
+#mmetsp_2014_assemblies_dir = "/mnt/research/ged/lisa/mmetsp/imicrobe/cds/"
 
 
+output_dir1 = "/mnt/home/ljcohen/mmetsp_transrate_reference_dib-trinity2.2.0_v_trinity2.3.2/"
+output_dir2 = "/mnt/home/ljcohen/mmetsp_transrate_reference_trinity2.3.2_v_dib-trinity2.2.0/"
 
-output_dir1 = "/mnt/home/ljcohen/mmetsp_transrate_reference_dib-trinity2.2.0_v_ncgr/"
-output_dir2 = "/mnt/home/ljcohen/mmetsp_transrate_reference_ncgr_v_dib-trinity2.2.0/"
+#output_dir1 = "/mnt/home/ljcohen/mmetsp_transrate_reference_dib-trinity2.2.0_v_ncgr/"
+#output_dir2 = "/mnt/home/ljcohen/mmetsp_transrate_reference_ncgr_v_dib-trinity2.2.0/"
+clusterfunc_py3.check_dir(output_dir1)
+clusterfunc_py3.check_dir(output_dir2)
+
 #output_dir1 = "/mnt/home/ljcohen/mmetsp_transrate_reference_dib-trinity2.2.0_v_dib-trinity2014/"
 #output_dir2 = "/mnt/home/ljcohen/mmetsp_transrate_reference_dib-trinity2014_v_trinity2.2.0/"
 
@@ -163,7 +171,7 @@ data_frame1 = pd.DataFrame()
 data_frame2 = pd.DataFrame()
 
 data_frame1, data_frame2 = execute(data_frame1, data_frame2, mmetsp_assemblies_dir,mmetsp_2014_assemblies_dir,output_dir1,output_dir2)
-#data_frame1.to_csv("assembly_evaluation_data/transrate_reference_trinity2.2.0_v_trinity2014.csv")
-#data_frame2.to_csv("assembly_evaluation_data/transrate_reverse_trinity2014_v_trinity2.2.0.csv")
-#print("Reference scores written.")
-#print("Reverse reference scores written.")
+data_frame1.to_csv("assembly_evaluation_data/transrate_reference_trinity2.2.0_v_trinity2.3.2.csv")
+data_frame2.to_csv("assembly_evaluation_data/transrate_reverse_trinity2014_v_trinity2.3.2.csv")
+print("Reference scores written.")
+print("Reverse reference scores written.")
