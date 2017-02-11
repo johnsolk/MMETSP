@@ -19,6 +19,9 @@ def get_data(thefile):
             read_type = line_data[position_reads]
             ftp = line_data[position_ftp]
             mmetsp = line_data[position_mmetsp]
+            test_mmetsp = mmetsp.split("_")
+            if len(test_mmetsp) > 1:
+                mmetsp = test_mmetsp[0]
             name_read_tuple = (name, read_type,mmetsp)
             print(name_read_tuple)
             # check to see if Scientific Name and run exist
