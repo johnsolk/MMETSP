@@ -151,13 +151,14 @@ def get_ref_transrate(transrate_dir):
 #mmetsp_assemblies_dir = "/mnt/research/ged/lisa/mmetsp/imicrobe/nt/"
 #mmetsp_assemblies_dir = "/mnt/research/ged/lisa/mmetsp/imicrobe/cds/"
 
-mmetsp_2014_assemblies_dir = "/mnt/home/ljcohen/mmetsp_assemblies_trinity2.3.2/"
+mmetsp_2014_assemblies_dir = "/mnt/research/ged/lisa/mmetsp/imicrobe/nt/"
+#mmetsp_2014_assemblies_dir = "/mnt/home/ljcohen/mmetsp_assemblies_trinity2.3.2/"
 mmetsp_assemblies_dir = "/mnt/home/ljcohen/mmetsp_assemblies_trinity2.2.0_zenodo/"
 #mmetsp_2014_assemblies_dir = "/mnt/research/ged/lisa/mmetsp/imicrobe/cds/"
 
 
-output_dir1 = "/mnt/home/ljcohen/mmetsp_transrate_reference_dib-trinity2.2.0_v_trinity2.3.2/"
-output_dir2 = "/mnt/home/ljcohen/mmetsp_transrate_reference_trinity2.3.2_v_dib-trinity2.2.0/"
+output_dir1 = "/mnt/home/ljcohen/mmetsp_transrate_reference_dib-trinity2.2.0_v_ncgr.nt/"
+output_dir2 = "/mnt/home/ljcohen/mmetsp_transrate_reference_ncgr.nt_v_dib-trinity2.2.0/"
 
 #output_dir1 = "/mnt/home/ljcohen/mmetsp_transrate_reference_dib-trinity2.2.0_v_ncgr/"
 #output_dir2 = "/mnt/home/ljcohen/mmetsp_transrate_reference_ncgr_v_dib-trinity2.2.0/"
@@ -171,7 +172,7 @@ data_frame1 = pd.DataFrame()
 data_frame2 = pd.DataFrame()
 
 data_frame1, data_frame2 = execute(data_frame1, data_frame2, mmetsp_assemblies_dir,mmetsp_2014_assemblies_dir,output_dir1,output_dir2)
-data_frame1.to_csv("assembly_evaluation_data/transrate_reference_trinity2.2.0_v_trinity2.3.2.csv")
-data_frame2.to_csv("assembly_evaluation_data/transrate_reverse_trinity2014_v_trinity2.3.2.csv")
-print("Reference scores written.")
-print("Reverse reference scores written.")
+#data_frame1.to_csv("assembly_evaluation_data/transrate_reference_trinity2.2.0_v_trinity2.3.2.csv")
+#data_frame2.to_csv("assembly_evaluation_data/transrate_reverse_trinity2014_v_trinity2.3.2.csv")
+#print("Reference scores written.")
+#print("Reverse reference scores written.")
