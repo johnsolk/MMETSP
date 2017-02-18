@@ -1,0 +1,2 @@
+ftp://ftp.imicrobe.us/projects/104/samples/1736/MMETSP0145.cds.fa.gz
+ftp://ftp.imicrobe.us/projects/104/samples/1736/MMETSP0145.cds.fa.gz

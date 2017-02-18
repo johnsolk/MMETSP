@@ -62,8 +62,9 @@ def run_filter_abund(diginormdir, sra):
     filter_string = """
 filter-abund.py -V -Z 18 {}norm.C20k20.ct {}*.keep
 """.format(diginormdir, keep_dir)
-    extract_paired_string = extract_paired()
-    commands = [filter_string, extract_paired_string]
+    #extract_paired_string = extract_paired()
+    #commands = [filter_string, extract_paired_string]
+    commands = [filter_string]
     process_name = "filtabund"
     module_name_list = ["GNU/4.8.3", "khmer/2.0"]
     filename = sra
@@ -174,11 +175,14 @@ def execute(basedir, url_data):
             newdir = org_seq_dir + SRA + "/"
             interleavedir = newdir + "interleave/"
             diginormdir = newdir + "diginorm/"
+            if os.path.isdir(diginormdir) == False:
+                 print("Rename:",diginormdir)
+                 diginormdir = newdir + "diginormdir/"
             trimdir = newdir + "trim/"
             # run_streaming_diginorm(trimdir,SRA,diginormdir)
-            interleave_reads(trimdir,SRA,interleavedir)
+            #interleave_reads(trimdir,SRA,interleavedir)
             #run_diginorm(diginormdir,interleavedir,trimdir,SRA)
-            #run_filter_abund(diginormdir, SRA)
+            run_filter_abund(diginormdir, SRA)
 
 basedir = "/mnt/scratch/ljcohen/mmetsp_sra/"
 datafile = "SraRunInfo_719.csv"

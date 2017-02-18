@@ -18,9 +18,9 @@ transrate -o /tmp/{}_forw \\
 --assembly {} \\
 --reference {} \\
 --threads 8
-cp /tmp/{}_forw/assemblies.csv {}{}.assemblies.csv
+cp /tmp/{}_forw/{}*/contigs.csv {}{}.contigs.csv
 rm -rf /tmp/{}_forw*
-""".format(sample, trinity_fasta, filename,sample,transrate_dir,sample,sample)
+""".format(sample, trinity_fasta, filename,sample,sample,transrate_dir,sample,sample)
     commands = [transrate_command]
     process_name = "trans_ref"
     module_name_list = ""
@@ -34,9 +34,9 @@ transrate -o /tmp/{}_rev \\
 --assembly {} \\
 --reference {} \\
 --threads 8
-cp /tmp/{}_rev/assemblies.csv {}{}.assemblies.csv
+cp /tmp/{}_rev/{}*/contigs.csv {}{}.contigs.csv
 rm -rf /tmp/{}_rev*
-""".format(sample, filename,trinity_fasta,sample,transrate_dir,sample,sample)
+""".format(sample, filename,trinity_fasta,sample,sample,transrate_dir,sample,sample)
     #print("This is the reverse transrate command:")
     commands = [transrate_command]
     process_name = "trans_ref_reverse"
@@ -156,9 +156,12 @@ mmetsp_2014_assemblies_dir = "/mnt/research/ged/lisa/mmetsp/imicrobe/nt/"
 mmetsp_assemblies_dir = "/mnt/home/ljcohen/mmetsp_assemblies_trinity2.2.0_zenodo/"
 #mmetsp_2014_assemblies_dir = "/mnt/research/ged/lisa/mmetsp/imicrobe/cds/"
 
+#output_dir1 = "/mnt/home/ljcohen/mmetsp_transrate_reference_dib-trinity2.2.0_v_ncgr.nt/"
+#output_dir2 = "/mnt/home/ljcohen/mmetsp_transrate_reference_ncgr.nt_v_dib-trinity2.2.0/"
 
-output_dir1 = "/mnt/home/ljcohen/mmetsp_transrate_reference_dib-trinity2.2.0_v_ncgr.nt/"
-output_dir2 = "/mnt/home/ljcohen/mmetsp_transrate_reference_ncgr.nt_v_dib-trinity2.2.0/"
+output_dir1 = "/mnt/home/ljcohen/mmetsp_transrate_ref_dib.zenodo_v_ncgr.nt_contigs/"
+output_dir2 = "/mnt/home/ljcohen/mmetsp_transrate_ref_ncgr.nt_v_dib.zenodo_contigs/"
+
 
 #output_dir1 = "/mnt/home/ljcohen/mmetsp_transrate_reference_dib-trinity2.2.0_v_ncgr/"
 #output_dir2 = "/mnt/home/ljcohen/mmetsp_transrate_reference_ncgr_v_dib-trinity2.2.0/"
@@ -172,7 +175,7 @@ data_frame1 = pd.DataFrame()
 data_frame2 = pd.DataFrame()
 
 data_frame1, data_frame2 = execute(data_frame1, data_frame2, mmetsp_assemblies_dir,mmetsp_2014_assemblies_dir,output_dir1,output_dir2)
-data_frame1.to_csv("assembly_evaluation_data/transrate_reference_trinity2.2.0_v_ncgr.nt.csv")
-data_frame2.to_csv("assembly_evaluation_data/transrate_reverse_ncgr.nt_v_trinity2.2.0.csv")
-print("Reference scores written.")
-print("Reverse reference scores written.")
+#data_frame1.to_csv("assembly_evaluation_data/transrate_reference_trinity2.2.0_v_ncgr.nt.csv")
+#data_frame2.to_csv("assembly_evaluation_data/transrate_reverse_ncgr.nt_v_trinity2.2.0.csv")
+#print("Reference scores written.")
+#print("Reverse reference scores written.")

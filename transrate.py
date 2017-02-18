@@ -66,7 +66,7 @@ rm -rf /tmp/transrate_out.{}
         module_name_list = ""
         filename = mmetsp
         submitted.append(mmetsp)
-        #clusterfunc_py3.qsub_file(transrate_dir, process_name,module_name_list, filename, commands)
+        clusterfunc_py3.qsub_file(transrate_dir, process_name,module_name_list, filename, commands)
     else:
         print("trimfiles not present:",trim_1P,trim_2P)
     return submitted
@@ -99,7 +99,7 @@ def execute(data_frame, mmetsp_data, basedir,assembly_dir,assemblies,transrate_d
         if mmetsp not in special_flowers:
             sample = "_".join(item).replace("'","") + "_" + mmetsp
             print(mmetsp)
-            mmetsp_assembly = [s for s in assemblies if s.startswith(mmetsp)]
+            mmetsp_assembly = [s for s in assemblies if s.startswith(mmetsp) and s.endswith(".fixed.fa")]
             if len(mmetsp_assembly)==0:
                 print("Assembly not present:",mmetsp_assembly)
             else:
@@ -126,8 +126,10 @@ def execute(data_frame, mmetsp_data, basedir,assembly_dir,assemblies,transrate_d
 
 #assemblydir = "/mnt/home/ljcohen/mmetsp_assemblies_trinity2.2.0/"
 #transrate_dir = "/mnt/research/ged/lisa/mmetsp/mmetsp_transrate_scores/"
-assemblydir = "/mnt/research/ged/lisa/mmetsp/imicrobe/cds/"
-transrate_dir = "/mnt/research/ged/lisa/mmetsp/imicrobe/transrate_scores/"
+#assemblydir = "/mnt/research/ged/lisa/mmetsp/imicrobe/cds/"
+assemblydir = "/mnt/research/ged/lisa/mmetsp/imicrobe/nt/"
+transrate_dir = "/mnt/research/ged/lisa/mmetsp/imicrobe/transrate_scores_nt/"
+clusterfunc_py3.check_dir(transrate_dir)
 basedir = "/mnt/scratch/ljcohen/mmetsp_sra/"
 datafile = "SraRunInfo_719.csv"
 data_frame = pd.DataFrame()
@@ -138,5 +140,5 @@ data_frame,finished,submitted= execute(data_frame, mmetsp_data, basedir, assembl
 print("Finished:",len(finished))
 print("Submitted:",len(submitted))
 print("Total MMETSP id:",len(mmetsp_data.keys()))
-print("Data written to file: assembly_evaluation_data/transrate_scores_imicrobe_cds.csv")
-data_frame.to_csv("assembly_evaluation_data/transrate_scores_imicrobe_cds.csv")
+#print("Data written to file: assembly_evaluation_data/transrate_scores_imicrobe_cds.csv")
+#data_frame.to_csv("assembly_evaluation_data/transrate_scores_imicrobe_cds.csv")

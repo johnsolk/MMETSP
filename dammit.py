@@ -21,7 +21,7 @@ def run_dammit(dammit_string,dammitdir,mmetsp):
     process_name = "dammit"
     module_name_list = []
     filename = mmetsp
-    clusterfunc_py3.qsub_file(dammit_dir, process_name, module_name_list, filename, dammit_command)
+    #clusterfunc_py3.qsub_file(dammit_dir, process_name, module_name_list, filename, dammit_command)
 
 def execute(assemblies, basedir, dammit_dir):
     for assembly in assemblies:
