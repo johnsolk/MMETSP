@@ -18,13 +18,14 @@ def get_sample_dictionary(sample_dictionary,filename):
 
 def build_DataFrame(data_frame, new_data):
     # columns=["n_bases","gc","gc_skew","mean_orf_percent"]
-    frames = [data_frame, new_data]
-    data_frame = pd.concat(frames,axis=1)
-    #data_frame = data_frame.merge(new_data)
+    #frames = [data_frame, new_data]
+    #data_frame = pd.concat(frames)
+    data_frame = data_frame.merge(new_data,how='outer',left_index='index',right_index='index')
     return data_frame
 
 def get_table(sample_dictionary):
-    data_frame_new = pd.DataFrame.from_dict(sample_dictionary)
+    data_frame_new = pd.DataFrame.from_dict(sample_dictionary,orient='index')
+    #print(data_frame_new.head())
     return data_frame_new
  
 # separately, get total contigs from n_seqs from assembles.csv transrate files
@@ -58,6 +59,7 @@ for annotation_file in annotation_files:
     #print(sample_dictionary)
     data_frame_new = get_table(sample_dictionary)
     data_frame = build_DataFrame(data_frame,data_frame_new) 
-    #print(data_frame)
+data_frame.columns = ['total_annotated_contigs','unique_annotations','annotations_w_false_crbb','total_OrthoDB','unique_OrthoDB','false_crbb_OrthoDB','total_Pfam','unique_Pfam','false_crbb_Pfam','total_Rfam','unique_Rfam','false_crbb_Rfam']
+print(data_frame.head())
 out_filename = "/mnt/home/ljcohen/MMETSP/assembly_evaluation_data/annotation_stats.csv"
 data_frame.to_csv(out_filename)
