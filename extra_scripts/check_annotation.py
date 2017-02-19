@@ -25,8 +25,6 @@ def get_annotations(annotations_dir,false_annotations_dir,dammit_dir,contig_dict
             annotations = GFF3Parser(filename=dammit_gff).read()
             if 'Name' in annotations.columns and 'Dbxref' in annotations.columns:
                 all_names = annotations.sort_values(by=['seqid', 'score'], ascending=True).query('score < 1e-05').drop_duplicates(subset='seqid')[['seqid', 'Name','Dbxref','source']]
-                #all_names['Dbxref'] = all_names['Dbxref'].map(lambda x: x.lstrip('"').rstrip('"'))
-                #all_names = annotations.sort_values(by=['seqid'],ascending=True)[['seqid','Name']].dropna()
                 all_names_out = annotations_dir + mmetsp + ".unique_annotations.csv"
                 all_names.to_csv(all_names_out)
                 #false_names = all_names[all_names['seqid'].isin(contig_dict[mmetsp])]
