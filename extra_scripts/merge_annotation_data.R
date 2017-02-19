@@ -16,4 +16,5 @@ rownames(annotations)<-annotations$SampleName
 annotations<-annotations[,2:16]
 annotations_num<-as.matrix(annotations)
 head(annotations_num)
-hist(annotations_num[,1])
+annotations_total_unique_falsecrbb<-annotations_num[,c(1,5,6)]
+barplot(annotations_total_unique_falsecrbb,horiz=TRUE)
