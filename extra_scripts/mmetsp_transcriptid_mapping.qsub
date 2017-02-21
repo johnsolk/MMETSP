@@ -1,0 +1,9 @@
+#!/bin/bash
+#PBS -l walltime=24:00:00,nodes=1:ppn=32
+#PBS -l mem=200GB
+#PBS -j oe
+#PBS -A ged
+set -x
+cd ${PBS_O_WORKDIR}
+
+python /mnt/home/ljcohen/MMETSP/extra_scripts/connect_dammittranscriptid_assemblyid.py

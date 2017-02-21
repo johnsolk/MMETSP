@@ -1,0 +1,2 @@
++ cd /mnt/home/ljcohen/MMETSP/extra_scripts
++ python /mnt/home/ljcohen/MMETSP/extra_scripts/connect_dammittranscriptid_assemblyid.py
