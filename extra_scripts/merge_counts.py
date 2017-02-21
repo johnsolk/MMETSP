@@ -17,7 +17,7 @@ for sample in listofsamples:
         if os.path.isfile(sys.argv[1] + sample + "/quant.sf"):
             quant_file = sys.argv[1] + sample + "/quant.sf"
             data = pd.DataFrame.from_csv(quant_file, sep='\t')
-            numreads = data['NumReads']
+            numreads = data['TPM']
             quants[sample] = numreads
 
 counts = pd.DataFrame.from_dict(quants)
