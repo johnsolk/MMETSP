@@ -46,12 +46,14 @@ unique_Pfam = annotation_stats_files + "unique_Pfam"
 unique_Rfam = annotation_stats_files + "unique_Rfam"
 # these are the annotations for contigs with false crbb with ncgr ref
 # these are reduced, so one annotation per contig chosen with same method as above
+false_crbb_num_annotations = annotation_stats_files + "false_crbb_num_transcripts"
 false_crbb_unique_annotations = annotation_stats_files + "false_crbb_unique_annotations"
 false_crbb_OrthoDB = annotation_stats_files + "false_crbb_OrthoDB"
 false_crbb_Pfam = annotation_stats_files + "false_crbb_Pfam"
 false_crbb_Rfam = annotation_stats_files + "false_crbb_Rfam"
 data_frame = pd.DataFrame()
-annotation_files = [total_annotated_contigs,unique_annotations,false_crbb_unique_annotations,total_OrthoDB,unique_OrthoDB,false_crbb_OrthoDB,total_Pfam,unique_Pfam,false_crbb_Pfam,total_Rfam,unique_Rfam,false_crbb_Rfam]
+annotation_files = [false_crbb_num_annotations]
+#annotation_files = [total_annotated_contigs,unique_annotations,false_crbb_unique_annotations,total_OrthoDB,unique_OrthoDB,false_crbb_OrthoDB,total_Pfam,unique_Pfam,false_crbb_Pfam,total_Rfam,unique_Rfam,false_crbb_Rfam]
 for annotation_file in annotation_files:
     print(annotation_file)
     sample_dictionary = {}
@@ -59,7 +61,9 @@ for annotation_file in annotation_files:
     #print(sample_dictionary)
     data_frame_new = get_table(sample_dictionary)
     data_frame = build_DataFrame(data_frame,data_frame_new) 
-data_frame.columns = ['total_annotated_contigs','unique_annotations','annotations_w_false_crbb','total_OrthoDB','unique_OrthoDB','false_crbb_OrthoDB','total_Pfam','unique_Pfam','false_crbb_Pfam','total_Rfam','unique_Rfam','false_crbb_Rfam']
+#data_frame.columns = ['total_annotated_contigs','unique_annotations','annotations_w_false_crbb','total_OrthoDB','unique_OrthoDB','false_crbb_OrthoDB','total_Pfam','unique_Pfam','false_crbb_Pfam','total_Rfam','unique_Rfam','false_crbb_Rfam']
+data_frame.columns = ['false_crbb_num_transcripts']
 print(data_frame.head())
-out_filename = "/mnt/home/ljcohen/MMETSP/assembly_evaluation_data/annotation_stats.csv"
+#out_filename = "/mnt/home/ljcohen/MMETSP/assembly_evaluation_data/annotation_stats.csv"
+out_filename = "/mnt/home/ljcohen/MMETSP/assembly_evaluation_data/false_crbb.csv"
 data_frame.to_csv(out_filename)
