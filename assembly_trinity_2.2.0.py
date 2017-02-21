@@ -8,6 +8,9 @@ from subprocess import Popen, PIPE
 import urllib
 import shutil
 import glob
+import sys
+import dib-MMETSP.conf
+print(sra_csv)
 # custom Lisa module
 import clusterfunc
 
@@ -27,12 +30,12 @@ def get_data(thefile):
             read_type = line_data[position_reads]
             ftp = line_data[position_ftp]
             name_read_tuple = (name, read_type)
-            print name_read_tuple
+            print(name_read_tuple)
             # check to see if Scientific Name and run exist
             if name_read_tuple in url_data.keys():
                 # check to see if ftp exists
                 if ftp in url_data[name_read_tuple]:
-                    print "url already exists:", ftp
+                    print("url already exists:", ftp)
                 else:
                     url_data[name_read_tuple].append(ftp)
             else:
@@ -97,7 +100,7 @@ def fix_fasta(trinity_fasta, trinity_dir, sample):
 sed 's_|_-_g' {} > {}
 """.format(trinity_fasta, trinity_out)
     s = subprocess.Popen(fix, shell=True)
-    print fix
+    print(fix)
     s.wait()
     os.chdir("/mnt/home/ljcohen/MMETSP/")
     return trinity_out
@@ -114,10 +117,10 @@ def execute(trinity_fail, count, basedir):
             		clusterfunc.check_dir(trinitydir)
             		if os.path.isfile(trinity_fasta) == False:
 				if os.path.isfile("/mnt/home/ljcohen/mmetsp_assemblies_trinity2.2.0/"+mmetsp+".trinity_out_2.2.0.Trinity.fasta"):
-					print "Trinity finished."
+					print("Trinity finished.")
 					count +=1
 				else:
-					print mmetspdir
+					print(mmetspdir)
 					right = [s for s in trinity_files if s.endswith(".right.fq")][0]
                         		left = [s for s in trinity_files if s.endswith(".left.fq")][0]
                         		right = mmetspdir + right
@@ -128,39 +131,24 @@ def execute(trinity_fail, count, basedir):
                         			right = mmetspdir + right
                        	 			left = mmetspdir + left
 						run_trinity(trinitydir,left,right,mmetsp)
-                				#print "Trinity failed:", trinity_fasta
-                				#trinity_fail.append(trinitydir)
             				else:
-						print "No files:",left
+						print("No files:",left)
 			else:
-                		print "Trinity completed successfully.", trinity_fasta
+                		print("Trinity completed successfully.", trinity_fasta)
                 		count += 1
                 		assemblydir = "/mnt/home/ljcohen/mmetsp_assemblies_trinity2.2.0/"
-                		copy_string = "cp " + trinity_fasta + " " + assemblydir + mmetsp + ".trinity_out_2.2.0.Trinity.fasta" 
-                		print copy_string
+                		copy_string = "cp " + trinity_fasta + " " + assemblydir + mmetsp + ".trinity_out_2.2.0.Trinity.fasta"
+                		print(copy_string)
                 		s = subprocess.Popen(copy_string, shell=True)
                 		s.wait()
-                		# trinity_out=fix_fasta(trinity_fasta,trinitydir,sample)
-                		# print "Needs to be fixed:",trinity_fasta
-                		# print trinity_out
-                		#"Re-run diginorm:",diginormfile
-            			#count = check_trinity(newdir,SRA,count)
-    	print "Number of Trinity de novo transcriptome assemblies:"
-    	print count
-   	print "Number of times Trinity failed:"
-    	print len(trinity_fail)
-    	print trinity_fail
+    	print("Number of Trinity de novo transcriptome assemblies:", count)
+   	    print("Number of times Trinity failed:", len(trinity_fail), trinity_fail)
     	return trinity_fail, count
 
-basedir = "/mnt/scratch/ljcohen/mmetsp/"
-
-datafiles = ["SraRunInfo_719.csv"]
+# datafiles = ["SraRunInfo_719.csv"]
 trinity_fail = []
 count = 0
 for datafile in datafiles:
     trinity_fail, count = execute(trinity_fail, count, basedir)
-print "Number of Trinity assemblies:"
-print count
-print "Total number of times Trinity failed:"
-print len(trinity_fail)
-print trinity_fail
+print("Number of Trinity assemblies:", count)
+print("Total number of times Trinity failed:", len(trinity_fail), trinity_fail)

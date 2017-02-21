@@ -1,0 +1,24 @@
+#!/bin/bash
+#PBS -l walltime=4:00:00,nodes=1:ppn=8
+#PBS -l mem=32gb
+#PBS -l feature=intel16
+#PBS -j oe
+#export MKL_NUM_THREADS=8
+#export OMP_NUM_THREADS=8
+cd ${PBS_O_WORKDIR}
+cd /mnt/research/ged/lisa/dammit_annotations/transdecoder/
+
+sed -e "s/^>/>MMETSP0902_/" /mnt/research/ged/lisa/dammit_annotations/fasta/MMETSP0902.trinity_out_2.2.0.Trinity.fasta.dammit.fasta | sed 's_|_-_g' | sed "s/\s.*$//" > /mnt/research/ged/lisa/dammit_annotations/transdecoder/MMETSP0902.Trinity.fixed.fa
+
+
+TransDecoder.LongOrfs -t /mnt/research/ged/lisa/dammit_annotations/transdecoder/MMETSP0902.Trinity.fixed.fa -m 100
+
+
+TransDecoder.Predict -t /mnt/research/ged/lisa/dammit_annotations/transdecoder/MMETSP0902.Trinity.fixed.fa
+
+
+get_longest_ORF_per_transcript.pl /mnt/research/ged/lisa/dammit_annotations/transdecoder/MMETSP0902.Trinity.fixed.fa.transdecoder.pep > /mnt/research/ged/lisa/dammit_annotations/transdecoder/MMETSP0902.Trinity.fixed.fa.transdecoder.pep.longest.pep
+
+qstat -f ${PBS_JOBID}
+cat ${PBS_NODEFILE} # Output Contents of the PBS NODEFILE
+env | grep PBS # Print out values of the current jobs PBS environment variables

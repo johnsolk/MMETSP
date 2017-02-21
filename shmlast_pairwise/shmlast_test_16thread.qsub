@@ -1,0 +1,21 @@
+#!/bin/bash
+#PBS -l walltime=4:00:00,nodes=1:ppn=16
+#PBS -l mem=32gb
+#PBS -l feature=intel16
+#PBS -j oe
+#export MKL_NUM_THREADS=16
+#export OMP_NUM_THREADS=16
+cd ${PBS_O_WORKDIR}
+cd /mnt/research/ged/halexand/mmetsp/shmlast_pairwise/
+
+module load NumPy
+module load SciPy
+module load matplotlib
+
+source ~/pyenvs/py3_shmlast/bin/activate
+
+shmlast crbl -q ../assemblies/MMETSP0004.trinity_out_2.2.0.Trinity.fasta -d ../transdecoder_pep/MMETSP0005.Trinity.fixed.fa.transdecoder.pep --n_threads 16
+
+qstat -f ${PBS_JOBID}
+cat ${PBS_NODEFILE} # Output Contents of the PBS NODEFILE
+env | grep PBS # Print out values of the current jobs PBS environment variables
