@@ -5,7 +5,7 @@ from subprocess import Popen, PIPE
 import clusterfunc_py3
 from khmer import HLLCounter
 
-def get_unique_kmers(sra,fasta):
+def get_unique_kmers(mmetsp,fasta):
     print(fasta)
     counter = HLLCounter(0.1,25)
     counter.consume_fasta(fasta)
@@ -39,8 +39,10 @@ def execute(fasta_list,unique_kmers_filename,basedir):
             sample_dictionary = make_unique_kmers_dictionary(sample_dictionary,fasta_file,mmetsp)
             make_unique_kmer_table(sample_dictionary,unique_kmers_filename)
 
-basedir = "/mnt/home/ljcohen/mmetsp_assemblies_trinity2.2.0_zenodo/"
-unique_kmers_filename = "/mnt/home/ljcohen/MMETSP/assembly_evaluation_data/unique_kmers.txt"
+#basedir = "/mnt/home/ljcohen/mmetsp_assemblies_trinity2.2.0_zenodo/"
+#unique_kmers_filename = "/mnt/home/ljcohen/MMETSP/assembly_evaluation_data/unique_kmers.txt"
+basedir = "/mnt/research/ged/lisa/mmetsp/imicrobe/cds/"
+unique_kmers_filename = "/mnt/home/ljcohen/MMETSP/assembly_evaluation_data/imicrobe_unique_kmers.txt"
 fasta_list = os.listdir(basedir)
 execute(fasta_list,unique_kmers_filename,basedir)
 print("File written:",unique_kmers_filename)
