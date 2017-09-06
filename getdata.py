@@ -41,6 +41,16 @@ def get_data(thefile):
                 url_data[name_read_tuple] = [ftp]
         return url_data
 
+
+def sra_url(accession):
+    """Takes an SRA accession and determines the location of the .sra data file for automated or downloading."""
+    accession = accession.upper()
+    return "/sra/sra-instant/reads/ByRun/sra/{}/{}/{}/{}.sra".format(
+           accession[0:3], accession[0:6], accession, accession)
+
+def test_sra_url():
+    assert sra_url('DRR053698') == '/sra/sra-instant/reads/ByRun/sra/DRR/DRR053/DRR053698/DRR053698.sra'
+
 # 2. Download data
 #(already checked if file exists)
 
