@@ -33,8 +33,8 @@ def download(url, newdir, newfile):
     else:
         urlstring = "wget -O " + newdir + newfile + " " + url
         print(urlstring)
-    s = subprocess.Popen(urlstring, shell=True)
-    s.wait()
+    #s = subprocess.Popen(urlstring, shell=True)
+    #s.wait()
 
     print("Finished downloading from NCBI.")
 
@@ -53,8 +53,8 @@ def sra_extract(newdir, filename):
         sra_string = "fastq-dump -v -O " + newdir + " --split-3 " + newdir + filename
         print(sra_string)
         print("extracting SRA...")
-        s = subprocess.Popen(sra_string, shell=True, stdout=PIPE)
-        s.wait()
+        #s = subprocess.Popen(sra_string, shell=True, stdout=PIPE)
+        #s.wait()
         print("Finished SRA extraction.")
 
 # 4. Generate fastqc from all fastq in directory
@@ -103,7 +103,7 @@ def execute(accession, basedir, url):
         print("file will be downloaded:", filename)
         download(url, seq_dir, filename)
         sra_extract(seq_dir, filename)
-    #fastqc(newdir, fastqcdir, filename)
+    fastqc(seq_dir, fastqcdir, filename)
 
 def fastqc(newdir, fastqcdir, filename):
     listoffiles = os.listdir(newdir)
