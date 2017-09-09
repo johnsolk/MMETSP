@@ -29,10 +29,12 @@ def run_filter_abund(diginormdir, sra):
     filter_string = """
 filter-abund.py -V -Z 18 {}norm.C20k20.ct {}*.keep
 """.format(diginormdir, keep_dir)
-    #extract_paired_string = extract_paired()
+    extract_paired_string = extract_paired()
     #commands = [filter_string, extract_paired_string]
-    commands = [filter_string]
-    process_name = "filtabund"
+    #commands = [filter_string]
+    commands = [extract_paired_string]
+    #process_name = "filtabund"
+    process_name = "extract"
     module_name_list = ["GNU/4.8.3", "khmer/2.0"]
     filename = sra
     clusterfunc_py3.qsub_file(diginormdir, process_name,
@@ -136,8 +138,8 @@ def execute(accession,basedir):
         trimdir = seq_dir + "trim/"
         # run_streaming_diginorm(trimdir,accession,diginormdir)
         #interleave_reads(trimdir,accession,interleavedir)
-        run_diginorm(diginormdir,interleavedir,trimdir,accession)
-        #run_filter_abund(diginormdir, accession)
+        #run_diginorm(diginormdir,interleavedir,trimdir,accession)
+        run_filter_abund(diginormdir, accession)
 
 
 accessions = "DRR053698, DRR082659, ERR489297, DRR030368, DRR031870, DRR046632, DRR069093, ERR058009, ERR1016675, SRR2086412, SRR3499127, SRR1789336, SRR2016923, ERR1674585, DRR036858"
