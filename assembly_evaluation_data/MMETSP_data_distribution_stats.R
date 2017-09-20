@@ -1,4 +1,6 @@
 require(graphics)
+library(psych) # required for describeBy
+
 x <- rnorm(50)
 y <- runif(30)
 # Do x and y come from the same distribution?
@@ -77,3 +79,41 @@ mean(BUSCO_ncgr)
 sd(BUSCO_dib)
 sd(BUSCO_ncgr)
 ks.test(BUSCO_dib,BUSCO_ncgr)
+
+# taxonomic comparisons
+special_flowers = c("MMETSP0693","MMETSP1019","MMETSP0923","MMETSP0008","MMETSP1002","MMETSP1325","MMETSP1018","MMETSP1346","MMETSP0088","MMETSP0092","MMETSP0717","MMETSP0223","MMETSP0115","MMETSP0196","MMETSP0197","MMETSP0398","MMETSP0399","MMETSP0922")
+tax_raw <- read.csv("~/Documents/UCDavis/dib/MMETSP/git/MMETSP/assembly_evaluation_data/MMETSP_all_evaluation_matrix.csv")
+head(tax_raw)
+tax_raw <- tax_raw[!tax_raw$SampleName %in% special_flowers,]
+phylum_data <-tax_raw[,c(2,34,114,41,45,54)]
+phylum <- phylum_data$Phylum
+sub_phy<-c("Bacillariophyta","Dinophyta","Ochrophyta","Haptophyta","Ciliophora","Chlorophyta","Cryptophyta")
+sub<-phylum_data[phylum_data$Phylum %in% sub_phy,]
+fit <- aov(Unique_kmers ~ Phylum,data=sub)
+library(agricolae)
+a<-HSD.test(fit,"Phylum",group=TRUE)
+#plot
+library(multcomp)
+tuk<-glht(fit,linfct=mcp(Phylum="Tukey"))
+summary(tuk)
+tuk.cld<-cld(tuk)
+opar<-par(mai=c(1,1,1.5,1))
+plot(tuk.cld)
+
+
+fit2 <- aov(mean_orf_percent.x ~ Phylum,data=sub)
+b<-TukeyHSD(fit2,"Phylum",conf.level=0.95)
+tuk<-glht(fit2,linfct=mcp(Phylum="Tukey"))
+summary(tuk)
+tuk.cld<-cld(tuk)
+opar<-par(mai=c(1,1,1.5,1))
+plot(tuk.cld)
+
+
+
+
+
+
+
+
+
