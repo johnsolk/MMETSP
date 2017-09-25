@@ -44,7 +44,7 @@ def make_out_file(out_file,sample_dictionary):
     datafile.close()
 
 names_files_dir = "/mnt/home/ljcohen/mmetsp_name_id/"
-out_file = "/mnt/home/ljcohen/MMETSP/assembly_evaluation_data/collapse_names"
+out_file = "/mnt/home/ljcohen/imicrobe_unique_names.csv"
 unique_dictionary = get_unique_names_overall(names_files_dir)
 make_out_file(out_file,unique_dictionary)
 print("Written:",make_out_file)

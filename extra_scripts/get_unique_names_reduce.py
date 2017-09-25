@@ -39,13 +39,15 @@ names_file = "/mnt/home/ljcohen/annotation_names_by_transcript.csv"
 out_file = "/mnt/home/ljcohen/MMETSP/assembly_evaluation_data/intersect_names"
 transcript_counts_dictionary = get_unique_names_overall(names_file)
 print(len(transcript_counts_dictionary.keys()))
-for transcript in transcript_counts_dictionary:
-    if transcript_counts_dictionary[transcript] >= 600:
-        print(transcript,":",transcript_counts_dictionary[transcript])
-transcript_counts = pd.DataFrame.from_dict(transcript_counts_dictionary,orient='index')
-transcript_counts.columns = ['count_allMMETSP']
-transcript_counts.sort(columns = 'count_allMMETSP', ascending = False)
-transcript_counts.to_csv("../assembly_evaluation_data/MMETSP_common_gene_names.csv")
+#for transcript in transcript_counts_dictionary:
+#    if transcript_counts_dictionary[transcript] >= 600:
+#        print(transcript,":",transcript_counts_dictionary[transcript])
+
+
+#transcript_counts = pd.DataFrame.from_dict(transcript_counts_dictionary,orient='index')
+#transcript_counts.columns = ['count_allMMETSP']
+#transcript_counts.sort(columns = 'count_allMMETSP', ascending = False)
+#transcript_counts.to_csv("../assembly_evaluation_data/MMETSP_common_gene_names.csv")
 print("Written: ../assembly_evaluation_data/MMETSP_common_gene_names.csv")
 #for gene in unique_dictionary:
 #    print(gene,":",gene_counts_dictionary[gene])

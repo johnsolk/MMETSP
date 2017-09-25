@@ -57,7 +57,7 @@ def build_DataFrame(data_frame, transrate_data):
 def execute(data_frame, accessions, basedir,assembly_dir,assemblies,transrate_dir):
     # construct an empty pandas dataframe to add on each assembly.csv to
     for accession in accessions:    
-        # print item
+        print(accession)
         seq_dir = basedir + accession + "/"
         assembly = [s for s in assemblies if s.startswith(accession) and s.endswith(".fasta")]
         if len(assembly)==0:
@@ -88,17 +88,17 @@ print(accessions)
 print(len(accessions),"accessions")
 basedir = "/mnt/scratch/ljcohen/oysterriver/"
 
-#assemblydir = "/mnt/home/ljcohen/oysterriver_assemblies/finished/"
-#transrate_dir = "/mnt/home/ljcohen/oysterriver_assemblies/transrate_scores_dib/"
+assemblydir = "/mnt/home/ljcohen/oysterriver_assemblies/finished/"
+transrate_dir = "/mnt/home/ljcohen/oysterriver_assemblies/transrate_scores_dib/"
 #clusterfunc_py3.check_dir(transrate_dir)
-assemblydir = "/mnt/home/ljcohen/oysterriver_assemblies/MacManes/orthomerged/"
-transrate_dir = "/mnt/home/ljcohen/oysterriver_assemblies/transrate_scores_macmanes/"
+#assemblydir = "/mnt/home/ljcohen/oysterriver_assemblies/MacManes/orthomerged/"
+#transrate_dir = "/mnt/home/ljcohen/oysterriver_assemblies/transrate_scores_macmanes/"
 
 basedir = "/mnt/scratch/ljcohen/oysterriver/"
 data_frame = pd.DataFrame()
 assemblies = os.listdir(assemblydir)
 data_frame= execute(data_frame, accessions,basedir, assemblydir,assemblies,transrate_dir)
-#print("Data written to file: /mnt/home/ljcohen/oysterriver_assemblies/transrate_scores_dib.csv")
-#data_frame.to_csv("/mnt/home/ljcohen/oysterriver_assemblies/transrate_scores_dib.csv")
-print("Data written to file: /mnt/home/ljcohen/oysterriver_assemblies/transrate_scores_macmanes.csv")
-data_frame.to_csv("/mnt/home/ljcohen/oysterriver_assemblies/transrate_scores_macmanes.csv")
+print("Data written to file: /mnt/home/ljcohen/oysterriver_assemblies/transrate_scores_dib.csv")
+data_frame.to_csv("/mnt/home/ljcohen/oysterriver_assemblies/transrate_scores_dib.csv")
+#print("Data written to file: /mnt/home/ljcohen/oysterriver_assemblies/transrate_scores_macmanes.csv")
+#data_frame.to_csv("/mnt/home/ljcohen/oysterriver_assemblies/transrate_scores_macmanes.csv")

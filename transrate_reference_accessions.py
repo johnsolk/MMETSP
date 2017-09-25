@@ -25,7 +25,7 @@ rm -rf /tmp/{}_forw*
     process_name = "trans_ref"
     module_name_list = ""
     filename = sample
-    #print(transrate_command)
+    print(transrate_command)
     clusterfunc_py3.qsub_file(mmetsp_assemblies_dir,process_name,module_name_list,filename,commands)
 
 def transrate_reverse(transrate_dir, sample, trinity_fasta, mmetsp_assemblies_dir, filename):
@@ -78,8 +78,6 @@ def execute(data_frame1, data_frame2, query_assemblies_dir,reference_assemblies_
     assemblies2 = os.listdir(reference_assemblies_dir)
     print(assemblies1)
     print(assemblies2)
-    finished = []
-    comparisons = []
     for item in assemblies1:
         if item.endswith(".fasta"):
             sra_id = item.split(".")[0]
@@ -91,15 +89,10 @@ def execute(data_frame1, data_frame2, query_assemblies_dir,reference_assemblies_
                 print(reverse_assembly)
                 reverse_trinity_fasta = reference_assemblies_dir + reverse_assembly[0]
                 trinity_fasta = query_assemblies_dir + item
-                #reference_filename = mmetsp_assemblies+mmetsp+".nt.fa.fixed.fa"
-                #reference_filename = mmetsp_assemblies+mmetsp+".cds.fa.fixed.fa" 
                 if os.path.isfile(trinity_fasta):
                     print("SRA assembly found:", trinity_fasta)
-                    comparisons.append(trinity_fasta)
                     transrate_assemblies_ref = output_dir1 + sra_id + ".assemblies.csv"
-                    print(transrate_assemblies_ref)
                     transrate_reverse_assemblies = output_dir2 + sra_id + ".assemblies.csv"
-                    print(transrate_reverse_assemblies)
                     if os.path.isfile(transrate_assemblies_ref):
                         print("Finished:",transrate_assemblies_ref)
                         data1 = parse_transrate_stats(transrate_assemblies_ref,sra_id,sra_id)
