@@ -2,7 +2,7 @@ import pandas as pd
 import os
 from dammit.fileio.gff3 import GFF3Parser
 
-def compare_names(dib_compare_dir,ncgr_compare_dir,mmetsp,ncgr_file,dib_file):
+def compare_names(unique_name_counts,dib_compare_dir,ncgr_compare_dir,mmetsp,ncgr_file,dib_file):
     ncgr = pd.read_csv(ncgr_file) 
     dib = pd.read_csv(dib_file)
     new_dib = dib[~dib.Name.isin(ncgr.Name.values)]
@@ -11,10 +11,14 @@ def compare_names(dib_compare_dir,ncgr_compare_dir,mmetsp,ncgr_file,dib_file):
     new_dib_file = dib_compare_dir + mmetsp + ".unique_names_v_ncgr.csv"
     new_ncgr.to_csv(new_ncgr_file)
     new_dib.to_csv(new_dib_file)
+    ncgr_unique = new_ncgr.shape[0]
+    dib_unique = new_dib.shape[0]
+    unique_name_counts.append([mmetsp,ncgr_unique,dib_unique])
     print("Written:",new_ncgr_file)
     print("Size:",new_ncgr.shape)
     print("Written:",new_dib_file)
     print("Size:",new_dib.shape)
+    return unique_name_counts
 
 def get_mmetsp_assembly(count,ncgr_files,mmetsp,dib_file):
     file_list = [s for s in ncgr_files if s.startswith(mmetsp)]
@@ -36,11 +40,15 @@ dib_compare_dir = "/mnt/home/ljcohen/dib_unique_names/"
 ncgr_files= os.listdir(ncgr_annotations)
 dib_files = os.listdir(dib_annotations)
 count = 0
+unique_name_counts = []
 for dib_file in dib_files:
     mmetsp = dib_file.split(".")[0]
     count,ncgr_file = get_mmetsp_assembly(count,ncgr_files,mmetsp,dib_file)
     if ncgr_file:
         ncgr_filename = ncgr_annotations + ncgr_file
         dib_filename = dib_annotations + dib_file
-        compare_names(dib_compare_dir,ncgr_compare_dir,mmetsp,ncgr_filename,dib_filename)
+        unique_name_counts = compare_names(unique_name_counts,dib_compare_dir,ncgr_compare_dir,mmetsp,ncgr_filename,dib_filename)
 print(count)
+df = pd.DataFrame(unique_name_counts, columns = ['MMETSP_id','NCGR','DIB'])
+df.to_csv("~/MMETSP/assembly_evaluation_data/unqiue_gene_names_ncgr_dib.csv")
+print("Written: ~/MMETSP/assembly_evaluation_data/unqiue_gene_names_ncgr_dib.csv")
