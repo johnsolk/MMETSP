@@ -151,7 +151,7 @@ Cols=function(vec){
   return(cols[as.numeric(as.factor(vec))]) }
 #par(mfrow=c(1,2))
 plot(pca$x[,1:2], col=Cols(sub$Phylum), pch=19,
-     xlab="Z1",ylab="Z2")
+     xlab="PC1",ylab="PC2")
 #plot(pca$x[,c(1,3)], col=Cols(as.character(sub$Phylum)), pch=19,
 #     xlab="Z1",ylab="Z3")
 legend(-20,0.75,legend=unique(as.character(sub$Phylum)),col=rainbow(length(unique(sub$Phylum))),cex=0.8, pch=19)
