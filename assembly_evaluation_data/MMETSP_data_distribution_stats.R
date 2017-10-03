@@ -1,23 +1,9 @@
 require(graphics)
 library(psych) # required for describeBy
-
-x <- rnorm(50)
-y <- runif(30)
-# Do x and y come from the same distribution?
-ks.test(x, y)
-# Does x come from a shifted gamma distribution with shape 3 and rate 2?
-ks.test(x+2, "pgamma", 3, 2) # two-sided, exact
-ks.test(x+2, "pgamma", 3, 2, exact = FALSE)
-ks.test(x+2, "pgamma", 3, 2, alternative = "gr")
-
-# test if x is stochastically larger than x2
-x2 <- rnorm(50, -1)
-plot(ecdf(x), xlim = range(c(x, x2)))
-plot(ecdf(x2), add = TRUE, lty = "dashed")
-t.test(x, x2, alternative = "g")
-wilcox.test(x, x2, alternative = "g")
-ks.test(x, x2, alternative = "l")
-
+library(multcomp)
+library(agricolae)
+library(RColorBrewer)
+library(lattice)
 ## MMETSP stats
 dib_v_ncgr <- read.csv("~/Documents/UCDavis/dib/MMETSP/git/MMETSP/assembly_evaluation_data/transrate_reference_trinity2.2.0_v_ncgr.cds.csv")
 ncgr_v_dib <- read.csv("~/Documents/UCDavis/dib/MMETSP/git/MMETSP/assembly_evaluation_data/transrate_reverse_ncgr.nt_v_trinity2.2.0.csv")
@@ -90,10 +76,10 @@ phylum <- phylum_data$Phylum
 sub_phy<-c("Bacillariophyta","Dinophyta","Ochrophyta","Haptophyta","Ciliophora","Chlorophyta","Cryptophyta")
 sub<-phylum_data[phylum_data$Phylum %in% sub_phy,]
 fit <- aov(Unique_kmers ~ Phylum,data=sub)
-library(agricolae)
+
 a<-HSD.test(fit,"Phylum",group=TRUE)
 #plot
-library(multcomp)
+
 tuk<-glht(fit,linfct=mcp(Phylum="Tukey"))
 summary(tuk)
 tuk.cld<-cld(tuk)
@@ -110,10 +96,62 @@ opar<-par(mai=c(1,1,1.5,1))
 plot(tuk.cld)
 
 
+# PCA
+# biological/content:
+## ORF
+## unique kmers
+## p_refs_with_CRBB
+## score
+# length:
+## n_seqs (contigs)
+## transrate score
+##
 
 
+# log normalize?
+#x<-normDat
+tax_raw <- read.csv("~/Documents/UCDavis/dib/MMETSP/git/MMETSP/assembly_evaluation_data/MMETSP_all_evaluation_matrix.csv")
+special_flowers = c("MMETSP0693","MMETSP1019","MMETSP0923","MMETSP0008","MMETSP1002","MMETSP1325","MMETSP1018","MMETSP1346","MMETSP0088","MMETSP0092","MMETSP0717","MMETSP0223","MMETSP0115","MMETSP0196","MMETSP0197","MMETSP0398","MMETSP0399","MMETSP0922")
+tax_raw <- tax_raw[!tax_raw$SampleName %in% special_flowers,]
+colnames(tax_raw)
+x<-tax_raw[,c(34,89,82,86,114,113)]
+sub_phy<-c("Bacillariophyta","Dinophyta","Ochrophyta","Haptophyta","Ciliophora","Chlorophyta","Cryptophyta")
+sub<-x[x$Phylum %in% sub_phy,]
+colnames(x)
+rownames(x)<-x$SampleName
+x<-x[,c(3:7)]
+x<-na.omit(x)
+x<-as.matrix(x)
+pca = prcomp(t(x))
+names = colnames(x)
+fac= names
+colours = c("red","orange","yellow","green","blue")
+xyplot(
+  PC2 ~ PC1, groups=fac, data=as.data.frame(pca$x), pch=16, cex=1.5,
+  panel=function(x, y, ...) {
+    panel.xyplot(x, y, ...);
+    ltext(x=x, y=y, labels=names, pos=1, offset=0.8, cex=1)
+  },
+  aspect = "fill", col=colours
+  #main = draw.key(key = list(rect = list(col = list(col=colours), text = list(levels(fac)), rep = FALSE)))
+)
 
+## unique gene names in NCGR and DIB
+unique_dammit_names <- read.csv("~/Documents/UCDavis/dib/MMETSP/git/MMETSP/assembly_evaluation_data/unqiue_gene_names_ncgr_dib.csv")
+head(unique_dammit_names)
+plot(unique_dammit_names$NCGR,unique_dammit_names$DIB,ylim=c(-1,25000),xlim=c(-1,25000))
+abline(0,1)
 
+# kmers
+dib_ncgr_kmers <- read.csv("~/Documents/UCDavis/dib/MMETSP/git/MMETSP/assembly_evaluation_data/unique_kmers.csv")
+head(dib_ncgr_kmers)
+plot(dib_ncgr_kmers$Unique_kmers,dib_ncgr_kmers$Unique_kmers_assembly, ylim=c(-1,120000000),xlim=c(-1,120000000))
+abline(0,1)
 
-
+# colors
+plot(dib_ncgr_kmers$Unique_kmers,dib_ncgr_kmers$Unique_kmers_assembly,ylim=c(-1,120000000),xlim=c(-1,120000000),col=dib_ncgr_kmers$Phylum)
+legend('topleft', pch=c(2,2), col=color, sub_phy, bty='o', cex=.8)
+abline(0,1)
+#library(ggplot2)
+#ggplot(dib_ncgr_kmers,aes(x=Unique_kmers,y=Unique_kmers_assembly),col=dib_ncgr_kmers$Phylum,shape=y) + geom_point()
 
