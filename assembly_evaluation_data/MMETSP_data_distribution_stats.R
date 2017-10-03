@@ -4,6 +4,7 @@ library(multcomp)
 library(agricolae)
 library(RColorBrewer)
 library(lattice)
+library("tsne")
 ## MMETSP stats
 dib_v_ncgr <- read.csv("~/Documents/UCDavis/dib/MMETSP/git/MMETSP/assembly_evaluation_data/transrate_reference_trinity2.2.0_v_ncgr.cds.csv")
 ncgr_v_dib <- read.csv("~/Documents/UCDavis/dib/MMETSP/git/MMETSP/assembly_evaluation_data/transrate_reverse_ncgr.nt_v_trinity2.2.0.csv")
@@ -71,7 +72,7 @@ special_flowers = c("MMETSP0693","MMETSP1019","MMETSP0923","MMETSP0008","MMETSP1
 tax_raw <- read.csv("~/Documents/UCDavis/dib/MMETSP/git/MMETSP/assembly_evaluation_data/MMETSP_all_evaluation_matrix.csv")
 head(tax_raw)
 tax_raw <- tax_raw[!tax_raw$SampleName %in% special_flowers,]
-phylum_data <-tax_raw[,c(2,34,114,41,45,54)]
+phylum_data <-tax_raw[,c(2,34,64,61,49,114,41,45,54)]
 phylum <- phylum_data$Phylum
 sub_phy<-c("Bacillariophyta","Dinophyta","Ochrophyta","Haptophyta","Ciliophora","Chlorophyta","Cryptophyta")
 sub<-phylum_data[phylum_data$Phylum %in% sub_phy,]
@@ -109,32 +110,47 @@ plot(tuk.cld)
 
 
 # log normalize?
-#x<-normDat
 tax_raw <- read.csv("~/Documents/UCDavis/dib/MMETSP/git/MMETSP/assembly_evaluation_data/MMETSP_all_evaluation_matrix.csv")
 special_flowers = c("MMETSP0693","MMETSP1019","MMETSP0923","MMETSP0008","MMETSP1002","MMETSP1325","MMETSP1018","MMETSP1346","MMETSP0088","MMETSP0092","MMETSP0717","MMETSP0223","MMETSP0115","MMETSP0196","MMETSP0197","MMETSP0398","MMETSP0399","MMETSP0922")
 tax_raw <- tax_raw[!tax_raw$SampleName %in% special_flowers,]
 colnames(tax_raw)
-x<-tax_raw[,c(34,89,82,86,114,113)]
+x<-tax_raw[,c(2,34,45,47,48,49,50,51,52,53,60,61,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77:84,86:116,118)]
 sub_phy<-c("Bacillariophyta","Dinophyta","Ochrophyta","Haptophyta","Ciliophora","Chlorophyta","Cryptophyta")
 sub<-x[x$Phylum %in% sub_phy,]
-colnames(x)
-rownames(x)<-x$SampleName
-x<-x[,c(3:7)]
-x<-na.omit(x)
+colnames(sub)
+rownames(sub)<-sub$SampleName
+sub<-na.omit(sub)
+cols=as.integer(sub$Phylum)
+x<-sub[,c(3:66)]
 x<-as.matrix(x)
-pca = prcomp(t(x))
-names = colnames(x)
+head(x)
+x_plus<- x + 1
+x_log <-log10(x_plus)
+dim(x_log)
+x_log <- na.omit(x_log)
+dim(x_log)
+pca = prcomp(x_log)
+names = rownames(x)
 fac= names
-colours = c("red","orange","yellow","green","blue")
+
+
 xyplot(
   PC2 ~ PC1, groups=fac, data=as.data.frame(pca$x), pch=16, cex=1.5,
   panel=function(x, y, ...) {
     panel.xyplot(x, y, ...);
-    ltext(x=x, y=y, labels=names, pos=1, offset=0.8, cex=1)
   },
-  aspect = "fill", col=colours
+  aspect = "fill", col=cols
   #main = draw.key(key = list(rect = list(col = list(col=colours), text = list(levels(fac)), rep = FALSE)))
 )
+Cols=function(vec){
+  cols=rainbow(length(unique(vec)))
+  return(cols[as.numeric(as.factor(vec))]) }
+par(mfrow=c(1,2))
+plot(pca$x[,1:2], col=Cols(as.character(sub$Phylum)), pch=19,
+     xlab="Z1",ylab="Z2")
+plot(pca$x[,c(1,3)], col=Cols(as.character(sub$Phylum)), pch=19,
+     xlab="Z1",ylab="Z3")
+
 
 ## unique gene names in NCGR and DIB
 unique_dammit_names <- read.csv("~/Documents/UCDavis/dib/MMETSP/git/MMETSP/assembly_evaluation_data/unqiue_gene_names_ncgr_dib.csv")
@@ -152,6 +168,5 @@ abline(0,1)
 plot(dib_ncgr_kmers$Unique_kmers,dib_ncgr_kmers$Unique_kmers_assembly,ylim=c(-1,120000000),xlim=c(-1,120000000),col=dib_ncgr_kmers$Phylum)
 legend('topleft', pch=c(2,2), col=color, sub_phy, bty='o', cex=.8)
 abline(0,1)
-#library(ggplot2)
-#ggplot(dib_ncgr_kmers,aes(x=Unique_kmers,y=Unique_kmers_assembly),col=dib_ncgr_kmers$Phylum,shape=y) + geom_point()
+
 
