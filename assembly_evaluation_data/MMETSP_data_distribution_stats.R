@@ -115,12 +115,15 @@ special_flowers = c("MMETSP0693","MMETSP1019","MMETSP0923","MMETSP0008","MMETSP1
 tax_raw <- tax_raw[!tax_raw$SampleName %in% special_flowers,]
 colnames(tax_raw)
 x<-tax_raw[,c(2,34,45,47,48,49,50,51,52,53,60,61,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77:84,86:116,118)]
+dim(x)
 sub_phy<-c("Bacillariophyta","Dinophyta","Ochrophyta","Haptophyta","Ciliophora","Chlorophyta","Cryptophyta")
 sub<-x[x$Phylum %in% sub_phy,]
+sub$Phylum <- factor(sub$Phylum)
+dim(sub)
+length(levels(sub$Phylum))
 colnames(sub)
 rownames(sub)<-sub$SampleName
 sub<-na.omit(sub)
-cols=as.integer(sub$Phylum)
 x<-sub[,c(3:66)]
 x<-as.matrix(x)
 head(x)
@@ -142,15 +145,16 @@ xyplot(
   aspect = "fill", col=cols
   #main = draw.key(key = list(rect = list(col = list(col=colours), text = list(levels(fac)), rep = FALSE)))
 )
+
 Cols=function(vec){
   cols=rainbow(length(unique(vec)))
   return(cols[as.numeric(as.factor(vec))]) }
-par(mfrow=c(1,2))
-plot(pca$x[,1:2], col=Cols(as.character(sub$Phylum)), pch=19,
+#par(mfrow=c(1,2))
+plot(pca$x[,1:2], col=Cols(sub$Phylum), pch=19,
      xlab="Z1",ylab="Z2")
-plot(pca$x[,c(1,3)], col=Cols(as.character(sub$Phylum)), pch=19,
-     xlab="Z1",ylab="Z3")
-
+#plot(pca$x[,c(1,3)], col=Cols(as.character(sub$Phylum)), pch=19,
+#     xlab="Z1",ylab="Z3")
+legend(-20,0.75,legend=unique(as.character(sub$Phylum)),col=rainbow(length(unique(sub$Phylum))),cex=0.8, pch=19)
 
 ## unique gene names in NCGR and DIB
 unique_dammit_names <- read.csv("~/Documents/UCDavis/dib/MMETSP/git/MMETSP/assembly_evaluation_data/unqiue_gene_names_ncgr_dib.csv")
