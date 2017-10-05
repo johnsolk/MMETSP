@@ -152,24 +152,37 @@ Cols=function(vec){
 #par(mfrow=c(1,2))
 plot(pca$x[,1:2], col=Cols(sub$Phylum), pch=19,
      xlab="PC1",ylab="PC2")
-#plot(pca$x[,c(1,3)], col=Cols(as.character(sub$Phylum)), pch=19,
-#     xlab="Z1",ylab="Z3")
 legend(-20,0.75,legend=unique(as.character(sub$Phylum)),col=rainbow(length(unique(sub$Phylum))),cex=0.8, pch=19)
 
 ## unique gene names in NCGR and DIB
 unique_dammit_names <- read.csv("~/Documents/UCDavis/dib/MMETSP/git/MMETSP/assembly_evaluation_data/unqiue_gene_names_ncgr_dib.csv")
 head(unique_dammit_names)
-plot(unique_dammit_names$NCGR,unique_dammit_names$DIB,ylim=c(-1,25000),xlim=c(-1,25000))
+dim(unique_dammit_names)
+unique_dammit_names <- unique_dammit_names[,c(2:4)]
+colnames(unique_dammit_names) <- c("SampleName","NCGR","DIB")
+unique_dammit_names <- merge(unique_dammit_names,dib_ncgr_kmers,by="SampleName")
+unique_dammit_names <- unique_dammit_names[,c(1:4)]
+sub_phy<-c("Bacillariophyta","Dinophyta","Ochrophyta","Haptophyta","Ciliophora","Chlorophyta","Cryptophyta")
+dim(unique_dammit_names)
+unique_dammit_names <- unique_dammit_names[!unique_dammit_names$SampleName %in% sub_phy,]
+plot(unique_dammit_names$NCGR,unique_dammit_names$DIB,ylim=c(-1,25000),xlim=c(-1,25000),col=Cols(unique_dammit_names$Phylum),pch=19)
 abline(0,1)
+legend(20000,6000,legend=unique(as.character(dib_ncgr_kmers$Phylum)),col=rainbow(length(unique(unique_dammit_names$Phylum))),cex=0.8, pch=19,bty="n")
 
 # kmers
 dib_ncgr_kmers <- read.csv("~/Documents/UCDavis/dib/MMETSP/git/MMETSP/assembly_evaluation_data/unique_kmers.csv")
 head(dib_ncgr_kmers)
 dim(dib_ncgr_kmers)
 special_flowers = c("MMETSP0693","MMETSP1019","MMETSP0923","MMETSP0008","MMETSP1002","MMETSP1325","MMETSP1018","MMETSP1346","MMETSP0088","MMETSP0092","MMETSP0717","MMETSP0223","MMETSP0115","MMETSP0196","MMETSP0197","MMETSP0398","MMETSP0399","MMETSP0922")
+# color 7 most common phyla, rest of phyla should be "Other"
+sub_phy<-c("Bacillariophyta","Dinophyta","Ochrophyta","Haptophyta","Ciliophora","Chlorophyta","Cryptophyta")
 dib_ncgr_kmers <- dib_ncgr_kmers[!dib_ncgr_kmers$SampleName %in% special_flowers,]
 dim(dib_ncgr_kmers)
-plot(dib_ncgr_kmers$Unique_kmers,dib_ncgr_kmers$Unique_kmers_assembly, ylim=c(-1,120000000),xlim=c(-1,120000000))
+dib_ncgr_kmers<-dib_ncgr_kmers[dib_ncgr_kmers$Phylum %in% sub_phy,]
+Cols=function(vec){
+  cols=rainbow(length(unique(vec)))
+  return(cols[as.numeric(as.factor(vec))]) }
+plot(dib_ncgr_kmers$Unique_kmers,dib_ncgr_kmers$Unique_kmers_assembly, ylim=c(-1,120000000),xlim=c(-1,120000000),ylab = "DIB_unique_kmers",xlab="NCGR_unique_kmers",col=Cols(dib_ncgr_kmers$Phylum),pch=19)
 abline(0,1)
-
+legend(20,100000000,legend=unique(as.character(dib_ncgr_kmers$Phylum)),col=rainbow(length(unique(sub$Phylum))),cex=0.8, pch=19,bty="n")
 
