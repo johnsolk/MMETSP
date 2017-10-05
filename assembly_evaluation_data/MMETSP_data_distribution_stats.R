@@ -165,12 +165,11 @@ abline(0,1)
 # kmers
 dib_ncgr_kmers <- read.csv("~/Documents/UCDavis/dib/MMETSP/git/MMETSP/assembly_evaluation_data/unique_kmers.csv")
 head(dib_ncgr_kmers)
+dim(dib_ncgr_kmers)
+special_flowers = c("MMETSP0693","MMETSP1019","MMETSP0923","MMETSP0008","MMETSP1002","MMETSP1325","MMETSP1018","MMETSP1346","MMETSP0088","MMETSP0092","MMETSP0717","MMETSP0223","MMETSP0115","MMETSP0196","MMETSP0197","MMETSP0398","MMETSP0399","MMETSP0922")
+dib_ncgr_kmers <- dib_ncgr_kmers[!dib_ncgr_kmers$SampleName %in% special_flowers,]
+dim(dib_ncgr_kmers)
 plot(dib_ncgr_kmers$Unique_kmers,dib_ncgr_kmers$Unique_kmers_assembly, ylim=c(-1,120000000),xlim=c(-1,120000000))
-abline(0,1)
-
-# colors
-plot(dib_ncgr_kmers$Unique_kmers,dib_ncgr_kmers$Unique_kmers_assembly,ylim=c(-1,120000000),xlim=c(-1,120000000),col=dib_ncgr_kmers$Phylum)
-legend('topleft', pch=c(2,2), col=color, sub_phy, bty='o', cex=.8)
 abline(0,1)
 
 
