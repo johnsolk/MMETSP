@@ -155,7 +155,8 @@ plot(pca$x[,1:2], col=Cols(sub$Phylum), pch=19,
 legend(-20,0.75,legend=unique(as.character(sub$Phylum)),col=rainbow(length(unique(sub$Phylum))),cex=0.8, pch=19)
 
 ## unique gene names in NCGR and DIB
-unique_dammit_names <- read.csv("~/Documents/UCDavis/dib/MMETSP/git/MMETSP/assembly_evaluation_data/unqiue_gene_names_ncgr_dib.csv")
+#unique_dammit_names <- read.csv("~/Documents/UCDavis/dib/MMETSP/git/MMETSP/assembly_evaluation_data/unqiue_gene_names_ncgr_dib.csv")
+unique_dammit_names <- read.csv("~/Documents/UCDavis/dib/MMETSP/git/MMETSP/assembly_evaluation_data/normalized_unique_gene_names_ncgr_dib.csv")
 head(unique_dammit_names)
 dim(unique_dammit_names)
 unique_dammit_names <- unique_dammit_names[,c(2:4)]
@@ -165,9 +166,10 @@ unique_dammit_names <- unique_dammit_names[,c(1:4)]
 sub_phy<-c("Bacillariophyta","Dinophyta","Ochrophyta","Haptophyta","Ciliophora","Chlorophyta","Cryptophyta")
 dim(unique_dammit_names)
 unique_dammit_names <- unique_dammit_names[!unique_dammit_names$SampleName %in% sub_phy,]
-plot(unique_dammit_names$NCGR,unique_dammit_names$DIB,ylim=c(-1,25000),xlim=c(-1,25000),col=Cols(unique_dammit_names$Phylum),pch=19)
+plot(unique_dammit_names$NCGR,unique_dammit_names$DIB,ylim=c(-0.01,0.8),xlim=c(-0.01,0.8),col=Cols(unique_dammit_names$Phylum),pch=19,ylab = "DIB",xlab="NCGR",main="Number of unique gene names per number of total transcripts",frame.plot = FALSE)
 abline(0,1)
-legend(20000,6000,legend=unique(as.character(dib_ncgr_kmers$Phylum)),col=rainbow(length(unique(unique_dammit_names$Phylum))),cex=0.8, pch=19,bty="n")
+legend(0.6,0.5,legend=unique(as.character(dib_ncgr_kmers$Phylum)),col=rainbow(length(unique(unique_dammit_names$Phylum))),cex=0.8, pch=19,bty="n")
+
 
 # kmers
 dib_ncgr_kmers <- read.csv("~/Documents/UCDavis/dib/MMETSP/git/MMETSP/assembly_evaluation_data/unique_kmers.csv")
