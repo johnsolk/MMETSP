@@ -4,16 +4,20 @@ from dammit.fileio.gff3 import GFF3Parser
 
 def get_annotations(mmetsp,dammit_gff_file,gene_names_dir,dammit_gff_dir):
     dammit_gff = dammit_gff_dir + dammit_gff_file
-    if os.path.isfile(dammit_gff):
-        print(dammit_gff)
-        annotations = GFF3Parser(filename=dammit_gff).read()
-        if 'Name' in annotations.columns and 'Dbxref' in annotations.columns:
-            all_names = annotations.sort_values(by=['seqid', 'score'], ascending=True).query('score < 1e-05').drop_duplicates(subset='seqid')[['seqid', 'Name','Dbxref','source']]
-            all_names_out = gene_names_dir + mmetsp + ".unique_annotations.csv"
-            all_names.to_csv(all_names_out)
-            print("Written:",all_names_out)
+    all_names_out = gene_names_dir + mmetsp + ".unique_annotations.csv"
+    if os.path.isfile(all_names_out):
+       print("Unique annotations already written:",all_names_out)
     else:
-        print("Missing:",dammit_gff)
+        if os.path.isfile(dammit_gff):
+            print(dammit_gff)
+            annotations = GFF3Parser(filename=dammit_gff).read()
+            if 'Name' in annotations.columns and 'Dbxref' in annotations.columns:
+                all_names = annotations.sort_values(by=['seqid', 'score'], ascending=True).query('score < 1e-05').drop_duplicates(subset='seqid')[['seqid', 'Name','Dbxref','source']]
+                all_names_out = gene_names_dir + mmetsp + ".unique_annotations.csv"
+                all_names.to_csv(all_names_out)
+                print("Written:",all_names_out)
+        else:
+            print("Missing:",dammit_gff)
 
 dammit_gff_dir = "/mnt/home/ljcohen/dammit_imicrobe/"
 gene_names_dir = "/mnt/home/ljcohen/dammit_imicrobe_genenames/"
