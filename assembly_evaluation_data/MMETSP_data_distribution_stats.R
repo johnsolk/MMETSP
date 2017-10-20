@@ -168,7 +168,7 @@ dim(unique_dammit_names)
 unique_dammit_names <- unique_dammit_names[!unique_dammit_names$SampleName %in% sub_phy,]
 plot(unique_dammit_names$NCGR,unique_dammit_names$DIB,ylim=c(-0.01,0.8),xlim=c(-0.01,0.8),col=Cols(unique_dammit_names$Phylum),pch=19,ylab = "DIB",xlab="NCGR",main="Number of unique gene names per number of total transcripts",frame.plot = FALSE)
 abline(0,1)
-legend(0.6,0.5,legend=unique(as.character(dib_ncgr_kmers$Phylum)),col=rainbow(length(unique(unique_dammit_names$Phylum))),cex=0.8, pch=19,bty="n")
+legend(0,0.7,legend=unique(as.character(dib_ncgr_kmers$Phylum)),col=rainbow(length(unique(unique_dammit_names$Phylum))),cex=0.8, pch=19,bty="n")
 
 
 # kmers
@@ -184,7 +184,7 @@ dib_ncgr_kmers<-dib_ncgr_kmers[dib_ncgr_kmers$Phylum %in% sub_phy,]
 Cols=function(vec){
   cols=rainbow(length(unique(vec)))
   return(cols[as.numeric(as.factor(vec))]) }
-plot(dib_ncgr_kmers$Unique_kmers,dib_ncgr_kmers$Unique_kmers_assembly, ylim=c(-1,120000000),xlim=c(-1,120000000),ylab = "DIB_unique_kmers",xlab="NCGR_unique_kmers",col=Cols(dib_ncgr_kmers$Phylum),pch=19)
+plot(dib_ncgr_kmers$Unique_kmers,dib_ncgr_kmers$Unique_kmers_assembly, ylim=c(-1,120000000),xlim=c(-1,120000000),ylab = "DIB_unique_kmers",xlab="NCGR_unique_kmers",col=Cols(dib_ncgr_kmers$Phylum),pch=19,frame.plot = FALSE)
 abline(0,1)
-legend(20,100000000,legend=unique(as.character(dib_ncgr_kmers$Phylum)),col=rainbow(length(unique(sub$Phylum))),cex=0.8, pch=19,bty="n")
+legend(20,125000000,legend=unique(as.character(dib_ncgr_kmers$Phylum)),col=rainbow(length(unique(sub$Phylum))),cex=0.8, pch=19,bty="n")
 
