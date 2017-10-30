@@ -4,7 +4,7 @@ library(multcomp)
 library(agricolae)
 library(RColorBrewer)
 library(lattice)
-library("tsne")
+
 ## MMETSP stats
 dib_v_ncgr <- read.csv("~/Documents/UCDavis/dib/MMETSP/git/MMETSP/assembly_evaluation_data/transrate_reference_trinity2.2.0_v_ncgr.cds.csv")
 ncgr_v_dib <- read.csv("~/Documents/UCDavis/dib/MMETSP/git/MMETSP/assembly_evaluation_data/transrate_reverse_ncgr.nt_v_trinity2.2.0.csv")
@@ -135,28 +135,29 @@ dim(x_log)
 pca = prcomp(x_log)
 names = rownames(x)
 fac= names
-
+Cols=function(vec){
+  cols=rainbow(length(unique(vec)))
+  return(cols[as.numeric(as.factor(vec))]) }
 
 xyplot(
   PC2 ~ PC1, groups=fac, data=as.data.frame(pca$x), pch=16, cex=1.5,
   panel=function(x, y, ...) {
     panel.xyplot(x, y, ...);
   },
-  aspect = "fill", col=cols
+  aspect = "fill", col=Cols(sub$Phylum)
   #main = draw.key(key = list(rect = list(col = list(col=colours), text = list(levels(fac)), rep = FALSE)))
 )
 
-Cols=function(vec){
-  cols=rainbow(length(unique(vec)))
-  return(cols[as.numeric(as.factor(vec))]) }
+
 #par(mfrow=c(1,2))
 plot(pca$x[,1:2], col=Cols(sub$Phylum), pch=19,
      xlab="PC1",ylab="PC2")
 legend(-20,0.75,legend=unique(as.character(sub$Phylum)),col=rainbow(length(unique(sub$Phylum))),cex=0.8, pch=19)
 
 ## unique gene names in NCGR and DIB
-#unique_dammit_names <- read.csv("~/Documents/UCDavis/dib/MMETSP/git/MMETSP/assembly_evaluation_data/unqiue_gene_names_ncgr_dib.csv")
+unique_dammit_names_numbers <- read.csv("~/Documents/UCDavis/dib/MMETSP/git/MMETSP/assembly_evaluation_data/unqiue_gene_names_ncgr_dib.csv")
 unique_dammit_names <- read.csv("~/Documents/UCDavis/dib/MMETSP/git/MMETSP/assembly_evaluation_data/normalized_unique_gene_names_ncgr_dib.csv")
+
 head(unique_dammit_names)
 dim(unique_dammit_names)
 unique_dammit_names <- unique_dammit_names[,c(2:4)]
@@ -180,6 +181,11 @@ special_flowers = c("MMETSP0693","MMETSP1019","MMETSP0923","MMETSP0008","MMETSP1
 sub_phy<-c("Bacillariophyta","Dinophyta","Ochrophyta","Haptophyta","Ciliophora","Chlorophyta","Cryptophyta")
 dib_ncgr_kmers <- dib_ncgr_kmers[!dib_ncgr_kmers$SampleName %in% special_flowers,]
 dim(dib_ncgr_kmers)
+head(dib_ncgr_kmers)
+dib_greater<-dib_ncgr_kmers[which(dib_ncgr_kmers$DIB>dib_ncgr_kmers$NCGR),]
+ncgr_greater<-dib_ncgr_kmers[which(dib_ncgr_kmers$NCGR>dib_ncgr_kmers$DIB),]
+dim(dib_greater)
+dim(ncgr_greater)
 dib_ncgr_kmers<-dib_ncgr_kmers[dib_ncgr_kmers$Phylum %in% sub_phy,]
 Cols=function(vec){
   cols=rainbow(length(unique(vec)))
