@@ -3,17 +3,17 @@ import os
 from dammit.fileio.gff3 import GFF3Parser
 
 
-def get_contig_num(contig_names,mmetsp):
-    frame = pd.read_csv(contig_names)
-    nums  = frame.loc[frame['SampleName'] == mmetsp]
-    if nums.empty:
-       print('empty:',contig_names)
-       contig_num = 0
-       return contig_num
-    else:
-       contig_num = nums.iloc[0]['n_seqs']
-       print(contig_names,mmetsp,":",contig_num)
-       return contig_num
+def get_contig_num(annotation_file,mmetsp):
+    frame = pd.read_csv(annotation_file)
+    nums  = len(frame.index)
+    #if nums.empty:
+    #   print('empty:',contig_names)
+    #   contig_num = 0
+    #   return contig_num
+    #else:
+    contig_num = nums
+    print(annotation_file,mmetsp,":",contig_num)
+    return contig_num
 
 def compare_names(dib_contig_num,ncgr_contig_num,unique_name_counts,dib_compare_dir,ncgr_compare_dir,mmetsp,ncgr_file,dib_file):
     ncgr = pd.read_csv(ncgr_file) 
@@ -67,8 +67,10 @@ dib_compare_dir = "/mnt/home/ljcohen/dib_unique_names/"
 ncgr_files= os.listdir(ncgr_annotations)
 dib_files = os.listdir(dib_annotations)
 
-dib_contig_nums = "~/MMETSP/assembly_evaluation_data/transrate_reference_scores_cds.csv"
-ncgr_contig_nums = "~/MMETSP/assembly_evaluation_data/transrate_imicrobe_scores.csv"
+# originally calculated as total contig nums
+#dib_contig_nums = "~/MMETSP/assembly_evaluation_data/transrate_reference_scores_cds.csv"
+#ncgr_contig_nums = "~/MMETSP/assembly_evaluation_data/transrate_imicrobe_scores.csv"
+# 12/11/2017 calculated as only annotated contig nums
 
 
 count = 0
@@ -76,12 +78,18 @@ unique_name_counts = []
 for dib_file in dib_files:
     mmetsp = dib_file.split(".")[0]
     count,ncgr_file = get_mmetsp_assembly(count,ncgr_files,mmetsp,dib_file)
-    dib_contig_num = get_contig_num(dib_contig_nums,mmetsp)
-    ncgr_contig_num = get_contig_num(ncgr_contig_nums,mmetsp)
-    if ncgr_file:
-        ncgr_filename = ncgr_annotations + ncgr_file
-        dib_filename = dib_annotations + dib_file
-        unique_name_counts = compare_names(dib_contig_num,ncgr_contig_num,unique_name_counts,dib_compare_dir,ncgr_compare_dir,mmetsp,ncgr_filename,dib_filename)
+    ncgr_file = ncgr_annotations + ncgr_file
+    dib_file = dib_annotations + dib_file
+    if os.path.isfile(dib_file) and os.path.isfile(ncgr_file):
+        print(ncgr_file)
+        print(dib_file)
+        dib_contig_num = get_contig_num(dib_file,mmetsp)
+        ncgr_contig_num = get_contig_num(ncgr_file,mmetsp)
+        unique_name_counts = compare_names(dib_contig_num,ncgr_contig_num,unique_name_counts,dib_compare_dir,ncgr_compare_dir,mmetsp,ncgr_file,dib_file)
+    else:
+        print("Files don't exist:")
+        print(ncgr_file)
+        print(dib_file)
 print(count)
 df = pd.DataFrame(unique_name_counts, columns = ['MMETSP_id','NCGR','DIB'])
 df.to_csv("~/MMETSP/assembly_evaluation_data/normalized_unique_gene_names_ncgr_dib.csv")
