@@ -14,14 +14,15 @@ special_flowers = c("MMETSP0693","MMETSP1019","MMETSP0923","MMETSP0008","MMETSP1
                     "MMETSP0197","MMETSP0398","MMETSP0399","MMETSP0922")
 tax_raw <- read.csv("assembly_evaluation_data/MMETSP_all_evaluation_matrix.csv")
 #head(tax_raw)
-colors=palette(brewer.pal(n=7,name="Dark2"))
-
+#colors=palette(brewer.pal(n=7,name="Dark2"))
 tax_raw <- tax_raw[!tax_raw$SampleName %in% special_flowers,]
-phylum_data <-tax_raw[,c(2,34,64,61,49,114,41,45,54)]
+phylum_data <-tax_raw[,c(2,34,45,64,61,49,114,41,45,54)]
 phylum <- phylum_data$Phylum
 # Restrict data to top 7 most common Phyla
 sub_phy<-c("Bacillariophyta","Dinophyta","Ochrophyta","Haptophyta","Ciliophora","Chlorophyta","Cryptophyta")
 sub<-phylum_data[phylum_data$Phylum %in% sub_phy,]
+colors=rainbow(length(sub_phy))
+# Mean %ORF
 fit <- aov(Unique_kmers ~ Phylum,data=sub)
 a<-HSD.test(fit,"Phylum",group=TRUE)
 tuk<-glht(fit,linfct=mcp(Phylum="Tukey"))
@@ -29,10 +30,11 @@ summary(tuk)
 tuk.cld<-cld(tuk)
 opar<-par(mai=c(1,1,1.5,1))
 options(repr.plot.width=12, repr.plot.height=10)
-pdf("paper/Figure8_tukey_taxa_unique_kmers.pdf")
+pdf("paper/Figure8_tukey_taxa_unique_kmers.pdf",width=11,height=8.5)
 plot(tuk.cld,col=colors,ylab="Mean %ORF")
 dev.off()
-plot(tuk.cld,col=colors)
+plot(tuk.cld,col=colors,ylab="Mean %ORF")
+# Unique k-mers
 fit2 <- aov(mean_orf_percent.x ~ Phylum,data=sub)
 b<-TukeyHSD(fit2,"Phylum",conf.level=0.95)
 tuk<-glht(fit2,linfct=mcp(Phylum="Tukey"))
@@ -40,9 +42,31 @@ summary(tuk)
 tuk.cld<-cld(tuk)
 opar<-par(mai=c(1,1,1.5,1))
 options(repr.plot.width=12, repr.plot.height=10)
-pdf("paper/Figure8_tukey_taxa_mean_orf.pdf")
+pdf("paper/Figure8_tukey_taxa_mean_orf.pdf",width=11,height=8.5)
 plot(tuk.cld,col=colors)
 dev.off()
 plot(tuk.cld,col=colors, ylab="Unique k-mers")
-
-
+# Number of Input reads
+fit3 <- aov(Input.Reads ~ Phylum,data=sub)
+b<-TukeyHSD(fit3,"Phylum",conf.level=0.95)
+tuk<-glht(fit3,linfct=mcp(Phylum="Tukey"))
+summary(tuk)
+tuk.cld<-cld(tuk)
+opar<-par(mai=c(1,1,1.5,1))
+options(repr.plot.width=12, repr.plot.height=10)
+pdf("paper/Figure8_tukey_taxa_input_Reads.pdf",width=11,height=8.5)
+plot(tuk.cld,col=colors)
+dev.off()
+plot(tuk.cld,col=colors, ylab="Number of Input Reads")
+# Number of contigs
+fit4 <- aov(n_seqs.x ~ Phylum,data=sub)
+b<-TukeyHSD(fit4,"Phylum",conf.level=0.95)
+tuk<-glht(fit4,linfct=mcp(Phylum="Tukey"))
+summary(tuk)
+tuk.cld<-cld(tuk)
+opar<-par(mai=c(1,1,1.5,1))
+options(repr.plot.width=12, repr.plot.height=10)
+pdf("paper/Figure8_tukey_taxa_n_contigs.pdf",width=11,height=8.5)
+plot(tuk.cld,col=colors)
+dev.off()
+plot(tuk.cld,col=colors, ylab="Number of Contigs")

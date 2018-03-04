@@ -1,5 +1,5 @@
 library(ggplot2)
-setwd("~/Documents/UCDavis/dib/MMETSP/git/MMETSP/")
+setwd("~/Documents/UCDavis/dib/MMETSP")
 annotation_stats<-read.csv("assembly_evaluation_data/annotation_stats.csv")
 total_annotation_names<-read.csv("assembly_evaluation_data/collapse_names",sep="\t",header=TRUE)
 transrate_reference<-read.csv("assembly_evaluation_data/transrate_reference_trinity2.2.0_v_ncgr.nt.csv")
