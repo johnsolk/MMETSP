@@ -39,9 +39,10 @@ def qsub_file(basedir, process_name, module_name_list, filename, process_string)
 #export MKL_NUM_THREADS=8
 #export OMP_NUM_THREADS=8
     f = """#!/bin/bash
-#PBS -l walltime=3:00:00,nodes=1:ppn=8
-#PBS -l mem=64gb
+#PBS -l walltime=6:00:00,nodes=1:ppn=10
+#PBS -l mem=72gb
 #PBS -j oe
+#PBS -A ged
 cd ${{PBS_O_WORKDIR}}
 """.format()
     with open(qsub_filename, "w") as qsub:
