@@ -8,7 +8,7 @@ from khmer import HLLCounter
 def get_unique_kmers(mmetsp,fasta):
     print(fasta)
     counter = HLLCounter(0.1,25)
-    counter.consume_fasta(fasta)
+    counter.consume_seqfile(fasta)
     unique_kmers = counter.estimate_cardinality()
     print(unique_kmers)
     return unique_kmers
@@ -40,9 +40,10 @@ def execute(fasta_list,unique_kmers_filename,basedir):
             make_unique_kmer_table(sample_dictionary,unique_kmers_filename)
 
 #basedir = "/mnt/home/ljcohen/mmetsp_assemblies_trinity2.2.0_zenodo/"
-#unique_kmers_filename = "/mnt/home/ljcohen/MMETSP/assembly_evaluation_data/unique_kmers.txt"
-basedir = "/mnt/research/ged/lisa/mmetsp/imicrobe/cds/"
-unique_kmers_filename = "/mnt/home/ljcohen/MMETSP/assembly_evaluation_data/imicrobe_unique_kmers.txt"
+unique_kmers_filename = "/mnt/home/ljcohen/MMETSP/assembly_evaluation_data/unique_kmers.txt"
+basedir = "/mnt/home/ljcohen/MMETSP_public/unannotated_assemblies_zenodo/"
+#basedir = "/mnt/research/ged/lisa/mmetsp/imicrobe/cds/"
+#unique_kmers_filename = "/mnt/home/ljcohen/MMETSP/assembly_evaluation_data/imicrobe_unique_kmers.txt"
 fasta_list = os.listdir(basedir)
 execute(fasta_list,unique_kmers_filename,basedir)
 print("File written:",unique_kmers_filename)
