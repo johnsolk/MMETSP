@@ -11,17 +11,23 @@ def run_busco(busco_dir,sample,basedir,filename):
     #protists_ensembl
     #eukaryota_odb9
     busco_command = """
+source ~/.bashrc
+module load GNU/4.8.3
+module unload python
+module load parallel
+source activate dammit_new
+
 python /mnt/home/ljcohen/bin/busco/BUSCO.py \
 -i {}{} \
--o {} -l /mnt/home/ljcohen/bin/busco/protists_ensembl \
+-o {} -l /mnt/home/ljcohen/bin/busco/eukaryota_odb9 \
 -m tran --cpu 8
 """.format(basedir,filename,sample)
     print(busco_command)
     commands = [busco_command]
-    process_name = "busco_protist"
+    process_name = "busco_euk"
     module_name_list = ""
     filename = sample
-    #clusterfunc_py3.qsub_file(busco_dir, process_name,module_name_list, filename, commands)
+    clusterfunc_py3.qsub_file(busco_dir, process_name,module_name_list, filename, commands)
 
 
 def parse_busco_stats(busco_filename, sample):
@@ -60,8 +66,8 @@ def execute(fasta_files,basedir,busco_dir,data_frame):
         if filename.startswith("MMETSP"):
             sample= filename.split(".")[0]
             print(sample)
-            #busco_file = busco_dir + "qsub_files/run_" + sample + "/short_summary_" + sample + ".txt"
-            busco_file = "/mnt/home/ljcohen/imicrobe_busco/eukaryota/run_"+ sample + "/short_summary_" + sample + ".txt"
+            busco_file = busco_dir + "qsub_files/run_" + sample + "/short_summary_" + sample + ".txt"
+            #busco_file = "/mnt/home/ljcohen/imicrobe_busco/eukaryota/run_"+ sample + "/short_summary_" + sample + ".txt"
             if os.path.isfile(busco_file):
                 count += 1
                 #run_busco(busco_dir,trinity_fasta,sample,sra)
@@ -71,11 +77,13 @@ def execute(fasta_files,basedir,busco_dir,data_frame):
                 run_busco(busco_dir,sample,basedir,filename) 
     return data_frame
 
-basedir = "/mnt/research/ged/lisa/mmetsp/imicrobe/cds/"
+basedir = "/mnt/home/ljcohen/mmetsp_assemblies_trinity_2.2.0_redoMarch2018/"
+#basedir = "/mnt/research/ged/lisa/mmetsp/imicrobe/cds/"
 #basedir = "/mnt/home/ljcohen/mmetsp_assemblies_trinity2.2.0/"
-busco_dir = "/mnt/home/ljcohen/imicrobe_busco/"
+#busco_dir = "/mnt/home/ljcohen/imicrobe_busco/"
+busco_dir = "/mnt/home/ljcohen/mmetsp_redoMarch2018_busco/"
 data_frame = pd.DataFrame()
 fasta_files = os.listdir(basedir)
 data_frame = execute(fasta_files,basedir,busco_dir,data_frame)
-print("File written: busco_scores.csv")
-data_frame.to_csv("busco_scores.csv")
+print("File written: /mnt/home/ljcohen/MMETSP/assembly_evaluation_data/busco_scores_redoMarch2018_protista.csv")
+data_frame.to_csv("/mnt/home/ljcohen/MMETSP/assembly_evaluation_data/busco_scores_redoMarch2018_protista.csv")
