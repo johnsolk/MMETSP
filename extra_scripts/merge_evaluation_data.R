@@ -1,4 +1,4 @@
-setwd("~/Documents/UCDavis/dib/MMETSP/git/MMETSP/")
+setwd("~/Documents/UCDavis/dib/MMETSP/")
 
 transrate<-read.csv("assembly_evaluation_data/transrate_scores_trinity-2.2.0.csv")
 transrate_reference<-read.csv("assembly_evaluation_data/transrate_reference_trinity2.2.0_v_ncgr.nt.csv")
@@ -19,7 +19,6 @@ MMETSP_ncbi_subset<-MMETSP_ncbi[,c(1:8,10,11,13:16,19:22,24:30,42,43,45:47)]
 colnames(MMETSP_ncbi_subset)
 mmetsp_id<-read.csv("imicrobe/MMETSP_Table.csv")
 imicrobe<-read.csv("imicrobe/Callum_FINAL_biosample_ids.csv")
-
 
 head(transrate)
 colnames(transrate)
