@@ -140,5 +140,5 @@ data_frame,finished,submitted= execute(data_frame, mmetsp_data, basedir, assembl
 print("Finished:",len(finished))
 print("Submitted:",len(submitted))
 print("Total MMETSP id:",len(mmetsp_data.keys()))
-#print("Data written to file: assembly_evaluation_data/transrate_scores_imicrobe_cds.csv")
-#data_frame.to_csv("assembly_evaluation_data/transrate_scores_imicrobe_cds.csv")
+print("Data written to file: assembly_evaluation_data/transrate_scores_imicrobe_nt.csv")
+data_frame.to_csv("assembly_evaluation_data/transrate_scores_imicrobe_nt.csv")
