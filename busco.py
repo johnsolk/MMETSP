@@ -15,9 +15,9 @@ source ~/.bashrc
 module load GNU/4.8.3
 module unload python
 module load parallel
-source activate dammit_new
+source activate busco_v3
 
-python /mnt/home/ljcohen/bin/busco/BUSCO.py \
+python /mnt/home/ljcohen/bin/busco/scripts/run_BUSCO.py \
 -i {}{} \
 -o {} -l /mnt/home/ljcohen/bin/busco/eukaryota_odb9 \
 -m tran --cpu 8
@@ -86,5 +86,5 @@ data_frame = pd.DataFrame()
 fasta_files = os.listdir(basedir)
 data_frame = execute(fasta_files,basedir,busco_dir,data_frame)
 #print("File written: /mnt/home/ljcohen/MMETSP/assembly_evaluation_data/busco_scores_redoMarch2018_protista.csv")
-data_frame.to_csv("/mnt/home/ljcohen/MMETSP/assembly_evaluation_data/busco_scores_imicrobe_eukaryote.csv")
-print("File written: /mnt/home/ljcohen/MMETSP/assembly_evaluation_data/busco_scores_imicrobe_eukaryote.csv")
+#data_frame.to_csv("/mnt/home/ljcohen/MMETSP/assembly_evaluation_data/busco_scores_imicrobe_eukaryote.csv")
+#print("File written: /mnt/home/ljcohen/MMETSP/assembly_evaluation_data/busco_scores_imicrobe_eukaryote.csv")

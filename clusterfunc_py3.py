@@ -59,6 +59,6 @@ cd ${{PBS_O_WORKDIR}}
             "env | grep PBS # Print out values of the current jobs PBS environment variables\n")
     qsub_string = 'qsub -V ' + qsub_filename
     print(qsub_string)
-    #s = subprocess.Popen(qsub_string, shell=True)
-    #s.wait()
+    s = subprocess.Popen(qsub_string, shell=True)
+    s.wait()
     os.chdir(working_dir)
