@@ -42,7 +42,7 @@
 41,Surviving.Reads,Trimmomatic,,http://www.usadellab.org/cms/uploads/supplementary/Trimmomatic/TrimmomaticManual_V0.32.pdf
 42,Percent.Surviving,Trimmomatic,,http://www.usadellab.org/cms/uploads/supplementary/Trimmomatic/TrimmomaticManual_V0.32.pdf
 43,assembly.x,Transrate: score,DIB assembly path,http://hibberdlab.com/transrate/metrics.html
-44,n_seqs.x,Transrate: score,number of contigs,http://hibberdlab.com/transrate/metrics.html
+44,n_seqs,Transrate: score,number of contigs,http://hibberdlab.com/transrate/metrics.html
 45,smallest.x,Transrate: score,smallest contig,http://hibberdlab.com/transrate/metrics.html
 46,largest.x,Transrate: score,largest contig,http://hibberdlab.com/transrate/metrics.html
 47,n_bases.x,Transrate: score,number of bases in the assembly,http://hibberdlab.com/transrate/metrics.html
@@ -51,7 +51,7 @@
 50,n_over_1k.x,Transrate: score,"number of contigs  over length 1,000 bases",http://hibberdlab.com/transrate/metrics.html
 51,n_over_10k.x,Transrate: score,"number of contigs over length 10,000 bases",http://hibberdlab.com/transrate/metrics.html
 52,n_with_orf.x,Transrate: score,number of contigs with an open reading frame,http://hibberdlab.com/transrate/metrics.html
-53,mean_orf_percent.x,Transrate: score,mean open reading frame percentage in the assembly,http://hibberdlab.com/transrate/metrics.html
+53,mean_orf_percent,Transrate: score,mean open reading frame percentage in the assembly,http://hibberdlab.com/transrate/metrics.html
 54,n90.x,Transrate: score,90% of contigs are this length or higher,http://hibberdlab.com/transrate/metrics.html
 55,n70.x,Transrate: score,70% of contigs are this length or higher,http://hibberdlab.com/transrate/metrics.html
 56,n50.x,Transrate: score,50% of contigs are this length or higher,http://hibberdlab.com/transrate/metrics.html
