@@ -77,13 +77,14 @@ def execute(fasta_files,basedir,busco_dir,data_frame):
                 run_busco(busco_dir,sample,basedir,filename) 
     return data_frame
 
-basedir = "/mnt/home/ljcohen/mmetsp_assemblies_trinity_2.2.0_redoMarch2018/"
-#basedir = "/mnt/research/ged/lisa/mmetsp/imicrobe/cds/"
+#basedir = "/mnt/home/ljcohen/mmetsp_assemblies_trinity_2.2.0_redoMarch2018/"
+basedir = "/mnt/research/ged/lisa/mmetsp/imicrobe/nt/"
 #basedir = "/mnt/home/ljcohen/mmetsp_assemblies_trinity2.2.0/"
-#busco_dir = "/mnt/home/ljcohen/imicrobe_busco/"
-busco_dir = "/mnt/home/ljcohen/mmetsp_redoMarch2018_busco/"
+busco_dir = "/mnt/home/ljcohen/imicrobe_busco/"
+#busco_dir = "/mnt/home/ljcohen/mmetsp_redoMarch2018_busco/"
 data_frame = pd.DataFrame()
 fasta_files = os.listdir(basedir)
 data_frame = execute(fasta_files,basedir,busco_dir,data_frame)
-print("File written: /mnt/home/ljcohen/MMETSP/assembly_evaluation_data/busco_scores_redoMarch2018_protista.csv")
-data_frame.to_csv("/mnt/home/ljcohen/MMETSP/assembly_evaluation_data/busco_scores_redoMarch2018_protista.csv")
+#print("File written: /mnt/home/ljcohen/MMETSP/assembly_evaluation_data/busco_scores_redoMarch2018_protista.csv")
+data_frame.to_csv("/mnt/home/ljcohen/MMETSP/assembly_evaluation_data/busco_scores_imicrobe_protist.csv")
+print("File written: /mnt/home/ljcohen/MMETSP/assembly_evaluation_data/busco_scores_imicrobe_protist.csv")
