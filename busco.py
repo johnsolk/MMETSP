@@ -63,7 +63,7 @@ def execute(fasta_files,basedir,busco_dir,data_frame):
     count = 0
     # construct an empty pandas dataframe to add on each assembly.csv to
     for filename in fasta_files:
-        if filename.startswith("MMETSP"):
+        if filename.endswith("fixed.fa"):
             sample= filename.split(".")[0]
             print(sample)
             busco_file = busco_dir + "qsub_files/run_" + sample + "/short_summary_" + sample + ".txt"
@@ -86,5 +86,5 @@ data_frame = pd.DataFrame()
 fasta_files = os.listdir(basedir)
 data_frame = execute(fasta_files,basedir,busco_dir,data_frame)
 #print("File written: /mnt/home/ljcohen/MMETSP/assembly_evaluation_data/busco_scores_redoMarch2018_protista.csv")
-data_frame.to_csv("/mnt/home/ljcohen/MMETSP/assembly_evaluation_data/busco_scores_imicrobe_protist.csv")
-print("File written: /mnt/home/ljcohen/MMETSP/assembly_evaluation_data/busco_scores_imicrobe_protist.csv")
+data_frame.to_csv("/mnt/home/ljcohen/MMETSP/assembly_evaluation_data/busco_scores_imicrobe_eukaryote.csv")
+print("File written: /mnt/home/ljcohen/MMETSP/assembly_evaluation_data/busco_scores_imicrobe_eukaryote.csv")
