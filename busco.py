@@ -19,12 +19,12 @@ source activate busco_v3
 
 python /mnt/home/ljcohen/bin/busco/scripts/run_BUSCO.py \
 -i {}{} \
--o {} -l /mnt/home/ljcohen/bin/busco/eukaryota_odb9 \
+-o {} -l /mnt/home/ljcohen/bin/busco/protists_ensembl \
 -m tran --cpu 8
 """.format(basedir,filename,sample)
     print(busco_command)
     commands = [busco_command]
-    process_name = "busco_euk"
+    process_name = "busco_protist"
     module_name_list = ""
     filename = sample
     clusterfunc_py3.qsub_file(busco_dir, process_name,module_name_list, filename, commands)
@@ -86,5 +86,5 @@ data_frame = pd.DataFrame()
 fasta_files = os.listdir(basedir)
 data_frame = execute(fasta_files,basedir,busco_dir,data_frame)
 #print("File written: /mnt/home/ljcohen/MMETSP/assembly_evaluation_data/busco_scores_redoMarch2018_protista.csv")
-#data_frame.to_csv("/mnt/home/ljcohen/MMETSP/assembly_evaluation_data/busco_scores_imicrobe_eukaryote.csv")
-#print("File written: /mnt/home/ljcohen/MMETSP/assembly_evaluation_data/busco_scores_imicrobe_eukaryote.csv")
+data_frame.to_csv("/mnt/home/ljcohen/MMETSP/assembly_evaluation_data/busco_scores_v3_imicrobe_protist.csv")
+print("File written: /mnt/home/ljcohen/MMETSP/assembly_evaluation_data/busco_scores_imicrobe_protist.csv")
