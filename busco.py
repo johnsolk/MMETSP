@@ -19,12 +19,12 @@ source activate busco_v3
 
 python /mnt/home/ljcohen/bin/busco/scripts/run_BUSCO.py \
 -i {}{} \
--o {} -l /mnt/home/ljcohen/bin/busco/protists_ensembl \
+-o {} -l /mnt/home/ljcohen/bin/busco/eukaryota_odb9 \
 -m tran --cpu 8
 """.format(basedir,filename,sample)
     print(busco_command)
     commands = [busco_command]
-    process_name = "busco_protist"
+    process_name = "busco_euk"
     module_name_list = ""
     filename = sample
     clusterfunc_py3.qsub_file(busco_dir, process_name,module_name_list, filename, commands)
@@ -63,7 +63,7 @@ def execute(fasta_files,basedir,busco_dir,data_frame):
     count = 0
     # construct an empty pandas dataframe to add on each assembly.csv to
     for filename in fasta_files:
-        if filename.endswith("fixed.fa"):
+        if filename.endswith(".fasta"):
             sample= filename.split(".")[0]
             print(sample)
             busco_file = busco_dir + "qsub_files/run_" + sample + "/short_summary_" + sample + ".txt"
@@ -78,13 +78,15 @@ def execute(fasta_files,basedir,busco_dir,data_frame):
     return data_frame
 
 #basedir = "/mnt/home/ljcohen/mmetsp_assemblies_trinity_2.2.0_redoMarch2018/"
-basedir = "/mnt/research/ged/lisa/mmetsp/imicrobe/nt/"
+#basedir = "/mnt/research/ged/lisa/mmetsp/imicrobe/nt/"
 #basedir = "/mnt/home/ljcohen/mmetsp_assemblies_trinity2.2.0/"
-busco_dir = "/mnt/home/ljcohen/imicrobe_busco/"
+basedir = "/mnt/home/ljcohen/MMETSP_public/unannotated_assemblies_figshare/"
+#busco_dir = "/mnt/home/ljcohen/imicrobe_busco/"
 #busco_dir = "/mnt/home/ljcohen/mmetsp_redoMarch2018_busco/"
+busco_dir = "/mnt/home/ljcohen/mmetsp_busco/"
 data_frame = pd.DataFrame()
 fasta_files = os.listdir(basedir)
 data_frame = execute(fasta_files,basedir,busco_dir,data_frame)
 #print("File written: /mnt/home/ljcohen/MMETSP/assembly_evaluation_data/busco_scores_redoMarch2018_protista.csv")
-data_frame.to_csv("/mnt/home/ljcohen/MMETSP/assembly_evaluation_data/busco_scores_v3_imicrobe_protist.csv")
-print("File written: /mnt/home/ljcohen/MMETSP/assembly_evaluation_data/busco_scores_imicrobe_protist.csv")
+data_frame.to_csv("/mnt/home/ljcohen/MMETSP/assembly_evaluation_data/busco_scores_v3_dib_eukaryota.csv")
+print("File written: /mnt/home/ljcohen/MMETSP/assembly_evaluation_data/busco_scores_v3_dib_eukaryota.csv")
