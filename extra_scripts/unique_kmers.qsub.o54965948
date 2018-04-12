@@ -1,0 +1,158 @@
+
+Inactive Modules:
+  1) R
+
+Due to MODULEPATH changes the following have been reloaded:
+  1) TBB/4.1.0
+
+The following have been reloaded with a version change:
+  1) Boost/1.47.0 => Boost/1.58.0     3) OpenMPI/1.4.3 => OpenMPI/1.6.5
+  2) GNU/4.4.5 => GNU/4.8.3
+
+
+Lmod Warning: python not found, unloading: Python/2.7.2
+/mnt/research/ged/lisa/mmetsp/imicrobe/nt/MMETSP1403.nt.fa.fixed.fa
+14078915
+/mnt/research/ged/lisa/mmetsp/imicrobe/nt/MMETSP0292.nt.fa.fixed.fa
+10829338
+/mnt/research/ged/lisa/mmetsp/imicrobe/nt/MMETSP1316.nt.fa.fixed.fa
+10049557
+/mnt/research/ged/lisa/mmetsp/imicrobe/nt/MMETSP1042.nt.fa.fixed.fa
+20957422
+/mnt/research/ged/lisa/mmetsp/imicrobe/nt/MMETSP0228.nt.fa.fixed.fa
+49090117
+/mnt/research/ged/lisa/mmetsp/imicrobe/nt/MMETSP0944.nt.fa.fixed.fa
+23943500
+/mnt/research/ged/lisa/mmetsp/imicrobe/nt/MMETSP0372.nt.fa.fixed.fa
+3521241
+/mnt/research/ged/lisa/mmetsp/imicrobe/nt/MMETSP1355.nt.fa.fixed.fa
+18190503
+/mnt/research/ged/lisa/mmetsp/imicrobe/nt/MMETSP0038.nt.fa.fixed.fa
+12154177
+/mnt/research/ged/lisa/mmetsp/imicrobe/nt/MMETSP1001.nt.fa.fixed.fa
+20416885
+/mnt/research/ged/lisa/mmetsp/imicrobe/nt/MMETSP0800.nt.fa.fixed.fa
+10722734
+/mnt/research/ged/lisa/mmetsp/imicrobe/nt/MMETSP0733.nt.fa.fixed.fa
+16859205
+/mnt/research/ged/lisa/mmetsp/imicrobe/nt/MMETSP1440.nt.fa.fixed.fa
+24260364
+/mnt/research/ged/lisa/mmetsp/imicrobe/nt/MMETSP0467.nt.fa.fixed.fa
+26483304
+/mnt/research/ged/lisa/mmetsp/imicrobe/nt/MMETSP0789.nt.fa.fixed.fa
+13465656
+/mnt/research/ged/lisa/mmetsp/imicrobe/nt/MMETSP0907.nt.fa.fixed.fa
+28322105
+/mnt/research/ged/lisa/mmetsp/imicrobe/nt/MMETSP0797.nt.fa.fixed.fa
+29432942
+/mnt/research/ged/lisa/mmetsp/imicrobe/nt/MMETSP1106.nt.fa.fixed.fa
+18299281
+/mnt/research/ged/lisa/mmetsp/imicrobe/nt/MMETSP0121.nt.fa.fixed.fa
+33149899
+/mnt/research/ged/lisa/mmetsp/imicrobe/nt/MMETSP0047.nt.fa.fixed.fa
+23220982
+/mnt/research/ged/lisa/mmetsp/imicrobe/nt/MMETSP0059.nt.fa.fixed.fa
+29386613
+/mnt/research/ged/lisa/mmetsp/imicrobe/nt/MMETSP1060.nt.fa.fixed.fa
+21823960
+/mnt/research/ged/lisa/mmetsp/imicrobe/nt/MMETSP0313.nt.fa.fixed.fa
+13760642
+/mnt/research/ged/lisa/mmetsp/imicrobe/nt/MMETSP1334.nt.fa.fixed.fa
+28425496
+/mnt/research/ged/lisa/mmetsp/imicrobe/nt/MMETSP0418.nt.fa.fixed.fa
+9066103
+/mnt/research/ged/lisa/mmetsp/imicrobe/nt/MMETSP1421.nt.fa.fixed.fa
+23025185
+/mnt/research/ged/lisa/mmetsp/imicrobe/nt/MMETSP0752.nt.fa.fixed.fa
+12674018
+/mnt/research/ged/lisa/mmetsp/imicrobe/nt/MMETSP1167.nt.fa.fixed.fa
+21634249
+/mnt/research/ged/lisa/mmetsp/imicrobe/nt/MMETSP0140.nt.fa.fixed.fa
+16356991
+/mnt/research/ged/lisa/mmetsp/imicrobe/nt/MMETSP1390.nt.fa.fixed.fa
+13927325
+/mnt/research/ged/lisa/mmetsp/imicrobe/nt/MMETSP1462.nt.fa.fixed.fa
+46966152
+/mnt/research/ged/lisa/mmetsp/imicrobe/nt/MMETSP0004.nt.fa.fixed.fa
+10472571
+/mnt/research/ged/lisa/mmetsp/imicrobe/nt/MMETSP1180.nt.fa.fixed.fa
+10623084
+/mnt/research/ged/lisa/mmetsp/imicrobe/nt/MMETSP1369.nt.fa.fixed.fa
+35989759
+/mnt/research/ged/lisa/mmetsp/imicrobe/nt/MMETSP1377.nt.fa.fixed.fa
+29787448
+/mnt/research/ged/lisa/mmetsp/imicrobe/nt/MMETSP1124.nt.fa.fixed.fa
+18963354
+/mnt/research/ged/lisa/mmetsp/imicrobe/nt/MMETSP0103.nt.fa.fixed.fa
+13131764
+/mnt/research/ged/lisa/mmetsp/imicrobe/nt/MMETSP0898.nt.fa.fixed.fa
+27704520
+/mnt/research/ged/lisa/mmetsp/imicrobe/nt/MMETSP0886.nt.fa.fixed.fa
+13170469
+/mnt/research/ged/lisa/mmetsp/imicrobe/nt/MMETSP0790.nt.fa.fixed.fa
+34268643
+/mnt/research/ged/lisa/mmetsp/imicrobe/nt/MMETSP0900.nt.fa.fixed.fa
+28298665
+/mnt/research/ged/lisa/mmetsp/imicrobe/nt/MMETSP0126.nt.fa.fixed.fa
+20976427
+/mnt/research/ged/lisa/mmetsp/imicrobe/nt/MMETSP1101.nt.fa.fixed.fa
+27124516
+/mnt/research/ged/lisa/mmetsp/imicrobe/nt/MMETSP0272.nt.fa.fixed.fa
+57982623
+/mnt/research/ged/lisa/mmetsp/imicrobe/nt/MMETSP1006.nt.fa.fixed.fa
+13543456
+/mnt/research/ged/lisa/mmetsp/imicrobe/nt/MMETSP1018.nt.fa.fixed.fa
+6901574
+/mnt/research/ged/lisa/mmetsp/imicrobe/nt/MMETSP1352.nt.fa.fixed.fa
+13397755
+/mnt/research/ged/lisa/mmetsp/imicrobe/nt/MMETSP1459.nt.fa.fixed.fa
+10303940
+/mnt/research/ged/lisa/mmetsp/imicrobe/nt/MMETSP1447.nt.fa.fixed.fa
+15732740
+/mnt/research/ged/lisa/mmetsp/imicrobe/nt/MMETSP0734.nt.fa.fixed.fa
+19058943
+/mnt/research/ged/lisa/mmetsp/imicrobe/nt/MMETSP0807.nt.fa.fixed.fa
+9345567
+/mnt/research/ged/lisa/mmetsp/imicrobe/nt/MMETSP0689.nt.fa.fixed.fa
+46831559
+/mnt/research/ged/lisa/mmetsp/imicrobe/nt/MMETSP0697.nt.fa.fixed.fa
+16786514
+/mnt/research/ged/lisa/mmetsp/imicrobe/nt/MMETSP0819.nt.fa.fixed.fa
+24131210
+/mnt/research/ged/lisa/mmetsp/imicrobe/nt/MMETSP1142.nt.fa.fixed.fa
+19558523
+/mnt/research/ged/lisa/mmetsp/imicrobe/nt/MMETSP0943.nt.fa.fixed.fa
+21344195
+/mnt/research/ged/lisa/mmetsp/imicrobe/nt/MMETSP1404.nt.fa.fixed.fa
+12380332
+/mnt/research/ged/lisa/mmetsp/imicrobe/nt/MMETSP0580.nt.fa.fixed.fa
+16352994
+/mnt/research/ged/lisa/mmetsp/imicrobe/nt/MMETSP0328.nt.fa.fixed.fa
+4369824
+/mnt/research/ged/lisa/mmetsp/imicrobe/nt/MMETSP0295.nt.fa.fixed.fa
+10309714
+/mnt/research/ged/lisa/mmetsp/imicrobe/nt/MMETSP1311.nt.fa.fixed.fa
+6925886
+/mnt/research/ged/lisa/mmetsp/imicrobe/nt/MMETSP1080.nt.fa.fixed.fa
+12807768
+/mnt/research/ged/lisa/mmetsp/imicrobe/nt/MMETSP0104.nt.fa.fixed.fa
+11271688
+/mnt/research/ged/lisa/mmetsp/imicrobe/nt/MMETSP1123.nt.fa.fixed.fa
+19408890
+/mnt/research/ged/lisa/mmetsp/imicrobe/nt/MMETSP0881.nt.fa.fixed.fa
+26315818
+/mnt/research/ged/lisa/mmetsp/imicrobe/nt/MMETSP0922.nt.fa.fixed.fa
+2426770
+/mnt/research/ged/lisa/mmetsp/imicrobe/nt/MMETSP0998.nt.fa.fixed.fa
+23473613
+/mnt/research/ged/lisa/mmetsp/imicrobe/nt/MMETSP0716.nt.fa.fixed.fa
+Traceback (most recent call last):
+  File "getuniquekmers.py", line 49, in <module>
+    execute(fasta_list,unique_kmers_filename,basedir)
+  File "getuniquekmers.py", line 39, in execute
+    sample_dictionary = make_unique_kmers_dictionary(sample_dictionary,fasta_file,mmetsp)
+  File "getuniquekmers.py", line 17, in make_unique_kmers_dictionary
+    unique_kmers = get_unique_kmers(mmetsp,fasta)
+  File "getuniquekmers.py", line 11, in get_unique_kmers
+    counter.consume_seqfile(fasta)
+OSError: File /mnt/research/ged/lisa/mmetsp/imicrobe/nt/MMETSP0716.nt.fa.fixed.fa does not contain any sequences!
