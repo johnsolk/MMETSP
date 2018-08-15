@@ -1,0 +1,11 @@
+@article {Kannan039230,
+	author = {Kannan, Sreeram and Hui, Joseph and Mazooji, Kayvon and Pachter, Lior and Tse, David},
+	title = {Shannon: An Information-Optimal de Novo RNA-Seq Assembler},
+	year = {2016},
+	doi = {10.1101/039230},
+	publisher = {Cold Spring Harbor Laboratory},
+	abstract = {De novo assembly of short RNA-Seq reads into transcripts is challenging due to sequence similarities in transcriptomes arising from gene duplications and alternative splicing of transcripts. We present Shannon, an RNA-Seq assembler with an optimality guarantee derived from principles of information theory: Shannon reconstructs nearly all information-theoretically reconstructable transcripts. Shannon is based on a theory we develop for de novo RNA-Seq assembly that reveals differing abundances among transcripts to be the key, rather than the barrier, to effective assembly. The assembly problem is formulated as a sparsest-flow problem on a transcript graph, and the heart of Shannon is a novel iterative flow-decomposition algorithm. This algorithm provably solves the information-theoretically reconstructable instances in linear-time even though the general sparsest-flow problem is NP-hard. Shannon also incorporates several additional new algorithmic advances: a new error-correction algorithm based on successive cancelation, a multi-bridging algorithm that carefully utilizes read information in the k-mer de Bruijn graph, and an approximate graph partitioning algorithm to split the transcriptome de Bruijn graph into smaller components. In tests on large RNA-Seq datasets, Shannon obtains significant increases in sensitivity along with improvements in specificity in comparison to state-of-the-art assemblers.},
+	URL = {https://www.biorxiv.org/content/early/2016/02/09/039230},
+	eprint = {https://www.biorxiv.org/content/early/2016/02/09/039230.full.pdf},
+	journal = {bioRxiv}
+}
