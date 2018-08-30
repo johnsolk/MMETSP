@@ -1,0 +1,15 @@
+# BUSCO version is: 3.0.2 
+# The lineage dataset is: eukaryota_odb9 (Creation date: 2016-11-02, number of species: 100, number of BUSCOs: 303)
+# To reproduce this run: python /mnt/home/ljcohen/bin/busco/scripts/run_BUSCO.py -i /mnt/research/ged/lisa/mmetsp/imicrobe/nt/MMETSP0232.nt.fa.fixed.fa -o MMETSP0232 -l /mnt/home/ljcohen/bin/busco/eukaryota_odb9/ -m transcriptome -c 8
+#
+# Summarized benchmarking in BUSCO notation for file /mnt/research/ged/lisa/mmetsp/imicrobe/nt/MMETSP0232.nt.fa.fixed.fa
+# BUSCO was run in mode: transcriptome
+
+	C:82.6%[S:80.9%,D:1.7%],F:7.6%,M:9.8%,n:303
+
+	250	Complete BUSCOs (C)
+	245	Complete and single-copy BUSCOs (S)
+	5	Complete and duplicated BUSCOs (D)
+	23	Fragmented BUSCOs (F)
+	30	Missing BUSCOs (M)
+	303	Total BUSCO groups searched
