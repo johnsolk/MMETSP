@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="mobile-web-app-capable" content="yes">
+    <title>
+        Reviewers’ comments on MMETSP paper - HackMD
+    </title>
+    <link rel="icon" type="image/png" href="https://hackmd.oxli.org/favicon.png">
+    <link rel="apple-touch-icon" href="https://hackmd.oxli.org/apple-touch-icon.png">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css" integrity="sha256-3iu9jgsy9TpTwXKb7bNQzqWekRX7pPK+2OLj3R922fo=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/octicons/3.5.0/octicons.min.css" integrity="sha256-QiWfLIsCT02Sdwkogf6YMiQlj4NE84MKkzEMkZnMGdg=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.1/themes/prism.min.css" integrity="sha256-vtR0hSWRc3Tb26iuN2oZHt3KRUomwTufNIf5/4oeCyg=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/styles/github-gist.min.css" integrity="sha256-tAflq+ymku3Khs+I/WcAneIlafYgDiOQ9stIHH985Wo=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/emojify.js/1.1.0/css/basic/emojify.min.css" integrity="sha256-UOrvMOsSDSrW6szVLe8ZDZezBxh5IoIfgTwdNDgTjiU=" crossorigin="anonymous" />
+    <style>
+        @import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400italic,600,600italic,300italic,300|Source+Serif+Pro|Source+Code+Pro:400,300,500&subset=latin,latin-ext);.markdown-body{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;font-size:16px;line-height:1.5;word-wrap:break-word}.markdown-body:after,.markdown-body:before{display:table;content:""}.markdown-body:after{clear:both}.markdown-body>:first-child{margin-top:0!important}.markdown-body>:last-child{margin-bottom:0!important}.markdown-body a:not([href]){color:inherit;text-decoration:none}.markdown-body .absent{color:#c00}.markdown-body .anchor{float:left;padding-right:4px;margin-left:-20px;line-height:1}.markdown-body .anchor:focus{outline:none}.markdown-body blockquote,.markdown-body dl,.markdown-body ol,.markdown-body p,.markdown-body pre,.markdown-body table,.markdown-body ul{margin-top:0;margin-bottom:16px}.markdown-body hr{height:.25em;padding:0;margin:24px 0;background-color:#e7e7e7;border:0}.markdown-body blockquote{padding:0 1em;color:#777;border-left:.25em solid #ddd}.markdown-body blockquote>:first-child{margin-top:0}.markdown-body blockquote>:last-child{margin-bottom:0}.markdown-body .loweralpha{list-style-type:lower-alpha}.markdown-body h1,.markdown-body h2,.markdown-body h3,.markdown-body h4,.markdown-body h5,.markdown-body h6{margin-top:24px;margin-bottom:16px;font-weight:600;line-height:1.25}.markdown-body h1 .octicon-link,.markdown-body h2 .octicon-link,.markdown-body h3 .octicon-link,.markdown-body h4 .octicon-link,.markdown-body h5 .octicon-link,.markdown-body h6 .octicon-link{color:#000;vertical-align:middle;visibility:hidden}.markdown-body h1:hover .anchor,.markdown-body h2:hover .anchor,.markdown-body h3:hover .anchor,.markdown-body h4:hover .anchor,.markdown-body h5:hover .anchor,.markdown-body h6:hover .anchor{text-decoration:none}.markdown-body h1:hover .anchor .octicon-link,.markdown-body h2:hover .anchor .octicon-link,.markdown-body h3:hover .anchor .octicon-link,.markdown-body h4:hover .anchor .octicon-link,.markdown-body h5:hover .anchor .octicon-link,.markdown-body h6:hover .anchor .octicon-link{visibility:visible}.markdown-body h1 code,.markdown-body h1 tt,.markdown-body h2 code,.markdown-body h2 tt,.markdown-body h3 code,.markdown-body h3 tt,.markdown-body h4 code,.markdown-body h4 tt,.markdown-body h5 code,.markdown-body h5 tt,.markdown-body h6 code,.markdown-body h6 tt{font-size:inherit}.markdown-body h1{font-size:2em}.markdown-body h1,.markdown-body h2{padding-bottom:.3em;border-bottom:1px solid #eee}.markdown-body h2{font-size:1.5em}.markdown-body h3{font-size:1.25em}.markdown-body h4{font-size:1em}.markdown-body h5{font-size:.875em}.markdown-body h6{font-size:.85em;color:#777}.markdown-body ol,.markdown-body ul{padding-left:2em}.markdown-body ol.no-list,.markdown-body ul.no-list{padding:0;list-style-type:none}.markdown-body ol ol,.markdown-body ol ul,.markdown-body ul ol,.markdown-body ul ul{margin-top:0;margin-bottom:0}.markdown-body li>p{margin-top:16px}.markdown-body li+li{margin-top:.25em}.markdown-body dl{padding:0}.markdown-body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:700}.markdown-body dl dd{padding:0 16px;margin-bottom:16px}.markdown-body table{display:block;width:100%;overflow:auto;word-break:normal;word-break:keep-all}.markdown-body table th{font-weight:700}.markdown-body table td,.markdown-body table th{padding:6px 13px;border:1px solid #ddd}.markdown-body table tr{background-color:#fff;border-top:1px solid #ccc}.markdown-body table tr:nth-child(2n){background-color:#f8f8f8}.markdown-body img{max-width:100%;box-sizing:content-box;background-color:#fff}.markdown-body img[align=right]{padding-left:20px}.markdown-body img[align=left]{padding-right:20px}.markdown-body .emoji{max-width:none;vertical-align:text-top;background-color:transparent}.markdown-body span.frame{display:block;overflow:hidden}.markdown-body span.frame>span{display:block;float:left;width:auto;padding:7px;margin:13px 0 0;overflow:hidden;border:1px solid #ddd}.markdown-body span.frame span img{display:block;float:left}.markdown-body span.frame span span{display:block;padding:5px 0 0;clear:both;color:#333}.markdown-body span.align-center{display:block;overflow:hidden;clear:both}.markdown-body span.align-center>span{display:block;margin:13px auto 0;overflow:hidden;text-align:center}.markdown-body span.align-center span img{margin:0 auto;text-align:center}.markdown-body span.align-right{display:block;overflow:hidden;clear:both}.markdown-body span.align-right>span{display:block;margin:13px 0 0;overflow:hidden;text-align:right}.markdown-body span.align-right span img{margin:0;text-align:right}.markdown-body span.float-left{display:block;float:left;margin-right:13px;overflow:hidden}.markdown-body span.float-left span{margin:13px 0 0}.markdown-body span.float-right{display:block;float:right;margin-left:13px;overflow:hidden}.markdown-body span.float-right>span{display:block;margin:13px auto 0;overflow:hidden;text-align:right}.markdown-body code,.markdown-body tt{padding:0;padding-top:.2em;padding-bottom:.2em;margin:0;font-size:85%;background-color:rgba(0,0,0,.04);border-radius:3px}.markdown-body code:after,.markdown-body code:before,.markdown-body tt:after,.markdown-body tt:before{letter-spacing:-.2em;content:"\A0"}.markdown-body code br,.markdown-body tt br{display:none}.markdown-body del code{text-decoration:inherit}.markdown-body pre{word-wrap:normal}.markdown-body pre>code{padding:0;margin:0;font-size:100%;word-break:normal;white-space:pre;background:transparent;border:0}.markdown-body .highlight{margin-bottom:16px}.markdown-body .highlight pre{margin-bottom:0;word-break:normal}.markdown-body .highlight pre,.markdown-body pre{padding:16px;overflow:auto;font-size:85%;line-height:1.45;background-color:#f7f7f7;border-radius:3px}.markdown-body pre code,.markdown-body pre tt{display:inline;max-width:auto;padding:0;margin:0;overflow:visible;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}.markdown-body pre code:after,.markdown-body pre code:before,.markdown-body pre tt:after,.markdown-body pre tt:before{content:normal}.markdown-body .csv-data td,.markdown-body .csv-data th{padding:5px;overflow:hidden;font-size:12px;line-height:1;text-align:left;white-space:nowrap}.markdown-body .csv-data .blob-line-num{padding:10px 8px 9px;text-align:right;background:#fff;border:0}.markdown-body .csv-data tr{border-top:0}.markdown-body .csv-data th{font-weight:700;background:#f8f8f8;border-top:0}.markdown-body kbd{display:inline-block;padding:3px 5px;font-size:11px;line-height:10px;color:#555;vertical-align:middle;background-color:#fcfcfc;border:1px solid #ccc;border-bottom-color:#bbb;border-radius:3px;box-shadow:inset 0 -1px 0 #bbb}.news .alert .markdown-body blockquote{padding:0 0 0 40px;border:0 none}.activity-tab .news .alert .commits,.activity-tab .news .markdown-body blockquote{padding-left:0}.task-list-item{list-style-type:none}.task-list-item label{font-weight:400}.task-list-item.enabled label{cursor:pointer}.task-list-item+.task-list-item{margin-top:3px}.task-list-item-checkbox{float:left;margin:.31em 0 .2em -1.3em!important;vertical-align:middle;cursor:default!important}.markdown-body{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Helvetica,Arial,sans-serif;padding-top:40px;padding-bottom:40px;max-width:758px;overflow:visible!important}.markdown-body pre{border:inherit!important}.markdown-body code{color:inherit!important}.markdown-body pre code .wrapper{display:-moz-inline-flex;display:-ms-inline-flex;display:-o-inline-flex;display:inline-flex}.markdown-body pre code .gutter{float:left;overflow:hidden;-webkit-user-select:none;user-select:none}.markdown-body pre code .gutter.linenumber{text-align:right;position:relative;display:inline-block;cursor:default;z-index:4;padding:0 8px 0 0;min-width:20px;box-sizing:content-box;color:#afafaf!important;border-right:3px solid #6ce26c!important}.markdown-body pre code .gutter.linenumber>span:before{content:attr(data-linenumber)}.markdown-body pre code .code{float:left;margin:0 0 0 16px}.markdown-body .gist .line-numbers{border-left:none;border-top:none;border-bottom:none}.markdown-body .gist .line-data{border:none}.markdown-body .gist table{border-spacing:0;border-collapse:inherit!important}.markdown-body code[data-gist-id]{background:none;padding:0}.markdown-body code[data-gist-id]:after,.markdown-body code[data-gist-id]:before{content:""}.markdown-body code[data-gist-id] .blob-num{border:unset}.markdown-body code[data-gist-id] table{overflow:unset;margin-bottom:unset}.markdown-body code[data-gist-id] table tr{background:unset}.markdown-body[dir=rtl] pre{direction:ltr}.markdown-body[dir=rtl] code{direction:ltr;unicode-bidi:embed}.markdown-body .alert>p{margin-bottom:0}.markdown-body pre.abc,.markdown-body pre.flow-chart,.markdown-body pre.graphviz,.markdown-body pre.mermaid,.markdown-body pre.sequence-diagram{text-align:center;background-color:inherit;border-radius:0;white-space:inherit}.markdown-body pre.abc>code,.markdown-body pre.flow-chart>code,.markdown-body pre.graphviz>code,.markdown-body pre.mermaid>code,.markdown-body pre.sequence-diagram>code{text-align:left}.markdown-body pre.abc>svg,.markdown-body pre.flow-chart>svg,.markdown-body pre.graphviz>svg,.markdown-body pre.mermaid>svg,.markdown-body pre.sequence-diagram>svg{max-width:100%;height:100%}.markdown-body pre>code.wrap{white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space:-o-pre-wrap;word-wrap:break-word}.markdown-body .alert>p,.markdown-body .alert>ul{margin-bottom:0}.vimeo,.youtube{cursor:pointer;display:table;text-align:center;background-position:50%;background-repeat:no-repeat;background-size:contain;background-color:#000;overflow:hidden}.vimeo,.youtube{position:relative;width:100%}.youtube{padding-bottom:56.25%}.vimeo img{width:100%;object-fit:contain;z-index:0}.youtube img{object-fit:cover;z-index:0}.vimeo iframe,.youtube iframe,.youtube img{width:100%;height:100%;position:absolute;top:0;left:0}.vimeo iframe,.youtube iframe{vertical-align:middle;z-index:1}.vimeo .icon,.youtube .icon{position:absolute;height:auto;width:auto;top:50%;left:50%;transform:translate(-50%,-50%);color:#fff;opacity:.3;transition:opacity .2s;z-index:0}.vimeo:hover .icon,.youtube:hover .icon{opacity:.6;transition:opacity .2s}.slideshare .inner,.speakerdeck .inner{position:relative;width:100%}.slideshare .inner iframe,.speakerdeck .inner iframe{position:absolute;top:0;bottom:0;left:0;right:0;width:100%;height:100%}.MJX_Assistive_MathML{display:none}.ui-infobar{position:relative;z-index:2;max-width:758px;margin-top:25px;margin-bottom:-25px;color:#777}.ui-toc{position:fixed;bottom:20px;z-index:10000}.ui-toc-label{opacity:.3;background-color:#ccc;border:none;transition:opacity .2s}.ui-toc .open .ui-toc-label{opacity:1;color:#fff;transition:opacity .2s}.ui-toc-label:focus{opacity:.3;background-color:#ccc;color:#000}.ui-toc-label:hover{opacity:1;background-color:#ccc;transition:opacity .2s}.ui-toc-dropdown{margin-top:23px;margin-bottom:20px;padding-left:10px;padding-right:10px;max-width:45vw;width:25vw;max-height:70vh;overflow:auto;text-align:inherit}.ui-toc-dropdown>.toc{max-height:calc(70vh - 100px);overflow:auto}.ui-toc-dropdown[dir=rtl] .nav{padding-right:0;letter-spacing:.0029em}.ui-toc-dropdown a{overflow:hidden;text-overflow:ellipsis;white-space:pre}.ui-toc-dropdown .nav>li>a{display:block;padding:4px 20px;font-size:13px;font-weight:500;color:#767676}.ui-toc-dropdown .nav>li:first-child:last-child > ul,.ui-toc-dropdown .toc.expand ul{display:block}.ui-toc-dropdown .nav>li>a:focus,.ui-toc-dropdown .nav>li>a:hover{padding-left:19px;color:#000;text-decoration:none;background-color:transparent;border-left:1px solid #000}.ui-toc-dropdown[dir=rtl] .nav>li>a:focus,.ui-toc-dropdown[dir=rtl] .nav>li>a:hover{padding-right:19px;border-left:none;border-right:1px solid #000}.ui-toc-dropdown .nav>.active:focus>a,.ui-toc-dropdown .nav>.active:hover>a,.ui-toc-dropdown .nav>.active>a{padding-left:18px;font-weight:700;color:#000;background-color:transparent;border-left:2px solid #000}.ui-toc-dropdown[dir=rtl] .nav>.active:focus>a,.ui-toc-dropdown[dir=rtl] .nav>.active:hover>a,.ui-toc-dropdown[dir=rtl] .nav>.active>a{padding-right:18px;border-left:none;border-right:2px solid #000}.ui-toc-dropdown .nav .nav{display:none;padding-bottom:10px}.ui-toc-dropdown .nav>.active>ul{display:block}.ui-toc-dropdown .nav .nav>li>a{padding-top:1px;padding-bottom:1px;padding-left:30px;font-size:12px;font-weight:400}.ui-toc-dropdown[dir=rtl] .nav .nav>li>a{padding-right:30px}.ui-toc-dropdown .nav .nav>li>ul>li>a{padding-top:1px;padding-bottom:1px;padding-left:40px;font-size:12px;font-weight:400}.ui-toc-dropdown[dir=rtl] .nav .nav>li>ul>li>a{padding-right:40px}.ui-toc-dropdown .nav .nav>li>a:focus,.ui-toc-dropdown .nav .nav>li>a:hover{padding-left:29px}.ui-toc-dropdown[dir=rtl] .nav .nav>li>a:focus,.ui-toc-dropdown[dir=rtl] .nav .nav>li>a:hover{padding-right:29px}.ui-toc-dropdown .nav .nav>li>ul>li>a:focus,.ui-toc-dropdown .nav .nav>li>ul>li>a:hover{padding-left:39px}.ui-toc-dropdown[dir=rtl] .nav .nav>li>ul>li>a:focus,.ui-toc-dropdown[dir=rtl] .nav .nav>li>ul>li>a:hover{padding-right:39px}.ui-toc-dropdown .nav .nav>.active:focus>a,.ui-toc-dropdown .nav .nav>.active:hover>a,.ui-toc-dropdown .nav .nav>.active>a{padding-left:28px;font-weight:500}.ui-toc-dropdown[dir=rtl] .nav .nav>.active:focus>a,.ui-toc-dropdown[dir=rtl] .nav .nav>.active:hover>a,.ui-toc-dropdown[dir=rtl] .nav .nav>.active>a{padding-right:28px}.ui-toc-dropdown .nav .nav>.active>.nav>.active:focus>a,.ui-toc-dropdown .nav .nav>.active>.nav>.active:hover>a,.ui-toc-dropdown .nav .nav>.active>.nav>.active>a{padding-left:38px;font-weight:500}.ui-toc-dropdown[dir=rtl] .nav .nav>.active>.nav>.active:focus>a,.ui-toc-dropdown[dir=rtl] .nav .nav>.active>.nav>.active:hover>a,.ui-toc-dropdown[dir=rtl] .nav .nav>.active>.nav>.active>a{padding-right:38px}.markdown-body[lang^=ja]{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Helvetica,Arial,Hiragino Kaku Gothic Pro,\\30D2\30E9\30AE\30CE\89D2\30B4 Pro W3,Osaka,Meiryo,\\30E1\30A4\30EA\30AA,MS Gothic,"\FF2D\FF33   \30B4\30B7\30C3\30AF",sans-serif}.ui-toc-dropdown[lang^=ja]{font-family:Source Sans Pro,Helvetica,Arial,Meiryo UI,MS PGothic,"\FF2D\FF33   \FF30\30B4\30B7\30C3\30AF",sans-serif}.markdown-body[lang=zh-tw]{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Helvetica,Arial,PingFang TC,Microsoft JhengHei,\\5FAE\8EDF\6B63\9ED1,sans-serif}.ui-toc-dropdown[lang=zh-tw]{font-family:Source Sans Pro,Helvetica,Arial,Microsoft JhengHei UI,\\5FAE\8EDF\6B63\9ED1UI,sans-serif}.markdown-body[lang=zh-cn]{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Helvetica,Arial,PingFang SC,Microsoft YaHei,\\5FAE\8F6F\96C5\9ED1,sans-serif}.ui-toc-dropdown[lang=zh-cn]{font-family:Source Sans Pro,Helvetica,Arial,Microsoft YaHei UI,\\5FAE\8F6F\96C5\9ED1UI,sans-serif}.ui-affix-toc{position:fixed;top:0;max-width:15vw;max-height:70vh;overflow:auto}.back-to-top,.expand-toggle,.go-to-bottom{display:block;padding:4px 10px;margin-top:10px;margin-left:10px;font-size:12px;font-weight:500;color:#999}.back-to-top:focus,.back-to-top:hover,.expand-toggle:focus,.expand-toggle:hover,.go-to-bottom:focus,.go-to-bottom:hover{color:#563d7c;text-decoration:none}.back-to-top,.go-to-bottom{margin-top:0}.ui-user-icon{width:20px;height:20px;display:block;border-radius:3px;margin-top:2px;margin-bottom:2px;margin-right:5px;background-position:50%;background-repeat:no-repeat;background-size:contain}.ui-user-icon.small{width:18px;height:18px;display:inline-block;vertical-align:middle;margin:0 0 .2em}small span{line-height:22px}small .dropdown{display:inline-block}small .dropdown a:focus,small .dropdown a:hover{text-decoration:none}.unselectable{-moz-user-select:none;-webkit-user-select:none;-o-user-select:none;user-select:none}@media print{blockquote,div,img,pre,table{page-break-inside:avoid!important}a[href]:after{font-size:12px!important}}.markdown-body.slides{position:relative;z-index:1;color:#222}.markdown-body.slides:before{content:"";display:block;position:absolute;top:0;left:0;right:0;bottom:0;z-index:-1;background-color:currentColor;box-shadow:0 0 0 50vw}.markdown-body.slides section[data-markdown]{position:relative;margin-bottom:1.5em;background-color:#fff;text-align:center}.markdown-body.slides section[data-markdown] code{text-align:left}.markdown-body.slides section[data-markdown]:before{content:"";display:block;padding-bottom:56.23%}.markdown-body.slides section[data-markdown]>div:first-child{position:absolute;top:50%;left:1em;right:1em;transform:translateY(-50%);max-height:100%;overflow:hidden}.markdown-body.slides section[data-markdown]>ul{display:inline-block}.markdown-body.slides>section>section+section:after{content:"";position:absolute;top:-1.5em;right:1em;height:1.5em;border:3px solid #777}body{font-smoothing:subpixel-antialiased!important;-webkit-font-smoothing:subpixel-antialiased!important;-moz-osx-font-smoothing:auto!important;text-shadow:0 0 1em transparent,1px 1px 1.2px rgba(0,0,0,.004);-webkit-overflow-scrolling:touch;font-family:Source Sans Pro,Helvetica,Arial,sans-serif;letter-spacing:.025em}.focus,:focus{outline:none!important}::-moz-focus-inner{border:0!important}body.modal-open{overflow-y:auto;padding-right:0!important}
+    </style>
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    	<script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js" integrity="sha256-3Jy/GbSLrg0o9y5Z5n1uw0qxZECH7C6OQpVBgNFYa0g=" crossorigin="anonymous"></script>
+    	<script src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js" integrity="sha256-g6iAfvZp+nDQ2TdTR/VVKJf3bGro4ub5fvWSWVRi2NE=" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/es5-shim/4.5.9/es5-shim.min.js" integrity="sha256-8E4Is26QH0bD52WoQpcB+R/tcWQtpzlCojrybUd7Mxo=" crossorigin="anonymous"></script>
+    <![endif]-->
+</head>
+
+<body>
+    <div id="doc" class="markdown-body container-fluid"><h1 id="reviewers’-comments-on-mmetsp-paper"><a class="anchor hidden-xs" href="#reviewers’-comments-on-mmetsp-paper" title="reviewers’-comments-on-mmetsp-paper"><span class="octicon octicon-link"></span></a>Reviewers’ comments on MMETSP paper</h1><h1 id="reviewer-1"><a class="anchor hidden-xs" href="#reviewer-1" title="reviewer-1"><span class="octicon octicon-link"></span></a>Reviewer #1</h1><p>The manuscript submitted by Lisa Johnson and colleagues is a well written and comprehensive work aimed at reanalyzing a fairly enormous dataset. I feel that the work is important for the following two main reasons:</p><ol>
+<li>
+<p>Assembly methods have improved substantially since the original datasets were analyzed, and as the authors point out - these new analyses recover new transcripts that might be useful to the original researchers and to the broader community.</p>
+</li>
+<li>
+<p>Applying standardized and reproducible methods - at scale - is challenging, and the authors provide an example for how this could be done. I can imagine others using these ideas (or the actual code) to assemble other datasets in a similar fashion.</p>
+</li>
+</ol><p>In terms of the manuscript itself, it is sound, with just a few areas where improvements will make for a more readable paper. Interspersed with this, I have a few more pedantic suggestions that the author should feel free to ignore if deemed unhelpful.</p><p><strong>We thank the reviewer for their helpful comments and insights into our work. Below we note alterations and some more detailed clarifications to address the comments.</strong></p><ul>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" checked="" disabled="disabled"><label></label>Line 91: replace ‘higher’ with ‘more favorable’ or even ‘better’.</li>
+</ul><p><strong>Changed to: “Here, we show that our re-assemblies had better evaluation metrics and contained most of the NCGR contigs as well as adding new content.”</strong></p><ul>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" checked="" disabled="disabled"><label></label>L102: The link to the code does not seem to be active. I would  have loved to review it.</li>
+</ul><p><strong>The link is here: <a href="https://doi.org/10.5281/zenodo.594854" target="_blank">https://doi.org/10.5281/zenodo.594854</a> and active in the current version of the GigaScience formatted manuscript.</strong></p><ul>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" checked="" disabled="disabled"><label></label>L111: You are using 50bp reads. Do you think your conclusions would have been any different had longer reads (100-150bp) been available? More novice readers might wonder if these methods are just as applicable to them with longer reads as they are to you. I’m sure the answer is yes - your new assemblies might have been even better had you had longer reads.</li>
+</ul><p><strong>Thank you for bringing this point to our attention. This is an important point to mention in the discussion. We added to the end of the second section of the discussion as an extension of subheading: “Reassembly with new tools can yield new results.” (L327):</strong></p><p>““<br>
+<strong>We predict that assembly metrics could have been further improved with longer read lengths of the original data since MMETSP data had only 50 bp read lengths, although this would have presented Keeling et al. [31] a more expensive data collection endeavor. A study by Chang et al. [<a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3988101/" target="_blank">25</a>] reported a consistent increase in the percentage of full-length transcript reconstruction and a decrease in the false positive rate moving from 50 to 100 bp read lengths with the Trinity assembler. However, regardless of length, the conclusions we draw here would likely remain the same that assembling data with new tools can yield new results.</strong><br>
+””</p><ul>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" checked="" disabled="disabled"><label></label>L180-182: If I didn’t know khmer already, I might struggle with the HyperLogLog estimator. Maybe just a sentence or 3 more might be useful to explain what this is and why it is used.</li>
+</ul><p><strong>L182 added: “We used the HLL function to digest each assembly and count the number of distinct fixed-length substrings of DNA (k-mers).”</strong></p><ul>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" checked="" disabled="disabled"><label></label>L245ish: I keep wondering about your BUSCO scores, and the fact that they are lower on average in your new assemblies compared to the older ones.  Why is this? How do you reconcile this with the more general statement you are trying to make about ‘more genes being recovered’ in the new assembly. I see that BUSCO is just one of the available metrics to assess this, but it’s a little strange I think, given that I’m convinced that these assemblies are actually better.</li>
+</ul><p><strong>On average, BUSCO scores were lower in DIB vs. NCGR assemblies. However, the degree of the differences was not as dramatic (NCGR mean 64.8 vs. DIB 62.9) compared to differences between the number of contigs (NCGR length mean 30K vs. DIB 49K) and the CRBB differences (NCGR mean proportion 0.5 vs. DIB 0.7).</strong></p><p><strong>After re-checking the BUSCO v3 scores against the eukaryota and protista databases, we changed the mean, sd, and k-s test numbers listed in the text. The original numbers were missing a few assemblies and were from BUSCO version 2. The % complete BUSCO are still significantly higher in NCGR vs. DIB.</strong></p><p><strong>We edited this sentence and emphasized the less dramatic differences in % ORF and BUSCO scores relative to contig number and CRBB differences:</strong></p><p>""<br>
+<strong>Therefore, although the number of contigs and amount of CRBB content were dramatically increased in the DIB re-assemblies compared to the NCGR assemblies, the differences in ORF content and BUSCO matches compared to the eukaryotic (Figure 5 C,D) and protistan (Supplemental Figure 3) databases - while they were significantly different - were less dramatic. This suggests that content was not lost by gaining extra contigs. The extra content contained similar proportions of ORFs and BUSCO annotations. Therefore, the re-assemblies may contribute more biologically meaningful information.</strong></p><p>“”</p><p><strong>Looking at the eight samples where NCGR had &gt;30% higher complete BUSCO evaluation score (MMETSP0121, MMETSP0932, MMETSP0045, MMETSP0169, MMETSP0232, MMETSP0439, MMETSP0329, MMETSP0717), we see different reasons for missing Complete BUSCOs.</strong></p><pre><code>    SampleName  Complete_BUSCO_perc_NCGR  Complete_BUSCO_perc_DIB
+18   MMETSP0121                 65.016502                31.683168
+134  MMETSP0932                 85.148515                 3.630363
+232  MMETSP0045                 73.927393                35.313531
+282  MMETSP0169                 68.646865                 6.270627
+451  MMETSP0232                 82.508251                 0.660066
+475  MMETSP0439                 80.858086                 3.630363
+654  MMETSP0329                 80.198020                 5.280528
+661  MMETSP0717                 61.716172                17.821782
+</code></pre><p><strong>(BUSCO output is not straight-forward to parse.)</strong></p><p><a href="https://github.com/ljcohen/MMETSP/blob/master/assembly_evaluation_data/busco_eval/busco_eval.ipynb" target="_blank">https://github.com/ljcohen/MMETSP/blob/master/assembly_evaluation_data/busco_eval/busco_eval.ipynb</a></p><p><strong>For reasons that we don’t understand, in some cases a particular orthogroup in the BUSCO db does not produce output in <code>hmmer_output/</code>. Sometimes it does. For example, the Trininty-based pipeline only produced 342 contigs for sample MMETSP0232 while the NCGR ‘nt’ assembly had 4234 and ‘cds’ had 2736. BUSCO did not recognize any of the DIB contigs but it did recognize the NCGR contigs. Whereas for other samples, e.g. MMETSP0169, the BUSCO software recognized several contigs but did not score them high enough and called the BUSCO group “missing”, even though there were lengths of contigs identified as being somewhat related.</strong></p><p><strong>This is a case where it does suggest several contigs are matching in DIB hmmer output, even though it is listed as “Missing”:</strong></p><p>MMETSP0169:</p><pre><code>EOG0937060I
+DIB: ['EOG0937060I', 'Missing']
+NCGR: ['EOG0937060I', 'Duplicated', 'CAMNT_0039020233', '576.3', '630']
+NCGR: ['EOG0937060I', 'Duplicated', 'CAMNT_0039023937', '555.9', '644']
+NCGR: ['EOG0937060I', 'Duplicated', 'CAMNT_0039030405', '552.2', '636']
+DIB contig: MMETSP0169-figshare3840153v7-TRINITY_DN13758_c3_g2_i1_3
+DIB contig length: 974
+DIB contig: MMETSP0169-figshare3840153v7-TRINITY_DN3716_c0_g1_i1_1
+DIB contig length: 154
+DIB contig: MMETSP0169-figshare3840153v7-TRINITY_DN13467_c1_g1_i1_6
+DIB contig length: 494
+NCGR contig: CAMNT_0039023937_4
+NCGR contig length: 781
+NCGR contig: CAMNT_0039030405_5
+NCGR contig length: 921
+NCGR contig: CAMNT_0039020233_3
+NCGR contig length: 842
+</code></pre><p><strong>The gene is:</strong></p><pre><code>DNA/RNA helicase, ATP-dependent, DEAH-box type, conserved site
+Similarity:Contains helicase ATP-binding domain
+</code></pre><p><strong>When we look for this gene in the annotation file, there are no annotation results for this contig:</strong></p><pre><code>[ljcohen@dev-intel14 MMETSP0169.trinity_out_2.2.0.Trinity.fasta.dammit]$ grep "TRINITY_DN13758_c3_g2_i1" MMETSP0169.trinity_out_2.2.0.Trinity.fasta.dammit.namemap.csv
+</code></pre><p><strong>But there are for other contigs identified by the hmm_output file:</strong></p><pre><code>[ljcohen@dev-intel14 MMETSP0169.trinity_out_2.2.0.Trinity.fasta.dammit]$ grep "TRINITY_DN3716_c0_g1_i1" MMETSP0169.trinity_out_2.2.0.Trinity.fasta.dammit.namemap.csv
+"TRINITY_DN3716_c0_g1_i1 len=208 path=[186:0-207] [-1, 186, -2]",Transcript_32368
+
+[ljcohen@dev-intel14 MMETSP0169.trinity_out_2.2.0.Trinity.fasta.dammit]$ grep "Transcript_32368" MMETSP0169.trinity_out_2.2.0.Trinity.fasta.dammit.gff3
+Transcript_32368	LAST	translated_nucleotide_match	15	167	1.300000e-06	-	.	ID=homology:18169;Name=ENSXMAP00000012674;Target=ENSXMAP00000012674 244 295 +;database=OrthoDB
+</code></pre><p><strong>Looking at the gene identified by the annotations:</strong></p><pre><code>[ljcohen@dev-intel14 reference]$ grep "ENSXMAP00000012674" ODB8_EukOGs_genes_ALL_levels.txt 
+7898:Actinopterygii	EOG808R8M	ENSXMAP00000012674	8083:003153	Xiphophorus maculatus	
+33208:Metazoa	EOG82JQ5D	ENSXMAP00000012674	8083:003153	Xiphophorus maculatus	
+1261581:Vertebrata	EOG808P6W	ENSXMAP00000012674	8083:003153	Xiphophorus maculatus	
+
+[ljcohen@dev-intel14 reference]$ grep "EOG808R8M" odb_v8_v9_1.tab
+7898	EOG808R8M	EOG090C08EI	.39456585
+</code></pre><p><strong>This does not match the original EOG0937060I and is a different gene:</strong></p><pre><code>Abl-interactor, homeo-domain homologous domain
+ABI family, member 3a
+</code></pre><p><strong>But, the top ncbi blastn results with the contig sequence suggested small (only several hundred bp) region matches with the EOG0937060I gene sequence:</strong></p><pre><code>PREDICTED: Heterocephalus glaber DEAH-box helicase 37 (Dhx37), transcript variant X2, mRNA	66.2	66.2	1%	6e-06	86%	XM_021257656.1
+Select seq XM_004843976.2	PREDICTED: Heterocephalus glaber DEAH-box helicase 37 (Dhx37), transcript variant X1, mRNA	66.2	66.2	1%	6e-06	86%	XM_004843976.2
+Select seq XM_010604294.2	PREDICTED: Fukomys damarensis DEAH-box helicase 37 (Dhx37), transcript variant X6, mRNA	66.2	66.2	1%	6e-06	86%	XM_010604294.2
+Select seq XM_010604293.2	PREDICTED: Fukomys damarensis DEAH-box helicase 37 (Dhx37), transcript variant X5, mRNA	66.2	66.2	1%	6e-06	86%	XM_010604293.2
+Select seq XM_010604292.2	PREDICTED: Fukomys damarensis DEAH-box helicase 37 (Dhx37), transcript variant X4, mRNA	66.2	66.2	1%	6e-06	86%	XM_010604292.2
+Select seq XM_010604291.2	PREDICTED: Fukomys damarensis DEAH-box helicase 37 (Dhx37), transcript variant X3, mRNA	66.2	66.2	1%	6e-06	86%	XM_010604291.2
+Select seq XR_776390.2	PREDICTED: Fukomys damarensis DEAH-box helicase 37 (Dhx37), transcript variant X2, misc_RNA	66.2	66.2	1%	6e-06	86%	XR_776390.2
+Select seq XM_019204571.1	PREDICTED: Fukomys damarensis DEAH-box helicase 37 (Dhx37), transcript variant X1, mRNA	66.2	66.2	1%	6e-06	86%	XM_019204571.1
+Select seq XM_005403001.2	PREDICTED: Chinchilla lanigera DEAH (Asp-Glu-Ala-His) box polypeptide 37 (Dhx37), mRNA
+</code></pre><p><strong>Even though this contig was assembled, it did not successfully annotate. We don’t know whether there are errors associated with this assembled contig, or if the contig is a new sequence unique to this MMETSP0169 organism (<em>Corethron pennatum</em>, Phylum: Bacillariophyta). Since the BUSCO database and corresponding orthogroups were contstructed from multiple sequence alignments with inidividuals already in the databases, it is possible that different organisms have evolved slightly different sequences that may fall outside the hmm scoring cutoffs for matching with the BUSCO orthogroup. Since the corresponding NCGR assembly had a “Duplicated” result from this particular BUSCO, it is possible that there is a particular oddity within this ortholog.</strong></p><p><strong>This is an example where there is not a file in the DIB <code>run_MMETSP0169/hmmer_output</code> correspondint to this orthogroup EOG.</strong></p><pre><code>EOG0937017X
+DIB: ['EOG0937017X', 'Missing']
+NCGR: ['EOG0937017X', 'Complete', 'CAMNT_0039023621', '802.2', '1208']
+NCGR contig: CAMNT_0039023621_3
+NCGR contig length: 1352
+NCGR contig: CAMNT_0039027673_4
+NCGR contig length: 1287
+NCGR contig: CAMNT_0039044891_4
+NCGR contig length: 1358
+</code></pre><p><strong>Sifting through BUSCO output, there are more examples that could be picked over to explore this issue with these eight MMETSP samples with 30% difference between NCGR and DIB:</strong></p><p><a href="https://github.com/ljcohen/MMETSP/blob/master/assembly_evaluation_data/busco_eval/busco_eval.ipynb" target="_blank">https://github.com/ljcohen/MMETSP/blob/master/assembly_evaluation_data/busco_eval/busco_eval.ipynb</a></p><p><strong>For now, we conclude that our assemblies are differently fragmented in some regions relative to the NCGR assemblies. We have assembled additional sequences that were not assembled by NCGR. Some NCGR assemblies had different and more complete content than the DIB assemblies. As far as we can tell, there does not appear to be a pattern in the samples that fared well with this pipeline vs. NCGR. This could be a future avenue to explore.</strong></p><ul>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" checked="" disabled="disabled"><label></label>Could you (did you) do a CRHB against Swiss-prot?  I imagine that for each assembly pair (old assembly vs new assembly), you’d see more hits to unique Swiss-Prot genes in the newer assembly.</li>
+</ul><p><strong>The dammit pipeline we used did perform a CRBB with Pfam, Rfam, Orthodb. A CRBB directly with Swiss-prot would probably not give additional information since Pfam is a collection of protein family alignments constructed using HMM of multiple Swiss-prot sequence alignments. Directly querying Swiss-prot might be an interesting avenue to pursue in the future to confirm annotations with Pfam, R-fam and Orthodb with this high quality annotated and non-redundant protein sequence database. But at this point it might be redundant and more noisy given the biodiversity and evolutionary divergence among the species found in the MMETSP collection.</strong></p><ul>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" checked="" disabled="disabled"><label></label>L254: “less significantly different” Do you mean “significantly less”?</li>
+</ul><p><strong>The difference in BUSCO was significant, but to a lesser degree than other distribution comparisons (p=0.002 rather than p &lt; 0.001). I edited the wording here, see comment above.</strong></p><ul>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" checked="" disabled="disabled"><label></label>L306: I’m also confused about the TransRate scores. As best as I can tell the “NT” assemblies were the raw assemblies, while the “CDS” assemblies were further filtered. If my understanding is correct, then the opening statement for this paragraph (DIB assemblies were more inclusive) is incorrect, given that transrate metrics were higher for the NCGR nt assemblies that they were for the DIB assemblies.  I’m also worried about the statements about DIB assemblies being better, while transrate scores were on whole, worse. Should reconcile this.</li>
+</ul><p><strong>Thank you for pointing out the imprecise language in our explanation. Yes, the “nt” assemblies were raw assemblies, whereas the “cds” assemblies that the NCGR published were filtered for only coding sequences, as far as we can tell. (Methods described by Keeling et al. 2014 were not transparent enough to correspond to the file nomenclature located on <a href="ftp://ftp.imicrobe.us/projects/104/" target="_blank">ftp://ftp.imicrobe.us/projects/104/</a>. ) Transrate scores may not be the best metric for comparison. The transrate score is a measurement of how well the original reads support the the final assembly. We have more unique k-mers, but we have worse transrate scores.</strong></p><p><strong>We edited “suggesting that both pipelines yielded equally valid contigs,” to<br>
+"suggesting that both pipelines yielded similarly valid contigs," so that the significant BUSCO and ORF differences between assemblies can be acknowledged.</strong></p><p><strong>To the discussion, we added:</strong><br>
+""<br>
+<strong>Moreover, even though the number of contigs and the CRBB results between the DIB and NCGR assemblies were dramatically different, both the fraction of contigs with ORFs and the mean percentage of BUSCO matches were similar between the two assemblies, suggesting that both pipelines yielded similarly valid contigs, even though the NCGR assemblies were less sensitive.<br>
+""</strong></p><ul>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" checked="" disabled="disabled"><label></label>L315: I’m not sure that you are “directly” evaluating the de Bruijn structure.</li>
+</ul><p><strong>This is correct. We did not directly evaluate the de Bruijn graph structure. The sentence in the discussion mentions:</strong></p><p><strong>Metrics directly evaluating the underlying de Bruijn graph data structure used to produce the assembled contigs may be better evaluators of assembly quality.</strong></p><p><strong>We clarified this by adding:</strong></p><p><strong>In future studies, metrics directly evaluating the underlying de Bruijn graph data structure used to produce the assembled contigs may be better evaluators of assembly quality in the future.</strong></p><ul>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" checked="" disabled="disabled"><label></label>L320: I’m not sure you show “Biologically meaningful”. You show that you have recovered new stuff that is likely real (not an artifact of asembly), but not sure you can claim it’s meaningful.</li>
+</ul><p><strong>This is true. We changed the word “meaningful” to “relevant”.</strong></p><ul>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" checked="" disabled="disabled"><label></label>L364: In your discussion of kmer content (and other metrics) the idea that some of these datasets might in fact be meta-transcriptomes should be discussed. Lots of marine microeukaryotes associate with bacteria, viruses, etc, and unless extreme care was takes with the target species, to grow in sterile conditions, some of patterns of kmer distrib. might be because the datasets contain more than 1 species.</li>
+</ul><p><strong>We added a paragraph:</strong></p><p>““<br>
+<strong>RNA sequences generated from the MMETSP experiments are likely to contain genetic information from more than the target species, as many were not or could not be cultured axenically. Thus both the NCGR assemblies and DIB re-assemblies, including the additional biologically relevant information, might be considered meta-transcriptomes. Sequencing data and unique k-mer content likely include bacteria, viruses, or other protists that occurred within the sequenced sample. We did not make an attempt to de-contaminate the assemblies.</strong><br>
+””</p><ul>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" checked="" disabled="disabled"><label></label>Table 1. Can you include the BUSCO results here?</li>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" checked="" disabled="disabled"><label></label>Fig3 needs a y-axis label</li>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" checked="" disabled="disabled"><label></label>Fig 5c and a few other places. There are a few DIB assemblies that are WAY worse than the original assembly. Why? This could benefit from some explanation.</li>
+</ul><p><strong>Added to Discussion:</strong></p><p>““<br>
+<strong>For some samples, the DIB re-assemblies had lower metrics than the NCGR assemblies. Complete BUSCO scores were lower than over half of DIB vs. NCGR. This could be an effect of the BUSCO metric, given that these samples did not perform poorly with other metrics, such as % ORF and number of contigs compared to the NCGR. For other samples, MMETSP0252 (<em>Prorocentrum lima</em>) in particular, assemblies required several tries and only four contigs were assembled from 30 million reads of data. The fastqc reports were unremarkable compared to the other samples. In such a large dataset with a diversity of species with no prior sequencing data to compare make it challenging to speculate why each anomaly occurred. However, further investigation into the reasons for failures and peculiarities in the evaluation metrics may lead to interesting discoveries about how we should be effectively assembling and evaluating nucleic acid sequencing data from a diversity of species.</strong><br>
+””</p><ul>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" checked="" disabled="disabled"><label></label>In the end, what I took away from this paper is that the new assemblies had different transcripts, and this is great and potentially helpful for researchers. Saying that, on a whole, both BUSCO and TransRate scores trended toward lower, which is maybe surprising, especially because the original assemblies were assembled (best as I can tell) using a general genome assembler (ABySS/MIRA) rather than software specialized for transcriptomes.</li>
+</ul><p><strong>This is a good summary of our findings, thank you. We added a sentence to the Introduction mentioning the ABySS assembler and cited Keeling et al. 2014 for methods (LINE 78 in the formatted manuscript).</strong></p><h1 id="reviewer-2"><a class="anchor hidden-xs" href="#reviewer-2" title="reviewer-2"><span class="octicon octicon-link"></span></a>Reviewer #2</h1><p>The manuscript by Johnson et al. describe the re-analysis of the Marine Microbial Eukaryotic Transcriptome Sequencing Project (MMETSP). The authors have generate a new computational pipeline for the de novo assembly (using Trinity de novo) of the RNA-Seq reads of several hundred transcriptomes as well as downstream a set of scripts to compare the outcome with the results of the original publication (which used Trans-ABySS for the assembly).</p><p>The current manuscript is a great example that shows the value of revisiting old data sets with new computational tools. The authors put strong focus on reproducibility of their analysis. The effort for this should not be underestimated and the work can serve as a blueprint for similar data re-analysis projects.</p><p>I see no major issue in this work but still would like to have a few smaller ones addressed:</p><p><strong>We thank the reviewer for their compliments on our work and appreciate the feedback they have provided. Below please find our responses to the the detailed comments:</strong></p><ul>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" checked="" disabled="disabled"><label></label>The manuscript is currently rather descriptive and has only a few explanations why there are certain differences in the presented assembly approaches. E.g. what are the reasons for the observation displayed in Figure 4 that there so many more unique k-mers in the DIB than in the NCGR set? Maybe not all results can be explained mechanistically but least at some potential reasons could be discussed.</li>
+</ul><p><strong>Thank you for pointing this out-- we have tried to expand our explanations where we felt confident in our reasoning. For example, we have added the following explanation for why greater kmer content is conserved by the DIB assembly:</strong><br>
+<strong>Added to L316</strong></p><p>""<br>
+<strong>The relative increase in number of unique k-mers from the NCGR assemblies to the DIB re-assemblies could be an effect of having more contigs. Within the data, the Trinity assembler found evidence for building alternative isoforms. Whereas the ABySS assembler and transcriptome pipeline that NCGR used may not have preserved that variation, in an attempt to narrow down the contigs to a consensus transcript sequence.<br>
+""</strong></p><ul>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" checked="" disabled="disabled"><label></label>The authors write: “We used a different pipeline than the original one used to create the NCGR assemblies, in part because new software was available [8] and in part because of new trimming guidelines [27]”. Is [8] really the correct reference here? If so this has to be further explained.</li>
+</ul><p><strong>Thank you for catching this. This was a typo. Fixed to reference [18].</strong></p><ul>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" checked="" disabled="disabled"><label></label>I think figures 2, 3 and 5 are not red green blind safe.</li>
+</ul><p><strong>You are correct-- thank you for bringing this to our attention. We have changed the figures to blue and yellow.</strong></p><ul>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled"><label></label>In the script collection uploaded to Zenodo I personally would have removed the “pycache” folder and the containing Python byte code files (*pyc). Or do they have any purpose / contain useful information?</li>
+</ul><p><strong>Thank you, we will make sure to remove this before publication.</strong></p><ul>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" checked="" disabled="disabled"><label></label>The supplementary notebooks could additionally be uploaded as ipyn files.</li>
+</ul><p><strong>Thank you for the suggestion. We have uploaded the notebooks both as ipynb files as static html pages to a figshare: <a href="https://doi.org/10.6084/m9.figshare.7091003" target="_blank">https://doi.org/10.6084/m9.figshare.7091003</a></strong></p><ul>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled"><label></label>The authors have a configuration file for user specif paths but this is not strictly used. In “<a href="https://github.com/ljcohen/MMETSP" target="_blank">dibMMETSPconfiguration.py</a>” another “basedir” variable is set and in <a href="http://trimqc.py" target="_blank">trimqc.py</a> even the full path for Trimmomatic is set ("/mnt/home/ljcohen/bin/Trimmomatic-0.33/trimmomatic-0.33.jar"). This make the reuse of the framework harder.</li>
+</ul><p><strong>Thank you for catching this, we have removed absolute paths and added the edited the files to a new version of the repository on zenodo. While it does make sense for future reuse, we felt it was important to preserve the code in its original state used to generate the assembly files discussed in the paper.</strong></p><ul>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" checked="" disabled="disabled"><label></label>While I understand that it is sometime needed due to dependencies on old libraries I would like to discourage the use of Python 2.7 (aka “legacy Python”) in currently research projects and would strongly recommend to use a current Python version (3 and higher) instead.</li>
+</ul><p><strong>We completely agree. At the time the scripts were written they were in Python 2.7. The assemblies discussed in the paper were generated with this code. Future versions of this pipeline are written in Python 3.</strong></p><h1 id="reviewer-3"><a class="anchor hidden-xs" href="#reviewer-3" title="reviewer-3"><span class="octicon octicon-link"></span></a>Reviewer #3</h1><p>In the manuscript, Johnson et al have reassembled RNA-seq data from 678 samples generated from MMETS Project using a pipeline, which follows the Eal Pond mRNA seq protocol. The pipeline (DIG) starts by quality trimming the data followed by digital normalization and assembly using the Trinity assembler. The authors have compared their re-assemblies against assemblies generated from the method suggested by the National Center for Genome Resource (NCGR). For comparison, they have used difference evaluation metrics like Conditional Reverse Best BLAST (CRBB), BUSCO scores, annotation using the Dammit pipeline and ORF content in the assembly. They argued that their pipeline is able to provide additional biologically meaningful content as compared to the NCGR pipeline. While the work overall is quite interesting and the large set of assemblies appear useful, I feel that there are some improvements and clarifications necessary:</p><p><strong>Thank you for the constructive commentary on our paper. We have addressed your comments below.</strong></p><p>Major comments:</p><ul>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" checked="" disabled="disabled"><label></label>The core reason behind the observation that DIG pipeline being better than the NCGR pipeline is not clear. It might be due to the core algorithm behind the assembler used by the pipelines (DIG using Trinity and NCGR uses AbySS). But this should be explained in more detail why their pipeline performs better. For example, is the performance increase linked to sequencing coverage of the read data sets? Or transcriptome complexity of the sample? Or is it the fact that the NCGR pipeline seems to use a custom build pipeline that uses multi-kmer ABySS but not the de novo transcriptome assembler trans-ABySS, which may be more suited?</li>
+</ul><p><strong>Thank you for bringing this to our attention. We agree that we did not discuss this point thoroughly enough in the text. The main differences between the NCGR and DIB pipelines were the assemblers used (we used Trinity) and trimming parameters (MacManes 2014). Additionally, in postprocessing, we did not filter out assembly contigs for ORF content whereas the NCGR did in their ‘cds’ versions.</strong></p><p><strong>We have added the following text to the discussion that explains that we believe the reason for improved metrics with the DIB pipeline relative to the NCGR could be because of increased contigs from the Trinity assembly and trimming parameters used.</strong></p><p>““<br>
+<strong>The increase in number of unique k-mers from the NCGR assemblies to the DIB re-assemblies could due to the higher number of contigs generated by Trinity. Within the data, the Trinity assembler found evidence for building alternative isoforms. Whereas the ABySS assembler and transcriptome pipeline that NCGR used \citep{Keeling_2014} appears to not have preserved that variation, in an attempt to narrow down the contigs to a consensus transcript sequence.</strong><br>
+””</p><ul>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" checked="" disabled="disabled"><label></label>The other major difference between the pipelines is the additional step of digital normalization which DIG uses. Normalization generally removes kmer information, which affect the overall assembly. It is not clear why normalization in case of DIG should improve the assemblies. Normally the expectation would not that the digital normalization leads to an improvement. So I assume the authors do it simply to reduce the computational costs of the many assemblies, which is plausible but should be stated.</li>
+</ul><p><strong>Yes, our DIB pipeline used digital normalization with khmer, which is much like Trinity normalization, to remove redundant k-mers for the purpose of reducing computational resources required. As Brown et al (2012) showed, digital normalization does not affect the content of the resulting transcriptome. We clarified on line 144: “To decrease the memory requirements for each assembly, digital normalization was applied prior to assembly [46].”</strong></p><ul>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" checked="" disabled="disabled"><label></label>Also, Trinity by default performs in-silico normalization. So, the additional normalization step is redundant. Is the option for normalization switched off in the assembler. If yes, the authors should comment on why they are using Diginorm instead of using Trinity’s built-in normalization, is there any indication that this works better for the assemblies they have done?</li>
+</ul><p><strong>We used an older version of Trinity (2.2.0) which did not have this turned on by default. We added: "This version of Trinity (2.2.0) did not include the “in silico normalization” option as a default parameter.</strong></p><p><strong>The digital normalization used here is the same algorithm as the Trinity in silico normalization, but it requires considerably less memory and is faster (Brown et al. 2012).</strong></p><ul>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" checked="" disabled="disabled"><label></label>It is not clear which version of NCGR assemblies (“nt” or “cds”) the authors used for calculating the mean ORF% in Table 1. If they have used the “nt” version, then the number can be misleading. The “cds” version of the NCGR assemblies contains contigs that have been predicted to show coding potential and hence might have a higher mean ORF content (as this is computed as percentages). I suggest the authors compare the mean ORF% content of the two NCGR version against the assemblies generated using DIG for full transparency and then discuss the differences regarding these two NCGR version and their assemblies.</li>
+</ul><p><strong>Thank you for pointing this out. We have clarifed clarified the mean % ORF metric in Table 1, which originally only included the “nt” version of the NCGR assembly, and added the assembly numbers corresponding to the “cds” version of the NCGR assembly. The DIB re-assemblies were more comparable to the “nt” versions of NCGR since we did not filter contigs based on ORF content, which the NCGR did in their “cds” version. When filtration steps were performed, potentially useful content was lost. Explanations clarifying the comparability of the DIB to the “nt” and the “cds” versions of the NCGR assemblies were added to the results and discsussion.</strong></p><ul>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" checked="" disabled="disabled"><label></label>I think the line plots used in the paper can be improved, because it is hard to quantify the amount of overlapping lines. For example I think that Figure 2A, 3A,5A,5C are probably more easy to interpret when made as a scatterplot, e.g. Fig2A where the number of contigs is compared between NCGR and DIB assemblies.</li>
+</ul><p><strong>We appreciate this feedback; however, we feel that in this context, the line plots are visually drawing the relationship between the same sample for each NCGR and DIB assembly. Scatter plots would not show that relationship. We attempted to clarify this point by adding this sentence (Figure 2, line 151 in the formatted manuscript)</strong></p><p>““<br>
+<strong>Slopegraphs show shifts in the number of contigs for each individual sample between the DIB and the NCGR assembly pipelines. Negative slope (brown) lines represent values where NCGR was higher than DIB and positive slope (blue) lines represent values where DIB was higher than NCGR.</strong><br>
+””</p><ul>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" checked="" disabled="disabled"><label></label>I would not say that the distribution in Figure 2c looks like a Normal distribution as the right tail is much heavier than the left one. If you want to make that statement, use a test of normality, however I feel this is not important for the paper.</li>
+</ul><p><strong>Changed to:</strong></p><p>““<br>
+<strong>The frequency of the differences between Transrate scores in the NCGR ‘nt’ assemblies and the DIB re-assemblies is centered around zero (Figure 2C).</strong><br>
+””</p><p>Minor comments:</p><ul>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" checked="" disabled="disabled"><label></label>Typo in reference 25 … de ovo assembly …</li>
+</ul><p><strong>Thank you for catching this typo. We have fixed it in the references.</strong></p><ul>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled"><label></label>line 336: I was not able to understand what the (see op-ed Alexander et al. 2018 ) refers to, as there is no such reference in the bibliography and no footnote</li>
+</ul><p><strong>We were not able to post to this article to a preprint server as it was not original research. Here is a link to the current github repo for the text (XXX) The final version of this paper will include a proper citation</strong></p></div>
+    <div class="ui-toc dropup unselectable hidden-print" style="display:none;">
+        <div class="pull-right dropdown">
+            <a id="tocLabel" class="ui-toc-label btn btn-default" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" title="Table of content">
+                <i class="fa fa-bars"></i>
+            </a>
+            <ul id="ui-toc" class="ui-toc-dropdown dropdown-menu" aria-labelledby="tocLabel">
+                <div class="toc"><ul class="nav"><li class=""><a href="#reviewers’-comments-on-mmetsp-paper">Reviewers’ comments on MMETSP paper</a></li><li class=""><a href="#reviewer-1">Reviewer #1</a></li><li class=""><a href="#reviewer-2">Reviewer #2</a></li><li><a href="#reviewer-3">Reviewer #3</a></li></ul></div><div class="toc-menu"><a class="expand-toggle" href="#">Expand all</a><a class="back-to-top" href="#">Back to top</a><a class="go-to-bottom" href="#">Go to bottom</a></div>
+            </ul>
+        </div>
+    </div>
+    <div id="ui-toc-affix" class="ui-affix-toc ui-toc-dropdown unselectable hidden-print" data-spy="affix" style="top:17px;display:none;"  >
+        <div class="toc"><ul class="nav"><li class=""><a href="#reviewers’-comments-on-mmetsp-paper">Reviewers’ comments on MMETSP paper</a></li><li class=""><a href="#reviewer-1">Reviewer #1</a></li><li class=""><a href="#reviewer-2">Reviewer #2</a></li><li><a href="#reviewer-3">Reviewer #3</a></li></ul></div><div class="toc-menu"><a class="expand-toggle" href="#">Expand all</a><a class="back-to-top" href="#">Back to top</a><a class="go-to-bottom" href="#">Go to bottom</a></div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gist-embed/2.6.0/gist-embed.min.js" integrity="sha256-KyF2D6xPIJUW5sUDSs93vWyZm+1RzIpKCexxElmxl8g=" crossorigin="anonymous" defer></script>
+    <script>
+        var markdown = $(".markdown-body");
+        //smooth all hash trigger scrolling
+        function smoothHashScroll() {
+            var hashElements = $("a[href^='#']").toArray();
+            for (var i = 0; i < hashElements.length; i++) {
+                var element = hashElements[i];
+                var $element = $(element);
+                var hash = element.hash;
+                if (hash) {
+                    $element.on('click', function (e) {
+                        // store hash
+                        var hash = this.hash;
+                        if ($(hash).length <= 0) return;
+                        // prevent default anchor click behavior
+                        e.preventDefault();
+                        // animate
+                        $('body, html').stop(true, true).animate({
+                            scrollTop: $(hash).offset().top
+                        }, 100, "linear", function () {
+                            // when done, add hash to url
+                            // (default click behaviour)
+                            window.location.hash = hash;
+                        });
+                    });
+                }
+            }
+        }
+
+        smoothHashScroll();
+        var toc = $('.ui-toc');
+        var tocAffix = $('.ui-affix-toc');
+        var tocDropdown = $('.ui-toc-dropdown');
+        //toc
+        tocDropdown.click(function (e) {
+            e.stopPropagation();
+        });
+
+        var enoughForAffixToc = true;
+
+        function generateScrollspy() {
+            $(document.body).scrollspy({
+                target: ''
+            });
+            $(document.body).scrollspy('refresh');
+            if (enoughForAffixToc) {
+                toc.hide();
+                tocAffix.show();
+            } else {
+                tocAffix.hide();
+                toc.show();
+            }
+            $(document.body).scroll();
+        }
+
+        function windowResize() {
+            //toc right
+            var paddingRight = parseFloat(markdown.css('padding-right'));
+            var right = ($(window).width() - (markdown.offset().left + markdown.outerWidth() - paddingRight));
+            toc.css('right', right + 'px');
+            //affix toc left
+            var newbool;
+            var rightMargin = (markdown.parent().outerWidth() - markdown.outerWidth()) / 2;
+            //for ipad or wider device
+            if (rightMargin >= 133) {
+                newbool = true;
+                var affixLeftMargin = (tocAffix.outerWidth() - tocAffix.width()) / 2;
+                var left = markdown.offset().left + markdown.outerWidth() - affixLeftMargin;
+                tocAffix.css('left', left + 'px');
+            } else {
+                newbool = false;
+            }
+            if (newbool != enoughForAffixToc) {
+                enoughForAffixToc = newbool;
+                generateScrollspy();
+            }
+        }
+        $(window).resize(function () {
+            windowResize();
+        });
+        $(document).ready(function () {
+            windowResize();
+            generateScrollspy();
+        });
+
+        //remove hash
+        function removeHash() {
+            window.location.hash = '';
+        }
+
+        var backtotop = $('.back-to-top');
+        var gotobottom = $('.go-to-bottom');
+
+        backtotop.click(function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            if (scrollToTop)
+                scrollToTop();
+            removeHash();
+        });
+        gotobottom.click(function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            if (scrollToBottom)
+                scrollToBottom();
+            removeHash();
+        });
+
+        var toggle = $('.expand-toggle');
+        var tocExpand = false;
+
+        checkExpandToggle();
+        toggle.click(function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            tocExpand = !tocExpand;
+            checkExpandToggle();
+        })
+
+        function checkExpandToggle () {
+            var toc = $('.ui-toc-dropdown .toc');
+            var toggle = $('.expand-toggle');
+            if (!tocExpand) {
+                toc.removeClass('expand');
+                toggle.text('Expand all');
+            } else {
+                toc.addClass('expand');
+                toggle.text('Collapse all');
+            }
+        }
+
+        function scrollToTop() {
+            $('body, html').stop(true, true).animate({
+                scrollTop: 0
+            }, 100, "linear");
+        }
+
+        function scrollToBottom() {
+            $('body, html').stop(true, true).animate({
+                scrollTop: $(document.body)[0].scrollHeight
+            }, 100, "linear");
+        }
+    </script>
+</body>
+
+</html>
