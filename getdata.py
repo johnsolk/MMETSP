@@ -55,8 +55,17 @@ def test_sra_url():
 #(already checked if file exists)
 
 
+def convert_sra_url(http_url):
+    ftp_base = "ftp://ftp-trace.ncbi.nih.gov/sra/sra-instant/reads/ByRun/sra/SRR"
+    sra_id = os.path.basename(http_url)
+    subdir = sra_id[:6]
+    ftp_url = os.path.join(ftp_base, subdir, sra_id, sra_id + '.sra')
+    return ftp_url
+
+
 def download(url, newdir, newfile):
     filestring = newdir + newfile
+    url = convert_sra_url(url)
     if os.path.isfile(filestring):
         print "file exists:", filestring
     else:
@@ -153,10 +162,20 @@ def fastqc(newdir, fastqcdir, filename):
             fastq_file_list.append(newdir + i)
     fastqc_report(fastq_file_list, newdir, fastqcdir, filename)
 
-datafile = "SraRunInfo.csv"
-basedir = "/mnt/scratch/ljcohen/mmetsp/"
-clusterfunc.check_dir(basedir)
-for datafile in datafiles:
-    url_data = get_data(datafile)
-    print url_data
-    execute(basedir, url_data)
+def main():
+
+    import argparse
+    import pprint
+
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--basedir', default="/mnt/scratch/ljcohen/mmetsp/")
+    parser.add_argument('--datafile', default="SraRunInfo.csv")
+    args = parser.parse_args()
+
+    clusterfunc.check_dir(args.basedir)
+    url_data = get_data(args.datafile)
+    pprint.pprint(url_data)
+    execute(args.basedir, url_data)
+
+if __name__ == '__main__':
+    main()
